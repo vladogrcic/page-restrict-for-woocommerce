@@ -1,0 +1,66 @@
+{
+    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+    "generator": "WP-CLI\/2.3.0",
+    "source": "admin\/assets\/js\/metas.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "en",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Products": [
+                ""
+            ],
+            "Lock by Products": [
+                ""
+            ],
+            "Page to show if product not bought": [
+                ""
+            ],
+            "Redirect if product was not bought": [
+                ""
+            ],
+            "Page to show if user is not logged in": [
+                ""
+            ],
+            "Redirect if user is not logged in": [
+                ""
+            ],
+            "Timeout": [
+                ""
+            ],
+            "Days": [
+                ""
+            ],
+            "Hours": [
+                ""
+            ],
+            "Minutes": [
+                ""
+            ],
+            "Seconds": [
+                ""
+            ],
+            "Views": [
+                ""
+            ],
+            "Page to Show": [
+                ""
+            ],
+            "No available products to show": [
+                ""
+            ],
+            "No available pages to show": [
+                ""
+            ],
+            "Default: Render the not bought page content into the current page": [
+                ""
+            ],
+            "Default: Render the user is not logged in page content into the current page": [
+                ""
+            ]
+        }
+    }
+}
