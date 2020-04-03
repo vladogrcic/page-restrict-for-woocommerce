@@ -3,7 +3,9 @@
   
   </a>
 </p>
+
 ![Page Restrict for WooCommerce](https://user-images.githubusercontent.com/25887644/78312806-3e882080-7555-11ea-8689-e30501aa59fb.png)
+
 Restrict access to your WordPress pages using WooCommerce products.
 
 # Description
