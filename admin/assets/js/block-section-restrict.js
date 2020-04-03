@@ -26,7 +26,7 @@
 
 	registerBlockType(prwc_blockName, {
 		title: 		 __('Restrict Section for WooCommerce', 'page_restrict_domain'),
-		description: __('Restricts access to pages using WooCommerce products.', 'page_restrict_domain'),
+		description: __('Restricts access to sections of pages using WooCommerce products.', 'page_restrict_domain'),
 		icon: 		 icon,
 		category: 	 'layout',
 		keywords: 	 ['restrict Section for WooCommerce'],
