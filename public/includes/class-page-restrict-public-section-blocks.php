@@ -294,7 +294,7 @@ class Page_Restrict_Wc_Section_Blocks
                         }
                         $product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
                     }
-                    return '<p class="restrict-message"><span>'.esc_html__("Your access to this page expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
+                    return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
                 }
                 else{
                     return;
