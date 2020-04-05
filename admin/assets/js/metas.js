@@ -205,7 +205,10 @@
 					setMetaValue: function (metaValue) {
 						if (typeof metaValue !== "undefined") {
 							if (metaValue.constructor === Array) {
-								metaValue = metaValue.join();
+								var filtered_filtered = metaValue.filter(function(item) {
+									return item;
+								});
+								metaValue = filtered_filtered.join();
 							}
 						}
 						dispatch('core/editor').editPost(
@@ -218,7 +221,10 @@
 				var metaValue = select('core/editor').getEditedPostAttribute('meta')[props.metaKey];
 				if (typeof metaValue !== "undefined") {
 					if (metaValue.constructor === Array) {
-						metaValue = metaValue.join();
+						var filtered_filtered = metaValue.filter(function(item) {
+							return item;
+						});
+						metaValue = filtered_filtered.join();
 					}
 				}
 				return {
@@ -247,9 +253,17 @@
 						value: props.metaValue,
 						class: 'slim-select',
 						onChange: function (content) {
-								var metavalue = props.metaValue;
-								metavalue.push(content.target.value);
-								props.setMetaValue(metavalue);
+							var metavalue = props.metaValue;
+							var values = [];
+							for (var i = 0; i < content.target.selectedOptions.length; i++) {
+								var element = content.target.selectedOptions[i];
+								values.push(element.value);
+							}
+							metavalue.push(content.target.value);
+							var filtered_filtered = values.filter(function(item) {
+								return item;
+							});
+							props.setMetaValue(filtered_filtered);
 						},
 						ref: function () {
 							slimSelectEnable();
