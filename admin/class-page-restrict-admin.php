@@ -546,7 +546,7 @@ class Page_Restrict_Wc_Admin
      */
     public function plugin_action_links( $links, $plugin_name_plug_page ) {
         $plugin_name = $this->plugin_name;
-        if($plugin_name_plug_page === $plugin_name.'/'.$plugin_name.'.php'){
+        if($plugin_name_plug_page === basename(PAGE_RESTRICT_WC_LOCATION_URL).'/'.$plugin_name.'.php'){
             $settings_link = '<a href="'.esc_url( admin_url( "admin.php?page=prwc-settings-menu" ) ).'">'.esc_html__('Settings', 'page_restrict_domain').'</a>';
             array_unshift( $links, $settings_link ); 
             $settings_link = '<a href="'.esc_url( admin_url( "admin.php?page=prwc-quick-start-menu" ) ).'">'.esc_html__('Quick Start', 'page_restrict_domain').'</a>';
