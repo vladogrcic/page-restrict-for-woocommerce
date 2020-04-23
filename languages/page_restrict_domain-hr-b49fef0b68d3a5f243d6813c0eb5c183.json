@@ -1,18 +1,15 @@
 {
-    "translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
-    "generator": "WP-CLI\/2.3.0",
+    "translation-revision-date": "2020-04-21 23:46+0200",
+    "generator": "WP-CLI\/2.4.0",
     "source": "admin\/assets\/js\/block-section-restrict.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
             "": {
                 "domain": "messages",
-                "lang": "en",
+                "lang": "hr",
                 "plural-forms": "nplurals=2; plural=(n != 1);"
             },
-            "Restricts access to pages using WooCommerce products.": [
-                ""
-            ],
             "Products": [
                 ""
             ],
@@ -38,6 +35,9 @@
                 ""
             ],
             "Restrict Section for WooCommerce": [
+                ""
+            ],
+            "Restricts access to sections of pages using WooCommerce products.": [
                 ""
             ],
             "Show restricted content": [
