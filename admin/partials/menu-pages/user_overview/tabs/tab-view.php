@@ -45,6 +45,9 @@
   <hr style="margin-bottom: 25px; border: 2px solid grey;">
   <div class="users-inline pages-list">
     <?php
+    if (empty($page_users_paginated_view)){
+      echo '<b>'.esc_html__( "There aren't any users that bought any products needed to access restricted pages.", 'page_restrict_domain' ).'</b>';
+    }
     foreach ($page_users_paginated_view as $page_num => $user_data):
       if ($page_num === 0) {
         $page_display_style = 'display: block;';
