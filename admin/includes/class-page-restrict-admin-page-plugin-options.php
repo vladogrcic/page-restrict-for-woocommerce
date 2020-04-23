@@ -63,6 +63,10 @@ class Page_Restrict_Wc_Page_Plugin_Options {
             'prwc_general_redirect_not_bought'        => 'bool',
             'prwc_general_redirect_login'             => 'bool',
             'prwc_delete_plugin_data_on_uninstall'    => 'number',
+            'prwc_my_account_rp_page_disable_endpoint'      => 'number',
+            'prwc_my_account_rp_page_hide_time_table'       => 'number',
+            'prwc_my_account_rp_page_hide_view_table'       => 'number',
+            'prwc_my_account_rp_page_disable_plugin_designed_table'    => 'number',
         ];
     }
     /**
@@ -164,7 +168,7 @@ class Page_Restrict_Wc_Page_Plugin_Options {
      * @param      string         $type             Type of key to sanitize.
      * @return     string         $meta             Metabox value.
      */
-    public static function sanitize_page_options($page_option, $page_value, $type=false){
+    public function sanitize_page_options($page_option, $page_value, $type=false){
         $sanitized_value = '';
         if($type){
             $sanitized_value = self::sanitize_value_by_type_for_pages($type, $page_value);

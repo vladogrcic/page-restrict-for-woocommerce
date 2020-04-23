@@ -137,7 +137,7 @@ class Page_Restrict_Wc_Public {
 			'views' => 1,
 			'viewed' => 0
 		];
-		if($check_views['view']){
+		if($check_views['view'] && count($purchased_products)){
 			if($check_views['view_count'] !== ''){
 				if($check_views['view_count'] == $check_views['views_to_compare']){
 					$meta_value['views'] = (int)$check_views['view_count'];

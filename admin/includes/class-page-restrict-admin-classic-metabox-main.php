@@ -83,7 +83,7 @@ class Page_Restrict_Wc_Classic_Metabox_Main {
 			if(is_array($page_value)){
 				$page_value = implode(',', $page_value);
 			}
-			$pages_lock_data[$post_id][$page_option] = $page_options_class::sanitize_page_options($page_option, $page_value, $type);
+			$pages_lock_data[$post_id][$page_option] = $page_options_class->sanitize_page_options($page_option, $page_value, $type);
 		}
 		$page_options_class::process_page_options($pages_lock_data);
 	}

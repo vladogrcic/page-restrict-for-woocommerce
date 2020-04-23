@@ -16,11 +16,13 @@ if(count($trans_text) === count($trans_img)):
             </p>
             <?php
         endif;
+        if($trans_img[$i]):
         ?>
         <span style="display: inline-block; position: relative;">
             <img src="<?php echo $trans_img[$i] == $img[$i] ? $image_location.$trans_img[$i] : $trans_img[$i]; ?>">
         </span><br>
         <?php
+        endif;
     endfor;
 endif;
 ?> 
