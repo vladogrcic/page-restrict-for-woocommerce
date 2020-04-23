@@ -34,6 +34,7 @@ Page Restrict for WooCommerce is a plugin that sells access to pages, posts and 
 ## Blocks
 __page-restrict-wc/restrict-section__
 Section Restrict for WooCommerce - Restricts a section on the page using this grouping element.
+
 __page-restrict-wc/restricted-pages-list__
 Restricted Pages List - Shows a table of restricted pages for the current user which have had bought products for.
 
