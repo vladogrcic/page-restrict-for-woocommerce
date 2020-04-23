@@ -18,7 +18,7 @@
  * This file creates cards for specific pages that need this plugins restrict options.
  *
  * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 
@@ -38,12 +38,19 @@
             </span>
         </div>
         <div class="page-subtitle">
-        <h3 for=""><?php esc_html_e('Post Slug', 'page_restrict_domain'); ?></h3>
+            <h3 for=""><?php esc_html_e('Post Slug', 'page_restrict_domain'); ?></h3>
+            
             <span class="subtitle">
                 <?php 
                 echo $value->post_name;
                 ?>
             </span>
+            <h4 for=""><?php esc_html_e('Post ID', 'page_restrict_domain'); echo '&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;'.$value->ID;?></h4>
+            <!-- <span class="">
+                <?php 
+                echo $value->ID;
+                ?>
+            </span> -->
         </div>
         <?php if($value->post_status === 'publish' || $value->post_status === 'future'): ?>
         <div class="page-status">

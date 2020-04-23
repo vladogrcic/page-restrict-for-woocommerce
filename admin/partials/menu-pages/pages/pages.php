@@ -18,7 +18,7 @@
  * This file provides the loop for pages that need to be restricted with wrapper HTML elements.
  *
  * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 ?>
@@ -71,7 +71,6 @@
                             }
                             $pages_paginated[] = array_slice( $pages, $offsetGroup, $limit );
                         }
-                        $page_display_style = 'display: none;';
                         for ($s=0; $s < count($pages_paginated); $s++) { 
                             if($s === 0){
                                 $page_display_style = 'display: block;';

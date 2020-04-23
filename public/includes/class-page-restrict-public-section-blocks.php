@@ -6,45 +6,37 @@
  * @since      1.0.0
  *
  * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
- */
+ * @subpackage Page_Restrict_Wc/public/includes
+*/
 
 /**
  * Processing content for entire entire pages or section in order to restrict access according to views, time or any other way.
  *
  * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @subpackage Page_Restrict_Wc/public/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 class Page_Restrict_Wc_Section_Blocks
 {
     /**
-     * Page_Restrict_Wc_Products_Bought class instance.
-     *
      * @since    1.0.0
      * @access   protected
      * @var      class    $products_bought    The current version of the plugin.
      */
     protected $products_bought;
     /**
-     * Page_Restrict_Wc_Restrict_Types class instance.
-     *
      * @since    1.0.0
      * @access   protected
      * @var      class      $restrict    The current version of the plugin.
      */
     protected $restrict;
     /**
-     * User ID.
-     *
      * @since    1.0.0
      * @access   public
      * @var      int      $user_id    User ID.
      */
     public $user_id;
     /**
-     * Post ID.
-     *
      * @since    1.0.0
      * @access   public
      * @var      int      $post_id    Post ID.
@@ -87,17 +79,17 @@ class Page_Restrict_Wc_Section_Blocks
      *
      * @since    1.0.0
      * @access   public
-     * @var      int      $not_bought    ID of the page used to show if product wasn't bought or was bought but it expired.
+     * @var      int      $not_bought_page    ID of the page used to show if product wasn't bought or was bought but it expired.
      */
-    public $not_bought;
+    public $not_bought_page;
     /**
      * ID of the page used to show if product wasn't bought or was bought but it expired.
      *
      * @since    1.0.0
      * @access   public
-     * @var      int      $not_logged_in    ID of the page used to show if product wasn't bought or was bought but it expired.
+     * @var      int      $not_logged_in_page    ID of the page used to show if product wasn't bought or was bought but it expired.
      */
-    public $not_logged_in;
+    public $not_logged_in_page;
     /**
      * General option if one isn't set per page used to choose whether to redirect or show the page into the content of the chosen page ID before if the user didn't buy the product or it expired.
      *
@@ -175,9 +167,9 @@ class Page_Restrict_Wc_Section_Blocks
         $this->seconds      =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_seconds');
         $this->views        =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_views');
 
-        $this->not_bought               = $this->page_options->get_page_options($this->post_id, 'prwc_not_bought_page');
+        $this->not_bought_page               = $this->page_options->get_page_options($this->post_id, 'prwc_not_bought_page');
         $this->redirect_not_bought      = $this->page_options->get_page_options($this->post_id, 'prwc_redirect_not_bought');
-        $this->not_logged_in            = $this->page_options->get_page_options($this->post_id, 'prwc_not_logged_in_page');
+        $this->not_logged_in_page            = $this->page_options->get_page_options($this->post_id, 'prwc_not_logged_in_page');
         $this->redirect_not_logged_in   = $this->page_options->get_page_options($this->post_id, 'prwc_redirect_not_logged_in');
 
         $this->general_not_bought_page          = $this->page_options->get_general_options('prwc_general_not_bought_page');
@@ -323,8 +315,8 @@ class Page_Restrict_Wc_Section_Blocks
 
         $general_not_bought_page     = $this->general_not_bought_page;
         $general_login_page          = $this->general_login_page;
-        $not_bought                  = $this->not_bought;
-        $not_logged_in               = $this->not_logged_in;
+        $not_bought_page                  = $this->not_bought_page;
+        $not_logged_in_page               = $this->not_logged_in_page;
 
         $products   = $this->products;
         $days       = $this->days;
@@ -333,8 +325,8 @@ class Page_Restrict_Wc_Section_Blocks
         $seconds    = $this->seconds;
         $views      = $this->views;
         if(
-            $post_id === $not_bought ||
-            $post_id === $not_logged_in ||
+            $post_id === $not_bought_page ||
+            $post_id === $not_logged_in_page ||
             $post_id === $general_not_bought_page ||
             $post_id === $general_login_page
         ){
@@ -361,15 +353,15 @@ class Page_Restrict_Wc_Section_Blocks
                 $post_id,
                 $purchased_products,
                 $products_arr,
+                $timeout_sec,
                 $views,
-                $timeout_sec
             );
             if($check_final){
                 return do_shortcode($content);
             }
             else{
-                if($not_bought){
-                    return do_shortcode(get_post_field('post_content', $not_bought));
+                if($not_bought_page){
+                    return do_shortcode(get_post_field('post_content', $not_bought_page));
                 }else{
                     // * If there is no bought page on the page being restricted.
                     if($general_not_bought_page){
@@ -394,8 +386,8 @@ class Page_Restrict_Wc_Section_Blocks
                 }
             }
         } else {
-            if($not_logged_in){
-                return do_shortcode(get_post_field('post_content', $not_logged_in));
+            if($not_logged_in_page){
+                return do_shortcode(get_post_field('post_content', $not_logged_in_page));
             }
             else{
                 if($general_login_page){
@@ -428,8 +420,8 @@ class Page_Restrict_Wc_Section_Blocks
         $redirect_general_not_bought     = $this->redirect_general_not_bought;
         $redirect_general_login 	     = $this->redirect_general_login;
         
-        $not_bought                  = $this->not_bought;
-        $not_logged_in               = $this->not_logged_in;
+        $not_bought_page                  = $this->not_bought_page;
+        $not_logged_in_page               = $this->not_logged_in_page;
 		$redirect_not_bought 		 = $this->redirect_not_bought;
 		$redirect_not_logged_in 	 = $this->redirect_not_logged_in;
 
@@ -441,8 +433,8 @@ class Page_Restrict_Wc_Section_Blocks
         $views      = $this->views;
 
         if(
-            $post_id === $not_bought ||
-            $post_id === $not_logged_in ||
+            $post_id === $not_bought_page ||
+            $post_id === $not_logged_in_page ||
             $post_id === $general_not_bought_page ||
             $post_id === $general_login_page
         ){
@@ -470,15 +462,15 @@ class Page_Restrict_Wc_Section_Blocks
                 $post_id,
                 $purchased_products,
                 $products_arr,
+                $timeout_sec,
                 $views,
-                $timeout_sec
             );
             if($check_final){
                 return;
             }
-			if($not_bought){
+			if($not_bought_page){
 				if($redirect_not_bought){
-					wp_redirect(get_permalink($not_bought));
+					wp_redirect(get_permalink($not_bought_page));
 				}
 			}else{
 				// * If there is no bought page on the page being restricted.
@@ -493,9 +485,9 @@ class Page_Restrict_Wc_Section_Blocks
 			}
 		}
 		else{
-			if($not_logged_in){
+			if($not_logged_in_page){
 				if($redirect_not_logged_in && $products){ 
-					wp_redirect(  get_permalink($not_logged_in) );
+					wp_redirect(  get_permalink($not_logged_in_page) );
 				}
 			}
 			else{

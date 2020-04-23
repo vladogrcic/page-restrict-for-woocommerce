@@ -18,7 +18,7 @@
  * This file provides general plugin settings.
  *
  * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/settings/tabs
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 ?>

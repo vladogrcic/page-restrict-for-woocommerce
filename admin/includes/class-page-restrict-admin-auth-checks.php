@@ -55,7 +55,7 @@ class Page_Restrict_Wc_Authorization_Checks {
 				$nonce = sanitize_key( $_POST[$nonce_name] );
 			}
 		}
-		// Verify the nonce. If insn't there, stop the script.
+		// Verify the nonce. If isn't there, stop the script.
 		if ( isset( $nonce ) ){
 			if ( wp_verify_nonce( $nonce, $nonce_name ) ) {
 				return true;
@@ -78,19 +78,4 @@ class Page_Restrict_Wc_Authorization_Checks {
 			return false;
 		}
     }
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
