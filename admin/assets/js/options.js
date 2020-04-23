@@ -24,13 +24,13 @@ window.sendDataAjax = function($this, data){
 function save_main_options_ajax() {
     jQuery('.filter-by-post-types').on('change', function () {
         var post_type = jQuery(".filter-by-post-types").val();
-        jQuery(".pages-list").find('.page-type').hide();
-        jQuery(".pages-list").find('.page-type[data-page-type="'+post_type+'"]').show();
+        jQuery(".pages-list").find('.page-type').slideUp("slow");
+        jQuery(".pages-list").find('.page-type[data-page-type="'+post_type+'"]').slideDown("slow");
         /**
          * Reset everything.
          */
-        jQuery(".pages-list").find('.page-pagination').hide();
-        jQuery(".pages-list").find('.page-pagination:first-child').show();
+        jQuery(".pages-list").find('.page-pagination').slideUp();
+        jQuery(".pages-list").find('.page-pagination:first-child').slideDown();
         jQuery(".pages-list").find('.pagination li').removeClass('active');
         jQuery(".pages-list").find('.pagination li:first-child').addClass('active');
         /**
@@ -39,10 +39,33 @@ function save_main_options_ajax() {
     });
     jQuery('.pagination li').on('click', function () {
         var page = jQuery(this).data('pagination-page');
-        jQuery(".pages-list").find('.page-pagination').hide();
-        jQuery(".pages-list").find('.pagination li').removeClass('active');
+        if(jQuery('.tab').length){
+            var main_el = jQuery('.tab .pages-list');
+        }
+        else{
+            var main_el = jQuery('.pages-list');
+        }
+        main_el.find('.page-pagination').slideUp("slow");
+        main_el.find('.pagination li').removeClass('active');
         jQuery(this).toggleClass('active');
-        jQuery(".pages-list").find('.page-pagination[data-pagination-page="'+page+'"]').show();
+        main_el.find('.page-pagination[data-pagination-page="'+page+'"]').slideDown("slow");
+    });
+    jQuery('.tab-menu li').on('click', function () {
+        var el_tab = jQuery('#prwc-plugin-main-wrapper .tab');
+        for (var i = 0; i < el_tab.length; i++) {
+            jQuery(el_tab[i]).find(".pages-list").find('.pagination li').removeClass('active');
+            jQuery(el_tab[i]).find(".pages-list").find('.pagination li:first-child').addClass('active');
+            /**
+             * Reset everything.
+             */
+            jQuery(el_tab[i]).find(".pages-list").find('.page-pagination').slideUp();
+            jQuery(el_tab[i]).find(".pages-list").find('.page-pagination:first-child').slideDown();
+            jQuery(el_tab[i]).find(".pages-list").find('.pagination li').removeClass('active');
+            jQuery(el_tab[i]).find(".pages-list").find('.pagination li:first-child').addClass('active');
+            /**
+             * -----
+             */
+        }
     });
     /**
      * This is to send plugin or page options data to the database.
