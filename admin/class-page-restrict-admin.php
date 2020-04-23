@@ -164,8 +164,8 @@ class Page_Restrict_Wc_Admin
             true
         );
         wp_localize_script('general-block-var', 'page_restrict_wc', [
-            "block_name"            => $plugin_name.'/restrict-section',
-            "block_name_restricted_pages_list"            => $plugin_name.'/restricted-pages-list',
+            // "block_name"            => $plugin_name.'/restrict-section',
+            // "block_name_restricted_pages_list"            => $plugin_name.'/restricted-pages-list',
             'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
             "plugin_title"          => esc_html__($plugin_title, 'page_restrict_domain'),
             "products_available"    => $products_out,

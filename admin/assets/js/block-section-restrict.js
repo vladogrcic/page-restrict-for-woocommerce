@@ -24,7 +24,7 @@
 	var SelectControl 		= wp.components.SelectControl;
 	var ToggleControl 		= wp.components.ToggleControl;
 
-	registerBlockType(prwc_blockName, {
+	registerBlockType('page-restrict-wc/restrict-section', {
 		title: 		 __('Restrict Section for WooCommerce', 'page_restrict_domain'),
 		description: __('Restricts access to sections of pages using WooCommerce products.', 'page_restrict_domain'),
 		icon: 		 icon,

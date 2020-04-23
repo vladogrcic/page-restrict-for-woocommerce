@@ -1,6 +1,6 @@
 var __ = wp.i18n.__; //translation functions
-var prwc_blockName 		= page_restrict_wc.block_name;
-var prwc_blockName_restricted_pages_list 		= page_restrict_wc.block_name_restricted_pages_list;
+// var prwc_blockName 		= page_restrict_wc.block_name;
+// var prwc_blockName_restricted_pages_list 		= page_restrict_wc.block_name_restricted_pages_list;
 var prwc_termNames 		= page_restrict_wc.products_available;
 var prwc_plugin_title 	= page_restrict_wc.plugin_title;
 /**
