@@ -1,0 +1,22 @@
+{
+  "name": "page-restrict-for-woocommerce",
+  "version": "1.1.0",
+  "description": "",
+  "scripts": {
+    "build-scss": "node-sass --output-style expanded --indent-type tab --indent-width 1 --include-path scss admin/assets/scss/page-restrict-admin.scss admin/assets/css/page-restrict-admin.css; postcss admin/assets/css/page-restrict-admin.css --no-map --use autoprefixer --replace;",
+    "watch": "nodemon -e scss -x \"npm run build-scss\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vladogrcic/page-restrict-for-woocommerce.git"
+  },
+  "author": "Vlado Grcic",
+  "homepage": "https://wordpress.org/plugins/page-restrict-for-woocommerce",
+  "devDependencies": {
+    "autoprefixer": "9.*",
+    "node-sass": "^4.*",
+    "nodemon": "^1.*",
+    "postcss-cli": "7.*"
+  },
+  "dependencies": {}
+}

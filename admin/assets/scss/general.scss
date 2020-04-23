@@ -1,0 +1,129 @@
+#{$main_wrapper} * {
+    font-family: fantasy;
+    font-family: 'Oxanium', cursive;
+}
+
+select.slimselect, .slimselect input, .pages-list input, .slimselect label, .pages-list label, .slimselect span, .pages-list span, .slimselect div .pages-list div {
+    font-size: initial;
+}
+
+@media (min-width: 600px) {
+    .edit-post-sidebar>.components-panel {
+        overflow: auto;
+    }
+}
+#{$main_header_wrapper} {
+    height: 185px;
+    padding: 35px 55px;
+    background-color: white;
+    border: 1px solid #c5c5c5;
+    margin-top: 40px;
+    margin-right: 25px;
+    background-color: #77b4ff;
+    background-image: url(../img/banner-no-back.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    @media (max-width: 1455px) {
+        &{
+            background-position: 80%;
+            background-size: 70%;
+        }
+    }
+    @media (max-width: 1300px) {
+        &{
+            background-position: 90%;
+            background-size: 65%;
+        }
+    }
+    >* {
+        float: left;
+    }
+    >h1 {
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 25px;
+    }
+    >img {
+        border: 25px solid #fff;
+    }
+}
+#{$main_wrapper} {
+    background-color: transparent;
+    border: none;
+    margin-right: 25px;
+    .pagination{
+        width: 100%;
+        min-height: 50px;
+    }
+    .submit-row {
+        background-color: rgb(252, 252, 252);
+        border: solid 1px rgb(160, 160, 160);
+        padding: 25px;
+        >input.button-submit {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 35px;
+            width: 95px;
+            background-color: rgb(85, 148, 243);
+            background-repeat: no-repeat;
+            background-position: center;
+            border: rgb(25, 90, 187);
+            box-shadow: 0 1px 0 rgb(3, 100, 190);
+            border-radius: 7px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgb(55, 142, 255);
+            user-select: none;
+            transition: background-color 0.4s;
+            &:hover {
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: rgb(30, 128, 255);
+            }
+            &.loading {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100px;
+                height: 35px;
+                background-color: rgb(174, 219, 255);
+                background-repeat: no-repeat;
+                background-position: center;
+                border: rgb(51, 163, 255);
+                box-shadow: 0 1px 0 rgb(23, 151, 255);
+                text-align: center;
+                cursor: pointer;
+                color: transparent;
+                text-shadow: none;
+                font-size: 0;
+            }
+            &::selection {
+                background: transparent;
+            }
+            &:focus {
+                outline: none;
+                color: transparent;
+                text-shadow: 0px 0px 0px rgb(255, 255, 255);
+            }
+        }
+        >div.button-primary img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+.block-editor .components-panel .custom-panel>div {
+    margin-bottom: 15px;
+}
+.ss-content.ss-open {
+    box-shadow: 0px 11px 12px 0px rgba(150, 150, 150, 1);
+}
+.ss-main .ss-single-selected {
+    height: 40px;
+}
