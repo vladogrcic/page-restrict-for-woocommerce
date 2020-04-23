@@ -262,8 +262,8 @@ class Page_Restrict_Wc_Section_Blocks
                 $post_id,
                 $purchased_products,
                 $products_arr,
-                $views,
-                $timeout_sec
+                $timeout_sec,
+                $views
             );
             if ($inverse) {
                 $check_final = !$check_final;

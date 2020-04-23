@@ -67,7 +67,8 @@
             <li role="tab" tabindex="0" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#tabs-1" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-1"><?php esc_html_e('Add Section Restrict', 'page_restrict_domain'); ?></a></li>
             <li role="tab" tabindex="-1" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false"><a href="#tabs-2" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-2"><?php esc_html_e('Add Page Restrict', 'page_restrict_domain'); ?></a></li>
             <li role="tab" tabindex="-2" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#tabs-3" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-3"><?php esc_html_e('Add Page Restrict - Classic Editor', 'page_restrict_domain'); ?></a></li>
-            <li role="tab" tabindex="-3" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-4" aria-labelledby="ui-id-4" aria-selected="false" aria-expanded="false"><a href="#tabs-4" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-4"><?php esc_html_e('General', 'page_restrict_domain'); ?></a></li>
+            <li role="tab" tabindex="-3" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-4" aria-labelledby="ui-id-4" aria-selected="false" aria-expanded="false"><a href="#tabs-4" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-4"><?php esc_html_e('General Overview', 'page_restrict_domain'); ?></a></li>
+            <li role="tab" tabindex="-4" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab" aria-controls="tabs-5" aria-labelledby="ui-id-5" aria-selected="false" aria-expanded="false"><a href="#tabs-5" role="presentation" tabindex="-1" class="ui-tabs-anchor" id="ui-id-5"><?php esc_html_e('Frontend', 'page_restrict_domain'); ?></a></li>
         </ul>
         <div id="tabs-1" aria-labelledby="ui-id-1" role="tabpanel" class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false" style="display: block;">
             <div class="pages-options">
@@ -93,7 +94,14 @@
         <div id="tabs-4" aria-labelledby="ui-id-4" role="tabpanel" class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false" style="display: none;">
             <div class="pages-options">
                 <?php
-                    include(plugin_dir_path( __FILE__ )."menu-pages/quick_start/tabs/tab-add-restrict-general.php");
+                    include(plugin_dir_path( __FILE__ )."menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php");
+                ?>
+            </div>
+        </div>
+        <div id="tabs-5" aria-labelledby="ui-id-5" role="tabpanel" class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false" style="display: none;">
+            <div class="pages-options">
+                <?php
+                    include(plugin_dir_path( __FILE__ )."menu-pages/quick_start/tabs/tab-add-restrict-frontend.php");
                 ?>
             </div>
         </div>

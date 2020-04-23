@@ -152,6 +152,12 @@ class Page_Restrict_Wc_Admin
             true
         );
         wp_enqueue_script(
+            'block-restricted-pages-list',
+            plugin_dir_url(__FILE__) . 'assets/js/block-restricted-pages-list.js',
+            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
+            true
+        );
+        wp_enqueue_script(
             'metas',
             plugin_dir_url(__FILE__) .'assets/js/metas.js',
             array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
@@ -159,6 +165,7 @@ class Page_Restrict_Wc_Admin
         );
         wp_localize_script('general-block-var', 'page_restrict_wc', [
             "block_name"            => $plugin_name.'/restrict-section',
+            "block_name_restricted_pages_list"            => $plugin_name.'/restricted-pages-list',
             'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
             "plugin_title"          => esc_html__($plugin_title, 'page_restrict_domain'),
             "products_available"    => $products_out,
@@ -190,6 +197,7 @@ class Page_Restrict_Wc_Admin
     public function register_shortcodes()
     {
         add_shortcode('prwc_is_purchased', array( $this->shortcodes, 'is_purchased'));
+        add_shortcode('prwc_restricted_pages_list', array( $this->shortcodes, 'restricted_pages_list'));
     }
     /**
      * Register gutenberg blocks for page editing.
@@ -293,6 +301,32 @@ class Page_Restrict_Wc_Admin
             $prwc_block_options['render_callback'] = [$this->blocks, 'process_section'];
         }
         register_block_type( $plugin_name.'/restrict-section', $prwc_block_options );
+
+        $this->blocks_restricted_pages_list           = new Page_Restrict_Wc_Restricted_Pages_List_Blocks();
+        $prwc_block_options_restricted_pages_list = [
+            'editor_script' => $plugin_name,
+            'attributes' => [
+                'time' => [
+                    'default' => true,
+                    'type'    => 'boolean'
+                    
+                ],
+                'view' => [
+                    'default' => false,
+                    'type'    => 'boolean'
+                    
+                ],
+                'disable_table_class' => [
+                    'default' => false,
+                    'type'    => 'boolean'
+                    
+                ],
+            ]
+        ];
+        if (!is_admin()) {
+            $prwc_block_options_restricted_pages_list['render_callback'] = [$this->blocks_restricted_pages_list, 'process_restricted_pages_list'];
+        }
+        register_block_type( $plugin_name.'/restricted-pages-list', $prwc_block_options_restricted_pages_list );
     }
     /**
      * Register meta boxes for page editing.
@@ -418,14 +452,18 @@ class Page_Restrict_Wc_Admin
      */
     public function register_admin_menu()
     {
-        $menus = new Page_Restrict_Wc_Menus();
-        add_menu_page(esc_html__('Page Restrict', 'page_restrict_domain'), esc_html__('Page Restrict', 'page_restrict_domain'), 'manage_options', 'prwc-pages-menu', array( $menus, 'prwc_menu_pages' ), plugins_url('/assets/img/logo-no-back-menu.svg', __FILE__));
-        add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Pages', 'page_restrict_domain'), esc_html__('Pages', 'page_restrict_domain'),
-            'manage_options', 'prwc-pages-menu');
-        add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Settings', 'page_restrict_domain'), esc_html__('Settings', 'page_restrict_domain'),
-            'manage_options', 'prwc-settings-menu', array( $menus, 'prwc_menu_settings'));
-        add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Quick Start', 'page_restrict_domain'), esc_html__('Quick Start', 'page_restrict_domain'),
-            'manage_options', 'prwc-quick-start-menu', array( $menus, 'prwc_menu_quick_start'));
+        if( is_plugin_active( 'woocommerce/woocommerce.php') ){
+            $menus = new Page_Restrict_Wc_Menus();
+            add_menu_page(esc_html__('Page Restrict', 'page_restrict_domain'), esc_html__('Page Restrict', 'page_restrict_domain'), 'manage_options', 'prwc-pages-menu', array( $menus, 'prwc_menu_pages' ), plugins_url('/assets/img/logo-no-back-menu.svg', __FILE__));
+            add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Pages', 'page_restrict_domain'), esc_html__('Pages', 'page_restrict_domain'),
+                'manage_options', 'prwc-pages-menu');
+            add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict User Overview', 'page_restrict_domain'), esc_html__('User Overview', 'page_restrict_domain'),
+                'manage_options', 'prwc-user-overview-menu', array( $menus, 'prwc_menu_user_overview'));
+            add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Settings', 'page_restrict_domain'), esc_html__('Settings', 'page_restrict_domain'),
+                'manage_options', 'prwc-settings-menu', array( $menus, 'prwc_menu_settings'));
+            add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Quick Start', 'page_restrict_domain'), esc_html__('Quick Start', 'page_restrict_domain'),
+                'manage_options', 'prwc-quick-start-menu', array( $menus, 'prwc_menu_quick_start'));
+        }
     }
     /**
      * Register ajax calls.
@@ -458,28 +496,29 @@ class Page_Restrict_Wc_Admin
                 unset( $_GET['activate'] );
             }
 			add_action('admin_notices', function () use ($plugin_title) {
+                $action = 'install-plugin';
+                $slug = 'woocommerce';
+                $wc_install_link = wp_nonce_url(
+                    add_query_arg(
+                        array(
+                            'action' => $action,
+                            'plugin' => $slug
+                        ),
+                        admin_url( 'update.php' )
+                    ),
+                    $action.'_'.$slug
+                );
+                $wc_path_init = plugins_url( 'woocommerce/woocommerce.php' );
                 ?>
                 <div class="error notice">
                     <p><?php esc_html_e( $plugin_title.' requires WooCommerce in order to function. Please install and activate it in order to use this plugin.', 'page_restrict_domain' ); ?></p>
+                    <?php if(!file_exists($wc_path_init)): ?>
+                        <a href="<?php echo $wc_install_link; ?>"><?php esc_html_e( 'Click here to install WooCommerce (direct installation link).', 'page_restrict_domain' ); ?></a>
+                    <?php endif; ?>
                 </div>
                 <?php
             });
 		}
-		if(version_compare(PHP_VERSION, '7.0', '<')) {
-            $plugin = basename(PAGE_RESTRICT_WC_LOCATION_URL).'/'.$plugin_name.'.php';
-            // Plugin was not-active, uh oh, do not allow this plugin to activate
-            deactivate_plugins( $plugin );
-            if(isset($_GET['activate'])){
-                unset( $_GET['activate'] );
-            }
-			add_action('admin_notices', function () use ($plugin_title) {
-                ?>
-                <div class="error notice">
-                    <p><?php esc_html_e( $plugin_title.' requires PHP version to be at least 7.0.25.', 'page_restrict_domain' ); ?></p>
-                </div>
-                <?php
-            });
-        }
         if(is_plugin_active( 'woocommerce/woocommerce.php')) {
             if(get_option('woocommerce_enable_guest_checkout')){
                 if(get_option('woocommerce_enable_guest_checkout') === 'yes'){
@@ -546,7 +585,7 @@ class Page_Restrict_Wc_Admin
      */
     public function plugin_action_links( $links, $plugin_name_plug_page ) {
         $plugin_name = $this->plugin_name;
-        if($plugin_name_plug_page === basename(PAGE_RESTRICT_WC_LOCATION_URL).'/'.$plugin_name.'.php'){
+        if($plugin_name_plug_page === basename(PAGE_RESTRICT_WC_LOCATION_URL).'/'.$plugin_name.'.php' && is_plugin_active( 'woocommerce/woocommerce.php')){
             $settings_link = '<a href="'.esc_url( admin_url( "admin.php?page=prwc-settings-menu" ) ).'">'.esc_html__('Settings', 'page_restrict_domain').'</a>';
             array_unshift( $links, $settings_link ); 
             $settings_link = '<a href="'.esc_url( admin_url( "admin.php?page=prwc-quick-start-menu" ) ).'">'.esc_html__('Quick Start', 'page_restrict_domain').'</a>';
@@ -555,3 +594,6 @@ class Page_Restrict_Wc_Admin
         return $links; 
     }
 }
+
+
+
