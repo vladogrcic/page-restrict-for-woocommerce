@@ -29,7 +29,8 @@ class Page_Restrict_Wc_Helpers {
      * Converts seconds to this format: 2 days, 23 hours, 29 minutes and 59 seconds
      *
      * @since    1.1.0
-     * @param    int    $seconds       Seconds.
+     * @param    int    	$seconds       		Seconds.
+     * @param    string     $custom_format      Date and time format to print it.
 	 * @return	 string
      */
 	public function seconds_to_dhms($seconds, $custom_format='%a days, %h hours, %i minutes and %s seconds'){
@@ -95,6 +96,7 @@ class Page_Restrict_Wc_Helpers {
      * Gets inputted data paginated.
      *
      * @since    1.1.0
+	 * @param    bool    $single_user          Choose whether to get data just for a single user.
 	 * @return	 array
      */
 	public function user_restrict_data($single_user=false){
