@@ -26,7 +26,8 @@
     <div class="plugin-options-wrapper">
         <ul>
             <li><a href="#tabs-1"><?php esc_html_e('General', 'page_restrict_domain'); ?></a></li>
-            <li><a href="#tabs-2"><?php esc_html_e('Plugin', 'page_restrict_domain'); ?></a></li>
+            <li><a href="#tabs-2"><?php esc_html_e('Frontend', 'page_restrict_domain'); ?></a></li>
+            <li><a href="#tabs-3"><?php esc_html_e('Plugin', 'page_restrict_domain'); ?></a></li>
         </ul>
         <div id="tabs-1" style="display: block;">
             <div class="pages-options">
@@ -36,6 +37,13 @@
             </div>
         </div>
         <div id="tabs-2" style="display: none;">
+            <div class="pages-options">
+                <?php
+                    include_once(plugin_dir_path( __FILE__ )."menu-pages/settings/tabs/tab-frontend.php");
+                ?>
+            </div>
+        </div>
+        <div id="tabs-3" style="display: none;">
             <div class="pages-options">
                 <?php
                     include_once(plugin_dir_path( __FILE__ )."menu-pages/settings/tabs/tab-plugin.php");

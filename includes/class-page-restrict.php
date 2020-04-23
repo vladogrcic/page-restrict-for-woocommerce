@@ -117,6 +117,10 @@ class Page_Restrict_Wc {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-page-restrict-i18n.php';
 		/**
+		 * The class responsible for defining helper methods.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-page-restrict-helpers.php';
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-page-restrict-admin.php';
@@ -164,6 +168,14 @@ class Page_Restrict_Wc {
 		 * The class responsible for defining all front facing processing for shortcodes, blocks and entire pages.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/includes/class-page-restrict-public-section-blocks.php';
+		/**
+		 * The class responsible for defining all front facing processing for listing pages that the current user purchased products for in order to access them.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/includes/class-page-restrict-public-restricted-pages-list-blocks.php';
+		/**
+		 * The class responsible for defining all front facing processing for the WooCommerce My Account shortcode.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/includes/class-page-restrict-public-wc-my-account.php';
 
 		$this->loader = new Page_Restrict_Wc_Loader();
 	}
@@ -223,6 +235,7 @@ class Page_Restrict_Wc {
 		$this->loader->add_filter( 'the_content', $plugin_public, 'initiate_process_page');
 		$this->loader->add_filter( 'template_redirect', $plugin_public, 'initiate_process_page_redirect');
 		$this->loader->add_action( 'wp', $plugin_public, 'update_user_view_count');
+		$this->loader->add_action( 'init', $plugin_public, 'wc_my_account_page');
 	}
 
 	/**

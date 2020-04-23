@@ -60,6 +60,10 @@ function save_main_options_ajax() {
 
             var post_types_general              = [];
             var delete_plugin_data_on_uninstall = +(jQuery( "input[name='prwc_delete_plugin_data_on_uninstall']" ).is(":checked"));
+            var prwc_my_account_rp_page_disable_endpoint = +(jQuery( "input[name='prwc_my_account_rp_page_disable_endpoint']" ).is(":checked"));
+            var prwc_my_account_rp_page_hide_time_table = +(jQuery( "input[name='prwc_my_account_rp_page_hide_time_table']" ).is(":checked"));
+            var prwc_my_account_rp_page_hide_view_table = +(jQuery( "input[name='prwc_my_account_rp_page_hide_view_table']" ).is(":checked"));
+            var prwc_my_account_rp_page_disable_plugin_designed_table = +(jQuery( "input[name='prwc_my_account_rp_page_disable_plugin_designed_table']" ).is(":checked"));
 
             if(jQuery( "select[name='prwc_general_post_types']" ).length)
                 post_types_general        = jQuery( "select[name='prwc_general_post_types']" ).val()?jQuery( "select[name='prwc_general_post_types']" ).val().join():[];
@@ -78,7 +82,11 @@ function save_main_options_ajax() {
                 prwc_general_not_bought_page: gen_not_bought_page,
                 prwc_general_redirect_not_bought: redirect_gen_not_bought,
 
-                prwc_general_post_types: post_types_general
+                prwc_general_post_types: post_types_general,
+                prwc_my_account_rp_page_disable_endpoint: prwc_my_account_rp_page_disable_endpoint,
+                prwc_my_account_rp_page_hide_time_table: prwc_my_account_rp_page_hide_time_table,
+                prwc_my_account_rp_page_hide_view_table: prwc_my_account_rp_page_hide_view_table,
+                prwc_my_account_rp_page_disable_plugin_designed_table: prwc_my_account_rp_page_disable_plugin_designed_table
             };
             sendDataAjax(this, data);
         }

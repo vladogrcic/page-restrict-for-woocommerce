@@ -151,4 +151,21 @@ class Page_Restrict_Wc_Public {
 			update_user_meta( $user_id, "prwc_view_count_$post_id", $meta_value);
 		}
 	}
+	/**
+	 * Adds a page to the WooCommerce My Account page.
+	 *
+	 * @since    1.1.0
+	 * @return	 void
+	 */
+	public function wc_my_account_page(){
+		$page_options = new Page_Restrict_Wc_Page_Plugin_Options();
+		$prwc_my_account_rp_page_disable_endpoint = $page_options->get_general_options('prwc_my_account_rp_page_disable_endpoint');
+		$wc_my_account = new Page_Restrict_Wc_My_Account(!$prwc_my_account_rp_page_disable_endpoint);
+		add_filter( 'woocommerce_account_menu_items', array( $wc_my_account, 'account_menu_items' ), 10, 1 );
+		add_action( 'woocommerce_account_restrict-pages-overview_endpoint', function() use($page_options, $wc_my_account){
+			$prwc_my_account_rp_page_hide_time_table = $page_options->get_general_options('prwc_my_account_rp_page_hide_time_table');
+			$prwc_my_account_rp_page_hide_view_table = $page_options->get_general_options('prwc_my_account_rp_page_hide_view_table');
+			$wc_my_account->restrict_pages_overview_endpoint_content( $prwc_my_account_rp_page_hide_time_table, $prwc_my_account_rp_page_hide_view_table );
+		});
+	}
 }

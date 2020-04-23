@@ -12,7 +12,7 @@
  * @wordpress-plugin
  * Plugin Name:       Page Restrict for WooCommerce
  * Description:       Restricts access to pages using WooCommerce products.
- * Version:           1.0.0
+ * Version:           1.1.0
  * WC requires at least: 3.0.0
  * WC tested up to: 4.0.1
  * Author:            Vlado Grčić
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PAGE_RESTRICT_WC_VERSION', '1.0.0' );
+define( 'PAGE_RESTRICT_WC_VERSION', '1.1.0' );
 define( 'PAGE_RESTRICT_WC_LOCATION_URL', plugin_dir_url( __FILE__ ) );
 
 /**
@@ -68,9 +68,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict.php';
  * @since    1.0.0
  */
 function run_page_restrict_wc() {
+	if(version_compare(PHP_VERSION, '7.0', '>')) {
 
-	$plugin = new Page_Restrict_Wc();
-	$plugin->run();
+		$plugin = new Page_Restrict_Wc();
+		$plugin->run();
 
+	}
 }
 run_page_restrict_wc();

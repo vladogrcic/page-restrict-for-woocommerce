@@ -26,10 +26,11 @@ class Page_Restrict_Wc_Restrict_Types {
      * @param    int    $user_id               Users ID.
      * @param    int    $post_id               Posts ID.
      * @param    int    $views                 View count.
-     * @param    array     $purchased_products    List of purchased products to compare.
-     * @return   bool
+     * @param    array  $purchased_products    List of purchased products to compare.
+     * @param    bool   $update_usr_meta       Choose to output bool or array.
+     * @return   bool|array
      */
-    public function check_views(int $user_id, int $post_id, int $views, array $purchased_products, $update_usr_meta=false)
+    public function check_views(int $user_id, int $post_id, int $views, array $purchased_products, bool $update_usr_meta=false)
     {
         $view_count = 0;
         $views_to_compare = 0;
@@ -101,11 +102,12 @@ class Page_Restrict_Wc_Restrict_Types {
      * Checks the time since the current user bought the product or products.
      *
      * @since     1.0.0
-     * @param     float    $timeout_sec           The time, in seconds, elapsed since the first product was bought (excluding the time between bought products).
+     * @param     float     $timeout_sec           The time, in seconds, elapsed since the first product was bought (excluding the time between bought products).
      * @param     array     $purchased_products    List of purchased products to compare.
-     * @return    bool
+     * @param     bool      $output_time           Choose to output bool or array.
+     * @return    bool|array
      */
-    public function check_time(float $timeout_sec, array $purchased_products)
+    public function check_time(float $timeout_sec, array $purchased_products, $output_time=false)
     {
         if(!count($purchased_products)){
             return true;
@@ -140,14 +142,23 @@ class Page_Restrict_Wc_Restrict_Types {
         $timeout_compare = $timeout_page_option_sum + $time_between_buy;
         $days_elapsed = $time_elapsed     / 86400;
         $days_compare = $timeout_compare  / 86400;
-        if($time_elapsed < $timeout_compare){
-            // If products are bought and their times are valid.
-            return true;
+        if($output_time){
+            return [
+                'time_elapsed' => $time_elapsed,
+                'time_compare' => $timeout_compare,
+            ];
         }
         else{
-            // If product not bought or expired.
-            return false;
+            if($time_elapsed < $timeout_compare){
+                // If products are bought and their times are valid.
+                return true;
+            }
+            else{
+                // If product not bought or expired.
+                return false;
+            }
         }
+        
     }
     /**
      * Checks both view count and time passed by current user.
@@ -198,11 +209,11 @@ class Page_Restrict_Wc_Restrict_Types {
      * @param    int       $post_id               Posts ID.
      * @param    array     $purchased_products    List of purchased products to compare.
      * @param    array     $products_arr          List of products used to restrict the page.
-     * @param    int       $views                 View count.
      * @param    int       $timeout_sec           The time elapsed since the first product was bought (excluding the time between bought products).
+     * @param    int       $views                 View count.
      * @return   bool
      */
-    public function check_final_all_types( $user_id, $post_id, $purchased_products, $products_arr, $views, $timeout_sec ){
+    public function check_final_all_types( $user_id, $post_id, $purchased_products, $products_arr, $timeout_sec, $views=false ){
         $perm_granted_views         = false;
         $perm_granted_time          = false;
         $perm_granted_views_time    = false;
