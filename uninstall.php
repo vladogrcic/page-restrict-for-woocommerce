@@ -30,55 +30,15 @@ if($prwc_delete_plugin_data_on_uninstall){
 	for ($i=0; $i < count($options); $i++) { 
 		delete_option($options[$i]);
 	}
-	$page_meta_for_user = [];
+	global $wpdb;
 	for ($i=0; $i < count($page_meta); $i++) { 
-		$page_IDs = get_post_id_by_meta_key($page_meta[$i]);
-		if($page_meta[$i] == 'prwc_timeout_views'){
-			$page_meta_for_user = $page_IDs;
-		}
-		if(count($page_IDs))
-			for ($j=0; $j < count($page_IDs); $j++) { 
-				delete_post_meta($page_IDs[$j], sanitize_text_field($page_meta[$i]));
-			}
+		$wpdb->query( 
+				"DELETE FROM $wpdb->postmeta WHERE meta_key='$page_meta[$i]'"
+		);
 	}
+	
 	$meta_key_del = 'prwc_view_count_';
-	for ($i=0; $i < count($page_meta_for_user); $i++) { 
-		$user_IDs = get_user_id_by_meta_key($meta_key_del);
-		if(count($user_IDs))
-			for ($j=0; $j < count($user_IDs); $j++) { 
-				delete_user_meta($user_IDs[$j], $meta_key_del.$page_meta_for_user[$i]);
-			}
-	}
-}
-/**
- * Get post IDs from all meta fields with specified key.
- *
- * @since    1.0.0
- * @param    array    $key        Meta key to search for in postmeta table.
- * @return   array
- */
-function get_post_id_by_meta_key($key) {
-	global $wpdb;
-	$IDs = [];
-	$meta = $wpdb->get_results("SELECT * FROM `".$wpdb->postmeta."` WHERE meta_key='".($key)."'");
-	for ($i=0; $i < count($meta); $i++) { 	
-		$IDs[] = $meta[$i]->post_id;
-	}
-	return $IDs;
-}
-/**
- * Get user IDs from all meta fields with specified key.
- *
- * @since    1.0.0
- * @param    array    $key        Meta key to search for in usermeta table.
- * @return   array
- */
-function get_user_id_by_meta_key($key) {
-	global $wpdb;
-	$IDs = [];
-	$meta = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE '".$key."%'");
-	for ($i=0; $i < count($meta); $i++) { 	
-		$IDs[] = $meta[$i]->user_id;
-	}
-	return $IDs;
+	$wpdb->query( 
+			"DELETE FROM $wpdb->usermeta WHERE meta_key LIKE '".$meta_key_del."%'"
+	);
 }
