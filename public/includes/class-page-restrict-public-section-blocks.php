@@ -354,7 +354,7 @@ class Page_Restrict_Wc_Section_Blocks
                 $purchased_products,
                 $products_arr,
                 $timeout_sec,
-                $views,
+                $views
             );
             if($check_final){
                 return do_shortcode($content);
@@ -463,7 +463,7 @@ class Page_Restrict_Wc_Section_Blocks
                 $purchased_products,
                 $products_arr,
                 $timeout_sec,
-                $views,
+                $views
             );
             if($check_final){
                 return;
