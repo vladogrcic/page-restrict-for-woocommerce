@@ -107,12 +107,18 @@ class Page_Restrict_Wc_Public {
 	 * @return	 void
 	 */
 	public function update_user_view_count(){
-		$section_blocks 	= new Page_Restrict_Wc_Section_Blocks();
-		$restrict_types 	= new Page_Restrict_Wc_Restrict_Types();
-		$products_bought 	= new Page_Restrict_Wc_Products_Bought();
+		$section_blocks 	= new Section_Blocks();
+		$restrict_types 	= new Restrict_Types();
+		$products_bought 	= new Products_Bought();
 
 		$user_id = get_current_user_id();
 		$post_id = get_the_ID();
+
+		$days         =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_days');
+        $hours        =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_hours');
+        $minutes      =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_minutes');
+        $seconds      =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_seconds');
+		$timeout_sec = abs($seconds+($minutes*60)+($hours*3600)+($days*86400));
 
 		$views 		  = $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_views');
 		$products     = $section_blocks->page_options->get_page_options($post_id, 'prwc_products');
@@ -120,7 +126,7 @@ class Page_Restrict_Wc_Public {
 		if(!($views && $products)){
 			return;
 		}
-
+		
 		if (gettype($products) == "string") {
 			$products_arr = array_map(function ($item) {
 				return (int)trim($item);
@@ -133,13 +139,22 @@ class Page_Restrict_Wc_Public {
 			$products_arr
 		);
 		$check_views = $restrict_types->check_views($user_id, $post_id, $views, $purchased_products, true);
+		$check_final = $restrict_types->check_final_all_types(
+			$user_id,
+			$post_id,
+			$purchased_products,
+			$products_arr,
+			$timeout_sec,
+			$views
+		);
+		
 		$meta_value = [
 			'views' => 1,
 			'viewed' => 0
 		];
-		if($check_views['view'] && count($purchased_products)){
+		if($check_views['view'] && $check_final && count($purchased_products)){
 			if($check_views['view_count'] !== ''){
-				if($check_views['view_count'] == $check_views['views_to_compare']){
+				if($check_views['view_count'] >= $check_views['views_to_compare']){
 					$meta_value['views'] = (int)$check_views['view_count'];
 					$meta_value['viewed'] = 1;
 				}
