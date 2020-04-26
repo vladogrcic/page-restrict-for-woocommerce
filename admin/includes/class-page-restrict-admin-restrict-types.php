@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Class with several methods to see whether the current user has authorization to access the pages.
  *
@@ -18,7 +18,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Restrict_Types {
+class Restrict_Types {
     /**
      * Checks if the current users page visits exceeded the view count.
      *

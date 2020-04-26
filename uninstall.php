@@ -15,7 +15,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 require_once(dirname(__FILE__).'/admin/includes/class-page-restrict-admin-page-plugin-options.php');
-$page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+$page_options_class = new Page_Plugin_Options();
 $prwc_delete_plugin_data_on_uninstall        =   $page_options_class->get_general_options('prwc_delete_plugin_data_on_uninstall');
 
 if($prwc_delete_plugin_data_on_uninstall){

@@ -8,7 +8,8 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/public/includes
  */
-
+namespace PageRestrictForWooCommerce\Public_Facing;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
 /**
  * Adding a page to the WooCommerce My Account page.
  *
@@ -16,7 +17,7 @@
  * @subpackage Page_Restrict_Wc/public/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_My_Account
+class My_Account
 {
     /**
      * @since    1.1.0
@@ -73,7 +74,7 @@ class Page_Restrict_Wc_My_Account
      * @return     void
      */
     public function restrict_pages_overview_endpoint_content($hide_time=false, $hide_view=false, $disable_table_class=false) {
-        $Restricted_Pages_List = new Page_Restrict_Wc_Restricted_Pages_List_Blocks();
+        $Restricted_Pages_List = new Restricted_Pages_List_Blocks();
         ?>
         <div class="restrict-pages-overview-wrapper">
             <h3 class="page-title"><?php echo esc_html_e( 'Restricted Pages List', 'page_restrict_domain' ); ?></h3>
@@ -99,6 +100,6 @@ class Page_Restrict_Wc_My_Account
         <?php
     }
 }
-$page_options = new Page_Restrict_Wc_Page_Plugin_Options();
+$page_options = new Page_Plugin_Options();
 $prwc_my_account_rp_page_disable_endpoint = $page_options->get_general_options('prwc_my_account_rp_page_disable_endpoint');
-new Page_Restrict_Wc_My_Account( !$prwc_my_account_rp_page_disable_endpoint );
+new My_Account( !$prwc_my_account_rp_page_disable_endpoint );

@@ -22,7 +22,8 @@
  * Text Domain:       page_restrict_domain
  * Domain Path:       /languages
  */
-
+namespace PageRestrictForWooCommerce;
+use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -37,7 +38,7 @@ define( 'PAGE_RESTRICT_WC_LOCATION_URL', plugin_dir_url( __FILE__ ) );
  */
 function activate_page_restrict_wc() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-activator.php';
-	Page_Restrict_Wc_Activator::activate();
+	Activator::activate();
 }
 
 /**
@@ -46,7 +47,7 @@ function activate_page_restrict_wc() {
  */
 function deactivate_page_restrict_wc() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-deactivator.php';
-	Page_Restrict_Wc_Deactivator::deactivate();
+	Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_page_restrict_wc' );

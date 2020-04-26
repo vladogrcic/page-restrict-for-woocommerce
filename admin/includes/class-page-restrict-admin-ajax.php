@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Handling ajax requests for options pages for page and plugin settings.
  *
@@ -18,19 +18,19 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Ajax {
+class Ajax {
     /**
      * Handles plugin options sent via ajax.
      * 
      * @since    1.0.0
      */
     public function plugin_options(){
-        $auth_class = new Page_Restrict_Wc_Authorization_Checks();
+        $auth_class = new Authorization_Checks();
 		if(!$auth_class->check_authorization()){
 			return;
 		}
         $pages_lock_data = [];
-        $page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+        $page_options_class = new Page_Plugin_Options();
         foreach ($page_options_class->possible_general_options as $key => $type) {
             $type_exp = explode('|', $type);
             $type = $type_exp[0];
@@ -52,7 +52,7 @@ class Page_Restrict_Wc_Ajax {
      * @since    1.0.0
      */
     public function pages_options(){
-        $auth_class = new Page_Restrict_Wc_Authorization_Checks();
+        $auth_class = new Authorization_Checks();
 		if(!$auth_class->check_authorization()){
 			return;
 		}
@@ -70,7 +70,7 @@ class Page_Restrict_Wc_Ajax {
             }
             $pages_lock_data[$key] = array_map( 'sanitize_text_field', $value );
         }
-        $page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+        $page_options_class = new Page_Plugin_Options();
         $page_options_class::process_page_options($pages_lock_data);
     }
 }

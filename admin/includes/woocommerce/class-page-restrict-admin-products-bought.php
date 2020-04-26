@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Handling which products were bought.
  *
@@ -18,7 +18,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Products_Bought {
+class Products_Bought {
 	/**
      * Checking whether the product was purchased.
      *

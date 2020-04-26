@@ -8,7 +8,9 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/public/includes
  */
-
+namespace PageRestrictForWooCommerce\Public_Facing;
+use PageRestrictForWooCommerce\Includes\Helpers;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
 /**
  * Showing a list of pages that the current user purchased products for in order to access them.
  *
@@ -16,7 +18,7 @@
  * @subpackage Page_Restrict_Wc/public/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Restricted_Pages_List_Blocks
+class Restricted_Pages_List_Blocks
 {
     /**
      * @since    1.1.0
@@ -68,8 +70,8 @@ class Page_Restrict_Wc_Restricted_Pages_List_Blocks
 	 */
     public function __construct()
     {
-        $this->helpers = new Page_Restrict_Wc_Helpers();
-        $this->page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+        $this->helpers = new Helpers();
+        $this->page_options_class = new Page_Plugin_Options();
         $this->user_id = get_current_user_id();
         $this->date_format = get_option('date_format');
         $this->time_format = get_option('time_format');

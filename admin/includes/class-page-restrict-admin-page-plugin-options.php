@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Handling options for pages.
  *
@@ -18,7 +18,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Page_Plugin_Options {
+class Page_Plugin_Options {
     /**
      * List of possible per page metabox page options.
      *
@@ -258,7 +258,7 @@ class Page_Restrict_Wc_Page_Plugin_Options {
      */
     public static function process_remove_unnecessary_metadata($pages_lock_data){
         if( isset($pages_lock_data['prwc_limit_to_virtual_products']) && isset($pages_lock_data['prwc_limit_to_downloadable_products'])){
-            $posts = new WP_Query(array(
+            $posts = new \WP_Query(array(
                 "numberposts" => -1,
                 "post_type" => "any",
                 "meta_query" => array(

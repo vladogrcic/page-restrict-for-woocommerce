@@ -9,7 +9,10 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/includes
  */
-
+namespace PageRestrictForWooCommerce\Includes;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
+use PageRestrictForWooCommerce\Admin_Facing\Products_Bought;
+use PageRestrictForWooCommerce\Admin_Facing\Restrict_Types;
 /**
  * General classes that can be used for both public and admin pages.
  *
@@ -17,7 +20,7 @@
  * @subpackage Page_Restrict_Wc/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Helpers {
+class Helpers {
 	/**
 	 * Initialize class instances and other variables.
 	 *
@@ -100,8 +103,8 @@ class Page_Restrict_Wc_Helpers {
 	 * @return	 array
      */
 	public function user_restrict_data($single_user=false){
-		$page_options = new Page_Restrict_Wc_Page_Plugin_Options();
-		$products_bought = new Page_Restrict_Wc_Products_Bought();
+		$page_options = new Page_Plugin_Options();
+		$products_bought = new Products_Bought();
 		$postID_products = [];
 		$products_db = $this->get_meta_values('prwc_products', 'page');
 		for ($i = 0; $i < count($products_db); $i++) {
@@ -145,7 +148,7 @@ class Page_Restrict_Wc_Helpers {
 			}
 		}
 		$time_data = [];
-		$restrict = new Page_Restrict_Wc_Restrict_Types();
+		$restrict = new Restrict_Types();
 		foreach ($purchased_products_by_user as $post_id => $value) {
 			$products = explode(',', $postID_products[$post_id]);
 			$days = $page_options->get_page_options($post_id, 'prwc_timeout_days');

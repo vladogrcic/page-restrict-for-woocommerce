@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Includes;
 /**
  * Register all actions and filters for the plugin.
  *
@@ -21,7 +21,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Loader {
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

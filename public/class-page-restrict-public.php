@@ -8,7 +8,11 @@
  *
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/public
- */
+  */
+namespace PageRestrictForWooCommerce\Public_Facing;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
+use PageRestrictForWooCommerce\Admin_Facing\Restrict_Types;
+use PageRestrictForWooCommerce\Admin_Facing\Products_Bought;
 /**
  * The public-facing functionality of the plugin.
  *
@@ -80,7 +84,7 @@ class Page_Restrict_Wc_Public {
 	 */
     public function initiate_process_page($content)
 	{
-		$restrict_process = new Page_Restrict_Wc_Section_Blocks();
+		$restrict_process = new Section_Blocks();
 		if(!is_admin()){
 			return $restrict_process->process_page($content);
 		}
@@ -95,7 +99,7 @@ class Page_Restrict_Wc_Public {
 	 */
     public function initiate_process_page_redirect()
 	{
-		$restrict_process = new Page_Restrict_Wc_Section_Blocks();
+		$restrict_process = new Section_Blocks();
 		if(!is_admin()){
 			return $restrict_process->process_page_redirect();
 		}
@@ -173,9 +177,9 @@ class Page_Restrict_Wc_Public {
 	 * @return	 void
 	 */
 	public function wc_my_account_page(){
-		$page_options = new Page_Restrict_Wc_Page_Plugin_Options();
+		$page_options = new Page_Plugin_Options();
 		$prwc_my_account_rp_page_disable_endpoint = $page_options->get_general_options('prwc_my_account_rp_page_disable_endpoint');
-		$wc_my_account = new Page_Restrict_Wc_My_Account(!$prwc_my_account_rp_page_disable_endpoint);
+		$wc_my_account = new My_Account(!$prwc_my_account_rp_page_disable_endpoint);
 		add_filter( 'woocommerce_account_menu_items', array( $wc_my_account, 'account_menu_items' ), 10, 1 );
 		add_action( 'woocommerce_account_restrict-pages-overview_endpoint', function() use($page_options, $wc_my_account){
 			$prwc_my_account_rp_page_hide_time_table = $page_options->get_general_options('prwc_my_account_rp_page_hide_time_table');

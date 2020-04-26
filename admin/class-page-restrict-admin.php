@@ -9,7 +9,9 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
+use PageRestrictForWooCommerce\Public_Facing\Section_Blocks;
+use PageRestrictForWooCommerce\Public_Facing\Restricted_Pages_List_Blocks;
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -54,10 +56,10 @@ class Page_Restrict_Wc_Admin
         $this->plugin_name      = $plugin_name;
         $this->plugin_title     = $plugin_title;
         $this->version          = $version;
-        $this->blocks           = new Page_Restrict_Wc_Section_Blocks();
-        $this->shortcodes       = new Page_Restrict_Wc_Shortcodes();
-        $this->restrict         = new Page_Restrict_Wc_Restrict_Types();
-        $this->ajax             = new Page_Restrict_Wc_Ajax();
+        $this->blocks           = new Section_Blocks();
+        $this->shortcodes       = new Shortcodes();
+        $this->restrict         = new Restrict_Types();
+        $this->ajax             = new Ajax();
     }
 
     /**
@@ -108,7 +110,7 @@ class Page_Restrict_Wc_Admin
         global $wp_version;
         $plugin_title   = $this->plugin_title;
         $plugin_name    = $this->plugin_name;
-        $page_options   = new Page_Restrict_Wc_Page_Plugin_Options();
+        $page_options   = new Page_Plugin_Options();
         $prwc_limit_virtual_products        =   $page_options->get_general_options('prwc_limit_to_virtual_products');
         $prwc_limit_downloadable_products   =   $page_options->get_general_options('prwc_limit_to_downloadable_products');
         $prwc_post_types_general            =   $page_options->get_general_options('prwc_general_post_types');
@@ -302,7 +304,7 @@ class Page_Restrict_Wc_Admin
         }
         register_block_type( $plugin_name.'/restrict-section', $prwc_block_options );
 
-        $this->blocks_restricted_pages_list           = new Page_Restrict_Wc_Restricted_Pages_List_Blocks();
+        $this->blocks_restricted_pages_list           = new Restricted_Pages_List_Blocks();
         $prwc_block_options_restricted_pages_list = [
             'editor_script' => $plugin_name,
             'attributes' => [
@@ -440,7 +442,7 @@ class Page_Restrict_Wc_Admin
             ));
         }
         else{
-            $classic_metabox_main = new Page_Restrict_Wc_Classic_Metabox_Main();
+            $classic_metabox_main = new Classic_Metabox_Main();
             add_action( 'add_meta_boxes',   array($classic_metabox_main, 'init_metabox'), 10, 2 );
             add_action( 'save_post',        array($classic_metabox_main, 'save_metabox'), 10, 2 );
         }
@@ -453,7 +455,7 @@ class Page_Restrict_Wc_Admin
     public function register_admin_menu()
     {
         if( is_plugin_active( 'woocommerce/woocommerce.php') ){
-            $menus = new Page_Restrict_Wc_Menus();
+            $menus = new Menus();
             add_menu_page(esc_html__('Page Restrict', 'page_restrict_domain'), esc_html__('Page Restrict', 'page_restrict_domain'), 'manage_options', 'prwc-pages-menu', array( $menus, 'prwc_menu_pages' ), plugins_url('/assets/img/logo-no-back-menu.svg', __FILE__));
             add_submenu_page( 'prwc-pages-menu', esc_html__('Page Restrict Pages', 'page_restrict_domain'), esc_html__('Pages', 'page_restrict_domain'),
                 'manage_options', 'prwc-pages-menu');
@@ -545,7 +547,7 @@ class Page_Restrict_Wc_Admin
      */
     public function post_meta_on_update()
     {
-        add_action( 'the_post', 'after_post_saved' );
+        add_action( 'the_post', __NAMESPACE__.'\\after_post_saved' );
         /**
          * Currently it deletes them after the post has been saved.
          *     
@@ -554,7 +556,7 @@ class Page_Restrict_Wc_Admin
          */
         function after_post_saved( $post ) {
             $post_id = $post->ID;
-            $possible_page_options = (new Page_Restrict_Wc_Page_Plugin_Options())->possible_page_options;
+            $possible_page_options = (new Page_Plugin_Options())->possible_page_options;
             foreach ($possible_page_options as $meta_key => $type) {
                 $meta_value = sanitize_text_field(get_post_meta( $post_id, $meta_key, true ));
                 if(!(strlen($meta_key) < 100)){

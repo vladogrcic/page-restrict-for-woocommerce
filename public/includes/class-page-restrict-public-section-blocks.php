@@ -7,8 +7,11 @@
  *
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/public/includes
-*/
-
+ */
+namespace PageRestrictForWooCommerce\Public_Facing;
+use PageRestrictForWooCommerce\Admin_Facing\Restrict_Types;
+use PageRestrictForWooCommerce\Admin_Facing\Products_Bought;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
 /**
  * Processing content for entire entire pages or section in order to restrict access according to views, time or any other way.
  *
@@ -16,7 +19,7 @@
  * @subpackage Page_Restrict_Wc/public/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Section_Blocks
+class Section_Blocks
 {
     /**
      * @since    1.0.0
@@ -43,7 +46,7 @@ class Page_Restrict_Wc_Section_Blocks
      */
     public $post_id;
     /**
-     * Page_Restrict_Wc_Page_Plugin_Options class instance.
+     * Page_Plugin_Options class instance.
      *
      * @since    1.0.0
      * @access   public
@@ -156,9 +159,9 @@ class Page_Restrict_Wc_Section_Blocks
     {
 		$this->user_id = get_current_user_id();
 		$this->post_id = get_the_ID();
-        $this->restrict         = new Page_Restrict_Wc_Restrict_Types();
-        $this->products_bought  = new Page_Restrict_Wc_Products_Bought();
-        $this->page_options     = new Page_Restrict_Wc_Page_Plugin_Options();
+        $this->restrict         = new Restrict_Types();
+        $this->products_bought  = new Products_Bought();
+        $this->page_options     = new Page_Plugin_Options();
     
         $this->products     =   $this->page_options->get_page_options($this->post_id, 'prwc_products');
         $this->days         =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_days');

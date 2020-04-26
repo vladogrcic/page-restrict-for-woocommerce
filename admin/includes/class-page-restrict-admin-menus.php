@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Methods for initializing plugin menus and submenus.
  *
@@ -18,9 +18,9 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Menus{
+class Menus{
     /**
-     * Page_Restrict_Wc_Page_Plugin_Options class instance.
+     * Page_Plugin_Options class instance.
      *
      * @since    1.0.0
      * @access   private
@@ -42,7 +42,7 @@ class Page_Restrict_Wc_Menus{
      */
     public function __construct()
     {
-        $this->page_options = new Page_Restrict_Wc_Page_Plugin_Options();
+        $this->page_options = new Page_Plugin_Options();
         $this->logo = plugins_url('/assets/img/logo-menu.svg', dirname(__FILE__));
     }
     /**
@@ -101,7 +101,7 @@ class Page_Restrict_Wc_Menus{
     {
         global $post;
         $logo = $this->logo;
-        $helpers = new Page_Restrict_Wc_Helpers();
+        $helpers = new Helpers();
 
         $user_data_all = $helpers->user_restrict_data();
         $time_data = $user_data_all['time_data'];

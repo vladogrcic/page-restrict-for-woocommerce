@@ -12,7 +12,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Includes;
 /**
  * Define the internationalization functionality.
  *
@@ -24,7 +24,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_i18n {
+class i18n {
 
 
 	/**

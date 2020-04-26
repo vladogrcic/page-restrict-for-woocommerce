@@ -9,7 +9,8 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
+use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
 /**
  * Methods for authorization.
  *
@@ -18,7 +19,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Authorization_Checks {
+class Authorization_Checks {
 	/**
 	 * Initialize class instances and other variables.
 	 *

@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
 /**
  * Methods for metaboxes for the classic editor.
  *
@@ -18,7 +18,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Classic_Metabox_Main {
+class Classic_Metabox_Main {
 	/**
 	 * Initialize class instances and other variables.
 	 *
@@ -46,7 +46,7 @@ class Page_Restrict_Wc_Classic_Metabox_Main {
 	 * @return	 void
      */
 	public function display_metabox( $post ){
-		$page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+		$page_options_class = new Page_Plugin_Options();
 		$prwc_limit_virtual_products         = $page_options_class->get_general_options('prwc_limit_to_virtual_products');
 		$prwc_limit_downloadable_products    = $page_options_class->get_general_options('prwc_limit_to_downloadable_products');
 		$prwc_post_types_general             = $page_options_class->get_general_options('prwc_general_post_types');
@@ -68,11 +68,11 @@ class Page_Restrict_Wc_Classic_Metabox_Main {
 	 * @return	 void
      */
 	public function save_metabox( $post_id ){
-		$auth_class = new Page_Restrict_Wc_Authorization_Checks();
+		$auth_class = new Authorization_Checks();
 		if(!$auth_class->check_authorization()){
 			return;
 		}
-		$page_options_class = new Page_Restrict_Wc_Page_Plugin_Options();
+		$page_options_class = new Page_Plugin_Options();
 		foreach ($page_options_class->possible_page_options as $page_option => $type) {
 			if(is_array($_POST[$page_option])){
 				$page_value = isset($_POST[$page_option])?array_map('sanitize_key',  $_POST[$page_option] ):'';

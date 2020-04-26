@@ -9,7 +9,8 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Admin_Facing;
+use PageRestrictForWooCommerce\Public_Facing\Section_Blocks;
 /**
  * Methods for shortcodes.
  *
@@ -18,9 +19,9 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Shortcodes {
+class Shortcodes {
 	/**
-	 * Page_Restrict_Wc_Section_Blocks class instance.
+	 * Section_Blocks class instance.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
@@ -33,7 +34,7 @@ class Page_Restrict_Wc_Shortcodes {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		$this->section_block = new Page_Restrict_Wc_Section_Blocks();
+		$this->section_block = new Section_Blocks();
 	}
 	/**
      * Checks and prints appropriate data depending on whether the user bought a product.
@@ -68,7 +69,7 @@ class Page_Restrict_Wc_Shortcodes {
 			];
 		}
 		if(is_user_logged_in()){
-			$Restricted_Pages_List = new Page_Restrict_Wc_Restricted_Pages_List_Blocks();
+			$Restricted_Pages_List = new Restricted_Pages_List_Blocks();
 			$print = '';
 			if($a['table'] === 'time'){
 				$print = $Restricted_Pages_List->process_restricted_pages_list_time( $a['disable_table_class'] );

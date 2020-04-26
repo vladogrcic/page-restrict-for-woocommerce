@@ -12,7 +12,9 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Includes;
+use PageRestrictForWooCommerce\Admin_Facing\Page_Restrict_Wc_Admin;
+use PageRestrictForWooCommerce\Public_Facing\Page_Restrict_Wc_Public;
 /**
  * The core plugin class.
  *
@@ -35,7 +37,7 @@ class Page_Restrict_Wc {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Page_Restrict_Wc_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -94,10 +96,10 @@ class Page_Restrict_Wc {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Page_Restrict_Wc_Loader. Orchestrates the hooks of the plugin.
-	 * - Page_Restrict_Wc_i18n. Defines internationalization functionality.
-	 * - Page_Restrict_Wc_Admin. Defines all hooks for the admin area.
-	 * - Page_Restrict_Wc_Public. Defines all hooks for the public side of the site.
+	 * - Loader. Orchestrates the hooks of the plugin.
+	 * - i18n. Defines internationalization functionality.
+	 * - Admin. Defines all hooks for the admin area.
+	 * - Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -177,20 +179,20 @@ class Page_Restrict_Wc {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/includes/class-page-restrict-public-wc-my-account.php';
 
-		$this->loader = new Page_Restrict_Wc_Loader();
+		$this->loader = new Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Page_Restrict_Wc_i18n class in order to set the domain and to register the hook
+	 * Uses the i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
-		$plugin_i18n = new Page_Restrict_Wc_i18n();
+		$plugin_i18n = new i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
@@ -271,7 +273,7 @@ class Page_Restrict_Wc {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Page_Restrict_Wc_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

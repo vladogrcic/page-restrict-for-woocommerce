@@ -9,7 +9,7 @@
  * @package    Page_Restrict_Wc
  * @subpackage Page_Restrict_Wc/admin/includes
  */
-
+namespace PageRestrictForWooCommerce\Includes;
 /**
  * Fired during plugin deactivation.
  *
@@ -20,7 +20,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
-class Page_Restrict_Wc_Deactivator {
+class Deactivator {
 
 	/**
 	 * Short Description. (use period)
