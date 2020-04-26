@@ -1,5 +1,6 @@
 var __ = wp.i18n.__; //translation functions
-// var prwc_blockName 		= page_restrict_wc.block_name;
+var prwc_plugin_name 		= page_restrict_wc.plugin_name;
+var prwc_blockName 		= page_restrict_wc.block_name;
 // var prwc_blockName_restricted_pages_list 		= page_restrict_wc.block_name_restricted_pages_list;
 var prwc_termNames 		= page_restrict_wc.products_available;
 var prwc_plugin_title 	= page_restrict_wc.plugin_title;
@@ -46,7 +47,10 @@ page_restrict_wc = extend(page_restrict_wc, {
 			if (document.querySelectorAll(".slim-select")){
 				var select_element = document.querySelectorAll("select.slim-select");
 				for (var i = 0; i < select_element.length; i++) {
-					if (!(select_element[i].getAttribute("data-ssid"))) {
+					if (
+						!(select_element[i].getAttribute("data-ssid")) || 
+						jQuery(select_element[i]).is(":disabled") !== jQuery(select_element[i]).next().find('div.ss-disabled')
+					) {
 						new SlimSelect({
 							select: 			select_element[i],
 							placeholder: 		__('Select Value', 	'page_restrict_domain'),

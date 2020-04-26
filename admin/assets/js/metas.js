@@ -368,14 +368,14 @@
 		return el(Fragment, {},
 			el(PluginSidebarMoreMenuItem,
 				{
-					target: prwc_blockName.split("/")[0],
+					target: prwc_plugin_name,
 					icon: icon,
 				},
 				prwc_plugin_title
 			),
 			el(PluginSidebar,
 				{
-					name: prwc_blockName.split("/")[0],
+					name: prwc_plugin_name,
 					icon: icon,
 					title: sidebar_title,
 				},
@@ -386,7 +386,7 @@
 	var renderBoxGenRender = function () { 
 		return renderBoxGen(renderBoxGenElements());
 	};
-	registerPlugin(prwc_blockName.split("/")[0], {
+	registerPlugin('page-restrict-wc', {
 		render: renderBoxGenRender
 	});
 })();

@@ -10,6 +10,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  */
 namespace PageRestrictForWooCommerce\Admin_Facing;
+use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
 /**
  * Methods for metaboxes for the classic editor.
  *
