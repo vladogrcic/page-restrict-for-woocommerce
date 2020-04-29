@@ -9,7 +9,7 @@
  *
  * @package    Page_Restrict_Wc
  */
-
+use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
