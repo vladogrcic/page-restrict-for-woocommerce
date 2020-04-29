@@ -24,6 +24,8 @@
  */
 namespace PageRestrictForWooCommerce;
 use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
+use PageRestrictForWooCommerce\Includes\Core\Activator;
+use PageRestrictForWooCommerce\Includes\Core\Deactivator;
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -51,8 +53,8 @@ function deactivate_page_restrict_wc() {
 	Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_page_restrict_wc' );
-register_deactivation_hook( __FILE__, 'deactivate_page_restrict_wc' );
+register_activation_hook( __FILE__, __NAMESPACE__.'\activate_page_restrict_wc' );
+register_deactivation_hook( __FILE__, __NAMESPACE__.'\deactivate_page_restrict_wc' );
 
 /**
  * The core plugin class that is used to define internationalization,
