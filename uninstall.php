@@ -7,14 +7,15 @@
  * @link       vladogrcic.com
  * @since      1.0.0
  *
- * @package    Page_Restrict_Wc
+ * @package    PageRestrictForWooCommerce
  */
-use PageRestrictForWooCommerce\Admin_Facing\Page_Plugin_Options;
+use PageRestrictForWooCommerce\Includes\Common\Page_Plugin_Options;
+
 // If uninstall not called from WordPress, then exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
-require_once(dirname(__FILE__).'/admin/includes/class-page-restrict-admin-page-plugin-options.php');
+require_once(dirname(__FILE__).'/includes/common/class-page-plugin-options.php');
 $page_options_class = new Page_Plugin_Options();
 $prwc_delete_plugin_data_on_uninstall        =   $page_options_class->get_general_options('prwc_delete_plugin_data_on_uninstall');
 

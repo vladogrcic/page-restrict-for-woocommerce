@@ -17,7 +17,7 @@ msgstr ""
 "X-Domain: page_restrict_domain\n"
 
 #. Plugin Name of the plugin
-#: includes/class-page-restrict.php:84
+#: includes/class-page-restrict-wc.php:84
 msgid "Page Restrict for WooCommerce"
 msgstr ""
 
@@ -33,57 +33,57 @@ msgstr ""
 msgid "vladogrcic.com"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:457
+#: admin/class-admin.php:457
 msgid "Page Restrict"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:458
-#: admin/partials/page-restrict-admin-pages.php:19
+#: admin/class-admin.php:458
+#: admin/partials/menu-page-pages.php:19
 msgid "Page Restrict Pages"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:458
+#: admin/class-admin.php:458
 msgid "Pages"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:460
-#: admin/partials/page-restrict-admin-user-overview.php:18
+#: admin/class-admin.php:460
+#: admin/partials/menu-page-user-overview.php:18
 msgid "Page Restrict User Overview"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:460
+#: admin/class-admin.php:460
 msgid "User Overview"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:462
-#: admin/partials/page-restrict-admin-settings.php:18
+#: admin/class-admin.php:462
+#: admin/partials/menu-page-settings.php:18
 msgid "Page Restrict Settings"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:462
-#: admin/class-page-restrict-admin.php:589
+#: admin/class-admin.php:462
+#: admin/class-admin.php:589
 msgid "Settings"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:464
-#: admin/partials/page-restrict-admin-quick-start.php:60
+#: admin/class-admin.php:464
+#: admin/partials/menu-page-quick-start.php:60
 msgid "Page Restrict Quick Start"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:464
-#: admin/class-page-restrict-admin.php:591
+#: admin/class-admin.php:464
+#: admin/class-admin.php:591
 msgid "Quick Start"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:516
+#: admin/class-admin.php:516
 msgid "Click here to install WooCommerce (direct installation link)."
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:529
+#: admin/class-admin.php:529
 msgid "You haven't disabled GUEST CHECKOUT in WooCommerce!"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:530
+#: admin/class-admin.php:530
 msgid ""
 "If your unregistered users are buying products with WooCommerce without that "
 "disabled the products will not be able to be connected to any account which "
@@ -91,15 +91,15 @@ msgid ""
 "specified pages correctly."
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:531
+#: admin/class-admin.php:531
 msgid "Go to:"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:532
+#: admin/class-admin.php:532
 msgid "WooCommerce --> Settings --> Accounts & Privacy"
 msgstr ""
 
-#: admin/class-page-restrict-admin.php:533
+#: admin/class-admin.php:533
 msgid "Disable option: \"Allow customers to place orders without an account\"."
 msgstr ""
 
@@ -151,74 +151,74 @@ msgid "Edit"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:90
-#: admin/partials/page-restrict-admin-classic-metabox.php:54
+#: admin/partials/page-edit-classic-metabox.php:54
 #: admin/assets/js/block-section-restrict.js:385 admin/assets/js/metas.js:295
 msgid "Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:93
-#: admin/partials/page-restrict-admin-classic-metabox.php:57
+#: admin/partials/page-edit-classic-metabox.php:57
 #: admin/assets/js/block-section-restrict.js:372 admin/assets/js/metas.js:290
 msgid "Lock by Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:110
-#: admin/partials/page-restrict-admin-classic-metabox.php:75
+#: admin/partials/page-edit-classic-metabox.php:75
 #: admin/assets/js/metas.js:301
 msgid "Page to show if product not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:131
-#: admin/partials/page-restrict-admin-classic-metabox.php:95
+#: admin/partials/page-edit-classic-metabox.php:95
 #: admin/assets/js/metas.js:307
 msgid "Redirect if product was not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:133
-#: admin/partials/page-restrict-admin-classic-metabox.php:100
+#: admin/partials/page-edit-classic-metabox.php:100
 #: admin/assets/js/metas.js:317
 msgid "Page to show if user is not logged in"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:154
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:272
-#: admin/partials/page-restrict-admin-classic-metabox.php:120
+#: admin/partials/page-edit-classic-metabox.php:120
 #: admin/assets/js/metas.js:323
 msgid "Redirect if user is not logged in"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:157
-#: admin/partials/page-restrict-admin-classic-metabox.php:125
+#: admin/partials/page-edit-classic-metabox.php:125
 #: admin/assets/js/block-section-restrict.js:448 admin/assets/js/metas.js:363
 msgid "Timeout"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:161
-#: admin/partials/page-restrict-admin-classic-metabox.php:128
+#: admin/partials/page-edit-classic-metabox.php:128
 #: admin/assets/js/block-section-restrict.js:394 admin/assets/js/metas.js:335
 msgid "Days"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:166
-#: admin/partials/page-restrict-admin-classic-metabox.php:132
+#: admin/partials/page-edit-classic-metabox.php:132
 #: admin/assets/js/block-section-restrict.js:405 admin/assets/js/metas.js:341
 msgid "Hours"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:171
-#: admin/partials/page-restrict-admin-classic-metabox.php:136
+#: admin/partials/page-edit-classic-metabox.php:136
 #: admin/assets/js/block-section-restrict.js:416 admin/assets/js/metas.js:347
 msgid "Minutes"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:176
-#: admin/partials/page-restrict-admin-classic-metabox.php:140
+#: admin/partials/page-edit-classic-metabox.php:140
 #: admin/assets/js/block-section-restrict.js:427 admin/assets/js/metas.js:353
 msgid "Seconds"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:181
-#: admin/partials/page-restrict-admin-classic-metabox.php:144
+#: admin/partials/page-edit-classic-metabox.php:144
 #: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:171
 #: admin/assets/js/metas.js:360
 msgid "Views"
@@ -820,80 +820,80 @@ msgstr ""
 msgid "Number of views until expiration"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-classic-metabox.php:72
+#: admin/partials/page-edit-classic-metabox.php:72
 #: admin/assets/js/metas.js:329
 msgid "Page to Show"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-classic-metabox.php:155
-#: admin/partials/page-restrict-admin-pages.php:49
-#: admin/partials/page-restrict-admin-settings.php:80
+#: admin/partials/page-edit-classic-metabox.php:155
+#: admin/partials/menu-page-pages.php:49
+#: admin/partials/menu-page-settings.php:80
 #: admin/assets/js/general-block-var.js:52
 msgid "Select Value"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-classic-metabox.php:158
-#: admin/partials/page-restrict-admin-pages.php:53
-#: admin/partials/page-restrict-admin-settings.php:83
+#: admin/partials/page-edit-classic-metabox.php:158
+#: admin/partials/menu-page-pages.php:53
+#: admin/partials/menu-page-settings.php:83
 #: admin/assets/js/general-block-var.js:54
 msgid "Search"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-classic-metabox.php:159
-#: admin/partials/page-restrict-admin-pages.php:54
-#: admin/partials/page-restrict-admin-settings.php:84
+#: admin/partials/page-edit-classic-metabox.php:159
+#: admin/partials/menu-page-pages.php:54
+#: admin/partials/menu-page-settings.php:84
 #: admin/assets/js/general-block-var.js:55
 msgid "No Results"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-classic-metabox.php:160
-#: admin/partials/page-restrict-admin-pages.php:55
-#: admin/partials/page-restrict-admin-settings.php:85
+#: admin/partials/page-edit-classic-metabox.php:160
+#: admin/partials/menu-page-pages.php:55
+#: admin/partials/menu-page-settings.php:85
 msgid "Searching.."
 msgstr ""
 
-#: admin/partials/page-restrict-admin-pages.php:39
-#: admin/partials/page-restrict-admin-settings.php:55
-#: admin/partials/page-restrict-admin-user-overview.php:47
+#: admin/partials/menu-page-pages.php:39
+#: admin/partials/menu-page-settings.php:55
+#: admin/partials/menu-page-user-overview.php:47
 msgid "Save"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-quick-start.php:67
+#: admin/partials/menu-page-quick-start.php:67
 msgid "Add Section Restrict"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-quick-start.php:68
+#: admin/partials/menu-page-quick-start.php:68
 msgid "Add Page Restrict"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-quick-start.php:69
+#: admin/partials/menu-page-quick-start.php:69
 msgid "Add Page Restrict - Classic Editor"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-quick-start.php:70
+#: admin/partials/menu-page-quick-start.php:70
 msgid "General Overview"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-quick-start.php:71
-#: admin/partials/page-restrict-admin-settings.php:29
+#: admin/partials/menu-page-quick-start.php:71
+#: admin/partials/menu-page-settings.php:29
 msgid "Frontend"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-settings.php:28
+#: admin/partials/menu-page-settings.php:28
 #: admin/assets/js/block-restricted-pages-list.js:157
 #: admin/assets/js/block-section-restrict.js:355
 msgid "General"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-settings.php:30
+#: admin/partials/menu-page-settings.php:30
 msgid "Plugin"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-user-overview.php:28
+#: admin/partials/menu-page-user-overview.php:28
 msgid "Expire by Timeout"
 msgstr ""
 
-#: admin/partials/page-restrict-admin-user-overview.php:29
+#: admin/partials/menu-page-user-overview.php:29
 msgid "Expire by Views"
 msgstr ""
 

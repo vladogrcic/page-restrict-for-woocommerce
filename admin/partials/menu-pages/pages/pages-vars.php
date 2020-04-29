@@ -8,8 +8,7 @@
  * @link       vladogrcic.com
  * @since      1.0.0
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
+ * @package    PageRestrictForWooCommerce
  */
 
 /**
@@ -17,8 +16,7 @@
  *
  * This file creates variables which are needed for several other files.
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @package    PageRestrictForWooCommerce
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 if((int)$prwc_limit_virtual_products){

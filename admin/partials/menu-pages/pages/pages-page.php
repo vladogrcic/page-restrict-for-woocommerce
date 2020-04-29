@@ -8,8 +8,7 @@
  * @link       vladogrcic.com
  * @since      1.0.0
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
+ * @package    PageRestrictForWooCommerce
  */
 
 /**
@@ -17,8 +16,7 @@
  *
  * This file creates cards for specific pages that need this plugins restrict options.
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
+ * @package    PageRestrictForWooCommerce
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 

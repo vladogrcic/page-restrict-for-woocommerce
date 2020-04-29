@@ -31,22 +31,23 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'PAGE_RESTRICT_WC_VERSION', '1.1.1' );
 define( 'PAGE_RESTRICT_WC_LOCATION_URL', plugin_dir_url( __FILE__ ) );
+define( 'PAGE_RESTRICT_WC_LOCATION_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-page-restrict-activator.php
+ * This action is documented in includes/core/class-activator.php
  */
 function activate_page_restrict_wc() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/core/class-activator.php';
 	Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-page-restrict-deactivator.php
+ * This action is documented in includes/core/class-deactivator.php
  */
 function deactivate_page_restrict_wc() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/core/class-deactivator.php';
 	Deactivator::deactivate();
 }
 
@@ -57,7 +58,7 @@ register_deactivation_hook( __FILE__, 'deactivate_page_restrict_wc' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-wc.php';
 
 /**
  * Begins execution of the plugin.
@@ -70,10 +71,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict.php';
  */
 function run_page_restrict_wc() {
 	if(version_compare(PHP_VERSION, '7.0', '>')) {
-
 		$plugin = new Page_Restrict_Wc();
 		$plugin->run();
-
 	}
 }
 run_page_restrict_wc();

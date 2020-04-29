@@ -1,9 +1,9 @@
 {
   "name": "page-restrict-for-woocommerce",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "scripts": {
-    "build-scss": "node-sass --output-style expanded --indent-type tab --indent-width 1 --include-path scss admin/assets/scss/page-restrict-admin.scss admin/assets/css/page-restrict-admin.css; postcss admin/assets/css/page-restrict-admin.css --no-map --use autoprefixer --replace;",
+    "build-scss": "node-sass --output-style expanded --indent-type tab --indent-width 1 --include-path scss admin/assets/scss/admin.scss admin/assets/css/admin.css; postcss admin/assets/css/admin.css --no-map --use autoprefixer --replace;",
     "watch": "nodemon -e scss -x \"npm run build-scss\""
   },
   "repository": {

@@ -6,15 +6,13 @@
  * @link       vladogrcic.com
  * @since      1.0.0
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/pages
+ * @package    PageRestrictForWooCommerce
  */
 
 /**
  * Variables needed for all menu pages.
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/includes
+ * @package    PageRestrictForWooCommerce
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
     $args = array(

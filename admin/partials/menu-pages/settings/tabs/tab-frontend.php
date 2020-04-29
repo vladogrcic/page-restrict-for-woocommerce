@@ -8,8 +8,7 @@
  * @link       vladogrcic.com
  * @since      1.1.0
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/settings/tabs
+ * @package    PageRestrictForWooCommerce
  */
 
 /**
@@ -17,8 +16,7 @@
  *
  * This file provides frontend plugin settings.
  *
- * @package    Page_Restrict_Wc
- * @subpackage Page_Restrict_Wc/admin/partials/menu-pages/settings/tabs
+ * @package    PageRestrictForWooCommerce
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 ?>
