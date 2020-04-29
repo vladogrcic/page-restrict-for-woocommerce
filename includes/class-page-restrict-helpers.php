@@ -148,6 +148,7 @@ class Helpers {
 			}
 		}
 		$time_data = [];
+		$locked_posts = [];
 		$restrict = new Restrict_Types();
 		foreach ($purchased_products_by_user as $post_id => $value) {
 			$products = explode(',', $postID_products[$post_id]);

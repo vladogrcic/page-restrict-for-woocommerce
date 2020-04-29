@@ -10,6 +10,7 @@
  * @subpackage Page_Restrict_Wc/admin/includes
  */
 namespace PageRestrictForWooCommerce\Admin_Facing;
+use PageRestrictForWooCommerce\Includes\Helpers;
 /**
  * Methods for initializing plugin menus and submenus.
  *
