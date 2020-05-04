@@ -16,6 +16,8 @@ use PageRestrictForWooCommerce\Admin\Admin;
 use PageRestrictForWooCommerce\Front\Front;
 use PageRestrictForWooCommerce\Includes\Core\Loader;
 use PageRestrictForWooCommerce\Includes\Core\i18n;
+use function PageRestrictForWooCommerce\Functions\is_woocommerce_active;
+use function PageRestrictForWooCommerce\Functions\activation_notices;
 /**
  * The core plugin class.
  *
@@ -79,11 +81,22 @@ class Page_Restrict_Wc {
 	public function __construct() {
 		if ( defined( 'PAGE_RESTRICT_WC_VERSION' ) ) {
 			$this->version = PAGE_RESTRICT_WC_VERSION;
-		} else {
+		} 
+		else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name 		= 'page-restrict-wc';
-		$this->plugin_title 	= esc_html__('Page Restrict for WooCommerce', 'page_restrict_domain');
+		if ( defined( 'PAGE_RESTRICT_WC_NAME' ) ) {
+			$this->plugin_name 		= PAGE_RESTRICT_WC_NAME;
+		}
+		else{
+			$this->plugin_name 		= 'page-restrict-wc';
+		}
+		if ( defined( 'PAGE_RESTRICT_WC_TITLE' ) ) {
+			$this->plugin_title 		= PAGE_RESTRICT_WC_TITLE;
+		}
+		else{
+			$this->plugin_title 		= esc_html__('Page Restrict for WooCommerce', 'page_restrict_domain');
+		}
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -209,20 +222,20 @@ class Page_Restrict_Wc {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version(), $this->get_plugin_title() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
-		$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_block_editor_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'register_admin_menu' );
-		$this->loader->add_action( 'init', $plugin_admin, 'register_blocks' );
-		$this->loader->add_action( 'init', $plugin_admin, 'register_meta' );
-		$this->loader->add_action( 'init', $plugin_admin, 'register_shortcodes' );
-		$this->loader->add_action( 'init', $plugin_admin, 'register_ajax' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_admin_notices' );
-		$this->loader->add_action( 'init', $plugin_admin, 'post_meta_on_update' );
-		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links',10,2 );
+		activation_notices();
+		if( is_woocommerce_active( true ) ){
+			$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version(), $this->get_plugin_title() );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+			$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_block_editor_scripts' );
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'register_admin_menu' );
+			$this->loader->add_action( 'init', $plugin_admin, 'register_blocks' );
+			$this->loader->add_action( 'init', $plugin_admin, 'register_meta' );
+			$this->loader->add_action( 'init', $plugin_admin, 'register_shortcodes' );
+			$this->loader->add_action( 'init', $plugin_admin, 'register_ajax' );
+			$this->loader->add_action( 'init', $plugin_admin, 'post_meta_on_update' );
+			$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links',10,2 );
+		}
 	}
 
 	/**
@@ -233,15 +246,17 @@ class Page_Restrict_Wc {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
-		$plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
+		if( is_woocommerce_active( true ) ){
+            $plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		
-		$this->loader->add_filter( 'the_content', $plugin_public, 'initiate_process_page');
-		$this->loader->add_filter( 'template_redirect', $plugin_public, 'initiate_process_page_redirect');
-		$this->loader->add_action( 'wp', $plugin_public, 'update_user_view_count');
-		$this->loader->add_action( 'init', $plugin_public, 'wc_my_account_page');
+            $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+            $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+            
+            $this->loader->add_filter( 'the_content', $plugin_public, 'initiate_process_page');
+            $this->loader->add_filter( 'template_redirect', $plugin_public, 'initiate_process_page_redirect');
+            $this->loader->add_action( 'wp', $plugin_public, 'update_user_view_count');
+            $this->loader->add_action( 'init', $plugin_public, 'wc_my_account_page');
+        }
 	}
 
 	/**

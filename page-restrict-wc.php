@@ -32,6 +32,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'PAGE_RESTRICT_WC_VERSION', '1.1.1' );
+define( 'PAGE_RESTRICT_WC_NAME', 'page-restrict-wc' );
+define( 'PAGE_RESTRICT_WC_TITLE', esc_html__('Page Restrict for WooCommerce', 'page_restrict_domain') );
+
 define( 'PAGE_RESTRICT_WC_LOCATION_URL', plugin_dir_url( __FILE__ ) );
 define( 'PAGE_RESTRICT_WC_LOCATION_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -61,6 +64,11 @@ register_deactivation_hook( __FILE__, __NAMESPACE__.'\deactivate_page_restrict_w
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-page-restrict-wc.php';
+
+/**
+ * Various general functions.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/functions.php';
 
 /**
  * Begins execution of the plugin.

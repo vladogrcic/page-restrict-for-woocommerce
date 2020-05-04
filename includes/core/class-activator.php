@@ -46,30 +46,6 @@ class Activator {
 			<?php
 			exit;
 		}
-		if(!(is_plugin_active( 'woocommerce/woocommerce.php'))) {
-			$action = 'install-plugin';
-			$slug = 'woocommerce';
-			$wc_install_link = wp_nonce_url(
-				add_query_arg(
-					array(
-						'action' => $action,
-						'plugin' => $slug
-					),
-					admin_url( 'update.php' )
-				),
-				$action.'_'.$slug
-			);
-			$wc_path_init = plugins_url( 'woocommerce/woocommerce.php' );
-			?>
-			<div class="error notice">
-				<p><?php esc_html_e( $plugin_title.' requires WooCommerce in order to function. Please install and activate it in order to use this plugin.', 'page_restrict_domain' ); ?></p>
-				<?php if(!file_exists($wc_path_init)): ?>
-					<a href="<?php echo $wc_install_link; ?>"><?php esc_html_e( 'Click here to install WooCommerce (direct installation link).', 'page_restrict_domain' ); ?></a>
-				<?php endif; ?>
-			</div>
-			<?php
-			exit;
-		}
 	}
 }
 
