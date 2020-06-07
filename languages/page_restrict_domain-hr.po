@@ -495,7 +495,7 @@ msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:56
 msgid ""
-"The Restrict Section for WooCommerce block is located under Layout Element "
+"The Restrict Section for WooCommerce block is located under Layout Elements "
 "pictured below."
 msgstr ""
 

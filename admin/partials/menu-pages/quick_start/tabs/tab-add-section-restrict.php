@@ -51,7 +51,7 @@ $trans_img[]    = esc_html__('/en/section/products-sections-settings.png',    'p
 $trans_img[]    = esc_html__('/en/section/timeout-sections-settings.png',     'page_restrict_domain');
 $trans_img[]    = '';
 
-$trans_text[] = esc_html__('The Restrict Section for WooCommerce block is located under Layout Element pictured below.', 'page_restrict_domain');
+$trans_text[] = esc_html__('The Restrict Section for WooCommerce block is located under Layout Elements pictured below.', 'page_restrict_domain');
 $trans_text[] = esc_html__("Using Inverse Block you can change whether the content in the section should be shown or hidden. By default it hides the section content.", 'page_restrict_domain').'<br>'.
                 esc_html__("If you want to tell the user what to do to get access to the hidden blocks you use the Inverse block to show that.", 'page_restrict_domain').'<br>'.
                 esc_html__('You can mirror settings from a block above or below the current one.', 'page_restrict_domain').'<br>'.

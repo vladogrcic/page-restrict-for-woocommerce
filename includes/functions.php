@@ -1,10 +1,20 @@
 <?php 
+
+/**
+ * Helper classes
+ *
+ * @link       vladogrcic.com
+ * @since      1.1.1
+ *
+ * @package    PageRestrictForWooCommerce\Includes
+ */
 namespace PageRestrictForWooCommerce\Functions;
 
 /**
  * Checks whether WooCommerce is activated.
  * 
  * @since    1.1.1
+ * @param    boolean     $deactivate      Should this plugin be deactivated if WooCommerce not active.
  */
 function is_woocommerce_active( $deactivate ){
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
