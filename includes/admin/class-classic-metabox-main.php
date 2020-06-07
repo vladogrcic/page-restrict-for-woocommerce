@@ -12,7 +12,7 @@ namespace PageRestrictForWooCommerce\Includes\Admin;
 
 use PageRestrictForWooCommerce\Admin\Admin;
 use PageRestrictForWooCommerce\Includes\Common\Page_Plugin_Options;
-use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
+
 /**
  * Methods for metaboxes for the classic editor.
  *
@@ -56,8 +56,7 @@ class Classic_Metabox_Main {
 		foreach ($page_options_class->possible_page_options as $page_option => $type) {
 			$$page_option      =   $page_options_class->get_page_options($post->ID, $page_option);
 		}
-		$plugin_admin = new Page_Restrict_Wc();
-        $plugin_name = $plugin_admin->get_plugin_name();
+		$plugin_name = PAGE_RESTRICT_WC_NAME;
 		$nonce =   wp_nonce_field( $plugin_name . '-nonce', $plugin_name . '-nonce', true, false );
 		include_once(PAGE_RESTRICT_WC_LOCATION_DIR."admin/partials/menu-pages/pages/pages-vars.php");
 		include_once(PAGE_RESTRICT_WC_LOCATION_DIR."admin/partials/page-edit-classic-metabox.php");

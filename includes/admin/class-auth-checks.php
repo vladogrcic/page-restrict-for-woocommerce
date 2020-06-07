@@ -9,7 +9,7 @@
  * @package    PageRestrictForWooCommerce\Includes\Admin
  */
 namespace PageRestrictForWooCommerce\Includes\Admin;
-use PageRestrictForWooCommerce\Includes\Page_Restrict_Wc;
+
 /**
  * Methods for authorization.
  *
@@ -34,8 +34,7 @@ class Authorization_Checks {
 	 * @return	 string
      */
 	public function check_authorization($nonce=false, $nonce_name=false){
-		$plugin_admin = new Page_Restrict_Wc();
-        $plugin_name = $plugin_admin->get_plugin_name();
+        $plugin_name = PAGE_RESTRICT_WC_NAME;
 		
 		if($nonce_name){
 			$nonce_name = sanitize_key( $nonce_name );
@@ -51,7 +50,9 @@ class Authorization_Checks {
 				$nonce = sanitize_key( $_POST['nonce'] );
 			}
 			else{
-				$nonce = sanitize_key( $_POST[$nonce_name] );
+				if( isset( $_POST[$nonce_name] ) ){
+					$nonce = sanitize_key( $_POST[$nonce_name] );
+				}
 			}
 		}
 		// Verify the nonce. If isn't there, stop the script.

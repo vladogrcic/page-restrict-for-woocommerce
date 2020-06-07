@@ -45,6 +45,12 @@ class My_Account
     public function account_menu_items( $items ) {
         if($this->load_endpoints){
             $items['restrict-pages-overview'] = __( 'Restricted Pages', 'page_restrict_domain' );
+            $account_details = $items['edit-account'];
+            $logout = $items['customer-logout'];
+            unset($items['edit-account']);
+            unset($items['customer-logout']);
+            $items['edit-account'] = $account_details;
+            $items['customer-logout'] = $logout;
         }
         return $items;
     }
@@ -72,6 +78,9 @@ class My_Account
      * @return     void
      */
     public function restrict_pages_overview_endpoint_content($hide_time=false, $hide_view=false, $disable_table_class=false) {
+        if(!is_user_logged_in()){
+            return;
+        }
         $Restricted_Pages_List = new Restricted_Pages_List_Blocks();
         ?>
         <div class="restrict-pages-overview-wrapper">

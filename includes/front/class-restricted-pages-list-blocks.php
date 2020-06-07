@@ -89,6 +89,9 @@ class Restricted_Pages_List_Blocks
      */
     public function process_restricted_pages_list( array $attr )
     {
+        if(!is_user_logged_in()){
+            return;
+        }
         $print = '';
         if(!$attr['disable_table_class']){
             $disable_table_class = $this->disable_table_class;
@@ -119,7 +122,9 @@ class Restricted_Pages_List_Blocks
         $date_format = $this->date_format;
         $time_format = $this->time_format;
         $restrict_data = $this->restrict_data;
-        
+        if(!$disable_table_class){
+            $disable_table_class = $this->disable_table_class;
+        }
         ob_start();
         ?>
         <table <?php if(!(int)$disable_table_class){ ?>class="timeout_table time"<?php } ?>>
@@ -131,6 +136,9 @@ class Restricted_Pages_List_Blocks
             // $restrict_data['time_data'] = [];
             if(  $restrict_data['time_data'] ):
                 foreach ($restrict_data['time_data'] as $page):
+                    if(isset($page['time_compare'])){
+                        continue;
+                    }
                     $expiration = $page['time_compare'] - $page['time_elapsed'];
                     ?>
                     <tr>
@@ -155,9 +163,6 @@ class Restricted_Pages_List_Blocks
      */
     public function process_restricted_pages_list_view( $disable_table_class=false )
     {
-        if(!is_user_logged_in()){
-            return;
-        }
         $helpers = $this->helpers;
         $user_id = $this->user_id;
         $date_format = $this->date_format;

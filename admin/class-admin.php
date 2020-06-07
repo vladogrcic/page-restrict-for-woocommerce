@@ -497,6 +497,7 @@ class Admin
     {
         add_action( 'the_post', __NAMESPACE__.'\\after_post_saved' );
         /**
+         * Deletes empty post metas.
          * Currently it deletes them after the post has been saved.
          *     
          * @param    class    $post       Wordpress Post Class.

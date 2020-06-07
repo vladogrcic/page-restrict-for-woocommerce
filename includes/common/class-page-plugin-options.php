@@ -147,11 +147,11 @@ class Page_Plugin_Options {
             }
             if($type === 'bool'){
                 if($page_option === $key){
-                    $meta =   get_post_meta($post_id, $key, true);
+                    $meta =   (int)get_post_meta($post_id, $key, true);
                     if(!(strlen($meta) < 512)){
                         return;
                     }
-                    $meta =   $meta?sanitize_text_field($meta):0;
+                    $meta =   $meta?1:0;
                 }
             }
         }

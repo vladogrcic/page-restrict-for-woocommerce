@@ -10,6 +10,7 @@
  */
 namespace PageRestrictForWooCommerce\Includes\Admin;
 use PageRestrictForWooCommerce\Includes\Common\Section_Blocks;
+use PageRestrictForWooCommerce\Includes\Front\Restricted_Pages_List_Blocks;
 /**
  * Methods for shortcodes.
  *
