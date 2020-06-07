@@ -14,7 +14,7 @@
  * Description:       Restricts access to pages using WooCommerce products.
  * Version:           1.1.1
  * WC requires at least: 3.0.0
- * WC tested up to: 4.2.0
+ * WC tested up to: 4.2
  * Author:            Vlado Grčić
  * Author URI:        vladogrcic.com
  * License:           GPL-2.0+
