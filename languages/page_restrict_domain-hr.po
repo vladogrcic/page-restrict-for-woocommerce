@@ -2,22 +2,22 @@
 # This file is distributed under the same license as the Page Restrict for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Page Restrict for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/"
-"page_restrict_domain\n"
-"POT-Creation-Date: 2020-04-23T23:40:58+02:00\n"
-"PO-Revision-Date: 2020-04-23 23:41+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: hr\n"
+"Project-Id-Version: Page Restrict for WooCommerce 1.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/page_restrict_domain\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"POT-Creation-Date: 2020-08-09T23:38:52+02:00\n"
+"PO-Revision-Date: 2020-08-09T23:38:52+02:00\n"
+"X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: page_restrict_domain\n"
+"Language: hr\n"
 
 #. Plugin Name of the plugin
-#: includes/class-page-restrict-wc.php:84
+#: includes/class-page-restrict-wc.php:98
+#: page-restrict-wc.php:36
 msgid "Page Restrict for WooCommerce"
 msgstr ""
 
@@ -33,315 +33,349 @@ msgstr ""
 msgid "vladogrcic.com"
 msgstr ""
 
-#: admin/class-admin.php:457
+#: admin/class-admin.php:461
 msgid "Page Restrict"
 msgstr ""
 
-#: admin/class-admin.php:458
-#: admin/partials/menu-page-pages.php:19
+#: admin/class-admin.php:462
+#: admin/partials/menu-page-pages.php:18
 msgid "Page Restrict Pages"
 msgstr ""
 
-#: admin/class-admin.php:458
+#: admin/class-admin.php:462
 msgid "Pages"
 msgstr ""
 
-#: admin/class-admin.php:460
-#: admin/partials/menu-page-user-overview.php:18
+#: admin/class-admin.php:464
+#: admin/partials/menu-page-user-overview.php:17
 msgid "Page Restrict User Overview"
 msgstr ""
 
-#: admin/class-admin.php:460
+#: admin/class-admin.php:464
 msgid "User Overview"
 msgstr ""
 
-#: admin/class-admin.php:462
-#: admin/partials/menu-page-settings.php:18
+#: admin/class-admin.php:466
+#: admin/partials/menu-page-settings.php:17
 msgid "Page Restrict Settings"
 msgstr ""
 
-#: admin/class-admin.php:462
-#: admin/class-admin.php:589
+#: admin/class-admin.php:466
+#: admin/class-admin.php:534
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:464
-#: admin/partials/menu-page-quick-start.php:60
+#: admin/class-admin.php:468
+#: admin/partials/menu-page-quick-start.php:59
 msgid "Page Restrict Quick Start"
 msgstr ""
 
-#: admin/class-admin.php:464
-#: admin/class-admin.php:591
+#: admin/class-admin.php:468
+#: admin/class-admin.php:536
 msgid "Quick Start"
 msgstr ""
 
-#: admin/class-admin.php:516
-msgid "Click here to install WooCommerce (direct installation link)."
+#: admin/partials/menu-page-pages.php:38
+#: admin/partials/menu-page-settings.php:54
+#: admin/partials/menu-page-user-overview.php:46
+msgid "Save"
 msgstr ""
 
-#: admin/class-admin.php:529
-msgid "You haven't disabled GUEST CHECKOUT in WooCommerce!"
+#: admin/partials/menu-page-pages.php:48
+#: admin/partials/menu-page-settings.php:79
+#: admin/partials/page-edit-classic-metabox.php:159
+#: admin/assets/js/general-block-var.js:56
+msgid "Select Value"
 msgstr ""
 
-#: admin/class-admin.php:530
-msgid ""
-"If your unregistered users are buying products with WooCommerce without that "
-"disabled the products will not be able to be connected to any account which "
-"means this plugin can't know who bought it and can't allow access to "
-"specified pages correctly."
+#: admin/partials/menu-page-pages.php:52
+#: admin/partials/menu-page-settings.php:82
+#: admin/partials/page-edit-classic-metabox.php:162
+#: admin/assets/js/general-block-var.js:58
+msgid "Search"
 msgstr ""
 
-#: admin/class-admin.php:531
-msgid "Go to:"
+#: admin/partials/menu-page-pages.php:53
+#: admin/partials/menu-page-settings.php:83
+#: admin/partials/page-edit-classic-metabox.php:163
+#: admin/assets/js/general-block-var.js:59
+msgid "No Results"
 msgstr ""
 
-#: admin/class-admin.php:532
-msgid "WooCommerce --> Settings --> Accounts & Privacy"
+#: admin/partials/menu-page-pages.php:54
+#: admin/partials/menu-page-settings.php:84
+#: admin/partials/page-edit-classic-metabox.php:164
+msgid "Searching.."
 msgstr ""
 
-#: admin/class-admin.php:533
-msgid "Disable option: \"Allow customers to place orders without an account\"."
+#: admin/partials/menu-page-quick-start.php:66
+msgid "Add Section Restrict"
 msgstr ""
 
-#: admin/includes/class-page-restrict-admin-classic-metabox-main.php:38
-msgid "Restrict Page for WooCommerce"
+#: admin/partials/menu-page-quick-start.php:67
+msgid "Add Page Restrict"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:33
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:71
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:70
+#: admin/partials/menu-page-quick-start.php:68
+msgid "Add Page Restrict - Classic Editor"
+msgstr ""
+
+#: admin/partials/menu-page-quick-start.php:69
+msgid "General Overview"
+msgstr ""
+
+#: admin/partials/menu-page-quick-start.php:70
+#: admin/partials/menu-page-settings.php:28
+msgid "Frontend"
+msgstr ""
+
+#: admin/partials/menu-page-settings.php:27
+#: admin/assets/js/block-restricted-pages-list.js:157
+#: admin/assets/js/block-section-restrict.js:359
+msgid "General"
+msgstr ""
+
+#: admin/partials/menu-page-settings.php:29
+msgid "Plugin"
+msgstr ""
+
+#: admin/partials/menu-page-user-overview.php:27
+msgid "Expire by Timeout"
+msgstr ""
+
+#: admin/partials/menu-page-user-overview.php:28
+msgid "Expire by Views"
+msgstr ""
+
+#: admin/partials/menu-pages/pages/pages-page.php:32
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:69
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:68
 msgid "Post Title"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:41
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:75
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:74
+#: admin/partials/menu-pages/pages/pages-page.php:40
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:73
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:72
 msgid "Post Slug"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:48
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:66
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:65
+#: admin/partials/menu-pages/pages/pages-page.php:47
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:64
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:63
 msgid "Post ID"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:58
+#: admin/partials/menu-pages/pages/pages-page.php:57
 msgid "Post Status"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:66
+#: admin/partials/menu-pages/pages/pages-page.php:65
 msgid "Published"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:69
+#: admin/partials/menu-pages/pages/pages-page.php:68
 msgid "Scheduled"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:79
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:94
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:90
-#: public/includes/class-page-restrict-public-wc-my-account.php:93
+#: admin/partials/menu-pages/pages/pages-page.php:78
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:92
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:88
+#: includes/front/class-wc-my-account.php:101
 msgid "View"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:80
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:95
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:91
+#: admin/partials/menu-pages/pages/pages-page.php:79
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:93
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:89
 msgid "Edit"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:90
-#: admin/partials/page-edit-classic-metabox.php:54
-#: admin/assets/js/block-section-restrict.js:385 admin/assets/js/metas.js:295
+#: admin/partials/menu-pages/pages/pages-page.php:89
+#: admin/partials/page-edit-classic-metabox.php:53
+#: admin/assets/js/block-section-restrict.js:398
+#: admin/assets/js/metas.js:302
 msgid "Products"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:93
-#: admin/partials/page-edit-classic-metabox.php:57
-#: admin/assets/js/block-section-restrict.js:372 admin/assets/js/metas.js:290
+#: admin/partials/menu-pages/pages/pages-page.php:92
+#: admin/partials/page-edit-classic-metabox.php:56
+#: admin/assets/js/block-section-restrict.js:377
+#: admin/assets/js/metas.js:290
 msgid "Lock by Products"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:110
-#: admin/partials/page-edit-classic-metabox.php:75
-#: admin/assets/js/metas.js:301
+#: admin/partials/menu-pages/pages/pages-page.php:111
+#: admin/partials/page-edit-classic-metabox.php:70
+#: admin/assets/js/block-section-restrict.js:388
+#: admin/assets/js/metas.js:297
+msgid "Not all products required"
+msgstr ""
+
+#: admin/partials/menu-pages/pages/pages-page.php:114
+#: admin/partials/page-edit-classic-metabox.php:79
+#: admin/assets/js/metas.js:308
 msgid "Page to show if product not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:131
-#: admin/partials/page-edit-classic-metabox.php:95
-#: admin/assets/js/metas.js:307
+#: admin/partials/menu-pages/pages/pages-page.php:135
+#: admin/partials/page-edit-classic-metabox.php:99
+#: admin/assets/js/metas.js:314
 msgid "Redirect if product was not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:133
-#: admin/partials/page-edit-classic-metabox.php:100
-#: admin/assets/js/metas.js:317
+#: admin/partials/menu-pages/pages/pages-page.php:137
+#: admin/partials/page-edit-classic-metabox.php:104
+#: admin/assets/js/metas.js:324
 msgid "Page to show if user is not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:154
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:272
-#: admin/partials/page-edit-classic-metabox.php:120
-#: admin/assets/js/metas.js:323
+#: admin/partials/menu-pages/pages/pages-page.php:158
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:270
+#: admin/partials/page-edit-classic-metabox.php:124
+#: admin/assets/js/metas.js:330
 msgid "Redirect if user is not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:157
-#: admin/partials/page-edit-classic-metabox.php:125
-#: admin/assets/js/block-section-restrict.js:448 admin/assets/js/metas.js:363
+#: admin/partials/menu-pages/pages/pages-page.php:161
+#: admin/partials/page-edit-classic-metabox.php:129
+#: admin/assets/js/block-section-restrict.js:461
+#: admin/assets/js/metas.js:370
 msgid "Timeout"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:161
-#: admin/partials/page-edit-classic-metabox.php:128
-#: admin/assets/js/block-section-restrict.js:394 admin/assets/js/metas.js:335
+#: admin/partials/menu-pages/pages/pages-page.php:165
+#: admin/partials/page-edit-classic-metabox.php:132
+#: admin/assets/js/block-section-restrict.js:407
+#: admin/assets/js/metas.js:342
 msgid "Days"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:166
-#: admin/partials/page-edit-classic-metabox.php:132
-#: admin/assets/js/block-section-restrict.js:405 admin/assets/js/metas.js:341
+#: admin/partials/menu-pages/pages/pages-page.php:170
+#: admin/partials/page-edit-classic-metabox.php:136
+#: admin/assets/js/block-section-restrict.js:418
+#: admin/assets/js/metas.js:348
 msgid "Hours"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:171
-#: admin/partials/page-edit-classic-metabox.php:136
-#: admin/assets/js/block-section-restrict.js:416 admin/assets/js/metas.js:347
+#: admin/partials/menu-pages/pages/pages-page.php:175
+#: admin/partials/page-edit-classic-metabox.php:140
+#: admin/assets/js/block-section-restrict.js:429
+#: admin/assets/js/metas.js:354
 msgid "Minutes"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:176
-#: admin/partials/page-edit-classic-metabox.php:140
-#: admin/assets/js/block-section-restrict.js:427 admin/assets/js/metas.js:353
+#: admin/partials/menu-pages/pages/pages-page.php:180
+#: admin/partials/page-edit-classic-metabox.php:144
+#: admin/assets/js/block-section-restrict.js:440
+#: admin/assets/js/metas.js:360
 msgid "Seconds"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:181
-#: admin/partials/page-edit-classic-metabox.php:144
-#: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:171
-#: admin/assets/js/metas.js:360
+#: admin/partials/menu-pages/pages/pages-page.php:185
+#: admin/partials/page-edit-classic-metabox.php:148
+#: includes/front/class-restricted-pages-list-blocks.php:179
+#: admin/assets/js/metas.js:367
 msgid "Views"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages.php:29
+#: admin/partials/menu-pages/pages/pages.php:27
 msgid "Filter by Post Type"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:43
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:41
 msgid "/en/page/all-page-settings-classic.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:45
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:43
 msgid "/en/page/all-page-settings-classic-screen-options.png"
 msgstr ""
 
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:46
+msgid "For older WordPress versions or if you just want to use the classic editor you will see classic WordPress metaboxes. The options are the same as on the new gutenberg editor."
+msgstr ""
+
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:47
+msgid "In the Products section you can choose which product to restrict the page with."
+msgstr ""
+
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:48
-msgid ""
-"For older WordPress versions or if you just want to use the classic editor "
-"you will see classic WordPress metaboxes. The options are the same as on the "
-"new gutenberg editor."
+msgid "In the Page to Show section you can choose which pages to show if the user hasn't bought a product, if it expired or if the user hasn't logged in. You can also choose to redirect to that page instead of just inserting the content into your chosen restricted page which is the default."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:49
-msgid ""
-"In the Products section you can choose which product to restrict the page "
-"with."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:50
-msgid ""
-"In the Page to Show section you can choose which pages to show if the user "
-"hasn't bought a product, if it expired or if the user hasn't logged in. You "
-"can also choose to redirect to that page instead of just inserting the "
-"content into your chosen restricted page which is the default."
+msgid "In the Timeout section set the time you want the bought product to expire if at all. You can choose to also expire it by views."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:51
-msgid ""
-"In the Timeout section set the time you want the bought product to expire if "
-"at all. You can choose to also expire it by views."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:53
 msgid "If you don't see it remember to turn it on in Screen Options."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:58
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict-classic.php:56
 msgid "Restrict the entire page if using the classic editor"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:46
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:44
 msgid "/en/page/check-plugin-box.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:48
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:46
 msgid "/en/page/enable-meta.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:50
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:48
 msgid "/en/page/products-page-settings.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:52
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:50
 msgid "/en/page/page-to-show-page-settings.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:54
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:52
 msgid "/en/page/timeout-page-settings.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:56
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:54
 msgid "While editing your page click on the menu shown below."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:57
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:55
 msgid "If its not there click on"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:59
-msgid ""
-"[ More tools & options ] --> [ Plugins ] --> [ Page Restrict for "
-"WooCommerce ]."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:57
+msgid "[ More tools & options ] --> [ Plugins ] --> [ Page Restrict for WooCommerce ]."
+msgstr ""
+
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:58
+msgid "Product or products you want to use in order to restrict the page from the \"Lock by Products\" dropdown."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:60
-msgid ""
-"Choose which product or products you want to use in order to restrict the "
-"page."
+msgid "Choose whether you want for the user to just buy at least one of the above listed products or require all of those products to purchase in order to be able to access that page. By default it requires all products selected to be bought."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:61
-msgid ""
-"Choose which pages to use for restrict messages if the user didn't buy the "
-"product, the bought product expired or didn't login into the site."
+msgid "Which pages to use for restrict messages if the user didn't buy the product, the bought product expired or didn't login into the site."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:63
-msgid ""
-"Choose whether you want to redirect to those pages instead of the default "
-"which is to insert the selected page content into the restricted page."
+msgid "Choose whether you want to redirect to those pages instead of the default which is to insert the selected page content into the restricted page."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:65
-msgid ""
-"Restrict access to the page by setting the time you want the bought product "
-"to expire or you can choose to also expire it by views as well."
+msgid "Restrict access to the page by setting the time you want the bought product to expire or you can choose to also expire it by views as well."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:66
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:63
-msgid ""
-"Leave it 0 to just restrict by products only. That means it just checks if "
-"the user bought the product. If they did it will give them access to the "
-"page indefinitely."
+msgid "Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:71
@@ -349,188 +383,158 @@ msgid "Restrict the entire page"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:42
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:40
 msgid "/en/frontend/restrict-pages-list-my-account-endpoint.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:44
-msgid ""
-"Shows a table of restricted pages for the current user which have had bought "
-"products for."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:42
+msgid "Shows a table of restricted pages for the current user which have had bought products for."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:46
-msgid ""
-"It shows on the My Account page which is generated by this WooCommerce "
-"shortcode [woocommerce_my_account]."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:44
+msgid "It shows on the My Account page which is generated by this WooCommerce shortcode [woocommerce_my_account]."
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:50
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:48
 msgid "/en/frontend/restrict-pages-list-shortcode-block.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:52
-msgid ""
-"Using a Gutenberg block in the Widgets section or a shortcode you can show "
-"it outside of the My Account page."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:50
+msgid "Using a Gutenberg block in the Widgets section or a shortcode you can show it outside of the My Account page."
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:56
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:54
 msgid "/en/frontend/restrict-pages-list-shortcode-block-edit-add.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:58
-msgid ""
-"You can find the Restricted Pages List Gutenberg block in the Widget section "
-"in the add block dialog."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:56
+msgid "You can find the Restricted Pages List Gutenberg block in the Widget section in the add block dialog."
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:62
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:60
 msgid "/en/frontend/restrict-pages-list-shortcode-block-edit.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:64
-msgid ""
-"Choose which table you want to show. Show table with restricted pages that "
-"expire by time or by view count. You can disable the default table styling "
-"with the last option."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:62
+msgid "Choose which table you want to show. Show table with restricted pages that expire by time or by view count. You can disable the default table styling with the last option."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:70
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:68
 msgid "If you need to use the shortcode these are its attributes:"
 msgstr ""
 
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:70
+msgid "[prwc_restricted_pages_list table=\"time\" disable_table_class=\"false\"]"
+msgstr ""
+
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:72
-msgid ""
-"[prwc_restricted_pages_list table=\"time\" disable_table_class=\"false\"]"
+msgid "* Using the table attribute you can choose which table of restricted page you will show. It can show pages that are restricted either by time or view count."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:74
-msgid ""
-"* Using the table attribute you can choose which table of restricted page "
-"you will show. It can show pages that are restricted either by time or view "
-"count."
+msgid "* Using disable_table_class attribute you can choose whether to kepp or not to keep the default plugin style for the tables."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:76
-msgid ""
-"* Using disable_table_class attribute you can choose whether to kepp or not "
-"to keep the default plugin style for the tables."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:81
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-frontend.php:79
 msgid "Frontend features available for the plugin"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:42
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:40
 msgid "/en/general-overview/all-pages-in-one.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:44
-msgid ""
-"You can look over multiple pages at once and restrict them by going to the"
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:42
+msgid "You can look over multiple pages at once and restrict them by going to the"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:46
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:44
 msgid "[ Page Restrict ] --> [ Pages ] menu page."
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:50
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:48
 msgid "/en/general-overview/user-page-restricted-time-data.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:52
-msgid ""
-"You can look over pages with their users which either have or had access to "
-"them. It won't show all restricted pages only the ones with those users "
-"where they have bought products which are needed to access those pages. Get "
-"there by going to the"
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:50
+msgid "You can look over pages with their users which either have or had access to them. It won't show all restricted pages only the ones with those users where they have bought products which are needed to access those pages. Get there by going to the"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:54
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:52
 msgid "[ Page Restrict ] --> [ User Overview ] menu page."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:56
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:54
 msgid "Look at users by pages that expire by time."
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:61
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:59
 msgid "/en/general-overview/user-page-restricted-view-data.png"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:63
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:61
 msgid "Or look at them by pages that expire by view count."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:68
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-restrict-general-overview.php:66
 msgid "General overview features available for the plugin"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:47
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:45
 msgid "/en/section/add-restrict-section.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:49
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:47
 msgid "/en/section/general-section-settings.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:51
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:49
 msgid "/en/section/products-sections-settings.png"
 msgstr ""
 
 #. translators: Replace this entire string with the url to your image.
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:53
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:51
 msgid "/en/section/timeout-sections-settings.png"
 msgstr ""
 
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:54
+msgid "The Restrict Section for WooCommerce block is located under Layout Elements pictured below."
+msgstr ""
+
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:55
+msgid "Using Inverse Block you can change whether the content in the section should be shown or hidden. By default it hides the section content."
+msgstr ""
+
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:56
-msgid ""
-"The Restrict Section for WooCommerce block is located under Layout Elements "
-"pictured below."
+msgid "If you want to tell the user what to do to get access to the hidden blocks you use the Inverse block to show that."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:57
-msgid ""
-"Using Inverse Block you can change whether the content in the section should "
-"be shown or hidden. By default it hides the section content."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:58
-msgid ""
-"If you want to tell the user what to do to get access to the hidden blocks "
-"you use the Inverse block to show that."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:59
 msgid "You can mirror settings from a block above or below the current one."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:60
-msgid ""
-"For example if you put a 100 day timeout in that other block this block will "
-"have a 100 day timeout as well."
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:58
+msgid "For example if you put a 100 day timeout in that other block this block will have a 100 day timeout as well."
+msgstr ""
+
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:59
+msgid "Products using which you can restrict access to the blocks content. You can choose one or multiple products from the \"Lock by Products\" dropdown."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:61
-msgid ""
-"Products using which you can restrict access to the blocks content. You can "
-"choose one or multiple products."
+msgid "Choose whether you want for the user to just buy at least one of the above listed products or require all of those products to purchase in order to be able to access that section. By default it requires all products selected to be bought."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:62
-msgid ""
-"Restrict access to the section by setting the time you want the bought "
-"product to expire."
+msgid "Restrict access to the section by setting the time you want the bought product to expire."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:64
@@ -538,17 +542,11 @@ msgid "Using a shortcode is also an option."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:66
-msgid ""
-"[prwc_is_purchased products=\"1,2\" days=\"25\" hours=\"2\" minutes=\"45\" "
-"seconds=\"15 inverse=\"false\"]"
+msgid "[prwc_is_purchased products=\"1,2\" days=\"25\" hours=\"2\" minutes=\"45\" seconds=\"15 inverse=\"false\"]"
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:68
-msgid ""
-"* Using the inverse option you can choose inverse=\"false\" to hide the "
-"content in order for the user to not see it. Choose inverse=\"true\" for the "
-"user to see it in order to show them instructions on what to do to access "
-"the desired content you chose using inverse=\"false\"."
+msgid "* Using the inverse option you can choose inverse=\"false\" to hide the content in order for the user to not see it. Choose inverse=\"true\" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse=\"false\"."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:70
@@ -559,410 +557,347 @@ msgstr ""
 msgid "Restrict blocks"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:26
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:24
 msgid "WooCommerce My Account \"Restricted Pages\""
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:30
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:28
 msgid "Disable Restricted Pages List My Account page."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:35
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:33
 msgid "Hide time table"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:39
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:37
 msgid "Hide view table"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:43
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:41
 msgid "Disable default table plugin design ( removes table CSS classes )"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:51
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:49
 msgid "* Change settings for the plugin page on the WooCommerce"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:55
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:53
 msgid "My Account"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:59
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:57
 msgid "page on which the"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:63
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:61
 msgid "[woocommerce_my_account]"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:67
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:65
 msgid "shortcode was used."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:26
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:24
 msgid "Limit Available Products to Restrict Pages With"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:30
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:28
 msgid "Limit to Virtual Products"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:34
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:32
 msgid "Limit to Downloadable Products"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:41
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:39
 msgid "* Warning:"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:42
-msgid ""
-"If you decide to reduce available products to choose from for page "
-"restriction,"
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:40
+msgid "If you decide to reduce available products to choose from for page restriction,"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:43
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:41
 msgid "all products not matching"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:44
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:42
 msgid "those checked attributes for all existing restricted pages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:45
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:43
 msgid "will be removed."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:52
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:50
 msgid "Limit Pages by Post Type"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:54
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:52
 msgid "Post Types"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:108
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:106
 msgid "* When you have chosen your post types"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:112
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:110
 msgid "only pages matching them"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:116
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:114
 msgid "can be used for"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:120
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:118
 msgid "restrict messages."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:126
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:124
 msgid "Restrict messages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:130
-msgid ""
-"= Messages used to show your users they have no access to them either "
-"because they haven't logged in, haven't bought the product or their bought "
-"product expired."
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:128
+msgid "= Messages used to show your users they have no access to them either because they haven't logged in, haven't bought the product or their bought product expired."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:137
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:135
 msgid "Default page if product not bought on site pages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:140
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:138
 msgid "Page to show if not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:164
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:162
 msgid "Choose which page to use if a"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:168
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:166
 msgid "product wasn't bought or expired"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:172
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:170
 msgid "for all restricted pages."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:180
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:178
 msgid "Redirect if page not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:186
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:184
 msgid "Choose to"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:190
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:282
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:188
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:280
 msgid "redirect to the page"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:194
-msgid ""
-"instead of the default which is to show the chosen page into the content "
-"area of the restricted page."
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:192
+msgid "instead of the default which is to show the chosen page into the content area of the restricted page."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:200
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:292
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:198
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:290
 msgid "Warning:"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:201
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:293
-msgid ""
-"If you decide to choose a private page regular users won't be able to "
-"redirect to it. It will just return a 404 error."
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:199
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:291
+msgid "If you decide to choose a private page regular users won't be able to redirect to it. It will just return a 404 error."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:211
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:303
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:209
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:301
 msgid "* General settings for pages when the user"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:215
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:213
 msgid "didn't buy the product or it expired"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:219
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:311
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:217
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:309
 msgid "if a page wasn't chosen on a per page bases."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:227
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:225
 msgid "Default page if user is not logged on site pages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:230
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:228
 msgid "Page to show if not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:256
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:254
 msgid "Choose which page to use if a user"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:260
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:258
 msgid "wasn't logged"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:264
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:262
 msgid "in for all restricted pages."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:278
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:276
 msgid "Choose to "
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:286
-msgid ""
-" instead of the default which is to show the chosen page into the content "
-"area of the restricted page."
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:284
+msgid " instead of the default which is to show the chosen page into the content area of the restricted page."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:307
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:305
 msgid "wasn't logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-plugin.php:26
+#: admin/partials/menu-pages/settings/tabs/tab-plugin.php:24
 msgid "On Plugin Uninstallion"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-plugin.php:30
+#: admin/partials/menu-pages/settings/tabs/tab-plugin.php:28
 msgid "Delete all data connected to the plugin on uninstall"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:44
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:42
 msgid "Check users page expiration by time"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:49
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:49
-msgid ""
-"There aren't any users that bought any products needed to access restricted "
-"pages."
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:47
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:47
+msgid "There aren't any users that bought any products needed to access restricted pages."
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:82
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:80
 msgid "Expiration Time"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:108
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:105
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:106
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:103
 msgid "Username"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:112
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:109
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:110
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:107
 msgid "Email"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:120
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:118
 msgid "Date and Time of Expiration"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:44
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:42
 msgid "Check users page expiration by view count"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:81
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:79
 msgid "Expiration Views"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:113
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:111
 msgid "Times Viewed"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:117
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:115
 msgid "Number of views until expiration"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:72
-#: admin/assets/js/metas.js:329
+#: admin/partials/page-edit-classic-metabox.php:76
+#: admin/assets/js/metas.js:336
 msgid "Page to Show"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:155
-#: admin/partials/menu-page-pages.php:49
-#: admin/partials/menu-page-settings.php:80
-#: admin/assets/js/general-block-var.js:52
-msgid "Select Value"
+#: includes/admin/class-classic-metabox-main.php:40
+msgid "Restrict Page for WooCommerce"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:158
-#: admin/partials/menu-page-pages.php:53
-#: admin/partials/menu-page-settings.php:83
-#: admin/assets/js/general-block-var.js:54
-msgid "Search"
+#: includes/common/class-section-blocks.php:307
+msgid "Your access to this section expired or you haven't bought products needed to access this page. Buy"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:159
-#: admin/partials/menu-page-pages.php:54
-#: admin/partials/menu-page-settings.php:84
-#: admin/assets/js/general-block-var.js:55
-msgid "No Results"
-msgstr ""
-
-#: admin/partials/page-edit-classic-metabox.php:160
-#: admin/partials/menu-page-pages.php:55
-#: admin/partials/menu-page-settings.php:85
-msgid "Searching.."
-msgstr ""
-
-#: admin/partials/menu-page-pages.php:39
-#: admin/partials/menu-page-settings.php:55
-#: admin/partials/menu-page-user-overview.php:47
-msgid "Save"
-msgstr ""
-
-#: admin/partials/menu-page-quick-start.php:67
-msgid "Add Section Restrict"
-msgstr ""
-
-#: admin/partials/menu-page-quick-start.php:68
-msgid "Add Page Restrict"
-msgstr ""
-
-#: admin/partials/menu-page-quick-start.php:69
-msgid "Add Page Restrict - Classic Editor"
-msgstr ""
-
-#: admin/partials/menu-page-quick-start.php:70
-msgid "General Overview"
-msgstr ""
-
-#: admin/partials/menu-page-quick-start.php:71
-#: admin/partials/menu-page-settings.php:29
-msgid "Frontend"
-msgstr ""
-
-#: admin/partials/menu-page-settings.php:28
-#: admin/assets/js/block-restricted-pages-list.js:157
-#: admin/assets/js/block-section-restrict.js:355
-msgid "General"
-msgstr ""
-
-#: admin/partials/menu-page-settings.php:30
-msgid "Plugin"
-msgstr ""
-
-#: admin/partials/menu-page-user-overview.php:28
-msgid "Expire by Timeout"
-msgstr ""
-
-#: admin/partials/menu-page-user-overview.php:29
-msgid "Expire by Views"
-msgstr ""
-
-#: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:124
-#: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:170
-msgid "Page"
-msgstr ""
-
-#: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:125
-msgid "Time of Expiration"
-msgstr ""
-
-#: public/includes/class-page-restrict-public-restricted-pages-list-blocks.php:172
-msgid "Views left"
-msgstr ""
-
-#: public/includes/class-page-restrict-public-section-blocks.php:289
-msgid ""
-"Your access to this section expired or you haven't bought products needed to "
-"access this page. Buy"
-msgstr ""
-
-#: public/includes/class-page-restrict-public-section-blocks.php:289
+#: includes/common/class-section-blocks.php:307
 msgid "in order to access this section!"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-section-blocks.php:384
-msgid ""
-"Your access to this page expired or you haven't bought products needed to "
-"access this page. Buy"
+#: includes/common/class-section-blocks.php:405
+msgid "Your access to this page expired or you haven't bought products needed to access this page. Buy"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-section-blocks.php:384
-#: public/includes/class-page-restrict-public-section-blocks.php:398
-#: public/includes/class-page-restrict-public-section-blocks.php:503
+#: includes/common/class-section-blocks.php:405
+#: includes/common/class-section-blocks.php:419
+#: includes/common/class-section-blocks.php:528
 msgid "in order to access this page!"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-section-blocks.php:397
-#: public/includes/class-page-restrict-public-section-blocks.php:502
+#: includes/common/class-section-blocks.php:418
+#: includes/common/class-section-blocks.php:527
 msgid "logged in"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-section-blocks.php:398
-#: public/includes/class-page-restrict-public-section-blocks.php:503
+#: includes/common/class-section-blocks.php:419
+#: includes/common/class-section-blocks.php:528
 msgid "You need to be"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-wc-my-account.php:48
+#: includes/front/class-restricted-pages-list-blocks.php:132
+#: includes/front/class-restricted-pages-list-blocks.php:178
+msgid "Page"
+msgstr ""
+
+#: includes/front/class-restricted-pages-list-blocks.php:133
+msgid "Time of Expiration"
+msgstr ""
+
+#: includes/front/class-restricted-pages-list-blocks.php:180
+msgid "Views left"
+msgstr ""
+
+#: includes/front/class-wc-my-account.php:47
 msgid "Restricted Pages"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-wc-my-account.php:79
+#: includes/front/class-wc-my-account.php:87
 #: admin/assets/js/block-restricted-pages-list.js:28
 msgid "Restricted Pages List"
 msgstr ""
 
-#: public/includes/class-page-restrict-public-wc-my-account.php:81
+#: includes/front/class-wc-my-account.php:89
 msgid "Lists restricted pages for which you have already bought products."
 msgstr ""
 
-#: public/includes/class-page-restrict-public-wc-my-account.php:86
+#: includes/front/class-wc-my-account.php:94
 msgid "Time"
 msgstr ""
 
+#: includes/functions.php:72
+msgid "Click here to install WooCommerce ( direct installation link )."
+msgstr ""
+
+#: includes/functions.php:85
+msgid "You haven't disabled GUEST CHECKOUT in WooCommerce!"
+msgstr ""
+
+#: includes/functions.php:86
+msgid "If your unregistered users are buying products with WooCommerce without that disabled the products will not be able to be connected to any account which means this plugin can't know who bought it and can't allow access to specified pages correctly."
+msgstr ""
+
+#: includes/functions.php:87
+msgid "Go to:"
+msgstr ""
+
+#: includes/functions.php:88
+msgid "WooCommerce --> Settings --> Accounts & Privacy"
+msgstr ""
+
+#: includes/functions.php:89
+msgid "Disable option: \"Allow customers to place orders without an account\"."
+msgstr ""
+
 #: admin/assets/js/block-restricted-pages-list.js:29
-msgid ""
-"Shows a list of all pages that the current user bought a product needed for "
-"unlock."
+msgid "Shows a list of all pages that the current user bought a product needed for unlock."
 msgstr ""
 
 #: admin/assets/js/block-restricted-pages-list.js:124
@@ -975,9 +910,7 @@ msgid "Show View Table"
 msgstr ""
 
 #: admin/assets/js/block-restricted-pages-list.js:146
-msgid ""
-"Show a table containing all pages the current user bought products for in "
-"order to access them."
+msgid "Show a table containing all pages the current user bought products for in order to access them."
 msgstr ""
 
 #: admin/assets/js/block-restricted-pages-list.js:151
@@ -992,78 +925,72 @@ msgstr ""
 msgid "Restricts access to sections of pages using WooCommerce products."
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:284
+#: admin/assets/js/block-section-restrict.js:288
 msgid "Show restricted content"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:288
+#: admin/assets/js/block-section-restrict.js:292
 msgid "Inverse Block"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:298
+#: admin/assets/js/block-section-restrict.js:302
 msgid "Show content if user has no access."
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:300
-msgid ""
-"This is to notify the user they don't have access and what to do to access "
-"it."
+#: admin/assets/js/block-section-restrict.js:304
+msgid "This is to notify the user they don't have access and what to do to access it."
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:306
+#: admin/assets/js/block-section-restrict.js:310
 msgid "Default: The user will not see the text in the section"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:311
+#: admin/assets/js/block-section-restrict.js:315
 msgid "Default Restrict Message"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:320
-msgid ""
-"Show a Restrict Message which contains products needed to buy instead of "
-"nothing."
+#: admin/assets/js/block-section-restrict.js:324
+msgid "Show a Restrict Message which contains products needed to buy instead of nothing."
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:325
+#: admin/assets/js/block-section-restrict.js:329
 msgid "Default: Section will be empty."
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:328
+#: admin/assets/js/block-section-restrict.js:332
 msgid "Copy settings from another block"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:332
+#: admin/assets/js/block-section-restrict.js:336
 msgid "Above block"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:344
+#: admin/assets/js/block-section-restrict.js:348
 msgid "Below block"
 msgstr ""
 
-#: admin/assets/js/block-section-restrict.js:383 admin/assets/js/metas.js:287
+#: admin/assets/js/block-section-restrict.js:396
+#: admin/assets/js/metas.js:287
 msgid "No available products to show"
 msgstr ""
 
-#: admin/assets/js/general-block-var.js:56
+#: admin/assets/js/general-block-var.js:60
 msgid "Searching..."
 msgstr ""
 
-#: admin/assets/js/general-block-var.js:86
-msgid ""
-"You had the \"Above block\" or \"Below block\" setting checked but you dont "
-"have a usable block. Add a Section Block below or above in order to be able "
-"to check that setting"
+#: admin/assets/js/general-block-var.js:90
+msgid "You had the \"Above block\" or \"Below block\" setting checked but you dont have a usable block. Add a Section Block below or above in order to be able to check that setting"
 msgstr ""
 
-#: admin/assets/js/metas.js:298 admin/assets/js/metas.js:314
+#: admin/assets/js/metas.js:305
+#: admin/assets/js/metas.js:321
 msgid "No available pages to show"
 msgstr ""
 
-#: admin/assets/js/metas.js:312
+#: admin/assets/js/metas.js:319
 msgid "Default: Render the not bought page content into the current page"
 msgstr ""
 
-#: admin/assets/js/metas.js:328
-msgid ""
-"Default: Render the user is not logged in page content into the current page"
+#: admin/assets/js/metas.js:335
+msgid "Default: Render the user is not logged in page content into the current page"
 msgstr ""
