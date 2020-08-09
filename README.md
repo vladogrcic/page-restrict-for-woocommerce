@@ -18,7 +18,7 @@ Page Restrict for WooCommerce is a plugin that sells access to pages, posts and 
 ## Features
 * Restrict content from pages, posts and custom post types based on if they have purchased a specific WooCommerce product
 * Restrict entire page or just sections of it
-* Use one or multiple products to restrict it
+* Use one or multiple products to restrict it and choose whether you want to require the user to buy all of them to access or at least one of the products that restrict. 
 * Restrict by time - Set a time limit for the user after which they won't be able to see the content.
 * Restrict by views - Set a view count for the user after which they won't be able to see the content ( currently only if you want to restrict entire pages ).
 * Use other pages or posts for specific pages as Restricted Messages
