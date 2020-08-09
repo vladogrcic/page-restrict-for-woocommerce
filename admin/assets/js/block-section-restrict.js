@@ -55,6 +55,10 @@
 				type: 	 'array',
 				default: [],
 			},
+			notAllProductsRequired: {
+				type: 	 'boolean',
+				default: false,
+			},
 			days: {
 				type: 	 'int',
 				default: 0
@@ -367,18 +371,27 @@
 											slimSelectEnable();
 										},
 									},
-										el(SelectControl, {
-											value: 		attributes.products,
-											label: 		__('Lock by Products', 'page_restrict_domain'),
-											class: 		'slim-select',
-											disabled: 	disabledInput,
-											onChange: 	changeProducts,
-											multiple: 	true,
-											options: 	prwc_termNames,
-											// ref: function () {
-											// 	slimSelectEnable();
-											// },
-										})
+										[
+											el(SelectControl, {
+												value: 		attributes.products,
+												label: 		__('Lock by Products', 'page_restrict_domain'),
+												class: 		'slim-select',
+												disabled: 	disabledInput,
+												onChange: 	changeProducts,
+												multiple: 	true,
+												options: 	prwc_termNames,
+												// ref: function () {
+												// 	slimSelectEnable();
+												// },
+											}),
+											el(ToggleControl, {
+												label: 	 __('Not all products required', 'page_restrict_domain'),
+												checked: attributes.notAllProductsRequired,
+												onChange: function (notAllProductsRequired) {
+													setAttributes({ notAllProductsRequired: notAllProductsRequired });
+												},
+											})
+										]
 									), prwc_termNames, 
 									el('label', {}, __('No available products to show', 'page_restrict_domain')),
 								)

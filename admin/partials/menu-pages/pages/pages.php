@@ -82,6 +82,7 @@
                             foreach ($pages_paginated[$s] as $key => $value) {
                                 $pages_inc++;
                                 $prwc_products      =   $page_options->get_page_options($value->ID, 'prwc_products');
+                                $prwc_not_all_products_required  =   $page_options->get_page_options($value->ID, 'prwc_not_all_products_required');
                                 $prwc_timeout_days       =   $page_options->get_page_options($value->ID, 'prwc_timeout_days');
                                 $prwc_timeout_hours      =   $page_options->get_page_options($value->ID, 'prwc_timeout_hours');
                                 $prwc_timeout_minutes    =   $page_options->get_page_options($value->ID, 'prwc_timeout_minutes');

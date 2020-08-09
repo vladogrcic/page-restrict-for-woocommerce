@@ -60,6 +60,14 @@ class Section_Blocks
      */
     public $products;
     /**
+     * Check if you don't want to require all products for purchase.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      boolean      $prwc_not_all_products_required    Check if you don't want to require all products for purchase.
+     */
+    public $not_all_products_required;
+    /**
      * General option if there isn't one set per page which is used to show if product wasnt bought or was bought but it expired.
      *
      * @since    1.0.0
@@ -162,6 +170,8 @@ class Section_Blocks
         $this->page_options     = new Page_Plugin_Options();
     
         $this->products     =   $this->page_options->get_page_options($this->post_id, 'prwc_products');
+        $this->not_all_products_required     =   $this->page_options->get_page_options($this->post_id, 'prwc_not_all_products_required');
+        
         $this->days         =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_days');
         $this->hours        =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_hours');
         $this->minutes      =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_minutes');
@@ -190,6 +200,7 @@ class Section_Blocks
     {
         $a = shortcode_atts(array(
             'products' => false,
+            'not_all_products_required' => false,
             'days' => 0,
             'hours' => 0,
             'minutes' => 0,
@@ -215,6 +226,10 @@ class Section_Blocks
         }
         if (array_sum(array_map('strlen', $products)) > 20*count($products)) {
             trigger_error('Warning: Lock by Products attribute reached character limit.');
+        }
+        $not_all_products_required          = (int)sanitize_key($a['not_all_products_required']);        
+        if (strlen(trim($not_all_products_required)) > 1) {
+            trigger_error('Warning: Not all products required attribute reached character limit.');
         }
         $views          = (int)sanitize_key($a['views']);        
         if (strlen(trim($views)) > 20) {
@@ -258,13 +273,15 @@ class Section_Blocks
                 $user_id,
                 $products_arr
             );
+            $this->restrict->user_id            = $user_id;
+            $this->restrict->post_id            = $post_id;
+            $this->restrict->products           = $products_arr;
+            $this->restrict->purchased_products = $purchased_products;
+
             $check_final = $this->restrict->check_final_all_types(
-                $user_id,
-                $post_id,
-                $purchased_products,
-                $products_arr,
                 $timeout_sec,
-                $views
+                $views,
+                $not_all_products_required
             );
             if ($inverse) {
                 $check_final = !$check_final;
@@ -320,6 +337,7 @@ class Section_Blocks
         $not_logged_in_page               = $this->not_logged_in_page;
 
         $products   = $this->products;
+        $not_all_products_required   = $this->not_all_products_required;
         $days       = $this->days;
         $hours      = $this->hours;
         $minutes    = $this->minutes;
@@ -349,13 +367,15 @@ class Section_Blocks
                 $user_id,
                 $products_arr
             );
+            $this->restrict->user_id = $user_id;
+            $this->restrict->post_id = $post_id;
+            $this->restrict->products = $products_arr;
+            $this->restrict->purchased_products = $purchased_products;
+        
             $check_final = $this->restrict->check_final_all_types(
-                $user_id,
-                $post_id,
-                $purchased_products,
-                $products_arr,
                 $timeout_sec,
-                $views
+                $views,
+                $not_all_products_required
             );
             if($check_final){
                 return do_shortcode($content);
@@ -427,6 +447,7 @@ class Section_Blocks
 		$redirect_not_logged_in 	 = $this->redirect_not_logged_in;
 
         $products   = $this->products;
+        $not_all_products_required   = $this->not_all_products_required;
         $days       = $this->days;
         $hours      = $this->hours;
         $minutes    = $this->minutes;
@@ -458,13 +479,16 @@ class Section_Blocks
                 $user_id,
                 $products_arr
             );
+
+            $this->restrict->user_id = $user_id;
+            $this->restrict->post_id = $post_id;
+            $this->restrict->products = $products_arr;
+            $this->restrict->purchased_products = $purchased_products;
+        
             $check_final = $this->restrict->check_final_all_types(
-                $user_id,
-                $post_id,
-                $purchased_products,
-                $products_arr,
                 $timeout_sec,
-                $views
+                $views,
+                $not_all_products_required
             );
             if($check_final){
                 return;

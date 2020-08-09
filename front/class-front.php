@@ -124,10 +124,11 @@ class Front {
         $hours        =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_hours');
         $minutes      =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_minutes');
         $seconds      =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_seconds');
-		$timeout_sec = abs($seconds+($minutes*60)+($hours*3600)+($days*86400));
+		$timeout_sec  =   abs($seconds+($minutes*60)+($hours*3600)+($days*86400));
 
-		$views 		  = $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_views');
-		$products     = $section_blocks->page_options->get_page_options($post_id, 'prwc_products');
+		$views 		  =   $section_blocks->page_options->get_page_options($post_id, 'prwc_timeout_views');
+		$products     =   $section_blocks->page_options->get_page_options($post_id, 'prwc_products');
+		$not_all_products_required     = $section_blocks->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 
 		if(!($views && $products)){
 			return;
@@ -144,14 +145,17 @@ class Front {
 			$user_id,
 			$products_arr
 		);
-		$check_views = $restrict_types->check_views($user_id, $post_id, $views, $purchased_products, true);
+
+		$restrict_types->user_id = $user_id;
+		$restrict_types->post_id = $post_id;
+		$restrict_types->products = $products_arr;
+		$restrict_types->purchased_products = $purchased_products;
+
+		$check_views = $restrict_types->check_views($views, true);
 		$check_final = $restrict_types->check_final_all_types(
-			$user_id,
-			$post_id,
-			$purchased_products,
-			$products_arr,
 			$timeout_sec,
-			$views
+			$views,
+			$not_all_products_required
 		);
 		
 		$meta_value = [

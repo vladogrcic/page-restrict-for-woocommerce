@@ -25,6 +25,7 @@
     <?php
         $redirect_prod_not_bought_id++;
         $redirect_user_not_logged_in_id++;
+        $not_all_products_required_id++;
     ?>
     <div class="page-info">
         <div class="page-title">
@@ -104,6 +105,11 @@
                         endforeach 
                     ?>
                     </select>
+                    <br>
+                    <br>
+                    <input type="checkbox" class="not-all-products-required" id="not_all_products_required_id_<?php echo $not_all_products_required_id; ?>" value="1" <?php checked($prwc_not_all_products_required, '1'); ?>>
+                    <label for="not_all_products_required_id_<?php echo $not_all_products_required_id; ?>" class=""> <?php esc_html_e('Not all products required', 'page_restrict_domain'); ?></label>
+                    <br>
                     <hr>
                     <label class=""> <?php esc_html_e('Page to show if product not bought', 'page_restrict_domain'); ?> </label>
                     <select class="redirect-not-bought-page slimselect">

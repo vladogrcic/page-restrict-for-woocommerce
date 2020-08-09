@@ -115,7 +115,7 @@ function save_main_options_ajax() {
         }
         if(jQuery('.pages-options-wrapper').length){
             var data = {
-                action: "pages_options",
+                action: "prwc_pages_options",
                 nonce: page_restrict_wc.nonce,
                 option_page: 'prwc-settings-group',
             };
@@ -127,6 +127,7 @@ function save_main_options_ajax() {
                 if(Array.isArray(prwc_products)){
                     prwc_products = prwc_products.join(',');
                 }
+                var prwc_not_all_products_required = +(jQuery(pages[i]).find('.not-all-products-required').is(':checked'));
 
                 var prwc_not_bought_page          =  jQuery(pages[i]).find('.redirect-not-bought-page').val();
                 var prwc_redirect_not_bought      =  +(jQuery(pages[i]).find('.redirect-prod-page').is(':checked'));
@@ -140,6 +141,7 @@ function save_main_options_ajax() {
 
                 pages_lock_data[jQuery(pages[i]).data('page-id')] = {
                     'prwc_products'                 :   prwc_products,
+                    'prwc_not_all_products_required':   prwc_not_all_products_required,
                     'prwc_not_bought_page'          :   prwc_not_bought_page,
                     'prwc_redirect_not_bought'      :   prwc_redirect_not_bought,
                     'prwc_not_logged_in_page'       :   prwc_not_logged_in_page,

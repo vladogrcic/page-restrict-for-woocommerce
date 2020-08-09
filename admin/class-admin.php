@@ -121,22 +121,6 @@ class Admin
         $prwc_limit_virtual_products        =   $page_options->get_general_options('prwc_limit_to_virtual_products');
         $prwc_limit_downloadable_products   =   $page_options->get_general_options('prwc_limit_to_downloadable_products');
         $prwc_post_types_general            =   $page_options->get_general_options('prwc_general_post_types');
-        
-        if((int)$prwc_limit_virtual_products)        {
-            $args['virtual']        = (int)$prwc_limit_virtual_products;
-        }
-        if((int)$prwc_limit_downloadable_products)   {
-            $args['downloadable']   = (int)$prwc_limit_downloadable_products;
-        }
-        $args['order']          = 'DESC'; 
-
-        $products = wc_get_products($args);
-        $products_out = [];
-        $newtext = [];
-        for ($i=0; $i < count($products); $i++) {
-            $products_out[] = ["value" => $products[$i]->get_id(), "label" => $products[$i]->get_slug()];
-            $newtext[] = wordwrap($products[$i]->get_id(), 20, " ");
-        }
         include_once(plugin_dir_path( __FILE__ )."partials/menu-pages/pages/pages-vars.php");
         $pages_out = [];
         foreach ($all_pages as $key => $value) {
@@ -358,6 +342,16 @@ class Admin
                     return current_user_can('edit_posts');
                 },
             ));
+            register_meta('post', 'prwc_not_all_products_required', array(
+                'type'    => 'boolean',
+                'single'	=> true,
+                'show_in_rest'	=> true,
+                'sanitize_callback'	=> 'sanitize_text_field',
+                'auth_callback'	=> function ()
+                {
+                    return current_user_can('edit_posts');
+                },
+            ));
             register_meta('post', 'prwc_not_bought_page', array(
                 'type'		=> 'string',
                 'single'	=> true,
@@ -482,8 +476,8 @@ class Admin
      */
     public function register_ajax()
     {
-        add_action( 'wp_ajax_pages_options', array( $this->ajax, 'pages_options') );
-        add_action( 'wp_ajax_nopriv_pages_options', array( $this->ajax, 'pages_options') );
+        add_action( 'wp_ajax_prwc_pages_options', array( $this->ajax, 'pages_options') );
+        add_action( 'wp_ajax_nopriv_prwc_pages_options', array( $this->ajax, 'pages_options') );
 
         add_action( 'wp_ajax_prwc_plugin_options', array( $this->ajax, 'plugin_options') );
         add_action( 'wp_ajax_nopriv_prwc_plugin_options', array( $this->ajax, 'plugin_options') );

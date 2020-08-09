@@ -9,6 +9,8 @@
  * @package    PageRestrictForWooCommerce\Includes\Common
  */
 namespace PageRestrictForWooCommerce\Includes\Common;
+use Error;
+
 /**
  * Class with several methods to see whether the current user has authorization to access the pages.
  *
@@ -17,23 +19,207 @@ namespace PageRestrictForWooCommerce\Includes\Common;
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
 class Restrict_Types {
+        
+    /**
+     * user_id
+     * @since    1.2.0
+     * @var int
+     */
+    public $user_id;    
+    /**
+     * post_id
+     * @since    1.2.0
+     * @var int
+     */
+    public $post_id;    
+    /**
+     * Products that are required to access the page.
+     * @since    1.2.0
+     * @var array
+     */
+    public $products;    
+    /**
+     * Products user purchased.
+     * @since    1.2.0
+     * @var array
+     */
+    public $purchased_products;
+    
+    /**
+     * Products user purchased.
+     * @since    1.2.0
+     * @var array
+     */
+    protected $processed_purchased_products;    
+    /**
+     * Products user purchased.
+     * @since    1.2.0
+     * @var array
+     */
+    protected $purchased_products_count;    
+    /**
+     * Minimal number of purchased products which is used to check how many valid pack of products the user purchased.
+     * @since    1.2.0
+     * @var bool
+     */
+    protected $valid_purchased_product_amount;    
+    /**
+     * Products user purchased.
+     * @since    1.2.0
+     * @var array
+     */
+    protected $purchased_products_packs;    
+    /**
+     * The latest date the user purchased the specific pack of products in $products property.
+     * @since    1.2.0
+     * @var array
+     */
+    protected $biggest_time_in_pack;  
+    /**
+     * is_calc_purchased_products_called
+     * @since    1.2.0
+     * @var int
+     */
+    protected $is_calc_purchased_products_called;
+
+    /**
+     * Initialize properties.
+     * @since    1.2.0
+     *
+     */
+    public function __construct(){
+        $this->processed_purchased_products = [];
+        $this->purchased_products_count = [];
+        $this->valid_purchased_product_amount = 0;
+        $this->purchased_products_packs = [];
+        $this->biggest_time_in_pack = [];
+        $this->is_calc_purchased_products_called = 0;
+
+        $this->user_id = 0;
+        $this->post_id = 0;
+        $this->products = [];
+        $this->purchased_products = [];
+    }    
+    /**
+     * Calculate required class variables for the class to operate.
+     *
+     * @since    1.2.0
+     * 
+     * @return void
+     */
+    public function calc_purchased_products(){
+        if( !$this->user_id && !$this->post_id ){
+            throw new Error('No post or user selected.');
+        }
+        if( $this->is_calc_purchased_products_called ){
+            return;
+        }
+        $this->is_calc_purchased_products_called = 1;
+        $this->purchased_products_ids = [];
+        $this->purchased_products_packs = [];
+        $purchased_products = [];
+        for ($i=0; $i < count($this->purchased_products); $i++) { 
+            if( in_array($this->purchased_products[$i]->get_product_id(), $this->products) ){
+                $purchased_products[] = $this->purchased_products[$i];
+                $this->purchased_products_ids[] = $this->purchased_products[$i]->get_product_id();
+                $this->purchased_products_packs[$this->purchased_products[$i]->get_product_id()][] = $this->purchased_products[$i];
+            }
+        }
+        $this->purchased_products = $purchased_products;
+        $this->purchased_products_count = array_count_values( $this->purchased_products_ids );
+        if( $this->purchased_products_count ){
+            $this->valid_purchased_product_amount = min( $this->purchased_products_count );
+        }
+        $prods_to_keep_count = [];
+        foreach ($this->purchased_products as $index => $value) {
+            if( in_array($value->get_product_id(), $this->products) ){
+                $prods_to_keep_count[ $value->get_product_id() ] = $this->valid_purchased_product_amount;
+            }
+        }
+        $this->processed_purchased_products = [];
+        $this->processed_purchased_products_packs = [];
+        foreach ( $this->purchased_products as $index => $value ) {
+            $product_id = $value->get_product_id();
+            if( $prods_to_keep_count[ $product_id ] ){
+                $this->processed_purchased_products[] = $value;
+                $this->processed_purchased_products_packs[ $value->get_product_id() ][] = $value;
+                $prods_to_keep_count[ $product_id ] = $prods_to_keep_count[ $product_id ]-1;
+            }
+            else{
+                continue;
+            }
+        }
+    } 
+    /**
+     * Calc time between products.
+     * 
+     * @since    1.2.0
+     *
+     * @param  float     $timeout_sec           The time, in seconds, elapsed since the first product was bought (excluding the time between bought products).
+     * @param  bool      $not_all_products_required
+     * @return int
+     */
+    public function calc_time_between_products( float $timeout_sec, bool $not_all_products_required=false )
+    {
+        $time_between_buy = 0;
+        if( $not_all_products_required ){
+            // Time between the expiration of one product to the begginning of the next.
+            for ($i=0; $i < count( $this->purchased_products ); $i++) { 
+                if($i !== 0){
+                    $current_time       = $this->purchased_products[$i]  ['date_completed']->getTimestamp();
+                    $next_time          = $this->purchased_products[$i-1]['date_completed']->getTimestamp();
+                    $time_between_buy   += ($current_time - $next_time) - $timeout_sec;
+                }
+            }
+        }
+        else{
+            // Time between the expiration of one pack of products to the begginning of the next.
+            if( $this->valid_purchased_product_amount > 1 ){
+                $time_pack = [];
+                for ($i=$this->valid_purchased_product_amount; $i > 0; $i--) { 
+                    $index = $i-1;
+                    foreach ( $this->processed_purchased_products_packs as $product_id => $product_item ) {
+                        $prod_timestamp = $product_item[$index]['date_completed']->getTimestamp();
+                        $time_pack[] = $prod_timestamp;
+                    }
+                    $this->biggest_time_in_pack[$index] = max($time_pack);
+                }
+                sort($this->biggest_time_in_pack);
+                for ($i=0; $i < count( $this->biggest_time_in_pack ); $i++) { 
+                    if($i !== 0){
+                        $current_time       = $this->biggest_time_in_pack[$i];
+                        $next_time          = $this->biggest_time_in_pack[$i-1];
+                        $time_between_buy   += ($current_time - $next_time) - $timeout_sec;
+                    }
+                }
+            }
+        }
+        /**
+         * Reset if its a negative number since it only requires a positive number. 
+         * A negative number is part of the $timeout_page_option_sum below so there shouldn't be anything subtracted. 
+         * Which means there aren't any extra times between product purchases.
+         */
+        if ($time_between_buy < 0){
+            $time_between_buy = 0;
+        }
+        return $time_between_buy;
+    }
     /**
      * Checks if the current users page visits exceeded the view count.
      *
      * @since    1.0.0
-     * @param    int    $user_id               Users ID.
-     * @param    int    $post_id               Posts ID.
      * @param    int    $views                 View count.
-     * @param    array  $purchased_products    List of purchased products to compare.
      * @param    bool   $update_usr_meta       Choose to output bool or array.
-     * @return   bool|array
+     * @param    bool   $not_all_products_required       Do users need to buy some or all products in the list in order to access.
+     * @return   mixed
      */
-    public function check_views(int $user_id, int $post_id, int $views, array $purchased_products, bool $update_usr_meta=false)
+    public function check_views(int $views, bool $update_usr_meta=false, bool $not_all_products_required=false )
     {
+        $this->calc_purchased_products();
         $view_count = 0;
         $views_to_compare = 0;
         
-        $view_count_meta = get_user_meta($user_id, "prwc_view_count_$post_id", true);
+        $view_count_meta = get_user_meta($this->user_id, "prwc_view_count_$this->post_id", true);
         if(isset($view_count_meta['views'])){
             $view_count = (int)$view_count_meta['views'];
             $viewed = (int)$view_count_meta['viewed'];
@@ -43,7 +229,12 @@ class Restrict_Types {
             $viewed = 0;
         }
         if(is_int($view_count)){
-            $views_to_compare = count($purchased_products)*$views;
+            if( $not_all_products_required ){
+                $views_to_compare = count($this->purchased_products) * $views;
+            }  
+            else{
+                $views_to_compare = $this->valid_purchased_product_amount * $views;
+            }
             if($view_count < $views_to_compare){
                 if($update_usr_meta){
                     return [
@@ -101,32 +292,27 @@ class Restrict_Types {
      *
      * @since     1.0.0
      * @param     float     $timeout_sec           The time, in seconds, elapsed since the first product was bought (excluding the time between bought products).
-     * @param     array     $purchased_products    List of purchased products to compare.
      * @param     bool      $output_time           Choose to output bool or array.
-     * @return    bool|array
+     * @param     bool      $not_all_products_required       Do users need to buy some or all products in the list in order to access.
+     * @return    mixed
      */
-    public function check_time(float $timeout_sec, array $purchased_products, $output_time=false)
+    public function check_time(float $timeout_sec, $output_time=false, bool $not_all_products_required=false)
     {
-        if(!count($purchased_products)){
+        $this->calc_purchased_products();
+        if(!count($this->purchased_products)){
             return true;
         }
-        $startTimeStamp = $purchased_products[0]['date_completed']->getTimestamp();
-        // Time between the expiration of one product to the begginning of the next.
-        $time_between_buy = 0;
-        for ($i=0; $i < count($purchased_products); $i++) { 
-            if($i !== 0){
-                $current_time       = $purchased_products[$i]  ['date_completed']->getTimestamp();
-                $next_time          = $purchased_products[$i-1]['date_completed']->getTimestamp();
-                $time_between_buy   += ($current_time - $next_time) - $timeout_sec;
-            }
+        if( $not_all_products_required ){
+            $startTimeStamp = $this->purchased_products[0]['date_completed']->getTimestamp();
+            $time_between_buy = $this->calc_time_between_products( $timeout_sec );
+            // Timeout time times number of products.
+            $timeout_page_option_sum = $timeout_sec * count($this->purchased_products);
         }
-        
-        /**
-         * Reset if its a negative number since it only requires a positive number. 
-         * A negative number is part of the $timeout_page_option_sum below so there shouldn't be anything subtracted.
-         */
-        if ($time_between_buy < 0){
-            $time_between_buy = 0;
+        else{
+            $time_between_buy = $this->calc_time_between_products( $timeout_sec, $not_all_products_required );
+            $startTimeStamp = $this->biggest_time_in_pack[0];
+            // Timeout time times number of products.
+            $timeout_page_option_sum = $timeout_sec * $this->valid_purchased_product_amount;
         }
         $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
         // $endTimeStamp = strtotime("2019-08-27 00:45:34");
@@ -134,11 +320,11 @@ class Restrict_Types {
         // Time between first bought product and current date.
 		$time_elapsed = 0;
         $time_elapsed = intval($timeDiff);
-        // Timeout time times number of products.
-        $timeout_page_option_sum = $timeout_sec * count($purchased_products);
         // Sum of all seconds from options to compare to.
         $timeout_compare = $timeout_page_option_sum + $time_between_buy;
+        //! For testing only.
         $days_elapsed = $time_elapsed     / 86400;
+        //! For testing only.
         $days_compare = $timeout_compare  / 86400;
         if($output_time){
             return [
@@ -156,7 +342,6 @@ class Restrict_Types {
                 return false;
             }
         }
-        
     }
     /**
      * Checks both view count and time passed by current user.
@@ -179,55 +364,54 @@ class Restrict_Types {
      * Checks if any product was bought by current user.
      *
      * @since    1.0.0
-     * @param    array     $products_arr          List of products used to restrict the page.
-     * @param    array     $purchased_products    List of purchased products to compare.
+     * @param    bool   $not_all_products_required       Do users need to buy some or all products in the list in order to access.
      * @return   bool
     */
-    public function check_products_only(array $products_arr, array $purchased_products)
+    public function check_products_only(bool $not_all_products_required=false)
     {
-        $checkJustByProducts = [];
-        for ($i=0; $i < count($purchased_products); $i++) { 
-            if(in_array($purchased_products[$i]->get_product_id(), $checkJustByProducts)){
-                continue;
+        $this->calc_purchased_products();
+        if( $not_all_products_required ){
+            for ($i=0; $i < count($this->products); $i++) { 
+                if (in_array((int)$this->products[$i], $this->purchased_products_ids)) {
+                    return true;
+                }
             }
-            $checkJustByProducts[] = $purchased_products[$i]->get_product_id();
+            return false;
         }
-        for ($i=0; $i < count($products_arr); $i++) { 
-            if (!in_array((int)$products_arr[$i], $checkJustByProducts)) {
-                return false;
+        else{
+            for ($i=0; $i < count($this->products); $i++) { 
+                if (!in_array((int)$this->products[$i], $this->purchased_products_ids)) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
     }
     /**
      * Checks all possible restrict timeout options like by products only, views and time, just time and just views. 
      *
      * @since    1.0.0
-     * @param    int       $user_id               Users ID.
-     * @param    int       $post_id               Posts ID.
-     * @param    array     $purchased_products    List of purchased products to compare.
-     * @param    array     $products_arr          List of products used to restrict the page.
      * @param    int       $timeout_sec           The time elapsed since the first product was bought (excluding the time between bought products).
      * @param    int       $views                 View count.
+     * @param    bool      $not_all_products_required       Do users need to buy some or all products in the list in order to access.
      * @return   bool
      */
-    public function check_final_all_types( $user_id, $post_id, $purchased_products, $products_arr, $timeout_sec, $views=false ){
+    public function check_final_all_types( $timeout_sec, $views=false, $not_all_products_required=false ){
         $perm_granted_views         = false;
         $perm_granted_time          = false;
         $perm_granted_views_time    = false;
         $perm_granted_products_only = false;
-
         if($views){
-            $perm_granted_views         = $this->check_views($user_id, $post_id, $views, $purchased_products);
+            $perm_granted_views         = $this->check_views($views, false, $not_all_products_required);
         }
         if($timeout_sec){
-            $perm_granted_time          = $this->check_time($timeout_sec, $purchased_products);
+            $perm_granted_time          = $this->check_time($timeout_sec, false, $not_all_products_required);
         }
         if($views && $timeout_sec){
             $perm_granted_views_time    = $this->check_views_time($perm_granted_views, $perm_granted_time);
         }
-        if(count($purchased_products)){
-            $perm_granted_products_only = $this->check_products_only($products_arr, $purchased_products);
+        if(count($this->purchased_products)){
+            $perm_granted_products_only = $this->check_products_only($not_all_products_required);
         }
         if($views && $timeout_sec){
             if($perm_granted_views_time){
@@ -248,4 +432,4 @@ class Restrict_Types {
             return false;
         }
     }
-} 
+}

@@ -290,6 +290,13 @@
 									title: __('Lock by Products', 'page_restrict_domain'),
 								}
 							),
+							el('br', {}),
+							el(MetaToggleControl(),
+							{
+								metaKey: 'prwc_not_all_products_required',
+								title: __('Not all products required', 'page_restrict_domain'),
+							}
+						),
 						]
 					),								
 				], { title: __("Products", 'page_restrict_domain'), icon: "products" }),

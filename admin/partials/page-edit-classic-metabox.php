@@ -64,6 +64,11 @@
                     }
                     ?>
                 </select>
+                <br>
+                <br>
+                <input type="checkbox" name="prwc_not_all_products_required" id="prwc_not_all_products_required" value="1" <?php checked($prwc_not_all_products_required, '1'); ?>>
+                <label for="prwc_not_all_products_required" class=""> <?php esc_html_e('Not all products required', 'page_restrict_domain'); ?></label>
+                <br>
             </div>
         </div>
     </div>

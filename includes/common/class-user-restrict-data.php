@@ -137,6 +137,7 @@ class User_Restrict_Data {
 		$time_data = [];
 		foreach ($purchased_products_by_user as $post_id => $value) {
 			$products = explode(',', $postID_products[$post_id]);
+			$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 			$days = $this->page_options->get_page_options($post_id, 'prwc_timeout_days');
 			$hours = $this->page_options->get_page_options($post_id, 'prwc_timeout_hours');
 			$minutes = $this->page_options->get_page_options($post_id, 'prwc_timeout_minutes');
@@ -146,10 +147,14 @@ class User_Restrict_Data {
 				$user_id = $sub_user_id;
 				$purchased_products = $subvalue['purchased_products'];
 				
+				$this->restrict->products = $products;
+				$this->restrict->user_id = $user_id;
+				$this->restrict->post_id = $post_id;
+				$this->restrict->purchased_products = $purchased_products;
 				$times_to_use = $this->restrict->check_time(
 					$timeout_sec,
-					$purchased_products,
-					true
+					true,
+					$not_all_products_required
 				);
 				if (is_array($times_to_use) && $timeout_sec) {
 					if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
@@ -192,11 +197,12 @@ class User_Restrict_Data {
 			$user_id = (int)str_replace("prwc_view_count_","",$meta->user_id);
 			if(isset($purchased_products_by_user[$post_id])){
 				$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
+				$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 				if(/*!isset($this->locked_posts[$post_id]['post']) && */$views){
 					if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
 						$this->locked_posts[$post_id]['post'] = get_post($post_id);
 						$this->locked_posts[$post_id]['views'] = $views;
-						$view_input_check = $this->restrict->check_views( $user_id, $post_id, $views, $purchased_products_by_user[$post_id][$user_id]['purchased_products'], true);
+						$view_input_check = $this->restrict->check_views( $user_id, $post_id, $views, $purchased_products_by_user[$post_id][$user_id]['purchased_products'], ['update_usr_meta'=>true]);
 						$merge_view_data = array_merge(unserialize($meta->meta_value), [
 							'view_expiration_num' => $view_input_check['views_to_compare'],
 							'post' => get_post($post_id),

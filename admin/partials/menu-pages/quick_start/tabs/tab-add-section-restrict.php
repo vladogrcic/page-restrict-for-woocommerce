@@ -56,7 +56,9 @@ $trans_text[] = esc_html__("Using Inverse Block you can change whether the conte
                 esc_html__("If you want to tell the user what to do to get access to the hidden blocks you use the Inverse block to show that.", 'page_restrict_domain').'<br>'.
                 esc_html__('You can mirror settings from a block above or below the current one.', 'page_restrict_domain').'<br>'.
                 esc_html__('For example if you put a 100 day timeout in that other block this block will have a 100 day timeout as well.', 'page_restrict_domain');
-$trans_text[] = esc_html__('Products using which you can restrict access to the blocks content. You can choose one or multiple products.', "page_restrict_domain");
+$trans_text[] = esc_html__('Products using which you can restrict access to the blocks content. You can choose one or multiple products from the "Lock by Products" dropdown.', "page_restrict_domain")
+                .'<br>'
+                .esc_html__('Choose whether you want for the user to just buy at least one of the above listed products or require all of those products to purchase in order to be able to access that section. By default it requires all products selected to be bought.', "page_restrict_domain");
 $trans_text[] = esc_html__('Restrict access to the section by setting the time you want the bought product to expire.', 'page_restrict_domain').'<br>'.
                 esc_html__('Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely.', 'page_restrict_domain');
 $trans_text[] = esc_html__('Using a shortcode is also an option.', 'page_restrict_domain')
