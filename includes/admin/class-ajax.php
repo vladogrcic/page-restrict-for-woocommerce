@@ -72,6 +72,6 @@ class Ajax {
             $pages_lock_data[$key] = array_map( 'sanitize_text_field', $value );
         }
         $page_options_class = new Page_Plugin_Options();
-        $page_options_class::process_page_options($pages_lock_data);
+        $page_options_class->process_page_options($pages_lock_data);
     }
 }

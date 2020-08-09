@@ -19,13 +19,18 @@
  * @package    PageRestrictForWooCommerce
  * @author     Vlado Grčić <vladogrcic1993@gmail.com>
  */
+$args = [
+    'status' => array( 'publish' ),  
+    'limit' => -1,  
+    'order' => 'DESC',  
+    'paginate' => false,  
+];
 if((int)$prwc_limit_virtual_products){
     $args['virtual']        = (int)$prwc_limit_virtual_products;
 }
 if((int)$prwc_limit_downloadable_products){
     $args['downloadable']   = (int)$prwc_limit_downloadable_products;
 }
-$args['order']          = 'DESC';
 $products = wc_get_products($args);
 $products_out = [];
 $newtext = [];
@@ -33,13 +38,6 @@ for ($i=0; $i < count($products); $i++) {
     $products_out[] = ["value" => $products[$i]->get_id(), "label" => $products[$i]->get_slug()];
     $newtext[] = wordwrap($products[$i]->get_id(), 20, " ");
 }
-$args = array(
-    'numberposts' => -1,
-    'sort_order' => 'asc',
-    'sort_column' => 'post_title',
-    'post_type' => $prwc_post_types_general,
-); 
-
 $post_types = $prwc_post_types_general;
 $args = array(
     'numberposts' => -1,

@@ -42,6 +42,7 @@ class Page_Plugin_Options {
     {
         $this->possible_page_options = [
             'prwc_products'                 => 'array',
+            'prwc_not_all_products_required'=> 'bool',
             'prwc_timeout_days'             => 'number',
             'prwc_timeout_hours'            => 'number',
             'prwc_timeout_minutes'          => 'number',
@@ -169,12 +170,12 @@ class Page_Plugin_Options {
     public function sanitize_page_options($page_option, $page_value, $type=false){
         $sanitized_value = '';
         if($type){
-            $sanitized_value = self::sanitize_value_by_type_for_pages($type, $page_value);
+            $sanitized_value = $this->sanitize_value_by_type_for_pages($type, $page_value);
         }
         else{
             foreach ($this->possible_page_options as $key => $type) {
                 if($page_option === $key){
-                    $sanitized_value = self::sanitize_value_by_type_for_pages($type, $page_value);
+                    $sanitized_value = $this->sanitize_value_by_type_for_pages($type, $page_value);
                 }
             }
         }
@@ -189,7 +190,7 @@ class Page_Plugin_Options {
      * @param      string         $page_value       Meta value to sanitize.
      * @return     string         $meta             Metabox value.
      */
-    public static function sanitize_value_by_type_for_pages($type, $page_value){
+    public function sanitize_value_by_type_for_pages($type, $page_value){
         $sanitized_value = '';
         if($type === 'array'){
             $sanitized_value =   sanitize_text_field($page_value);
@@ -208,7 +209,7 @@ class Page_Plugin_Options {
      * @since      1.0.0
      * @param      this->possible_page_options   $pages_lock_data    Page content passed.
      */
-    public static function process_page_options($pages_lock_data){
+    public function process_page_options($pages_lock_data){
         foreach ($pages_lock_data as $post_id => $value) {
             foreach ($value as $meta_key => $meta_value) {
                 if(!(strlen($meta_key) < 100 && strlen($meta_value) < 512 && strlen($post_id) < 20)){
@@ -217,6 +218,7 @@ class Page_Plugin_Options {
                 if (is_array($meta_value)) {
                     $meta_value = implode(",", $meta_value);
                 }
+                $meta_value = $this->sanitize_page_options($meta_key, $meta_value);
                 if ($meta_value) {
                     update_post_meta((int)$post_id, $meta_key, $meta_value);
                 } else {
@@ -232,6 +234,9 @@ class Page_Plugin_Options {
      * @param      this->possible_page_options   $pages_lock_data    Page content passed.
      */
     public static function process_general_options($pages_lock_data){
+        if( !current_user_can( 'manage_options' ) ){
+            return "You don't have access to this!";
+        }
         foreach ($pages_lock_data as $page_option => $meta_value) {
             if(!(strlen($page_option) < 100 && strlen($meta_value) < 512)){
                 return;

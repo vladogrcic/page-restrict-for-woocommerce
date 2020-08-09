@@ -70,7 +70,7 @@ class Helpers {
      * @param    int    $limit         Number of pages.
 	 * @return	 array
      */
-	public function calc_pagination($data, $limit=2){
+	public function calc_pagination(array $data, int $limit=2){
 		$pages_inc = 0;
 		$page = 1;
 		$total = count( $data );

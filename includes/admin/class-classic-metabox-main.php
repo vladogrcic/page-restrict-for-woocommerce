@@ -86,6 +86,6 @@ class Classic_Metabox_Main {
 			}
 			$pages_lock_data[$post_id][$page_option] = $page_options_class->sanitize_page_options($page_option, $page_value, $type);
 		}
-		$page_options_class::process_page_options($pages_lock_data);
+		$page_options_class->process_page_options($pages_lock_data);
 	}
 }
