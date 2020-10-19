@@ -1,0 +1,54 @@
+{
+    "translation-revision-date": "2020-10-19T17:50:36+02:00",
+    "generator": "WP-CLI\/2.4.0",
+    "source": "admin\/assets\/src\/js\/blocks\/components\/preview-time-view-tables.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "hr",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "View": [
+                ""
+            ],
+            "Page": [
+                ""
+            ],
+            "Time of Expiration": [
+                ""
+            ],
+            "Views left": [
+                ""
+            ],
+            "Sint quam voluptatem sed accusamus ut": [
+                ""
+            ],
+            "18.04.2020 19:11": [
+                ""
+            ],
+            "Phasellus et fringilla velit": [
+                ""
+            ],
+            "08.04.2020 04:32": [
+                ""
+            ],
+            "Animi maxime numquam veniam aliquam aut distinctio": [
+                ""
+            ],
+            "14.04.2020 19:11": [
+                ""
+            ],
+            "Fugiat repellat qui harum minus recusandae": [
+                ""
+            ],
+            "Doloremque non sunt sint dolorum": [
+                ""
+            ],
+            "Ut vel quibusdam totam": [
+                ""
+            ]
+        }
+    }
+}

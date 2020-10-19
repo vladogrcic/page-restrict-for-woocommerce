@@ -1,0 +1,18 @@
+{
+    "translation-revision-date": "2020-10-19T17:50:36+02:00",
+    "generator": "WP-CLI\/2.4.0",
+    "source": "admin\/assets\/src\/js\/main\/general-block-var.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "hr",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "You had the \"Above block\" or \"Below block\" setting checked but you dont have a usable block. Add a Section Block below or above in order to be able to check that setting": [
+                ""
+            ]
+        }
+    }
+}
