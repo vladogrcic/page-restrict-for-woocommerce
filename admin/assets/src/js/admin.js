@@ -1,8 +1,8 @@
-jQuery(document).ready(function () {
+jQuery(function () {
     save_main_options_ajax();
 });
-window.sendDataAjax = function($this, data){
-    jQuery($this).css('background-image', 'url('+plugin_dir_url+'/assets/img/loading.svg)');
+window.sendDataAjax = function ($this, data) {
+    jQuery($this).css('background-image', 'url(' + plugin_dir_url + '/assets/img/loading.svg)');
     jQuery($this).addClass('loading');
     jQuery($this).attr('disabled', 'disabled');
     var el = $this;
@@ -25,7 +25,7 @@ function save_main_options_ajax() {
     jQuery('.filter-by-post-types').on('change', function () {
         var post_type = jQuery(".filter-by-post-types").val();
         jQuery(".pages-list").find('.page-type').slideUp("slow");
-        jQuery(".pages-list").find('.page-type[data-page-type="'+post_type+'"]').slideDown("slow");
+        jQuery(".pages-list").find('.page-type[data-page-type="' + post_type + '"]').slideDown("slow");
         /**
          * Reset everything.
          */
@@ -39,16 +39,16 @@ function save_main_options_ajax() {
     });
     jQuery('.pagination li').on('click', function () {
         var page = jQuery(this).data('pagination-page');
-        if(jQuery('.tab').length){
+        if (jQuery('.tab').length) {
             var main_el = jQuery('.tab .pages-list');
         }
-        else{
+        else {
             var main_el = jQuery('.pages-list');
         }
         main_el.find('.page-pagination').slideUp("slow");
         main_el.find('.pagination li').removeClass('active');
         jQuery(this).toggleClass('active');
-        main_el.find('.page-pagination[data-pagination-page="'+page+'"]').slideDown("slow");
+        main_el.find('.page-pagination[data-pagination-page="' + page + '"]').slideDown("slow");
     });
     jQuery('.tab-menu li').on('click', function () {
         var el_tab = jQuery('#prwc-plugin-main-wrapper .tab');
@@ -71,25 +71,25 @@ function save_main_options_ajax() {
      * This is to send plugin or page options data to the database.
      */
     jQuery('.button-submit').on('click', function () {
-        if(jQuery('.plugin-options-wrapper').length){
-            var limit_to_virt_products      = +(jQuery( "input[name='prwc_limit_to_virtual_products']" ).is(":checked"));
-            var limit_to_down_products      = +(jQuery( "input[name='prwc_limit_to_downloadable_products']" ).is(":checked"));
+        if (jQuery('.plugin-options-wrapper').length) {
+            var limit_to_virt_products = +(jQuery("input[name='prwc_limit_to_virtual_products']").is(":checked"));
+            var limit_to_down_products = +(jQuery("input[name='prwc_limit_to_downloadable_products']").is(":checked"));
 
-            var gen_log_page                = +(jQuery( "select[name='prwc_general_login_page']" )).val();
-            var redirect_gen_log            = +(jQuery( "input[name='prwc_general_redirect_login']" ).is(":checked"));
+            var gen_log_page = +(jQuery("select[name='prwc_general_login_page']")).val();
+            var redirect_gen_log = +(jQuery("input[name='prwc_general_redirect_login']").is(":checked"));
 
-            var gen_not_bought_page         = +(jQuery( "select[name='prwc_general_not_bought_page']" )).val();
-            var redirect_gen_not_bought     = +(jQuery( "input[name='prwc_general_redirect_not_bought']" ).is(":checked"));
+            var gen_not_bought_page = +(jQuery("select[name='prwc_general_not_bought_page']")).val();
+            var redirect_gen_not_bought = +(jQuery("input[name='prwc_general_redirect_not_bought']").is(":checked"));
 
-            var post_types_general              = [];
-            var delete_plugin_data_on_uninstall = +(jQuery( "input[name='prwc_delete_plugin_data_on_uninstall']" ).is(":checked"));
-            var prwc_my_account_rp_page_disable_endpoint = +(jQuery( "input[name='prwc_my_account_rp_page_disable_endpoint']" ).is(":checked"));
-            var prwc_my_account_rp_page_hide_time_table = +(jQuery( "input[name='prwc_my_account_rp_page_hide_time_table']" ).is(":checked"));
-            var prwc_my_account_rp_page_hide_view_table = +(jQuery( "input[name='prwc_my_account_rp_page_hide_view_table']" ).is(":checked"));
-            var prwc_my_account_rp_page_disable_plugin_designed_table = +(jQuery( "input[name='prwc_my_account_rp_page_disable_plugin_designed_table']" ).is(":checked"));
+            var post_types_general = [];
+            var delete_plugin_data_on_uninstall = +(jQuery("input[name='prwc_delete_plugin_data_on_uninstall']").is(":checked"));
+            var prwc_my_account_rp_page_disable_endpoint = +(jQuery("input[name='prwc_my_account_rp_page_disable_endpoint']").is(":checked"));
+            var prwc_my_account_rp_page_hide_time_table = +(jQuery("input[name='prwc_my_account_rp_page_hide_time_table']").is(":checked"));
+            var prwc_my_account_rp_page_hide_view_table = +(jQuery("input[name='prwc_my_account_rp_page_hide_view_table']").is(":checked"));
+            var prwc_my_account_rp_page_disable_plugin_designed_table = +(jQuery("input[name='prwc_my_account_rp_page_disable_plugin_designed_table']").is(":checked"));
 
-            if(jQuery( "select[name='prwc_general_post_types']" ).length)
-                post_types_general        = jQuery( "select[name='prwc_general_post_types']" ).val()?jQuery( "select[name='prwc_general_post_types']" ).val().join():[];
+            if (jQuery("select[name='prwc_general_post_types']").length)
+                post_types_general = jQuery("select[name='prwc_general_post_types']").val() ? jQuery("select[name='prwc_general_post_types']").val().join() : [];
             else post_types_general = false
             var data = {
                 action: "prwc_plugin_options",
@@ -113,7 +113,7 @@ function save_main_options_ajax() {
             };
             sendDataAjax(this, data);
         }
-        if(jQuery('.pages-options-wrapper').length){
+        if (jQuery('.pages-options-wrapper').length) {
             var data = {
                 action: "prwc_pages_options",
                 nonce: page_restrict_wc.nonce,
@@ -124,33 +124,33 @@ function save_main_options_ajax() {
             for (var i = 0; i < pages.length; i++) {
                 // console.log(jQuery(pages[i]).data('page-slug'));
                 var prwc_products = jQuery(pages[i]).find('.lock-by-product').val();
-                if(Array.isArray(prwc_products)){
+                if (Array.isArray(prwc_products)) {
                     prwc_products = prwc_products.join(',');
                 }
                 var prwc_not_all_products_required = +(jQuery(pages[i]).find('.not-all-products-required').is(':checked'));
 
-                var prwc_not_bought_page          =  jQuery(pages[i]).find('.redirect-not-bought-page').val();
-                var prwc_redirect_not_bought      =  +(jQuery(pages[i]).find('.redirect-prod-page').is(':checked'));
-                var prwc_not_logged_in_page       =  jQuery(pages[i]).find('.redirect-not-logged-in-page').val();
-                var prwc_redirect_not_logged_in   =  +(jQuery(pages[i]).find('.redirect-user-page').is(':checked'));
-                var prwc_timeout_days             =  jQuery(pages[i]).find('.timeout-days').val();
-                var prwc_timeout_hours            =  jQuery(pages[i]).find('.timeout-hours').val();
-                var prwc_timeout_minutes          =  jQuery(pages[i]).find('.timeout-minutes').val();
-                var prwc_timeout_seconds          =  jQuery(pages[i]).find('.timeout-seconds').val();
-                var prwc_timeout_views            =  jQuery(pages[i]).find('.timeout-views').val();
+                var prwc_not_bought_page = jQuery(pages[i]).find('.redirect-not-bought-page').val();
+                var prwc_redirect_not_bought = +(jQuery(pages[i]).find('.redirect-prod-page').is(':checked'));
+                var prwc_not_logged_in_page = jQuery(pages[i]).find('.redirect-not-logged-in-page').val();
+                var prwc_redirect_not_logged_in = +(jQuery(pages[i]).find('.redirect-user-page').is(':checked'));
+                var prwc_timeout_days = jQuery(pages[i]).find('.timeout-days').val();
+                var prwc_timeout_hours = jQuery(pages[i]).find('.timeout-hours').val();
+                var prwc_timeout_minutes = jQuery(pages[i]).find('.timeout-minutes').val();
+                var prwc_timeout_seconds = jQuery(pages[i]).find('.timeout-seconds').val();
+                var prwc_timeout_views = jQuery(pages[i]).find('.timeout-views').val();
 
                 pages_lock_data[jQuery(pages[i]).data('page-id')] = {
-                    'prwc_products'                 :   prwc_products,
-                    'prwc_not_all_products_required':   prwc_not_all_products_required,
-                    'prwc_not_bought_page'          :   prwc_not_bought_page,
-                    'prwc_redirect_not_bought'      :   prwc_redirect_not_bought,
-                    'prwc_not_logged_in_page'       :   prwc_not_logged_in_page,
-                    'prwc_redirect_not_logged_in'   :   prwc_redirect_not_logged_in,
-                    'prwc_timeout_days'             :   prwc_timeout_days,
-                    'prwc_timeout_hours'            :   prwc_timeout_hours,
-                    'prwc_timeout_minutes'          :   prwc_timeout_minutes,
-                    'prwc_timeout_seconds'          :   prwc_timeout_seconds,
-                    'prwc_timeout_views'            :   prwc_timeout_views,
+                    'prwc_products': prwc_products,
+                    'prwc_not_all_products_required': prwc_not_all_products_required,
+                    'prwc_not_bought_page': prwc_not_bought_page,
+                    'prwc_redirect_not_bought': prwc_redirect_not_bought,
+                    'prwc_not_logged_in_page': prwc_not_logged_in_page,
+                    'prwc_redirect_not_logged_in': prwc_redirect_not_logged_in,
+                    'prwc_timeout_days': prwc_timeout_days,
+                    'prwc_timeout_hours': prwc_timeout_hours,
+                    'prwc_timeout_minutes': prwc_timeout_minutes,
+                    'prwc_timeout_seconds': prwc_timeout_seconds,
+                    'prwc_timeout_views': prwc_timeout_views,
                 };
             }
             data.pages_lock_data = pages_lock_data;

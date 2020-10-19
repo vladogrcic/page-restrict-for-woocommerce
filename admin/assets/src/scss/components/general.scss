@@ -20,7 +20,7 @@ select.slimselect, .slimselect input, .pages-list input, .slimselect label, .pag
     margin-top: 40px;
     margin-right: 25px;
     background-color: #77b4ff;
-    background-image: url(../img/banner-no-back.svg);
+    background-image: url(../../img/banner-no-back.svg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -117,9 +117,6 @@ select.slimselect, .slimselect input, .pages-list input, .slimselect label, .pag
             margin-right: auto;
         }
     }
-}
-.block-editor .components-panel .custom-panel>div {
-    margin-bottom: 15px;
 }
 .ss-content.ss-open {
     box-shadow: 0px 11px 12px 0px rgba(150, 150, 150, 1);

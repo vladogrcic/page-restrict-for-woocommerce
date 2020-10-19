@@ -200,7 +200,7 @@ class Section_Blocks
     {
         $a = shortcode_atts(array(
             'products' => false,
-            'not_all_products_required' => false,
+            'notAllProductsRequired' => false,
             'days' => 0,
             'hours' => 0,
             'minutes' => 0,
@@ -219,7 +219,10 @@ class Section_Blocks
             trigger_error('Warning: Inverse attribute reached character limit.');
         }
         if(is_array($a['products'])){
-            $products       = array_map('sanitize_text_field', $a['products']);
+            $products = [];
+            for ($i=0; $i < count( $a['products'] ); $i++) { 
+                $products[] = $a['products'][$i]['value'];
+            }
         }        
         else{
             $products       = array_map('sanitize_text_field', explode(',', $a['products']));
@@ -227,7 +230,7 @@ class Section_Blocks
         if (array_sum(array_map('strlen', $products)) > 20*count($products)) {
             trigger_error('Warning: Lock by Products attribute reached character limit.');
         }
-        $not_all_products_required          = (int)sanitize_key($a['not_all_products_required']);        
+        $not_all_products_required          = (int)sanitize_key($a['notAllProductsRequired']);        
         if (strlen(trim($not_all_products_required)) > 1) {
             trigger_error('Warning: Not all products required attribute reached character limit.');
         }

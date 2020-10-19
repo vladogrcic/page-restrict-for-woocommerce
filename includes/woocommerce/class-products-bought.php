@@ -53,9 +53,9 @@ class Products_Bought {
 			'orderby' => 'date',
 			'limit' => 9999999999,
 		]);
-		foreach ( $customer_orders as $customer_order ) {
+		foreach ( $customer_orders as $order ) {
 			// Updated compatibility with WooCommerce 3+
-			$order = wc_get_order( $customer_order );
+			// $order = wc_get_order( $customer_order );
 			// Iterating through each current customer products bought in the order
 			foreach ($order->get_items() as $item) {
 				// WC 3+ compatibility

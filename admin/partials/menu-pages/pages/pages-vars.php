@@ -33,9 +33,14 @@ if((int)$prwc_limit_downloadable_products){
 }
 $products = wc_get_products($args);
 $products_out = [];
+$products_by_id_out = [];
 $newtext = [];
 for ($i=0; $i < count($products); $i++) {
     $products_out[] = ["value" => $products[$i]->get_id(), "label" => $products[$i]->get_slug()];
+    $products_by_id_out[$products[$i]->get_id()] = [
+        'title' => $products[$i]->get_title(),
+        'slug' => $products[$i]->get_slug()
+    ];
     $newtext[] = wordwrap($products[$i]->get_id(), 20, " ");
 }
 $post_types = $prwc_post_types_general;

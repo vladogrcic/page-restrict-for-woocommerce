@@ -76,12 +76,14 @@ class Admin
      */
     public function enqueue_styles()
     {
-        wp_enqueue_style( 'jquery-ui',       plugin_dir_url(__FILE__) . 'assets/css/lib/jquery-ui.css', false,          $this->version );
-        wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url(__FILE__) . 'assets/css/lib/jquery-ui.theme.css', false,    $this->version );
-        wp_enqueue_style( 'slimselect',      plugin_dir_url(__FILE__) .'assets/css/lib/slimselect.css', false,          $this->version );
-        wp_enqueue_style( 'zoomify',         plugin_dir_url(__FILE__) .'assets/css/lib/zoomify.css', false,             $this->version );
-        wp_enqueue_style( 'oxanium', plugin_dir_url(__FILE__) .'assets/font/oxanium/oxanium-load.css', array(),         $this->version ); 
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), $this->version, 'all' );
+        if( strpos(get_current_screen()->base, 'page_prwc-') !== false ){
+            wp_enqueue_style( 'jquery-ui',       plugin_dir_url(__FILE__) . 'assets/build/jquery-ui.css', false,          $this->version );
+            wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url(__FILE__) . 'assets/build/jquery-ui.theme.css', false,    $this->version );
+            wp_enqueue_style( 'slimselect',      plugin_dir_url(__FILE__) .'assets/build/slimselect.css', false,          $this->version );
+            wp_enqueue_style( 'zoomify',         plugin_dir_url(__FILE__) .'assets/build/zoomify.css', false,             $this->version );
+            wp_enqueue_style( 'oxanium', plugin_dir_url(__FILE__) .'assets/font/oxanium/oxanium-load.css', array(),         $this->version ); 
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url(__FILE__) . 'assets/build/admin.css', array(), $this->version, 'all' );
+        }
     }
 
     /**
@@ -92,16 +94,18 @@ class Admin
     public function enqueue_scripts()
     {
         $plugin_name = $this->plugin_name;
-        wp_enqueue_script( 'jquery-ui-tabs');
-        wp_enqueue_script( 'jquery-ui-accordion' );
-        wp_enqueue_script( 'jquery-ui-resizable' );
-        wp_enqueue_script( 'jquery.zoom',       plugin_dir_url(__FILE__) .'assets/js/lib/jquery.zoom.js', array('jquery'),          $this->version, false );
-        wp_enqueue_script( 'slimselect',        plugin_dir_url(__FILE__) .'assets/js/lib/slimselect.js', array('jquery'),           $this->version, false );
-        wp_enqueue_script( 'options',           plugin_dir_url(__FILE__) .'assets/js/options.js', array( 'jquery' ),                $this->version, false );
-        wp_enqueue_script( $this->plugin_name,  plugin_dir_url(__FILE__) .'assets/js/admin.js', array( 'jquery' ),    $this->version, false );
-        wp_localize_script('options', 'page_restrict_wc', [
-            'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
-        ]);
+        if( strpos(get_current_screen()->base, 'page_prwc-') !== false ){
+            wp_enqueue_script( 'jquery-ui-tabs');
+            wp_enqueue_script( 'jquery-ui-accordion' );
+            wp_enqueue_script( 'jquery-ui-resizable' );
+            wp_enqueue_script( 'jquery.zoom',       plugin_dir_url(__FILE__) .'assets/build/jquery.zoom.js', array('jquery'),          $this->version, false );
+            wp_enqueue_script( 'slimselect',        plugin_dir_url(__FILE__) .'assets/build/slimselect.js', array('jquery'),           $this->version, false );
+            wp_enqueue_script( 'admin',           plugin_dir_url(__FILE__) .'assets/build/admin.js', array( 'jquery' ),                $this->version, false );
+            wp_localize_script('admin', 'page_restrict_wc', [
+                'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
+            ]);
+        }
+
     }
     /**
      * Register the JavaScript for the page editing admin area. Some additional variables as well.
@@ -124,49 +128,104 @@ class Admin
         include_once(plugin_dir_path( __FILE__ )."partials/menu-pages/pages/pages-vars.php");
         $pages_out = [];
         foreach ($all_pages as $key => $value) {
+            $pages_out[] = 
+            [
+                'label' => $key,
+                'options' => [],
+            ];
+            $last_index = count( $pages_out )-1;
             for ($i=0; $i < count($value); $i++) { 
                 if($key && $post->ID !== $value[$i]->ID)
-                $pages_out[$key][] = [
+                $pages_out[ $last_index ]['options'][] = 
+                [
                     "value" => $value[$i]->ID,
                     "label" => $value[$i]->post_name
                 ];
             }
         }
+        $all_page_options = [];
+        $page_id_options = [
+            'prwc_not_bought_page',
+            'prwc_not_logged_in_page',
+        ];
+        for ($i=0; $i < count( $page_id_options ); $i++) { 
+            $option = $page_id_options[$i];
+            $page_option = $page_options->get_page_options( $post->ID, $option );
+            
+            $post_option = get_post((int)$page_option); 
+            $slug_option = $post_option->post_name;
+            if( $page_option && $slug_option ){
+                $all_page_options[ $option ] = 
+                (object)[
+                    'label' => $slug_option,
+                    'value' => $page_option
+                ];
+            }
+            else{
+                $all_page_options[ $option ] = (object)[];
+                // [
+                //     'label' => $slug_option,
+                //     'value' => $page_option
+                // ];
+            }
+        }
+        $product_id_options = ['prwc_products'];
+        for ($i=0; $i < count( $product_id_options ); $i++) { 
+            $option = $product_id_options[$i];
+            $page_option = $page_options->get_page_options( $post->ID, $option );
+            for ($j=0; $j < count( $page_option ); $j++) { 
+                $post_option = get_post((int)$page_option[$j]); 
+                $slug_option = $post_option->post_name;
+                $all_page_options[ $option ][] = 
+                [
+                    'label' => $slug_option,
+                    'value' => $page_option[$j]
+                ];
+                
+            }
+            if( isset($all_page_options[ $option ]) ){
+                if( !count($all_page_options[ $option ]) ){
+                    $all_page_options[ $option ] = [];
+                }
+            }
+            else{
+                $all_page_options[ $option ] = [];
+            }
+        }
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url(__FILE__) . 'assets/build/gutenberg.css', array(), $this->version, 'all' );
         wp_enqueue_script(
             'general-block-var',
-            plugin_dir_url(__FILE__) .'assets/js/general-block-var.js',
-            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
-            true
+            plugin_dir_url(__FILE__) .'assets/build/general-block-var.js',
+            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post', 'jquery' ),
+            rand(0,100)
         );
         wp_enqueue_script(
-            'block-section-restrict',
-            plugin_dir_url(__FILE__) .'assets/js/block-section-restrict.js',
-            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
-            true
+            'sidebars',
+            plugin_dir_url(__FILE__) .'assets/build/sidebars.js',
+            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post', 'jquery' ),
+            rand(0,100)
         );
         wp_enqueue_script(
-            'block-restricted-pages-list',
-            plugin_dir_url(__FILE__) . 'assets/js/block-restricted-pages-list.js',
-            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
-            true
+            'blocks',
+            plugin_dir_url(__FILE__) .'assets/build/blocks.js',
+            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post', 'jquery' ),
+            rand(0,100)
         );
-        wp_enqueue_script(
-            'metas',
-            plugin_dir_url(__FILE__) .'assets/js/metas.js',
-            array( 'wp-i18n', 'wp-blocks', 'wp-edit-post', 'wp-element', 'wp-editor', 'wp-components', 'wp-data', 'wp-plugins', 'wp-edit-post' ),
-            true
-        );
+        
         wp_localize_script('general-block-var', 'page_restrict_wc', [
-            "plugin_name"            => $plugin_name,
+            "plugin_name"           => $plugin_name,
             "block_name"            => $plugin_name.'/restrict-section',
-            // "block_name_restricted_pages_list"            => $plugin_name.'/restricted-pages-list',
             'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
             "plugin_title"          => esc_html__($plugin_title, 'page_restrict_domain'),
             "products_available"    => $products_out,
+            "products_available_by_id"    => $products_by_id_out,
             "pages"                 => $pages_out,
-            "sidebar_img"           => plugins_url('/assets/img/logo-no-back-menu-dark.svg', __FILE__)
+            "page_options"          => $all_page_options,
+            "sidebar_img"           => plugins_url('/assets/img/logo-no-back-menu-dark.svg', __FILE__),
+            'site_url'              => site_url()
         ]);
-        wp_localize_script('general-block-var', 'site_url', site_url());
+        // wp_localize_script('general-block-var', 'site_url', site_url());
+
         if (version_compare($wp_version, '5.0', '<')) {
             /**
              * Fixing 'Undefined function' errors for older Wordpress versions.
@@ -231,9 +290,13 @@ class Admin
                 'products' => [
                     'default' => [],
                     'type'    => 'array',
-                    'items' => [
-                        'type' => 'string',
-                    ],
+                    // 'items' => [
+                    //     'type' => 'string',
+                    // ],
+                ],
+                'notAllProductsRequired' => [
+                    'default' => false,
+                    'type'    => 'boolean'
                 ],
                 'uniqueID' => [
                     'default' => "",
@@ -250,6 +313,7 @@ class Admin
                     'type'    => 'boolean'
                     
                 ],
+                
                 'aboveBlockAttr' => [
                     'default' => false,
                     'type'    => 'boolean'
@@ -336,7 +400,20 @@ class Admin
                 'type'    => 'string',
                 'single'	=> true,
                 'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
+                'sanitize_callback'	=> function( $input ){
+                    $products = json_decode($input, true);
+                    // if(!$products) return;
+                    $output = [];
+                    if( !($products) ){
+                        return sanitize_text_field($input);
+                    }
+                    else{
+                        for ($i=0; $i < count( $products ); $i++) { 
+                            $output[] = sanitize_text_field($products[$i]['value']);
+                        }
+                        return implode(',', $output);
+                    }
+                },
                 'auth_callback'	=> function ()
                 {
                     return current_user_can('edit_posts');
@@ -356,7 +433,20 @@ class Admin
                 'type'		=> 'string',
                 'single'	=> true,
                 'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
+                'sanitize_callback'	=> function( $input ){
+                    $pages = json_decode($input, true);
+                    if( !($pages) ){
+                        return sanitize_text_field($input);
+                    }
+                    else{
+                        if( isset( $pages['value'] ) ){
+                            return sanitize_text_field($pages['value']);
+                        }
+                        else{
+                            return sanitize_text_field($pages);
+                        }
+                    }
+                },
                 'auth_callback'	=> function ()
                 {
                     return current_user_can('edit_posts');
@@ -376,7 +466,20 @@ class Admin
                 'type'		=> 'string',
                 'single'	=> true,
                 'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
+                'sanitize_callback'	=> function( $input ){
+                    $pages = json_decode($input, true);
+                    if( !($pages) ){
+                        return sanitize_text_field($input);
+                    }
+                    else{
+                        if( isset( $pages['value'] ) ){
+                            return sanitize_text_field($pages['value']);
+                        }
+                        else{
+                            return sanitize_text_field($pages);
+                        }
+                    }
+                },
                 'auth_callback'	=> function ()
                 {
                     return current_user_can('edit_posts');
