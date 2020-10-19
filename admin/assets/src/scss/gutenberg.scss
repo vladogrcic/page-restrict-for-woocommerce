@@ -1,3 +1,6 @@
+@import '~slim-select/src/slim-select/slimselect.scss';
+@import "components/variables";
+
 table.timeout_table {
     /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse; */
@@ -19,4 +22,7 @@ table.timeout_table {
         background-color: rgb(28, 127, 240);
         color: white;
     }
+}
+.block-editor .components-panel .custom-panel>div {
+    margin-bottom: 15px;
 }

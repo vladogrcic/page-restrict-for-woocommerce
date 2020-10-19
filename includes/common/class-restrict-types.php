@@ -302,6 +302,7 @@ class Restrict_Types {
         if(!count($this->purchased_products)){
             return true;
         }
+        $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
         if( $not_all_products_required ){
             $startTimeStamp = $this->purchased_products[0]['date_completed']->getTimestamp();
             $time_between_buy = $this->calc_time_between_products( $timeout_sec );
@@ -310,11 +311,15 @@ class Restrict_Types {
         }
         else{
             $time_between_buy = $this->calc_time_between_products( $timeout_sec, $not_all_products_required );
-            $startTimeStamp = $this->biggest_time_in_pack[0];
+            if( count($this->biggest_time_in_pack) ){
+                $startTimeStamp = $this->biggest_time_in_pack[0];
+            }
+            else{
+                $startTimeStamp = $endTimeStamp;
+            }
             // Timeout time times number of products.
             $timeout_page_option_sum = $timeout_sec * $this->valid_purchased_product_amount;
         }
-        $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
         // $endTimeStamp = strtotime("2019-08-27 00:45:34");
         $timeDiff = abs($endTimeStamp - $startTimeStamp);
         // Time between first bought product and current date.

@@ -13,10 +13,20 @@
   "author": "Vlado Grcic",
   "homepage": "https://wordpress.org/plugins/page-restrict-for-woocommerce",
   "devDependencies": {
-    "autoprefixer": "9.*",
-    "node-sass": "^4.*",
-    "nodemon": "^1.*",
-    "postcss-cli": "7.*"
+    "@wordpress/babel-plugin-makepot": "^3.9.0",
+    "@wordpress/scripts": "^12.3.0",
+    "copy-webpack-plugin": "^6",
+    "ignore-emit-webpack-plugin": "^2.0.3",
+    "mini-css-extract-plugin": "^1.0.0",
+    "path": "^0.12.7",
+    "prettier": "^2.1.2",
+    "url-loader": "^4.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery-zoom": "^1.7.21",
+    "lodash.assign": "^4.2.0",
+    "normalize.css": "^8.0.1",
+    "react-select": "^3.1.0",
+    "slim-select": "1.26.0"
+  }
 }

@@ -1,9 +1,10 @@
-var __ = wp.i18n.__; //translation functions
-var prwc_plugin_name 		= page_restrict_wc.plugin_name;
-var prwc_blockName 		= page_restrict_wc.block_name;
+import SlimSelect from 'slim-select';
+window.__ = wp.i18n.__; //translation functions
+window.prwc_plugin_name = page_restrict_wc.plugin_name;
+window.prwc_blockName = page_restrict_wc.block_name;
 // var prwc_blockName_restricted_pages_list 		= page_restrict_wc.block_name_restricted_pages_list;
-var prwc_termNames 		= page_restrict_wc.products_available;
-var prwc_plugin_title 	= page_restrict_wc.plugin_title;
+window.prwc_termNames = page_restrict_wc.products_available;
+window.prwc_plugin_title = page_restrict_wc.plugin_title;
 /**
  * Defines extend function.
  * It merges two objects.
@@ -16,11 +17,11 @@ function extend(obj, src) {
 	Object.keys(src).forEach(function (key) { obj[key] = src[key]; });
 	return obj;
 }
-var editor_loc = 'core/block-editor';
-if(wp.hasOwnProperty('blockEditor')){
+window.editor_loc = 'core/block-editor';
+if (wp.hasOwnProperty('blockEditor')) {
 	editor_loc = 'core/block-editor';
 }
-else{
+else {
 	editor_loc = 'core/editor';
 }
 page_restrict_wc = extend(page_restrict_wc, {
@@ -32,34 +33,56 @@ page_restrict_wc = extend(page_restrict_wc, {
 				options.initialOpen
 			else
 				options.initialOpen = false;
-			return wp.element.createElement(
-				PanelBody,
-				{
-					title: 		 options.title,
-					icon: 		 options.icon,
-					initialOpen: options.initialOpen,
-					className: 'custom-panel'
-				},
-				elements
-			);
+
+			return <PanelBody
+				title={options.title}
+				icon={options.icon}
+				initialOpen={options.initialOpen}
+				className={'custom-panel'}
+			>
+				{elements}
+			</PanelBody>
 		},
-		slimSelectEnable: function () {
-			if (document.querySelectorAll(".slim-select")){
+		slimSelectEnable: function (props) {
+			if (document.querySelectorAll(".slim-select")) {
 				var select_element = document.querySelectorAll("select.slim-select");
 				for (var i = 0; i < select_element.length; i++) {
 					if (
-						!(select_element[i].getAttribute("data-ssid")) || 
+						!(select_element[i].getAttribute("data-ssid")) ||
 						jQuery(select_element[i]).is(":disabled") !== jQuery(select_element[i]).next().find('div.ss-disabled')
 					) {
-						new SlimSelect({
-							select: 			select_element[i],
-							placeholder: 		__('Select Value', 	'page_restrict_domain'),
-							text:				__('', 			   	'page_restrict_domain'),
-							searchPlaceholder: 	__('Search', 		'page_restrict_domain'),
-							searchText: 		__('No Results', 	'page_restrict_domain'),
-							searchingText: 		__('Searching...', 	'page_restrict_domain'),
-							allowDeselect: 		true,
-						});
+						// new SlimSelect({
+						// 	select: 			select_element[i],
+						// 	placeholder: 		__('Select Value', 	'page_restrict_domain'),
+						// 	text:				__('', 			   	'page_restrict_domain'),
+						// 	searchPlaceholder: 	__('Search', 		'page_restrict_domain'),
+						// 	searchText: 		__('No Results', 	'page_restrict_domain'),
+						// 	searchingText: 		__('Searching...', 	'page_restrict_domain'),
+						// 	allowDeselect: 		true,
+						// 	// onChange: (content) => {
+						// 		// slimselect.select.element.dispatchEvent(new Event('change'));
+						// 	// }
+						// 	// onChange: (content) => {
+						// 	// 	// var metavalue = metaValue;
+						// 	// 	var values = [];
+						// 	// 	if(content.constructor === Array){
+						// 	// 		for (var i = 0; i < content.length; i++) {
+						// 	// 			var value = content[i]['value'];
+						// 	// 			values.push(value);
+						// 	// 		}
+						// 	// 		var filtered_filtered = values.filter(function(item) {
+						// 	// 			return item;
+						// 	// 		});
+						// 	// 	}
+						// 	// 	else{
+						// 	// 		values = content['value'];
+						// 	// 		filtered_filtered = values;
+						// 	// 	}
+						//     //     // metavalue.push(content.target.value);
+
+						//     //     props.setMetaValue(filtered_filtered);
+						// 	// }
+						// });
 					}
 				}
 			}
@@ -103,13 +126,6 @@ page_restrict_wc = extend(page_restrict_wc, {
 				}
 			});
 		},
-		checkForEmptyInputs: function (element, prwc_termNames, missingElement) {
-			if(prwc_termNames.length){
-				return element;
-			}
-			else{
-				return missingElement;
-			}
-		},
+
 	}
 });

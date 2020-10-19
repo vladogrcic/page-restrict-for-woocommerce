@@ -1,0 +1,180 @@
+		/**
+		 * Changes current block attributes with the attributes from a block above or below. 
+		 * This is for the active block.
+		 * @returns {object}
+		 */
+		var changeOtherBlocksValues = function (side, attributesIn, disable, disableNABNotice) {
+			var next = 0;
+			if(side === 'above'){
+				next = -1;
+			}
+			else if(side === 'below'){
+				next = 1;
+			}
+			if (attributesIn[side+'BlockAttr']) {
+				if(disable){
+					disabledInput = true;
+				}
+				var sectionBlocks = getSectionBlocks();
+				for (let i = 0; i < sectionBlocks.length; i++) {
+					if (props.clientId === sectionBlocks[i].clientId) {
+						if (typeof sectionBlocks[i + next] !== "undefined") {
+							attributesIn.products 	= sectionBlocks[i + next].attributes.products;
+							attributesIn.days 		= sectionBlocks[i + next].attributes.days;
+							attributesIn.hours 		= sectionBlocks[i + next].attributes.hours;
+							attributesIn.minutes 	= sectionBlocks[i + next].attributes.minutes;
+							attributesIn.seconds 	= sectionBlocks[i + next].attributes.seconds;
+							// attributesIn.views 		= sectionBlocks[i + next].attributes.views;
+							attributesIn.redirect 	= sectionBlocks[i + next].attributes.redirect;
+						}
+						else {
+							if(typeof disableNABNotice === 'undefined'){
+								noAboveBlockNotice();
+							}
+							else{
+								if(disableNABNotice)
+									noAboveBlockNotice();
+							}
+							attributesIn[side+'BlockAttr'] = false;
+							if(disable){
+								disabledInput 			 = false;
+							}
+						}
+					}
+				}
+			}
+			return attributesIn;
+		};
+		/**
+		 * Changes current block attributes with the attributes from a block above or below. 
+		 * This is for going through non-active blocks to update them with current data.
+		 * @returns {object}
+		 */
+		var changeOtherBlocksValuesNonActive = function (side, attributesIn, disable, disableNABNotice) {
+			var next = 0;
+			if(side === 'above'){
+				next = -1;
+			}
+			else if(side === 'below'){
+				next = 1;
+			}
+			if (attributesIn[side+'BlockAttr']) {
+				if(disable){
+					disabledInput = true;
+				}
+				var sectionBlocks = getSectionBlocks();
+				for (let i = 0; i < sectionBlocks.length; i++) {
+					if (typeof sectionBlocks[i + next] !== "undefined") {
+						attributesIn.products 	= sectionBlocks[i + next].attributes.products;
+						attributesIn.days 		= sectionBlocks[i + next].attributes.days;
+						attributesIn.hours 		= sectionBlocks[i + next].attributes.hours;
+						attributesIn.minutes 	= sectionBlocks[i + next].attributes.minutes;
+						attributesIn.seconds 	= sectionBlocks[i + next].attributes.seconds;
+						// attributesIn.views 		= sectionBlocks[i + next].attributes.views;
+						attributesIn.redirect 	= sectionBlocks[i + next].attributes.redirect;
+					}
+				}
+			}
+			return attributesIn;
+		};
+		attributes = changeOtherBlocksValues('above', attributes, true, true);
+		attributes = changeOtherBlocksValues('below', attributes, true, true);
+		/**
+		 * Function loops through all 'Restrict Section' blocks and changes their attributes. It excludes the currently open one.
+		 * @returns {void}
+		 */
+		function changeAllBlocks(){
+			var sectionBlocksGen = getSectionBlocks();
+			for (var j = 0; j < sectionBlocksGen.length; j++) {
+				sectionBlocksGen[j].attributes = changeOtherBlocksValuesNonActive('above', sectionBlocksGen[j].attributes, false, false);
+				sectionBlocksGen[j].attributes = changeOtherBlocksValuesNonActive('below', sectionBlocksGen[j].attributes, false, false);
+			}
+		}
+		/**
+		 * Function to call if 'Lock by Products' field has changed.
+		 * @param {array} content Array of ids of products that need to be updated with.
+		 * @returns {void}
+		 */
+		function changeProducts(content) {
+			attributes = page_restrict_wc.attributes;
+			if (Array.isArray(content)) {
+				setAttributes({ products: content });
+			}
+			changeAllBlocks();
+		}
+		/**
+		 * Function to call if the text field is empty.
+		 * @param {string} 			name 		Name of the field.
+		 * @param {object|string} 	content 	Object or string of the input value that need to be changed.
+		 * @returns {void}
+		 */
+		var emptyTextInput = function (name, content) {
+			var attributes = {};
+			attributes[name] = '';
+			if(typeof(content) === "object"){
+				if(!parseInt(content.currentTarget.value)){
+					if(content.type == 'change'){
+						content.currentTarget.value = '';
+					}
+					if(content.type == 'focus'){
+						content.currentTarget.value = '';
+					}
+					if(content.type == 'blur'){
+						content.currentTarget.value = 0;
+					}
+				}
+				attributes[name] = content.currentTarget.value;
+			}
+			else{
+				if(!content){
+					content = 0;
+				}
+				attributes[name] = content;
+			}
+			setAttributes(attributes);
+		}
+		/**
+		 * Function to call if 'Days' field has changed.
+		 * @param 	{int} content Number of days that need to be updated with.
+		 * @returns {void}
+		 */
+		function changeDays(content) {
+			emptyTextInput('days', content);
+			changeAllBlocks();
+		}
+		/**
+		 * Function to call if 'Hours' field has changed.
+		 * @param 	{int} content Number of hours that need to be updated with.
+		 * @returns {void}
+		 */
+		function changeHours(content) {
+			emptyTextInput('hours', content);
+			changeAllBlocks();
+		}
+		/**
+		 * Function to call if 'Minutes' field has changed.
+		 * @param 	{int} content Number of minutes that need to be updated with.
+		 * @returns {void}
+		 */
+		function changeMinutes(content) {
+			emptyTextInput('minutes', content);
+			changeAllBlocks();
+		}
+		/**
+		 * Function to call if 'Seconds' field has changed.
+		 * @param 	{int} content Number of seconds that need to be updated with.
+		 * @returns {void}
+		 */
+		function changeSeconds(content) {
+			emptyTextInput('seconds', content);
+			changeAllBlocks();
+		}
+		// /**
+		//  * Function to call if 'Views' field has changed.
+		//  * @param 	{int} content Number of views that need to be updated with.
+		//  * @returns {void}
+		//  */
+		// function changeViews(content) {
+		// 	emptyTextInput('views', content);
+		// 	changeAllBlocks();
+		// }
