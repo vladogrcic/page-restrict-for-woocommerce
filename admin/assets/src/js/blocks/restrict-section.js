@@ -318,6 +318,70 @@ registerBlockType('page-restrict-wc/restrict-section', {
 		// 	changeAllBlocks();
 		// }
 		// return <div> Hello in Editor. </div>;
+		const colourStyles = {
+			control: styles => ({ ...styles, backgroundColor: 'white' }),
+			option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+				let color = 'black';
+				if(isDisabled){
+					color = 'black';
+				}
+				else{
+					if(isSelected){
+						color = 'white';
+					}
+					else{
+						if(isFocused){
+							color = 'white';
+						}
+						else{
+							color = 'black';
+						}
+					}
+				}
+				return {
+					...styles,
+					backgroundColor: isDisabled
+						? null
+						: isSelected
+							? data.color
+							: isFocused
+								? '#168eff'
+								: null,
+					color: color,
+					cursor: isDisabled ? 'not-allowed' : 'pointer',
+
+					':active': {
+						...styles[':active'],
+						backgroundColor: !isDisabled && (isSelected ? data.color : '#168eff'),
+						color: 'white',
+
+					},
+					':focus': {
+						backgroundColor: data.color,
+						color: 'white',
+					},
+					':hover': {
+						backgroundColor: data.color,
+						color: 'white',
+					},
+				};
+			},
+			multiValue: (styles, { data }) => {
+				return {
+					...styles,
+					backgroundColor: '#168eff',
+					color: 'white',
+				};
+			},
+			multiValueLabel: (styles, { data }) => ({
+				...styles,
+				color: 'white',
+			}),
+			multiValueRemove: (styles, { data }) => ({
+				...styles,
+				color: 'white',
+			}),
+		};
 		return (
 			<div className={attributes.className} attributes={attributes}>
 				<InnerBlocks></InnerBlocks>
@@ -436,7 +500,6 @@ registerBlockType('page-restrict-wc/restrict-section', {
 							}}
 						/>
 					</PanelBody>
-					,
 					{/**
 					 * Choose which product to lock the block with.
 					 */}
@@ -447,6 +510,7 @@ registerBlockType('page-restrict-wc/restrict-section', {
 						<div>
 							{prwc_termNames.length ? (
 								<Select
+									styles={colourStyles}
 									value={attributes.products}
 									label={__(
 										'Lock by Products',
@@ -479,6 +543,7 @@ registerBlockType('page-restrict-wc/restrict-section', {
 								<br/>
 								</>
 							)}
+							<br/>
 							{disabledInput ? (
 								<Disabled>
 									<ToggleControl
