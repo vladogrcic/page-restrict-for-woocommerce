@@ -4,27 +4,30 @@
  */
 
 table.timeout_table {
-    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+	/* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse; */
-    width: 100%;
+	width: 100%;
 }
-table.timeout_table td, table.timeout_table th {
-    border: 1px solid #ddd;
-    padding: 15px;
+
+table.timeout_table td,
+table.timeout_table th {
+	border: 1px solid #ddd;
+	padding: 15px;
 }
 
 table.timeout_table tr:nth-child(even) {
-    background-color: #f2f2f2;
+	background-color: #f2f2f2;
 }
 
 table.timeout_table tr:hover {
-    background-color: #ddd;
+	background-color: #ddd;
 }
 
 table.timeout_table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(28, 127, 240);
-    color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: rgb(28, 127, 240);
+	color: white;
 }

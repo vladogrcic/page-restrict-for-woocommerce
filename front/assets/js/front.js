@@ -1,4 +1,4 @@
-(function( $ ) {
+(function ($) {
 	'use strict';
 
 	/**
@@ -6,4 +6,4 @@
 	 * should reside in this file.
 	 */
 
-})( jQuery );
+})(jQuery);

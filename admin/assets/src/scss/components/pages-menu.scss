@@ -1,313 +1,337 @@
-#{$main_wrapper}{
-    .pages-all {
-        padding-left: 26px;
-    }
-    .pages-all, .ui-tabs-panel {
-        padding: 25px;
-        margin-bottom: 15px;
-        background-color: rgb(252, 252, 252);
-        border: solid 1px rgb(160, 160, 160);
-    }
-    .pages-list {
-        min-height: 350px;
-        >.page-type{
-            >.page-pagination{
-                >.card{
-                    display: inline-block;
-                    vertical-align: top;
-                    min-width: 200px;
-                    max-width: 40%;
-                    width: 32.68%;
-                    min-height: 250px;
-                    padding: 0;
-                    margin-right: 5px;
-                
-                    @media (max-width: 1300px) {
-                        &{
-                            display: inline-block;
-                            vertical-align: top;
-                            min-width: 200px;
-                            max-width: 60%;
-                            width: 48.8%;
-                            min-height: 250px;
-                            padding: 0;
-                            margin-right: 5px;
-                        }
-                    }
-                    
-                    >.page-options {
-                        padding: 0.7em 1em;
-                        background-color: rgb(231, 231, 231);
-                    }
-                    
-                    >.page-info>* {
-                        display: block;
-                        padding: 10px 15px;
-                    }
-                    
-                    >.page-info>* h3 {
-                        display: block;
-                    }
-                    
-                    >.page-info>.page-title {
-                        background-color: rgb(68, 154, 230);
-                    }
-                    
-                    >.page-info>.page-title>h3 {
-                        font-weight: 800;
-                    }
-                    
-                    >.page-info>.page-subtitle {
-                        background-color: rgb(90, 176, 252);
-                    }
-                    
-                    >.page-info>.page-status {
-                        background-color: rgb(123, 193, 255);
-                        padding-bottom: 15px;
-                        position: relative;
-                    }
-                    
-                    >.page-info>.page-status>.page-name {
-                        width: 60%;
-                    }
-                    
-                    >.page-info>.page-status>.page-name>* {
-                        display: inline-block;
-                        color: white!important;
-                    }
-                    
-                    >.page-info>.page-status>.page-name>h3, 
-                    >.page-info>.page-status>.page-name>.subtitle {
-                        display: inline-block;
-                        width: 35%;
-                    }
-                    
-                    >.page-info>.page-status>.edit {
-                        position: absolute;
-                        right: 15px;
-                        top: 10px;                    
-                        a {
-                            padding: 10px;
-                            color: rgb(255, 255, 255);
-                            background-color: rgb(41, 151, 248);
-                        }
-                        
-                        a:first-child {
-                            margin-right: 5px;
-                        }
-                        
-                        a:hover {
-                            color: rgb(0, 69, 129);
-                            background-color: rgb(86, 176, 255);
-                        }
-                    }
-                    
-                    >.page-info>.page-title>* {
-                        margin: 10px 0px;
-                        color: white!important;
-                    }
-                    
-                    >.page-info>.page-subtitle>* {
-                        margin: 5px 0px;
-                        color: white!important;
-                    }
-                    
-                    >.page-info .title {
-                        overflow-wrap: break-word;
-                        padding-bottom: 5px;
-                        margin-top: 0;
-                        margin-bottom: 5px;
-                        display: inline-block;
-                        color: grey;
-                        font-style: italic;
-                        font-size: 18px;
-                        line-height: 20px;
-                        padding-left: 0;
-                    }
-                    
-                    
-                    
-                    
-                    >.page-info .subtitle {
-                        padding-left: 0;
-                        color: rgb(165, 165, 165);
-                        font-style: italic;
-                        display: inline-block;
-                    }
-                    
-                    >.page-info a {
-                        display: inline-block;
-                        padding-left: 0;
-                        margin-top: 10px;
-                        color: rgb(20, 112, 165);
-                        font-weight: bolder;
-                        transition: color .3s;
-                        transition: background-color .3s;
-                    }
-                    
-                    >.page-info a:hover {
-                        color: rgb(177, 226, 255);
-                    }
-                    
-                    .panel select, .pages-all .text-small,  .panel .ss-main {
-                        font-size: initial;
-                    }
-                    
-                    .panel input {
-                        font-size: 1em;
-                    }
-                    
-                    
-                    
-                    .panel {
-                        padding-left: 10px;
-                        padding-right: 10px;
-                    }
-                    
-                    .panel>div {
-                        margin-top: 15px;
-                    }
-                    
-                    .panel>div>label,  .panel>div>div>label {
-                        width: 100%;
-                    }
-                    
-                    .panel>div>select,  .panel>div>div>select {
-                        width: 100%;
-                    }
-                    
-                    .panel>div>input {
-                        width: 100%;
-                    }
-                    
-                    .panel>div>div>input {
-                        width: 50%;
-                    }
-                    
-                    .panel .two-column:not([type="checkbox"]) {
-                        display: inline-block;
-                        width: 45%;
-                        margin: 0;
-                    }
-                    .panel .two-column label {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-        
-        .accordion .subtitle.ui-accordion-header {
-            font-size: 1em;
-        }
-    }
-    .ss-main .ss-content.ss-open, .ss-main .ss-content.ss-open>* {
-        z-index: 999999!important;
-    }
-    .post-types {
-        width: 100%;
-    }
-    
-    .ss-main .ss-optgroup-label {
-        background-color: rgb(206, 227, 255);
-    }
-    
-    .ss-main .ss-content.ss-open .ss-search input {
-        font-size: 1em;
-    }
-    .pages-options {
-        margin-bottom: 10px;
-    }
-    
-    .accordion-resizer {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-    
-    .accordion-resizer .ui-resizable-n, .accordion-resizer .ui-resizable-s {
-        background-color: rgb(29, 133, 230);
-        height: 5px;
-    }
-    
-    .sidebar-section {
-        margin-bottom: 15px;
-    }
-    
-    .products-select {
-        width: 100%;
-    }
-    
-    .empty-option {
-        color: rgb(230, 100, 100);
-        font-style: italic;
-    }
-    
-    .card-main {
-        position: relative;
-        padding: .7em 2em 1em;
-        border: 1px solid #c2c2c2;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
-        background: #fff;
-        box-sizing: border-box;
-        width: 100%;
-    }
-    
-    .card-main:not(:first-child) {
-        margin-top: 20px;
-    }
-    .description {
-        color: grey;
-    }
-    
-    .description * {
-        font-weight: bold;
-    }
-    
-    .description b {
-        font-weight: 900;
-        color: rgb(88, 88, 88);
-    }
-    
-    .card-main .description {
-        color: grey;
-    }
-    
-    .block-description {
-        color: rgb(170, 170, 170);
-        font-style: italic;
-    }
-    
-    .block-description-default {
-        color: rgb(170, 170, 170);
-        font-style: italic;
-        font-weight: bold;
-    }
-    .ui-tabs-active.ui-state-active, .ui-tabs-active.ui-state-active>a {
-        cursor: pointer!important;
-    }
+#{$main_wrapper} {
+
+	.pages-all {
+		padding-left: 26px;
+	}
+
+	.pages-all,
+	.ui-tabs-panel {
+		padding: 25px;
+		margin-bottom: 15px;
+		background-color: rgb(252, 252, 252);
+		border: solid 1px rgb(160, 160, 160);
+	}
+
+	.pages-list {
+		min-height: 350px;
+
+		>.page-type {
+
+			>.page-pagination {
+
+				>.card {
+					display: inline-block;
+					vertical-align: top;
+					min-width: 200px;
+					max-width: 40%;
+					width: 32.68%;
+					min-height: 250px;
+					padding: 0;
+					margin-right: 5px;
+
+					@media (max-width: 1300px) {
+
+						& {
+							display: inline-block;
+							vertical-align: top;
+							min-width: 200px;
+							max-width: 60%;
+							width: 48.8%;
+							min-height: 250px;
+							padding: 0;
+							margin-right: 5px;
+						}
+					}
+
+					>.page-options {
+						padding: 0.7em 1em;
+						background-color: rgb(231, 231, 231);
+					}
+
+					>.page-info > * {
+						display: block;
+						padding: 10px 15px;
+					}
+
+					>.page-info > * h3 {
+						display: block;
+					}
+
+					>.page-info > .page-title {
+						background-color: rgb(68, 154, 230);
+					}
+
+					>.page-info > .page-title > h3 {
+						font-weight: 800;
+					}
+
+					>.page-info > .page-subtitle {
+						background-color: rgb(90, 176, 252);
+					}
+
+					>.page-info > .page-status {
+						background-color: rgb(123, 193, 255);
+						padding-bottom: 15px;
+						position: relative;
+					}
+
+					>.page-info > .page-status > .page-name {
+						width: 60%;
+					}
+
+					>.page-info > .page-status > .page-name > * {
+						display: inline-block;
+						color: white !important;
+					}
+
+					>.page-info > .page-status > .page-name > h3,
+					>.page-info > .page-status > .page-name > .subtitle {
+						display: inline-block;
+						width: 35%;
+					}
+
+					>.page-info > .page-status > .edit {
+						position: absolute;
+						right: 15px;
+						top: 10px;
+
+						a {
+							padding: 10px;
+							color: rgb(255, 255, 255);
+							background-color: rgb(41, 151, 248);
+						}
+
+						a:first-child {
+							margin-right: 5px;
+						}
+
+						a:hover {
+							color: rgb(0, 69, 129);
+							background-color: rgb(86, 176, 255);
+						}
+					}
+
+					>.page-info > .page-title > * {
+						margin: 10px 0;
+						color: white !important;
+					}
+
+					>.page-info > .page-subtitle > * {
+						margin: 5px 0;
+						color: white !important;
+					}
+
+					>.page-info .title {
+						overflow-wrap: break-word;
+						padding-bottom: 5px;
+						margin-top: 0;
+						margin-bottom: 5px;
+						display: inline-block;
+						color: grey;
+						font-style: italic;
+						font-size: 18px;
+						line-height: 20px;
+						padding-left: 0;
+					}
+
+
+
+
+					>.page-info .subtitle {
+						padding-left: 0;
+						color: rgb(165, 165, 165);
+						font-style: italic;
+						display: inline-block;
+					}
+
+					>.page-info a {
+						display: inline-block;
+						padding-left: 0;
+						margin-top: 10px;
+						color: rgb(20, 112, 165);
+						font-weight: bolder;
+						transition: color 0.3s;
+						transition: background-color 0.3s;
+					}
+
+					>.page-info a:hover {
+						color: rgb(177, 226, 255);
+					}
+
+					.panel select,
+					.pages-all .text-small,
+					.panel .ss-main {
+						font-size: initial;
+					}
+
+					.panel input {
+						font-size: 1em;
+					}
+
+
+
+					.panel {
+						padding-left: 10px;
+						padding-right: 10px;
+					}
+
+					.panel > div {
+						margin-top: 15px;
+					}
+
+					.panel > div > label,
+					.panel > div > div > label {
+						width: 100%;
+					}
+
+					.panel > div > select,
+					.panel > div > div > select {
+						width: 100%;
+					}
+
+					.panel > div > input {
+						width: 100%;
+					}
+
+					.panel > div > div > input {
+						width: 50%;
+					}
+
+					.panel .two-column:not([type="checkbox"]) {
+						display: inline-block;
+						width: 45%;
+						margin: 0;
+					}
+
+					.panel .two-column label {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		.accordion .subtitle.ui-accordion-header {
+			font-size: 1em;
+		}
+	}
+
+	.ss-main .ss-content.ss-open,
+	.ss-main .ss-content.ss-open > * {
+		z-index: 999999 !important;
+	}
+
+	.post-types {
+		width: 100%;
+	}
+
+	.ss-main .ss-optgroup-label {
+		background-color: rgb(206, 227, 255);
+	}
+
+	.ss-main .ss-content.ss-open .ss-search input {
+		font-size: 1em;
+	}
+
+	.pages-options {
+		margin-bottom: 10px;
+	}
+
+	.accordion-resizer {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.accordion-resizer .ui-resizable-n,
+	.accordion-resizer .ui-resizable-s {
+		background-color: rgb(29, 133, 230);
+		height: 5px;
+	}
+
+	.sidebar-section {
+		margin-bottom: 15px;
+	}
+
+	.products-select {
+		width: 100%;
+	}
+
+	.empty-option {
+		color: rgb(230, 100, 100);
+		font-style: italic;
+	}
+
+	.card-main {
+		position: relative;
+		padding: 0.7em 2em 1em;
+		border: 1px solid #c2c2c2;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+		background: #fff;
+		box-sizing: border-box;
+		width: 100%;
+	}
+
+	.card-main:not(:first-child) {
+		margin-top: 20px;
+	}
+
+	.description {
+		color: grey;
+	}
+
+	.description * {
+		font-weight: bold;
+	}
+
+	.description b {
+		font-weight: 900;
+		color: rgb(88, 88, 88);
+	}
+
+	.card-main .description {
+		color: grey;
+	}
+
+	.block-description {
+		color: rgb(170, 170, 170);
+		font-style: italic;
+	}
+
+	.block-description-default {
+		color: rgb(170, 170, 170);
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	.ui-tabs-active.ui-state-active,
+	.ui-tabs-active.ui-state-active > a {
+		cursor: pointer !important;
+	}
 }
+
 .pagination {
-    display: inline-block;
-    li {
-        display: block;
-        color: white;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        transition: background-color .3s;
-        cursor: pointer;
-        background-color: rgb(91, 167, 255);
-    }
+	display: inline-block;
 
-    li:hover {
-        background-color: rgb(45, 127, 209);
-    }
+	li {
+		display: block;
+		color: white;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		transition: background-color 0.3s;
+		cursor: pointer;
+		background-color: rgb(91, 167, 255);
+	}
 
-    li.active {
-        background-color: rgb(0, 106, 212);
-        color: white;
-    }
+	li:hover {
+		background-color: rgb(45, 127, 209);
+	}
 
-    .block-editor .components-panel .custom-panel>div {
-        margin-bottom: 15px;
-    }
+	li.active {
+		background-color: rgb(0, 106, 212);
+		color: white;
+	}
+
+	.block-editor .components-panel .custom-panel > div {
+		margin-bottom: 15px;
+	}
 }
