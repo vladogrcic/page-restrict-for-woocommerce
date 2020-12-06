@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-19T17:50:36+02:00\n"
-"PO-Revision-Date: 2020-10-19T17:50:36+02:00\n"
+"POT-Creation-Date: 2020-12-06T01:50:58+01:00\n"
+"PO-Revision-Date: 2020-12-06T01:50:58+01:00\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: page_restrict_domain\n"
 "Language: hr\n"
@@ -33,45 +33,45 @@ msgstr ""
 msgid "vladogrcic.com"
 msgstr ""
 
-#: admin/class-admin.php:564
+#: admin/class-admin.php:567
 msgid "Page Restrict"
 msgstr ""
 
-#: admin/class-admin.php:565
+#: admin/class-admin.php:568
 #: admin/partials/menu-page-pages.php:18
 msgid "Page Restrict Pages"
 msgstr ""
 
-#: admin/class-admin.php:565
+#: admin/class-admin.php:568
 msgid "Pages"
 msgstr ""
 
-#: admin/class-admin.php:567
+#: admin/class-admin.php:570
 #: admin/partials/menu-page-user-overview.php:17
 msgid "Page Restrict User Overview"
 msgstr ""
 
-#: admin/class-admin.php:567
+#: admin/class-admin.php:570
 msgid "User Overview"
 msgstr ""
 
-#: admin/class-admin.php:569
+#: admin/class-admin.php:572
 #: admin/partials/menu-page-settings.php:17
 msgid "Page Restrict Settings"
 msgstr ""
 
-#: admin/class-admin.php:569
-#: admin/class-admin.php:637
+#: admin/class-admin.php:572
+#: admin/class-admin.php:640
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:571
+#: admin/class-admin.php:574
 #: admin/partials/menu-page-quick-start.php:59
 msgid "Page Restrict Quick Start"
 msgstr ""
 
-#: admin/class-admin.php:571
-#: admin/class-admin.php:639
+#: admin/class-admin.php:574
+#: admin/class-admin.php:642
 msgid "Quick Start"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgid "Frontend"
 msgstr ""
 
 #: admin/partials/menu-page-settings.php:27
-#: admin/assets/src/js/blocks/restricted-pages-list.js:68
+#: admin/assets/src/js/blocks/restricted-pages-list.js:70
 msgid "General"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgstr ""
 #: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:92
 #: admin/partials/menu-pages/user_overview/tabs/tab-view.php:88
 #: includes/front/class-wc-my-account.php:101
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:40
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:54
 msgid "View"
 msgstr ""
 
@@ -189,81 +189,81 @@ msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:89
 #: admin/partials/page-edit-classic-metabox.php:53
-#: admin/assets/src/js/sidebars/plugin.js:24
+#: admin/assets/src/js/sidebars/plugin.js:320
 msgid "Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:92
 #: admin/partials/page-edit-classic-metabox.php:56
-#: admin/assets/src/js/sidebars/plugin.js:33
+#: admin/assets/src/js/sidebars/plugin.js:330
 msgid "Lock by Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:111
 #: admin/partials/page-edit-classic-metabox.php:70
-#: admin/assets/src/js/sidebars/plugin.js:40
+#: admin/assets/src/js/sidebars/plugin.js:341
 msgid "Not all products required"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:114
 #: admin/partials/page-edit-classic-metabox.php:79
-#: admin/assets/src/js/sidebars/plugin.js:53
+#: admin/assets/src/js/sidebars/plugin.js:357
 msgid "Page to show if product not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:135
 #: admin/partials/page-edit-classic-metabox.php:99
-#: admin/assets/src/js/sidebars/plugin.js:59
+#: admin/assets/src/js/sidebars/plugin.js:369
 msgid "Redirect if product was not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:137
 #: admin/partials/page-edit-classic-metabox.php:104
-#: admin/assets/src/js/sidebars/plugin.js:71
+#: admin/assets/src/js/sidebars/plugin.js:385
 msgid "Page to show if user is not logged in"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:158
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:270
 #: admin/partials/page-edit-classic-metabox.php:124
-#: admin/assets/src/js/sidebars/plugin.js:77
+#: admin/assets/src/js/sidebars/plugin.js:397
 msgid "Redirect if user is not logged in"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:161
 #: admin/partials/page-edit-classic-metabox.php:129
-#: admin/assets/src/js/sidebars/plugin.js:84
+#: admin/assets/src/js/sidebars/plugin.js:410
 msgid "Timeout"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:165
 #: admin/partials/page-edit-classic-metabox.php:132
-#: admin/assets/src/js/sidebars/plugin.js:92
+#: admin/assets/src/js/sidebars/plugin.js:418
 msgid "Days"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:170
 #: admin/partials/page-edit-classic-metabox.php:136
-#: admin/assets/src/js/sidebars/plugin.js:97
+#: admin/assets/src/js/sidebars/plugin.js:423
 msgid "Hours"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:175
 #: admin/partials/page-edit-classic-metabox.php:140
-#: admin/assets/src/js/sidebars/plugin.js:102
+#: admin/assets/src/js/sidebars/plugin.js:428
 msgid "Minutes"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:180
 #: admin/partials/page-edit-classic-metabox.php:144
-#: admin/assets/src/js/sidebars/plugin.js:107
+#: admin/assets/src/js/sidebars/plugin.js:433
 msgid "Seconds"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:185
 #: admin/partials/page-edit-classic-metabox.php:148
 #: includes/front/class-restricted-pages-list-blocks.php:179
-#: admin/assets/src/js/sidebars/plugin.js:113
+#: admin/assets/src/js/sidebars/plugin.js:439
 msgid "Views"
 msgstr ""
 
@@ -795,7 +795,7 @@ msgid "Number of views until expiration"
 msgstr ""
 
 #: admin/partials/page-edit-classic-metabox.php:76
-#: admin/assets/src/js/sidebars/plugin.js:44
+#: admin/assets/src/js/sidebars/plugin.js:348
 msgid "Page to Show"
 msgstr ""
 
@@ -833,18 +833,18 @@ msgstr ""
 
 #: includes/front/class-restricted-pages-list-blocks.php:132
 #: includes/front/class-restricted-pages-list-blocks.php:178
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:13
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:39
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:12
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:53
 msgid "Page"
 msgstr ""
 
 #: includes/front/class-restricted-pages-list-blocks.php:133
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:14
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:13
 msgid "Time of Expiration"
 msgstr ""
 
 #: includes/front/class-restricted-pages-list-blocks.php:180
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:41
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:55
 msgid "Views left"
 msgstr ""
 
@@ -853,7 +853,7 @@ msgid "Restricted Pages"
 msgstr ""
 
 #: includes/front/class-wc-my-account.php:87
-#: admin/assets/src/js/blocks/restricted-pages-list.js:11
+#: admin/assets/src/js/blocks/restricted-pages-list.js:13
 msgid "Restricted Pages List"
 msgstr ""
 
@@ -890,7 +890,7 @@ msgid "Disable option: \"Allow customers to place orders without an account\"."
 msgstr ""
 
 #: admin/assets/build/general-block-var.js:1
-#: admin/assets/src/js/main/general-block-var.js:113
+#: admin/assets/src/js/main/general-block-var.js:128
 msgid "You had the \"Above block\" or \"Below block\" setting checked but you dont have a usable block. Add a Section Block below or above in order to be able to check that setting"
 msgstr ""
 
@@ -898,71 +898,71 @@ msgstr ""
 msgid "Sint quam voluptatem sed accusamus ut"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:18
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:22
 msgid "18.04.2020 19:11"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:21
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:26
 msgid "Phasellus et fringilla velit"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:22
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:31
 msgid "08.04.2020 04:32"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:25
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:35
 msgid "Animi maxime numquam veniam aliquam aut distinctio"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:26
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:40
 msgid "14.04.2020 19:11"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:44
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:59
 msgid "Fugiat repellat qui harum minus recusandae"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:49
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:69
 msgid "Doloremque non sunt sint dolorum"
 msgstr ""
 
-#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:54
+#: admin/assets/src/js/blocks/components/preview-time-view-tables.js:79
 msgid "Ut vel quibusdam totam"
 msgstr ""
 
-#: admin/assets/src/js/blocks/restricted-pages-list.js:12
+#: admin/assets/src/js/blocks/restricted-pages-list.js:14
 msgid "Shows a list of all pages that the current user bought a product needed for unlock."
 msgstr ""
 
-#: admin/assets/src/js/blocks/restricted-pages-list.js:74
+#: admin/assets/src/js/blocks/restricted-pages-list.js:76
 msgid "Show Time Table"
 msgstr ""
 
-#: admin/assets/src/js/blocks/restricted-pages-list.js:86
+#: admin/assets/src/js/blocks/restricted-pages-list.js:91
 msgid "Show View Table"
 msgstr ""
 
-#: admin/assets/src/js/blocks/restricted-pages-list.js:101
+#: admin/assets/src/js/blocks/restricted-pages-list.js:107
 msgid "Show a table containing all pages the current user bought products for in order to access them."
 msgstr ""
 
-#: admin/assets/src/js/blocks/restricted-pages-list.js:107
+#: admin/assets/src/js/blocks/restricted-pages-list.js:116
 msgid "Disable default table design"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:35
+#: admin/assets/src/js/sidebars/plugin.js:332
 msgid "No available products to show"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:55
-#: admin/assets/src/js/sidebars/plugin.js:73
+#: admin/assets/src/js/sidebars/plugin.js:362
+#: admin/assets/src/js/sidebars/plugin.js:390
 msgid "No available pages to show"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:64
+#: admin/assets/src/js/sidebars/plugin.js:375
 msgid "Default: Render the not bought page content into the current page"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:80
+#: admin/assets/src/js/sidebars/plugin.js:403
 msgid "Default: Render the user is not logged in page content into the current page"
 msgstr ""

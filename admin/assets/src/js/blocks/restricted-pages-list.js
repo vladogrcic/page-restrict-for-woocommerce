@@ -1,15 +1,20 @@
 import PreviewTimeViewTables from './components/preview-time-view-tables';
 
-var __ = wp.i18n.__;
-const { InnerBlocks, InspectorControls } = wp.hasOwnProperty('blockEditor') ? wp.blockEditor : wp.editor; //Block inspector wrapper
+const __ = wp.i18n.__;
+const { InnerBlocks, InspectorControls } = wp.hasOwnProperty('blockEditor')
+	? wp.blockEditor
+	: wp.editor; //Block inspector wrapper
 
-var registerBlockType = wp.blocks.registerBlockType;
+const registerBlockType = wp.blocks.registerBlockType;
 
 const { PanelBody, ToggleControl } = wp.components;
 
 registerBlockType('page-restrict-wc/restricted-pages-list', {
 	title: __('Restricted Pages List', 'page_restrict_domain'),
-	description: __('Shows a list of all pages that the current user bought a product needed for unlock.', 'page_restrict_domain'),
+	description: __(
+		'Shows a list of all pages that the current user bought a product needed for unlock.',
+		'page_restrict_domain'
+	),
 	icon: 'schedule',
 	category: 'widgets',
 	keywords: ['restrict Section for WooCommerce'],
@@ -27,34 +32,31 @@ registerBlockType('page-restrict-wc/restricted-pages-list', {
 			default: false,
 		},
 	},
-	edit: function (props) {
+	edit(props) {
 		// page_restrict_wc.attributes = attributes;
 
-		var attributes = props.attributes;
-		var setAttributes = props.setAttributes;
+		const attributes = props.attributes;
+		const setAttributes = props.setAttributes;
 
-		var _props$attributes = props.attributes,
+		const _props$attributes = props.attributes,
 			content = _props$attributes.content,
 			alignment = _props$attributes.alignment,
 			className = props.className;
 
-		var onChangeContent = function onChangeContent(newContent) {
+		const onChangeContent = function onChangeContent(newContent) {
 			props.setAttributes({
-				content: newContent
+				content: newContent,
 			});
 		};
 
-		var onChangeAlignment = function onChangeAlignment(newAlignment) {
+		const onChangeAlignment = function onChangeAlignment(newAlignment) {
 			props.setAttributes({
-				alignment: newAlignment === undefined ? 'none' : newAlignment
+				alignment: newAlignment === undefined ? 'none' : newAlignment,
 			});
 		};
 		return (
 			<div>
-				<div
-					className={attributes.className}
-					attributes={attributes}
-				>
+				<div className={attributes.className} attributes={attributes}>
 					<div>
 						<PreviewTimeViewTables
 							disable_table_class={attributes.disable_table_class}
@@ -65,16 +67,19 @@ registerBlockType('page-restrict-wc/restricted-pages-list', {
 				</div>
 				<InspectorControls>
 					<PanelBody
-						title={__("General", 'page_restrict_domain')}
-						icon={"admin-generic"}
+						title={__('General', 'page_restrict_domain')}
+						icon={'admin-generic'}
 						initialOpen={true}
 						className={'custom-panel'}
 					>
 						<ToggleControl
-							label={__('Show Time Table', 'page_restrict_domain')}
+							label={__(
+								'Show Time Table',
+								'page_restrict_domain'
+							)}
 							checked={attributes.time}
 							onChange={function (time) {
-								setAttributes({ time: time });
+								setAttributes({ time });
 								setAttributes({ view: false });
 								if (!(time && attributes.view)) {
 									setAttributes({ time: false });
@@ -83,10 +88,13 @@ registerBlockType('page-restrict-wc/restricted-pages-list', {
 							}}
 						/>
 						<ToggleControl
-							label={__('Show View Table', 'page_restrict_domain')}
+							label={__(
+								'Show View Table',
+								'page_restrict_domain'
+							)}
 							checked={attributes.view}
 							onChange={function (view) {
-								setAttributes({ view: view });
+								setAttributes({ view });
 								setAttributes({ time: false });
 								if (!(attributes.time && view)) {
 									setAttributes({ time: true });
@@ -94,20 +102,26 @@ registerBlockType('page-restrict-wc/restricted-pages-list', {
 								}
 							}}
 						/>
-						<span
-							className='block-description'
-						>
+						<span className="block-description">
 							<span>
-								{__("Show a table containing all pages the current user bought products for in order to access them.", 'page_restrict_domain')}
+								{__(
+									'Show a table containing all pages the current user bought products for in order to access them.',
+									'page_restrict_domain'
+								)}
 							</span>
 						</span>
 						<br />
 						<br />
 						<ToggleControl
-							label={__('Disable default table design', 'page_restrict_domain')}
+							label={__(
+								'Disable default table design',
+								'page_restrict_domain'
+							)}
 							checked={attributes.disable_table_class}
 							onChange={function (disable_table_class) {
-								setAttributes({ disable_table_class: disable_table_class });
+								setAttributes({
+									disable_table_class,
+								});
 							}}
 						/>
 					</PanelBody>
@@ -115,17 +129,13 @@ registerBlockType('page-restrict-wc/restricted-pages-list', {
 			</div>
 		);
 	},
-	save: function (props) {
+	save(props) {
 		return (
-			<div
-				className={props.className}
-			>
-				<div
-					className={'custom-sec-inner'}
-				>
+			<div className={props.className}>
+				<div className={'custom-sec-inner'}>
 					<InnerBlocks.Content></InnerBlocks.Content>
 				</div>
 			</div>
 		);
-	}
+	},
 });

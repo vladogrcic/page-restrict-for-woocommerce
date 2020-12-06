@@ -76,13 +76,17 @@ class Admin
      */
     public function enqueue_styles()
     {
-        if( strpos(get_current_screen()->base, 'page_prwc-') !== false ){
+        $current_screen = get_current_screen();
+        if( strpos(get_current_screen()->base, 'page_prwc-') !== false || !(
+            method_exists( $current_screen, 'is_block_editor' ) &&
+                $current_screen->is_block_editor()
+        )){
             wp_enqueue_style( 'jquery-ui',       plugin_dir_url(__FILE__) . 'assets/build/jquery-ui.css', false,          $this->version );
             wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url(__FILE__) . 'assets/build/jquery-ui.theme.css', false,    $this->version );
             wp_enqueue_style( 'slimselect',      plugin_dir_url(__FILE__) .'assets/build/slimselect.css', false,          $this->version );
             wp_enqueue_style( 'zoomify',         plugin_dir_url(__FILE__) .'assets/build/zoomify.css', false,             $this->version );
             wp_enqueue_style( 'oxanium', plugin_dir_url(__FILE__) .'assets/font/oxanium/oxanium-load.css', array(),         $this->version ); 
-            wp_enqueue_style( $this->plugin_name, plugin_dir_url(__FILE__) . 'assets/build/admin.css', array(), $this->version, 'all' );
+            wp_enqueue_style( $this->plugin_name.'-admin', plugin_dir_url(__FILE__) . 'assets/build/admin-style.css', array(), $this->version, 'all' );
         }
     }
 
@@ -94,18 +98,21 @@ class Admin
     public function enqueue_scripts()
     {
         $plugin_name = $this->plugin_name;
-        if( strpos(get_current_screen()->base, 'page_prwc-') !== false ){
+        $current_screen = get_current_screen();
+        if( strpos($current_screen->base, 'page_prwc-') !== false || !(
+            method_exists( $current_screen, 'is_block_editor' ) &&
+                $current_screen->is_block_editor()
+        )){
             wp_enqueue_script( 'jquery-ui-tabs');
             wp_enqueue_script( 'jquery-ui-accordion' );
             wp_enqueue_script( 'jquery-ui-resizable' );
             wp_enqueue_script( 'jquery.zoom',       plugin_dir_url(__FILE__) .'assets/build/jquery.zoom.js', array('jquery'),          $this->version, false );
             wp_enqueue_script( 'slimselect',        plugin_dir_url(__FILE__) .'assets/build/slimselect.js', array('jquery'),           $this->version, false );
-            wp_enqueue_script( 'admin',           plugin_dir_url(__FILE__) .'assets/build/admin.js', array( 'jquery' ),                $this->version, false );
-            wp_localize_script('admin', 'page_restrict_wc', [
+            wp_enqueue_script( $plugin_name.'-admin',           plugin_dir_url(__FILE__) .'assets/build/admin-script.js', array( 'jquery' ),                $this->version, false );
+            wp_localize_script( $plugin_name.'-admin', 'page_restrict_wc', [
                 'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
             ]);
         }
-
     }
     /**
      * Register the JavaScript for the page editing admin area. Some additional variables as well.
@@ -163,10 +170,6 @@ class Admin
             }
             else{
                 $all_page_options[ $option ] = (object)[];
-                // [
-                //     'label' => $slug_option,
-                //     'value' => $page_option
-                // ];
             }
         }
         $product_id_options = ['prwc_products'];
@@ -404,7 +407,7 @@ class Admin
                     $products = json_decode($input, true);
                     // if(!$products) return;
                     $output = [];
-                    if( !($products) ){
+                    if( !($products) || is_numeric($products) ){
                         return sanitize_text_field($input);
                     }
                     else{
@@ -642,6 +645,3 @@ class Admin
         return $links; 
     }
 }
-
-
-

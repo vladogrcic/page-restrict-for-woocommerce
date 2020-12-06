@@ -1,7 +1,7 @@
 {
-    "translation-revision-date": "2020-12-06T01:50:58+01:00",
+    "translation-revision-date": "2020-10-19T22:34:07+02:00",
     "generator": "WP-CLI\/2.4.0",
-    "source": "admin\/assets\/src\/js\/sidebars\/plugin.js",
+    "source": "admin\/assets\/build\/sidebars.js",
     "domain": "messages",
     "locale_data": {
         "messages": {
