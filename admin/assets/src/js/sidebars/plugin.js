@@ -335,7 +335,6 @@ window.onload = function (params) {
 					)}
 				/>
 				<br />
-				<br />
 				<MetaToggleControl
 					metaKey={'prwc_not_all_products_required'}
 					title={__(

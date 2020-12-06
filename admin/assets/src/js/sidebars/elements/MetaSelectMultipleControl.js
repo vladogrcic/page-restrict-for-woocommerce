@@ -39,10 +39,76 @@ export default compose.compose(
 	const missingText = props.missingText;
 	prwc_ReactSelectElementSave[props.metaKey] = props.metaValueElement;
 	if (labels.length) {
+		const colourStyles = {
+			control: styles => ({ ...styles, backgroundColor: 'white' }),
+			option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+				let color = 'black';
+				if(isDisabled){
+					color = 'black';
+				}
+				else{
+					if(isSelected){
+						color = 'white';
+					}
+					else{
+						if(isFocused){
+							color = 'white';
+						}
+						else{
+							color = 'black';
+						}
+					}
+				}
+				return {
+					...styles,
+					backgroundColor: isDisabled
+						? null
+						: isSelected
+							? data.color
+							: isFocused
+								? '#168eff'
+								: null,
+					color: color,
+					cursor: isDisabled ? 'not-allowed' : 'pointer',
+
+					':active': {
+						...styles[':active'],
+						backgroundColor: !isDisabled && (isSelected ? data.color : '#168eff'),
+						color: 'white',
+
+					},
+					':focus': {
+						backgroundColor: data.color,
+						color: 'white',
+					},
+					':hover': {
+						backgroundColor: data.color,
+						color: 'white',
+					},
+				};
+			},
+			multiValue: (styles, { data }) => {
+				return {
+					...styles,
+					backgroundColor: '#168eff',
+					color: 'white',
+				};
+			},
+			multiValueLabel: (styles, { data }) => ({
+				...styles,
+				color: 'white',
+			}),
+			multiValueRemove: (styles, { data }) => ({
+				...styles,
+				color: 'white',
+			}),
+		};
+		  
 		return (
 			<div key={Math.random()} className={'sidebar-section'}>
 				<label htmlFor="">{props.title}</label>
 				<Select
+					styles={colourStyles}
 					value={prwc_ReactSelectElementSave[props.metaKey]}
 					isMulti
 					name="colors"
