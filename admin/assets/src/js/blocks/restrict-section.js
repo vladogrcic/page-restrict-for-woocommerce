@@ -3,7 +3,6 @@ const __ = wp.i18n.__;
 const { InnerBlocks, InspectorControls } = wp.hasOwnProperty('blockEditor')
 	? wp.blockEditor
 	: wp.editor; //Block inspector wrapper
-const slimSelectEnable = page_restrict_wc.func.slimSelectEnable;
 const getSectionBlocks = page_restrict_wc.func.getSectionBlocks;
 const noAboveBlockNotice = page_restrict_wc.func.noAboveBlockNotice;
 
@@ -13,6 +12,7 @@ const icon = (
 		<image href={page_restrict_wc.sidebar_img} />
 	</svg>
 );
+
 
 const { PanelBody, TextControl, ToggleControl, Disabled } = wp.components;
 registerBlockType('page-restrict-wc/restrict-section', {
@@ -480,9 +480,6 @@ registerBlockType('page-restrict-wc/restrict-section', {
 								});
 								setAttributes({ belowBlockAttr: false });
 								disabledInput = false;
-								setTimeout(() => {
-									slimSelectEnable();
-								}, 10);
 							}}
 						/>
 						<ToggleControl
@@ -494,9 +491,6 @@ registerBlockType('page-restrict-wc/restrict-section', {
 								});
 								setAttributes({ aboveBlockAttr: false });
 								disabledInput = false;
-								setTimeout(() => {
-									slimSelectEnable();
-								}, 10);
 							}}
 						/>
 					</PanelBody>

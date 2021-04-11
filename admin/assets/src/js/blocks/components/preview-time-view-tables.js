@@ -96,13 +96,3 @@ function PreviewTimeViewTables(props) {
 	return table;
 }
 export default PreviewTimeViewTables;
-
-// const { Component } = wp.element;
-
-// export default class FirstBlockEdit extends Component {
-// 	render() {
-// 		return(
-//             PreviewTimeViewTablesEL(this.props)
-//         );
-// 	}
-// }
