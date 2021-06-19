@@ -63,6 +63,7 @@ export default compose.compose(
 						}
 						return true;
 					}}
+					isClearable={true}
 				/>
 			</div>
 		);

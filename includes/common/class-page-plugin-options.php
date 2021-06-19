@@ -127,6 +127,7 @@ class Page_Plugin_Options {
      */
     public function get_page_options($post_id, $page_option){
         $meta = '';
+        if(!$post_id) return false;
         foreach ($this->possible_page_options as $key => $type) {
             if($type === 'array'){
                 if($page_option === $key){
