@@ -99,6 +99,9 @@
         <?php
         foreach ($value as $user_id => $vars):
           $expiration = $vars['time_compare'] - $vars['time_elapsed'];
+          if($restrict_by_product){
+            $expiration = 1;
+          }
           ?>
           <div class="inline-boxes <?php echo $expiration <= 0 ? 'red-palette' : ''; ?>"
             style="border: 3px solid <?php echo $expiration <= 0 ? 'Crimson' : 'DodgerBlue'; ?>; border-top: 15px solid <?php echo $expiration <= 0 ? 'Crimson' : 'DodgerBlue'; ?>;">
@@ -110,14 +113,16 @@
               <h3><?php esc_html_e( 'Email', 'page_restrict_domain' ); ?></h3>
               <span><?php echo $vars['username']->user_email; ?></span>
             </div>
-            <div style="background-color: <?php echo $expiration <= 0 ? '#BB4F4D' : ''; ?>;">
-              <h3><?php echo $expiration <= 0 ? 'Expired' : 'Expires'; ?></h3>
-              <span><?php echo $helpers->seconds_to_dhms($expiration, '%a days, %h h<br>%i min and %s sec'); ?></span>
-            </div>
-            <div style="background-color: <?php echo $expiration <= 0 ? '#BB4F4D' : ''; ?>;">
-              <h3><?php esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></h3>
-              <span><?php echo date($date_format . " " . $time_format, $expiration + time()); ?></span>
-            </div>
+            <?php if(!$restrict_by_product): ?>
+              <div style="background-color: <?php echo $expiration <= 0 ? '#BB4F4D' : ''; ?>;">
+                <h3><?php echo $expiration <= 0 ? 'Expired' : 'Expires'; ?></h3>
+                <span><?php echo $helpers->seconds_to_dhms($expiration, '%a days, %h h<br>%i min and %s sec'); ?></span>
+              </div>
+              <div style="background-color: <?php echo $expiration <= 0 ? '#BB4F4D' : ''; ?>;">
+                <h3><?php esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></h3>
+                <span><?php echo date($date_format . " " . $time_format, $expiration + time()); ?></span>
+              </div>
+            <?php endif; ?>
           </div>
           <?php
         endforeach;

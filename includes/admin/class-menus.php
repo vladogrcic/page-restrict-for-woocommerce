@@ -108,13 +108,21 @@ class Menus{
 
         $user_data_all = $user_restrict_data->return_data();
         $time_data = $user_data_all['time_data'];
+        $purchased_products_by_user = $user_data_all['purchased_products_by_user'];
         $locked_posts = $user_data_all['locked_posts'];
 
         $view_data = $user_data_all['view_data'];
         $date_format = get_option('date_format');
         $time_format = get_option('time_format');
         
-        $calc_pagination_all_time = $helpers->calc_pagination($time_data);
+        $restrict_by_product = false;
+        if($time_data){
+            $calc_pagination_all_time = $helpers->calc_pagination($time_data);
+        }
+        else{
+            $calc_pagination_all_time = $helpers->calc_pagination($purchased_products_by_user);
+            $restrict_by_product = true;
+        }
         $totalPages_time = $calc_pagination_all_time['totalPages'];
         $page_users_paginated_time = $calc_pagination_all_time['page_users_paginated'];
 

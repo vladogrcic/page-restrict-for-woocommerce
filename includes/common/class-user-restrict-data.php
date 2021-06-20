@@ -118,7 +118,7 @@ class User_Restrict_Data {
 				);
 				$purchased_products_by_user[$post_id][$user_id] = [
 					'purchased_products' => $purchased_products,
-					'user' => $user,                    
+					'username' => $user,                    
 				];
 			}
 		}
@@ -167,11 +167,11 @@ class User_Restrict_Data {
 						];
 						if($single_user){
 							if((int)$single_user === (int)$user_id){
-								$time_data[$post_id] = array_merge($times_to_use, ['username' => $subvalue['user'], 'post' => get_post($post_id)]);
+								$time_data[$post_id] = array_merge($times_to_use, ['username' => $subvalue['username'], 'post' => get_post($post_id)]);
 							}
 						}
 						else{
-							$time_data[$post_id][$user_id] = array_merge($times_to_use, ['username' => $subvalue['user']]);
+							$time_data[$post_id][$user_id] = array_merge($times_to_use, ['username' => $subvalue['username']]);
 						}
 					}
 				}
@@ -239,6 +239,7 @@ class User_Restrict_Data {
 
 		return [
 			'locked_posts' => $this->locked_posts,
+			'purchased_products_by_user' => $purchased_products_by_user,
 			'time_data' => $time_data,
 			'view_data' => $view_data,
 		];

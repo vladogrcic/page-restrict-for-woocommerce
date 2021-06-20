@@ -176,7 +176,7 @@ class Restrict_Types
             }
         } else {
             // Time between the expiration of one pack of products to the begginning of the next.
-            if ($this->valid_purchased_product_amount > 1) {
+            if ($this->valid_purchased_product_amount > 0) {
                 $time_pack = [];
                 for ($i=$this->valid_purchased_product_amount; $i > 0; $i--) {
                     $index = $i-1;
