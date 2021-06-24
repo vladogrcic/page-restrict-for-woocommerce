@@ -136,7 +136,7 @@ class Restricted_Pages_List_Blocks
             // $restrict_data['time_data'] = [];
             if(  $restrict_data['time_data'] ):
                 foreach ($restrict_data['time_data'] as $page):
-                    if(isset($page['time_compare'])){
+                    if(!isset($page['time_compare'])){
                         continue;
                     }
                     $expiration = $page['time_compare'] - $page['time_elapsed'];
