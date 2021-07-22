@@ -315,6 +315,9 @@ class Section_Blocks
             }
         }
         else{
+            if ($inverse) {
+                return do_shortcode($content);
+            }
             return;
         }
     }
