@@ -38,9 +38,9 @@
     "@wordpress/scripts": "^12.3.*",
     "copy-webpack-plugin": "^6",
     "ignore-emit-webpack-plugin": "^2.0.*",
-    "mini-css-extract-plugin": "^1.6.0",
+    "mini-css-extract-plugin": "^1.6.2",
     "path": "^0.12.*",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "url-loader": "^4.1.*"
   },
   "dependencies": {
