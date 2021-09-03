@@ -4,6 +4,9 @@ import sendDataAjax from '../ajax.js';
  */
 jQuery(function () {
 	jQuery('.button-submit').on('click', function () {
+		/**
+		 * Plugin options page.
+		 */
 		if (jQuery('.plugin-options-wrapper').length) {
 			const limit_to_virt_products = +jQuery(
 				"input[name='prwc_limit_to_virtual_products']"
@@ -15,6 +18,7 @@ jQuery(function () {
 			const gen_log_page = +jQuery(
 				"select[name='prwc_general_login_page']"
 			).val();
+
 			const redirect_gen_log = +jQuery(
 				"input[name='prwc_general_redirect_login']"
 			).is(':checked');
@@ -25,6 +29,14 @@ jQuery(function () {
 			const redirect_gen_not_bought = +jQuery(
 				"input[name='prwc_general_redirect_not_bought']"
 			).is(':checked');
+
+			const gen_not_bought_section = +jQuery(
+				"select[name='prwc_general_not_bought_section']"
+			).val();
+
+			const gen_log_section = +jQuery(
+				"select[name='prwc_general_login_section']"
+			).val();
 
 			let post_types_general = [];
 			const delete_plugin_data_on_uninstall = +jQuery(
@@ -66,6 +78,9 @@ jQuery(function () {
 				prwc_general_not_bought_page: gen_not_bought_page,
 				prwc_general_redirect_not_bought: redirect_gen_not_bought,
 
+				prwc_general_login_section: gen_log_section,
+				prwc_general_not_bought_section: gen_not_bought_section,
+
 				prwc_general_post_types: post_types_general,
 				prwc_my_account_rp_page_disable_endpoint,
 				prwc_my_account_rp_page_hide_time_table,
@@ -74,6 +89,9 @@ jQuery(function () {
 			};
 			sendDataAjax(this, data);
 		}
+		/**
+		 * Page restrict page.
+		 */
 		if (jQuery('.pages-options-wrapper').length) {
 			var data = {
 				action: 'prwc_pages_options',
@@ -85,7 +103,6 @@ jQuery(function () {
 			);
 			window.pages_lock_data = {};
 			for (let i = 0; i < pages.length; i++) {
-				// console.log(jQuery(pages[i]).data('page-slug'));
 				let prwc_products = jQuery(pages[i])
 					.find('.lock-by-product')
 					.val();

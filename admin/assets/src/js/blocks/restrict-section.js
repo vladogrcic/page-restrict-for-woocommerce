@@ -1,5 +1,6 @@
 import Select from 'react-select';
 const __ = wp.i18n.__;
+import MetaSelectGroupControl from '../sidebars/elements/MetaSelectGroupControl';
 const { InnerBlocks, InspectorControls } = wp.hasOwnProperty('blockEditor')
 	? wp.blockEditor
 	: wp.editor; //Block inspector wrapper
@@ -12,7 +13,8 @@ const icon = (
 		<image href={page_restrict_wc.sidebar_img} />
 	</svg>
 );
-
+// const page_options = page_restrict_wc.page_options;
+const pages = page_restrict_wc.pages;
 
 const { PanelBody, TextControl, ToggleControl, Disabled } = wp.components;
 registerBlockType('page-restrict-wc/restrict-section', {
@@ -579,7 +581,6 @@ registerBlockType('page-restrict-wc/restrict-section', {
 							)}
 						</div>
 					</PanelBody>
-					,
 					{/**
 					 * Time to specify for page access to run out.
 					 */}

@@ -126,6 +126,53 @@
         </div>
     </div>
     <div class="prwc-item-wrapper">
+        <label><?php esc_html_e('Page text to show for sections', 'page_restrict_domain'); ?></label>
+        <div class="prwc-item">
+            <div class="labeled-wrapper">
+                <label><?php esc_html_e('Page text to show if product not bought', 'page_restrict_domain'); ?></label>
+                <select name="prwc_not_bought_section" class="prwc_select slimselect">
+                    <option value=""></option>
+                    <?php 
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                    <?php
+                        foreach($pages_in_subtype as $subkey => $subvalue): 
+                            if($subvalue->ID == $post->ID) continue;
+                    ?>
+                            <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID === $prwc_not_bought_section?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php endforeach ?>
+                        </optgroup>
+                    <?php 
+                    } 
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="prwc-item">
+            <div class="labeled-wrapper">
+                <label><?php esc_html_e('Page text to show if user is not logged in', 'page_restrict_domain'); ?></label>
+                <select name="prwc_not_logged_in_section" class="prwc_select slimselect">
+                    <option value=""></option>
+                    <?php
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                    <?php
+                        foreach($pages_in_subtype as $subkey => $subvalue): 
+                            if($subvalue->ID == $post->ID) continue;
+                    ?>
+                            <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID === $prwc_not_logged_in_section?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php endforeach ?>
+                        </optgroup>
+                    <?php 
+                    } 
+                    ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="prwc-item-wrapper">
         <label><?php esc_html_e('Timeout', 'page_restrict_domain'); ?></label>
         <div class="prwc-item">
             <div class="labeled-wrapper">

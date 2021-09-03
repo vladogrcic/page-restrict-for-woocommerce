@@ -344,7 +344,7 @@ window.onload = function (params) {
 				/>
 			</PanelBody>
 			<PanelBody
-				title={__('Page to Show', 'page_restrict_domain')}
+				title={__('Default Page to Show for Pages', 'page_restrict_domain')}
 				icon={'welcome-widgets-menus'}
 				initialOpen={false}
 				className={'custom-panel'}
@@ -404,6 +404,42 @@ window.onload = function (params) {
 						'page_restrict_domain'
 					)}
 				</span>
+			</PanelBody>			
+			<PanelBody
+				title={__('Default Page to Show for Sections', 'page_restrict_domain')}
+				icon={'welcome-widgets-menus'}
+				initialOpen={false}
+				className={'custom-panel'}
+			>
+				<MetaSelectGroupControl
+					metaKey={'prwc_not_bought_section'}
+					metaValue={page_options.prwc_not_bought_section}
+					metaValueElement={page_options.prwc_not_bought_section}
+					title={__(
+						'Page to show if product not bought',
+						'page_restrict_domain'
+					)}
+					options={pages}
+					missingText={__(
+						'No available pages to show',
+						'page_restrict_domain'
+					)}
+				/>
+				<hr />
+				<MetaSelectGroupControl
+					metaKey={'prwc_not_logged_in_section'}
+					metaValue={page_options.prwc_not_logged_in_section}
+					metaValueElement={page_options.prwc_not_logged_in_section}
+					title={__(
+						'Page to show if user is not logged in',
+						'page_restrict_domain'
+					)}
+					options={pages}
+					missingText={__(
+						'No available pages to show',
+						'page_restrict_domain'
+					)}
+				/>
 			</PanelBody>
 			<PanelBody
 				title={__('Timeout', 'page_restrict_domain')}

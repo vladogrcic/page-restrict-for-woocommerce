@@ -129,7 +129,6 @@
 				}
 
 				> .inline-boxes {
-					// max-width: 16%;
 					vertical-align: top;
 					margin-right: 10px;
 					margin-bottom: 10px;
@@ -138,6 +137,16 @@
 					background-color: rgb(227, 227, 227);
 					display: inline-block;
 
+					&.expired{
+						background-color: #FF7370;
+						border: 3px solid Crimson;
+						border-top: 15px solid Crimson;
+					}
+					&.valid{
+						background-color: #96CEFF;
+						border: 3px solid DodgerBlue;
+						border-top: 15px solid DodgerBlue;
+					}
 					&.red-palette > div {
 						background-color: #bb4f4d;
 						color: white;

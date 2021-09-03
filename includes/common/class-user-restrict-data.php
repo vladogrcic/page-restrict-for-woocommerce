@@ -105,10 +105,11 @@ class User_Restrict_Data {
 			$user_id = $user->ID;
 			foreach ($postID_products as $post_id => $product_id) {
 				$products = explode(',', $product_id);
+				$products_arr = [];
 				if (gettype($products) == "string") {
 					$products_arr = array_map(function ($item) {
 						return (int) trim($item);
-					}, explode(",", $products));
+					}, $products);
 				} elseif (gettype($products) == "array") {
 					$products_arr = $products;
 				}
@@ -116,10 +117,12 @@ class User_Restrict_Data {
 					$user_id,
 					$products_arr
 				);
-				$purchased_products_by_user[$post_id][$user_id] = [
-					'purchased_products' => $purchased_products,
-					'username' => $user,                    
-				];
+				if($purchased_products){
+					$purchased_products_by_user[$post_id][$user_id] = [
+						'purchased_products' => $purchased_products,
+						'username' => $user,                    
+					];
+				}
 			}
 		}
 		return $purchased_products_by_user;
@@ -135,7 +138,7 @@ class User_Restrict_Data {
 	*/
 	public function time_data( $postID_products, $purchased_products_by_user, $single_user ){
 		$time_data = [];
-		foreach ($purchased_products_by_user as $post_id => $value) {
+		foreach ($purchased_products_by_user as $post_id => $users_data) {
 			$products = explode(',', $postID_products[$post_id]);
 			$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 			$days = $this->page_options->get_page_options($post_id, 'prwc_timeout_days');
@@ -143,12 +146,12 @@ class User_Restrict_Data {
 			$minutes = $this->page_options->get_page_options($post_id, 'prwc_timeout_minutes');
 			$seconds = $this->page_options->get_page_options($post_id, 'prwc_timeout_seconds');
 			$timeout_sec = abs($seconds + ($minutes * 60) + ($hours * 3600) + ($days * 86400));
-			foreach ($value as $sub_user_id => $subvalue) {
-				$user_id = $sub_user_id;
-				$purchased_products = $subvalue['purchased_products'];
+			$this->locked_posts[$post_id]['post'] = get_post($post_id);
+			foreach ($users_data as $sub_user_id => $user_data) {
+				$purchased_products = $user_data['purchased_products'];
 				
 				$this->restrict->products = $products;
-				$this->restrict->user_id = $user_id;
+				$this->restrict->user_id = $sub_user_id;
 				$this->restrict->post_id = $post_id;
 				$this->restrict->purchased_products = $purchased_products;
 				$times_to_use = $this->restrict->check_time(
@@ -157,8 +160,7 @@ class User_Restrict_Data {
 					$not_all_products_required
 				);
 				if (is_array($times_to_use) && $timeout_sec) {
-					if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
-						$this->locked_posts[$post_id]['post'] = get_post($post_id);
+					if(count($purchased_products_by_user[$post_id][$sub_user_id]['purchased_products'])){
 						$this->locked_posts[$post_id]['time'] = [
 							'days' 		=> $days,
 							'hours' 	=> $hours,
@@ -166,12 +168,10 @@ class User_Restrict_Data {
 							'seconds' 	=> $seconds,
 						];
 						if($single_user){
-							if((int)$single_user === (int)$user_id){
-								$time_data[$post_id] = array_merge($times_to_use, ['username' => $subvalue['username'], 'post' => get_post($post_id)]);
-							}
+							$time_data[$post_id] = array_merge($times_to_use, ['username' => $user_data['username'], 'post' => get_post($post_id)]);
 						}
 						else{
-							$time_data[$post_id][$user_id] = array_merge($times_to_use, ['username' => $subvalue['username']]);
+							$time_data[$post_id][$sub_user_id] = array_merge($times_to_use, ['username' => $user_data['username']]);
 						}
 					}
 				}
@@ -205,7 +205,7 @@ class User_Restrict_Data {
 	
 						$this->restrict->user_id = $user_id;
 						$this->restrict->post_id = $post_id;
-						$this->restrict->products = $products_arr;
+						// $this->restrict->products = $products_arr;
 						$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
 						$view_input_check = $this->restrict->check_views($views, true);
 
@@ -240,6 +240,7 @@ class User_Restrict_Data {
 		$postID_products = $this->post_id_products($products_db);
 		
 		$purchased_products_by_user = $this->purchased_products_by_user( $postID_products );
+
 		$time_data = $this->time_data( $postID_products, $purchased_products_by_user, $single_user );
 		$view_data = $this->view_data( $postID_products, $purchased_products_by_user, $single_user );
 

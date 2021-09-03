@@ -90,20 +90,14 @@
             </span>
             <div class="panel also">
                     <label class=""> <?php esc_html_e('Lock by Products', 'page_restrict_domain'); ?> </label>
-                    <select class="lock-by-product slimselect" multiple>
-                        <?php 
+                    <select class="lock-by-product slimselect" multiple><?php 
                         foreach($products_out as $subkey => $subvalue): 
-                            if(is_array($products)):
-                                ?>
-                                    <option value="<?php echo $subvalue['value']; ?>" <?php echo in_array($subvalue['value'], $prwc_products) ?'selected="selected"':''; ?>><?php echo $subvalue['label']; ?></option>
-                                <?php 
-                            else:
-                                ?>
-                                    <option value="<?php echo $subvalue['value']; ?>" <?php echo $subvalue['value'] === $prwc_products?'selected="selected"':''; ?>><?php echo $subvalue['label']; ?></option>
-                                <?php
+                            if(is_array($products)): ?>
+                                <option value="<?php echo $subvalue['value']; ?>" <?php echo in_array($subvalue['value'], $prwc_products) ?'selected="selected"':''; ?>><?php echo $subvalue['label']; ?></option><?php 
+                            else: ?>
+                                <option value="<?php echo $subvalue['value']; ?>" <?php echo $subvalue['value'] === $prwc_products?'selected="selected"':''; ?>><?php echo $subvalue['label']; ?></option><?php
                             endif;
-                        endforeach 
-                    ?>
+                        endforeach ?>
                     </select>
                     <br>
                     <br>

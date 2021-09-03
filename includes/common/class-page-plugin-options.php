@@ -52,6 +52,8 @@ class Page_Plugin_Options {
             'prwc_redirect_not_bought'      => 'bool',
             'prwc_not_logged_in_page'       => 'number',
             'prwc_redirect_not_logged_in'   => 'bool',
+            'prwc_not_bought_section'       => 'number',
+            'prwc_not_logged_in_section'    => 'number',
         ];
         $this->possible_general_options = [
             'prwc_limit_to_virtual_products'          => 'number',
@@ -59,6 +61,8 @@ class Page_Plugin_Options {
             'prwc_general_post_types'                 => 'array|post,page',
             'prwc_general_not_bought_page'            => 'number',
             'prwc_general_login_page'                 => 'number',
+            'prwc_general_not_bought_section'            => 'number',
+            'prwc_general_login_section'                 => 'number',
             'prwc_general_redirect_not_bought'        => 'bool',
             'prwc_general_redirect_login'             => 'bool',
             'prwc_delete_plugin_data_on_uninstall'    => 'number',

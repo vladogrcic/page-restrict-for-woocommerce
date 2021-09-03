@@ -293,13 +293,18 @@ class Admin
                 'products' => [
                     'default' => [],
                     'type'    => 'array',
-                    // 'items' => [
-                    //     'type' => 'string',
-                    // ],
                 ],
                 'notAllProductsRequired' => [
                     'default' => false,
                     'type'    => 'boolean'
+                ],
+                'defaultPageNotBoughtSections' => [
+                    'default' => 0,
+                    'type'    => 'number'
+                ],
+                'defaultPageNotLoggedSections' => [
+                    'default' => 0,
+                    'type'    => 'number'
                 ],
                 'uniqueID' => [
                     'default' => "",

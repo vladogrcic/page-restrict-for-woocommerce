@@ -79,11 +79,13 @@ class Menus{
         $logo = $this->logo;
         $page_options = $this->page_options;
         $gen_log_page = $page_options->get_general_options('prwc_general_login_page');
+        $gen_log_section = $page_options->get_general_options('prwc_general_login_section');
         $redirect_gen_log = $page_options->get_general_options('prwc_general_redirect_login');
         $prwc_limit_virtual_products = $page_options->get_general_options('prwc_limit_to_virtual_products');
         $prwc_limit_downloadable_products = $page_options->get_general_options('prwc_limit_to_downloadable_products');
         $prwc_post_types_general = $page_options->get_general_options('prwc_general_post_types');
         $gen_not_bought_page = $page_options->get_general_options('prwc_general_not_bought_page');
+        $gen_not_bought_section = $page_options->get_general_options('prwc_general_not_bought_section');
         $redirect_gen_not_bought = $page_options->get_general_options('prwc_general_redirect_not_bought');
         $redirect_prod_not_bought_id = 0;
         $redirect_user_not_logged_in_id = 0;

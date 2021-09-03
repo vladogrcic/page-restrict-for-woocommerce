@@ -77,12 +77,6 @@ class Restrict_Types
      * @var array
      */
     protected $biggest_time_in_pack;
-    /**
-     * is_calc_purchased_products_called
-     * @since    1.2.0
-     * @var int
-     */
-    protected $is_calc_purchased_products_called;
 
     /**
      * Initialize properties.
@@ -96,7 +90,6 @@ class Restrict_Types
         $this->valid_purchased_product_amount = 0;
         $this->purchased_products_packs = [];
         $this->biggest_time_in_pack = [];
-        $this->is_calc_purchased_products_called = 0;
 
         $this->user_id = 0;
         $this->post_id = 0;
@@ -115,10 +108,10 @@ class Restrict_Types
         if (!$this->user_id && !$this->post_id) {
             throw new Error('No post or user selected.');
         }
-        if ($this->is_calc_purchased_products_called) {
+        if (!count($this->purchased_products)) {
             return;
         }
-        $this->is_calc_purchased_products_called = 1;
+
         $this->purchased_products_ids = [];
         $this->purchased_products_packs = [];
         $purchased_products = [];
@@ -129,7 +122,7 @@ class Restrict_Types
                 $this->purchased_products_packs[$this->purchased_products[$i]->get_product_id()][] = $this->purchased_products[$i];
             }
         }
-        $this->purchased_products = $purchased_products;
+        // $this->purchased_products = $purchased_products;
         $this->purchased_products_count = array_count_values($this->purchased_products_ids);
         if ($this->purchased_products_count) {
             $this->valid_purchased_product_amount = min($this->purchased_products_count);
@@ -181,7 +174,8 @@ class Restrict_Types
                 for ($i=$this->valid_purchased_product_amount; $i > 0; $i--) {
                     $index = $i-1;
                     foreach ($this->processed_purchased_products_packs as $product_id => $product_item) {
-                        $prod_timestamp = $product_item[$index]['date_completed']->getTimestamp();
+                        $order = wc_get_order( $product_item[$index]->get_data()['order_id'] );
+                        $prod_timestamp = $order->get_data()['date_completed']->getTimestamp();
                         $time_pack[] = $prod_timestamp;
                     }
                     $this->biggest_time_in_pack[$index] = max($time_pack);
@@ -217,6 +211,9 @@ class Restrict_Types
      */
     public function check_views(int $views, bool $update_usr_meta=false, bool $not_all_products_required=false)
     {
+        if (!count($this->purchased_products)) {
+            return true;
+        }
         $this->calc_purchased_products();
         $view_count = 0;
         $views_to_compare = 0;
@@ -291,12 +288,12 @@ class Restrict_Types
      */
     public function check_time(float $timeout_sec, $output_time=false, bool $not_all_products_required=false)
     {
-        $this->calc_purchased_products();
         if (!count($this->purchased_products)) {
             return true;
         }
+        $this->calc_purchased_products();
         $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
-        if ($not_all_products_required) {
+        if ($not_all_products_required || !(count($this->purchased_products) > 1)) {
             $startTimeStamp = $this->purchased_products[0]['date_completed']->getTimestamp();
             $time_between_buy = $this->calc_time_between_products($timeout_sec);
             // Timeout time times number of products.
@@ -362,6 +359,9 @@ class Restrict_Types
     */
     public function check_products_only(bool $not_all_products_required=false)
     {
+        if (!count($this->purchased_products)) {
+            return true;
+        }
         $this->calc_purchased_products();
         if ($not_all_products_required) {
             for ($i=0; $i < count($this->products); $i++) {

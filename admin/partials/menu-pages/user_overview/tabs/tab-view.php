@@ -83,11 +83,9 @@
             endif;
             ?>
             <div>
-              <div class="edit">
-                <?php 
-                      echo '<a href="'.get_post_permalink($locked_posts[$post_id]['post']->ID).'">'.esc_html__("View", "page_restrict_domain").'</a>';
-                      echo '<a href="'.get_site_url().'/wp-admin/post.php?post='.$locked_posts[$post_id]['post']->ID.'&action=edit">'.esc_html__("Edit", "page_restrict_domain").'</a>';
-                      ?>
+              <div class="edit"><?php 
+                echo '<a href="'.get_post_permalink($locked_posts[$post_id]['post']->ID).'">'.esc_html__("View", "page_restrict_domain").'</a>';
+                echo '<a href="'.get_site_url().'/wp-admin/post.php?post='.$locked_posts[$post_id]['post']->ID.'&action=edit">'.esc_html__("Edit", "page_restrict_domain").'</a>';?>
               </div>
             </div>
           </div>
@@ -97,8 +95,7 @@
               $expiration = (int)$vars['view_expiration_num'] - (int)$vars['views'];
               // if(!$vars['views']) continue;
               ?>
-              <div class="inline-boxes <?php echo $expiration <= 0?'red-palette':''; ?>"
-                style="border: 3px solid <?php echo $expiration <= 0?'Crimson':'DodgerBlue'; ?>; border-top: 15px solid <?php echo $expiration <= 0?'Crimson':'DodgerBlue'; ?>;">
+				      <div class="inline-boxes <?php echo $expiration <= 0 ? 'red-palette expired' : 'valid'; ?>">
                 <div>
                   <h3><?php esc_html_e( 'Username', 'page_restrict_domain' ); ?></h3>
                   <span><?php echo $vars['user']->user_login; ?></span>

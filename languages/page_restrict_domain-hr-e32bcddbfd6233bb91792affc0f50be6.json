@@ -1,6 +1,6 @@
 {
-    "translation-revision-date": "2021-07-22T19:08:34+02:00",
-    "generator": "WP-CLI\/2.4.0",
+    "translation-revision-date": "2021-09-04T00:28:32+02:00",
+    "generator": "WP-CLI\/2.5.0",
     "source": "admin\/assets\/src\/js\/blocks\/restricted-pages-list.js",
     "domain": "messages",
     "locale_data": {

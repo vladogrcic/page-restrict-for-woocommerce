@@ -131,6 +131,8 @@
         </p>
     </div>
 </div>
+<h2>Pages</h2>
+<hr>
 <div class="card-main">
     <h3><?php esc_html_e('Default page if product not bought on site pages', 'page_restrict_domain'); ?></h3>
     <div class="not-bought-pages">
@@ -299,6 +301,133 @@
             <i>
                 <?php 
                 esc_html_e("* General settings for pages when the user", 'page_restrict_domain');
+                ?>
+                <b>
+                <?php
+                esc_html_e("wasn't logged in", 'page_restrict_domain');
+                ?>
+                </b>
+                <?php
+                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
+                ?>
+            </i>
+        </p>
+    </div>
+</div>
+<h2>Sections</h2>
+<hr>
+<div class="card-main">
+    <h3><?php esc_html_e('Default page if product not bought on site sections', 'page_restrict_domain'); ?></h3>
+    <div class="not-bought-pages">
+        <div>
+            <label for=""><?php esc_html_e('Page to show if not bought', 'page_restrict_domain'); ?></label><br>
+            <select name="prwc_general_not_bought_section" class="gen_not_bought_page slimselect">
+                <option value="" class="empty-option"></option>
+                <?php 
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                        <?php
+                            foreach($pages_in_subtype as $subkey => $subvalue): 
+                        ?>
+                                <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID == $gen_not_bought_section?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php 
+                            endforeach; 
+                        ?>
+                        </optgroup>
+                <?php 
+                    } 
+                ?>
+            </select>
+        </div>
+        <div class="description">
+            <p>
+                <i>
+                <?php 
+                    esc_html_e("Choose which page to use if a", 'page_restrict_domain');
+                    ?>
+                    <b>
+                    <?php
+                    esc_html_e("product wasn't bought or expired", 'page_restrict_domain');
+                    ?>
+                    </b>
+                    <?php
+                    esc_html_e("for all restricted sections.", 'page_restrict_domain'); 
+                ?>
+                </i>
+            </p>
+        </div>
+    </div>
+    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
+    <div class="description">
+        <p>
+            <i>
+            <?php 
+                esc_html_e("* General settings for pages when the user", 'page_restrict_domain'); 
+                ?>
+                <b>
+                <?php
+                esc_html_e("didn't buy the product or it expired", 'page_restrict_domain');
+                ?>
+                </b>
+                <?php
+                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
+            ?>
+            </i>
+        </p>
+    </div>
+</div>
+
+<div class="card-main">
+    <h3><?php esc_html_e('Default page if user is not logged on site sections', 'page_restrict_domain'); ?></h3>
+    <div class="log-reg-pages">
+        <div>
+            <label for=""><?php esc_html_e('Page to show if not logged in', 'page_restrict_domain'); ?></label><br>
+            <select name="prwc_general_login_section" class="gen_log_page slimselect">
+                <option value="" class="empty-option"></option>
+                <?php 
+                    $all_pages;
+                    $pages_redirect_out;
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                        <?php
+                            foreach($pages_in_subtype as $subkey => $subvalue): 
+                        ?>
+                                <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID == $gen_log_section?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php 
+                            endforeach; 
+                        ?>
+                        </optgroup>
+                <?php 
+                    } 
+                ?>
+            </select>
+        </div>
+        <div class="description">
+            <p>
+                <i>
+                <?php 
+                    esc_html_e("Choose which page to use if a user", 'page_restrict_domain');
+                    ?>
+                    <b>
+                    <?php
+                    esc_html_e("wasn't logged", 'page_restrict_domain');
+                    ?>
+                    </b>
+                    <?php
+                    esc_html_e("in for all restricted sections.", 'page_restrict_domain'); 
+                ?>
+                </i>
+            </p>
+        </div>
+    </div>
+    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
+    <div class="description">
+        <p>
+            <i>
+                <?php 
+                esc_html_e("* General settings for sections when the user", 'page_restrict_domain');
                 ?>
                 <b>
                 <?php

@@ -98,7 +98,23 @@ class Section_Blocks
      * @access   public
      * @var      int      $not_logged_in_page    ID of the page used to show if product wasn't bought or was bought but it expired.
      */
-    public $not_logged_in_page;
+    public $not_logged_in_page;    
+    /**
+     * ID of the page used to show if product wasnt bought or was bought but it expired.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      int      $not_bought_section    ID of the page used to show if product wasn't bought or was bought but it expired.
+     */
+    public $not_bought_section;
+    /**
+     * ID of the page used to show if product wasn't bought or was bought but it expired.
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      int      $not_logged_in_section    ID of the page used to show if product wasn't bought or was bought but it expired.
+     */
+    public $not_logged_in_section;
     /**
      * General option if one isn't set per page used to choose whether to redirect or show the page into the content of the chosen page ID before if the user didn't buy the product or it expired.
      *
@@ -185,6 +201,8 @@ class Section_Blocks
 
         $this->general_not_bought_page          = $this->page_options->get_general_options('prwc_general_not_bought_page');
         $this->general_login_page               = $this->page_options->get_general_options('prwc_general_login_page');
+        $this->general_not_bought_section       = $this->page_options->get_general_options('prwc_general_not_bought_section');
+        $this->general_login_section            = $this->page_options->get_general_options('prwc_general_login_section');
         $this->redirect_general_not_bought      = $this->page_options->get_general_options('prwc_general_redirect_not_bought');
         $this->redirect_general_login           = $this->page_options->get_general_options('prwc_general_redirect_login');
     }
@@ -201,6 +219,8 @@ class Section_Blocks
         $a = shortcode_atts(array(
             'products' => false,
             'notAllProductsRequired' => false,
+            'defaultPageNotBoughtSections' => 0,
+            'defaultPageNotLoggedSections' => 0,
             'days' => 0,
             'hours' => 0,
             'minutes' => 0,
@@ -255,6 +275,8 @@ class Section_Blocks
             trigger_error('Warning: Seconds attribute reached character limit.');
         }
         $show_products_needed = (int)sanitize_key($a['defRestrictMessage']);
+        $default_page_not_bought_sections = (int)sanitize_key($a['defaultPageNotBoughtSections']);
+        $default_page_not_logged_sections = (int)sanitize_key($a['defaultPageNotLoggedSections']);
         if (strlen(trim($show_products_needed)) > 1) {
             trigger_error('Warning: Default Restrict Message attribute reached character limit.');
         }
@@ -270,6 +292,10 @@ class Section_Blocks
         if(!$products){
             return do_shortcode($content);
         }
+        $general_not_bought_section     = $this->general_not_bought_section;
+        $general_login_section          = $this->general_login_section;
+        $not_bought_section                  = $this->not_bought_section;
+        $not_logged_section               = $this->not_logged_in_section;
         if (is_user_logged_in()) {
             $timeout_sec = $seconds+($minutes*60)+($hours*3600)+($days*86400);
             $purchased_products = $this->products_bought->get_purchased_products_by_ids(
@@ -307,7 +333,16 @@ class Section_Blocks
                         }
                         $product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
                     }
-                    return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
+                    if($default_page_not_bought_sections){
+                        return do_shortcode(get_post_field('post_content', $default_page_not_bought_sections));
+                    }else{
+                        if($general_not_bought_section){
+                            return do_shortcode(get_post_field('post_content', $general_not_bought_section));
+                        }
+                        else{
+                            return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
+                        }
+                    }
                 }
                 else{
                     return;
@@ -316,9 +351,19 @@ class Section_Blocks
         }
         else{
             if ($inverse) {
+                if($default_page_not_logged_sections){
+                    return do_shortcode(get_post_field('post_content', $default_page_not_logged_sections));
+                }else{
+                    if($general_login_section){
+                        return do_shortcode(get_post_field('post_content', $general_login_section));
+                    }
+                    else{
+                        return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
+                    }
+                }
                 return do_shortcode($content);
             }
-            return;
+            return;  
         }
     }
     /**
