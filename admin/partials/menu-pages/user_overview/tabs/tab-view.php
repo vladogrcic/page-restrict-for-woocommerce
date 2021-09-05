@@ -61,8 +61,9 @@
           <div class="page-boxes">
             <div>
               <h3><?php esc_html_e( 'Post ID', 'page_restrict_domain' ); ?></h3>
-              <span><?php echo $locked_posts[$post_id]['post']->ID; ?></span>
-
+              <div class="padded-text">
+                <span><?php echo $locked_posts[$post_id]['post']->ID; ?></span>
+              </div>
             </div>
             <div>
               <h3><?php esc_html_e( 'Post Title', 'page_restrict_domain' ); ?></h3>
@@ -94,23 +95,196 @@
             foreach ($value as $user_id => $vars):
               $expiration = (int)$vars['view_expiration_num'] - (int)$vars['views'];
               // if(!$vars['views']) continue;
-              ?>
-				      <div class="inline-boxes <?php echo $expiration <= 0 ? 'red-palette expired' : 'valid'; ?>">
+				$products_by_user = $purchased_products_by_user[$post_id][$user_id]['purchased_products']; ?>
+				<div class="inline-boxes <?php echo $expiration <= 0 ? 'red-palette expired' : 'valid'; ?>">
+					<div>
+						<h3><?php esc_html_e('Orders', 'page_restrict_domain'); ?> <span class="pos-right"><?php esc_html_e('Products', 'page_restrict_domain'); ?></span></h3><?php
+						for ($m = 0; $m < count($products_by_user); $m++) :
+							$product_order_data = $products_by_user[$m]->get_data();
+							$order_id = $product_order_data['order_id'];
+							$prod_id = $product_order_data['product_id'];
+
+							$date_format = get_option('date_format');
+							$time_format = get_option('time_format');
+							$format = $date_format . ' ' . $time_format;
+
+							$product = wc_get_product($prod_id);
+							$product_data = $product->get_data();
+							$order_edit_page = get_edit_post_link($order_id);
+							$prod_edit_page = get_edit_post_link((int)$prod_id, 'product');
+
+							$order = wc_get_order($order_id);
+							$order_data = $order->get_data(); ?>
+							<div class="id-data padded-text">
+								<span class="pos-left">
+									<a href="<?php echo $order_edit_page; ?>">
+										<div class="tooltip">
+											<?php echo $order_id; ?>
+											<span class="tooltiptext">
+												<table>
+													<thead>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Status:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Payment Method Title:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Created Via:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Discount Total:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Shipping Total:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Total:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Date Created:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Date Completed:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Date Paid:', 'page_restrict_domain'); ?></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td><?php echo ucfirst($order_data['status']); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo ucfirst($order_data['payment_method_title']); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo ucfirst($order_data['created_via']); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$order_data['discount_total']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$order_data['shipping_total']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$order_data['total']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $order_data['date_created']->date($format); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $order_data['date_completed']->date($format); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $order_data['date_paid']->date($format); ?></td>
+														</tr>
+													</tbody>
+												</table>
+											</span>
+										</div>
+									</a>
+								</span>
+								<span class="pos-right">
+									<a href="<?php echo $prod_edit_page; ?>">
+										<div class="tooltip">
+											<?php echo $prod_id; ?>
+											<span class="tooltiptext">
+												<b><?php esc_html_e('Name:', 'page_restrict_domain'); ?> </b></br><?php echo $product_order_data['name']; ?></br>
+												<b><?php esc_html_e('Slug:', 'page_restrict_domain'); ?> </b></br><?php echo $product_data['slug']; ?></br>
+												<b><?php esc_html_e('Short Description:', 'page_restrict_domain'); ?> </b></br><?php echo $product_data['short_description']; ?></br>
+												<table>
+													<thead>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Date Created:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Total Sales:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Stock Status:', 'page_restrict_domain'); ?></th>
+														</tr>
+
+														<tr>
+															<th colspan="3"><?php esc_html_e('Virtual:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Downloadable:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Price:', 'page_restrict_domain'); ?></th>
+														</tr>
+
+														<tr>
+															<th colspan="3"><?php esc_html_e('Regular Price:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Sale Price:', 'page_restrict_domain'); ?></th>
+														</tr>
+														<tr>
+															<th colspan="3"><?php esc_html_e('Subtotal Price:', 'page_restrict_domain'); ?></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td><?php echo $product_data['date_created']->date($format); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $product_data['total_sales']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo ucfirst($product_data['stock_status']); ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $product_data['virtual']?'Yes':'No'; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo $product_data['downloadable']?'Yes':'No'; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$product_data['price']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$product_data['regular_price']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$product_data['sale_price']; ?></td>
+														</tr>
+														<tr>
+															<td><?php echo (float)$product_data['subtotal']; ?></td>
+														</tr>
+													</tbody>
+												</table>
+											</span>
+										</div>
+									</a>
+								</span>
+							</div><?php
+						endfor; ?>
+					</div>
                 <div>
-                  <h3><?php esc_html_e( 'Username', 'page_restrict_domain' ); ?></h3>
-                  <span><?php echo $vars['user']->user_login; ?></span>
+                  	<h3><?php esc_html_e( 'Username', 'page_restrict_domain' ); ?></h3>
+					<div class="padded-text">
+						<span><?php echo $vars['user']->user_login; ?><a href="<?php echo get_edit_user_link($vars['user']->ID); ?>">Edit</a></span>
+					</div>
                 </div>
                 <div>
-                  <h3><?php esc_html_e( 'Email', 'page_restrict_domain' ); ?></h3>
-                  <span><?php echo $vars['user']->user_email; ?></span>
+                  	<h3><?php esc_html_e( 'Email', 'page_restrict_domain' ); ?></h3>
+				  	<div class="padded-text">
+						<span><?php echo $vars['user']->user_email; ?></span>
+					</div>
                 </div>
                 <div style="background-color: <?php echo $expiration <= 0?'#BB4F4D':''; ?>;">
-                  <h3><?php esc_html_e( 'Times Viewed', 'page_restrict_domain' ); ?></h3>
-                  <span><?php echo $vars['views']; ?></span>
+					<h3><?php esc_html_e( 'Times Viewed', 'page_restrict_domain' ); ?></h3>
+					<div class="padded-text">
+						<span><?php echo $vars['views']; ?></span>
+					</div>
                 </div>
                 <div>
-                  <h3><?php esc_html_e( 'Number of views until expiration', 'page_restrict_domain' ); ?></h3>
-                  <span><?php echo $expiration; ?></span>
+					<h3><?php esc_html_e( 'Number of views until expiration', 'page_restrict_domain' ); ?></h3>
+					<div class="padded-text">
+						<span><?php echo $expiration; ?></span>
+					</div>
                 </div>
               </div>
             <?php

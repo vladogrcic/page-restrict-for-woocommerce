@@ -76,7 +76,7 @@ class Restricted_Pages_List_Blocks
         $this->date_format = get_option('date_format');
         $this->time_format = get_option('time_format');
 
-        $this->restrict_data = $this->user_restrict_data->return_data($this->user_id);
+        $this->restrict_data = $this->user_restrict_data->return_data(true, $this->user_id);
         $this->disable_table_class = $this->page_options_class->get_general_options('prwc_my_account_rp_page_disable_plugin_designed_table');
     }
     /**
@@ -182,7 +182,7 @@ class Restricted_Pages_List_Blocks
             <?php
             if( $restrict_data['view_data'] ):
                 foreach ($restrict_data['view_data'] as $page_id => $page):
-                    $expiration = (int)$page['view_expiration_num'] - (int)$page['views'];
+                    $expiration = abs((int)$page['view_expiration_num'] - (int)$page['views']);
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>

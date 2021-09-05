@@ -174,26 +174,75 @@
 						margin-bottom: 10px;
 						padding-bottom: 0;
 						border: 1px solid lightblue;
+						> * {
+							margin-bottom: 0;
+							color: white;
+						}
+	
+						* {
+							margin-bottom: 0;
+							color: white;
+						}
+	
+						> h3 {
+							background-color: rgb(68, 154, 230);
+							color: white;
+							padding: 15px;
+							margin-top: 0;
+						}
+						> .padded-text {
+							display: block;
+							font-size: 16px;
+							padding: 8px 15px;
+							font-weight: 500;
+						}
+						.tooltip {
+							text-decoration: underline;
+							> .tooltiptext {
+								width: 550px;
+								left: -200px;
+								text-align: left;
+								padding: 25px;
+								z-index: 99999;
+								background-color: #004a94;
+								&::after{
+									left: 46%;
+								}
+								thead,
+								tbody {
+									display: inline-block;
+									vertical-align: top;
+								}
+								td, th {
+									border: none;
+									text-align: left;
+									padding: 0;
+								}
+								tr{
+									background-color: transparent;
+									border-bottom: 1px solid rgb(192, 192, 192);
+									padding: 8px 0;
+								}
+								table{
+									width: 100%;
+								}
+								thead{
+									width: 50%;
+								}
+								tbody{
+									width: 48%;
+								}
+								thead tr,
+								tbody tr{
+									display: inline-block;
+									width: 100%;
+								}
+							}
+						}
 					}
 
-					>div > * {
-						margin-bottom: 0;
-					}
-
-					>div > h3 {
-						background-color: rgb(68, 154, 230);
-						color: white;
-						padding: 15px;
-						margin-top: 0;
-					}
-
-					>div > span {
-						display: block;
-						font-size: 16px;
-						margin-left: 15px;
-						margin-right: 15px;
-						padding: 10px;
-						font-weight: 500;
+					.pos-right {
+						float: right;
 					}
 
 					>div > .edit {

@@ -83,26 +83,10 @@ class User_Restrict_Data {
 	* @param      array     $postID_products       			  Post id products.
 	* @return     array
 	*/
-	private function purchased_products_by_user( $postID_products ){
+	private function purchased_products_by_user( $postID_products, $user_id=false ){
 		$purchased_products_by_user = [];
 		$purchased_products = [];
-		/**
-		 *  $purchased_products_by_user = [
-		 *      post_id => [
-		 *          user_id => [
-		 *              WC_Order_Item_Product
-		 *          ]
-		 *      ],
-		 *      post_id => [
-		 *          user_id => [
-		 *              WC_Order_Item_Product
-		 *          ]
-		 *      ],
-		 *  ];
-		 */
-		$users = get_users();
-		foreach ($users as $user) {
-			$user_id = $user->ID;
+		if($user_id){
 			foreach ($postID_products as $post_id => $product_id) {
 				$products = explode(',', $product_id);
 				$products_arr = [];
@@ -118,10 +102,52 @@ class User_Restrict_Data {
 					$products_arr
 				);
 				if($purchased_products){
+					$user = get_userdata($user_id);
 					$purchased_products_by_user[$post_id][$user_id] = [
 						'purchased_products' => $purchased_products,
-						'username' => $user,                    
+						'user' => $user,
 					];
+				}
+			}
+		}
+		else{
+			/**
+			 *  $purchased_products_by_user = [
+			 *      post_id => [
+			 *          user_id => [
+			 *              WC_Order_Item_Product
+			 *          ]
+			 *      ],
+			 *      post_id => [
+			 *          user_id => [
+			 *              WC_Order_Item_Product
+			 *          ]
+			 *      ],
+			 *  ];
+			 */
+			$users = get_users();
+			foreach ($users as $user) {
+				$user_id = $user->ID;
+				foreach ($postID_products as $post_id => $product_id) {
+					$products = explode(',', $product_id);
+					$products_arr = [];
+					if (gettype($products) == "string") {
+						$products_arr = array_map(function ($item) {
+							return (int) trim($item);
+						}, $products);
+					} elseif (gettype($products) == "array") {
+						$products_arr = $products;
+					}
+					$purchased_products = $this->products_bought->get_purchased_products_by_ids(
+						$user_id,
+						$products_arr
+					);
+					if($purchased_products){
+						$purchased_products_by_user[$post_id][$user_id] = [
+							'purchased_products' => $purchased_products,
+							'user' => $user,                    
+						];
+					}
 				}
 			}
 		}
@@ -168,10 +194,10 @@ class User_Restrict_Data {
 							'seconds' 	=> $seconds,
 						];
 						if($single_user){
-							$time_data[$post_id] = array_merge($times_to_use, ['username' => $user_data['username'], 'post' => get_post($post_id)]);
+							$time_data[$post_id] = array_merge($times_to_use, ['user' => $user_data['user'], 'post' => get_post($post_id)]);
 						}
 						else{
-							$time_data[$post_id][$sub_user_id] = array_merge($times_to_use, ['username' => $user_data['username']]);
+							$time_data[$post_id][$sub_user_id] = array_merge($times_to_use, ['user' => $user_data['user']]);
 						}
 					}
 				}
@@ -193,7 +219,6 @@ class User_Restrict_Data {
 		$view_data = [];
 		foreach ($view_count_pages_users as $index => $meta) {
 			$post_id = (int)str_replace("prwc_view_count_","",$meta->meta_key);
-			
 			$user_id = (int)str_replace("prwc_view_count_","",$meta->user_id);
 			if(isset($purchased_products_by_user[$post_id])){
 				$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
@@ -215,9 +240,7 @@ class User_Restrict_Data {
 							'user' => $purchased_products_by_user[$post_id][$user_id]['user'],
 						]);
 						if($single_user){
-							if((int)$single_user === (int)$user_id){
-								$view_data[$post_id] = $merge_view_data;
-							}
+							$view_data[$post_id] = $merge_view_data;
 						}
 						else{
 							$view_data[$post_id][$user_id] = $merge_view_data;
@@ -235,11 +258,11 @@ class User_Restrict_Data {
 	 * @param    bool      $single_user          Choose whether to get data just for a single user.
 	 * @return	 array
      */
-	public function return_data($single_user=false){
+	public function return_data($single_user=false, $user_id=false){
 		$products_db = $this->helpers->get_meta_values('prwc_products', 'page');
 		$postID_products = $this->post_id_products($products_db);
 		
-		$purchased_products_by_user = $this->purchased_products_by_user( $postID_products );
+		$purchased_products_by_user = $this->purchased_products_by_user( $postID_products, $user_id );
 
 		$time_data = $this->time_data( $postID_products, $purchased_products_by_user, $single_user );
 		$view_data = $this->view_data( $postID_products, $purchased_products_by_user, $single_user );

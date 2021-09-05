@@ -240,8 +240,13 @@ class Section_Blocks
         }
         if(is_array($a['products'])){
             $products = [];
-            for ($i=0; $i < count( $a['products'] ); $i++) { 
-                $products[] = $a['products'][$i]['value'];
+            for ($i=0; $i < count( $a['products'] ); $i++) {
+                if(isset($a['products'][$i]['value'])){
+                    $products[] = $a['products'][$i]['value'];
+                }
+                else{
+                    $products[] = $a['products'][$i];
+                }
             }
         }        
         else{
@@ -285,7 +290,7 @@ class Section_Blocks
         if (gettype($products) == "string") {
             $products_arr = array_map(function ($item) {
                 return (int)trim($item);
-            }, explode(",", $products));
+            }, explode(",", (string)$products));
         } elseif (gettype($products) == "array") {
             $products_arr = $products;
         }
@@ -358,6 +363,19 @@ class Section_Blocks
                         return do_shortcode(get_post_field('post_content', $general_login_section));
                     }
                     else{
+                        $product_urls = "";
+                        $prod_count = count($products);
+                        for ($i=0; $i < $prod_count; $i++) { 
+                            $product = wc_get_product($products[$i]);
+                            $url = get_permalink( $products[$i] );
+                            if(count($products)-1===$i){
+                                $multi_sep = '';
+                            }
+                            else{
+                                $multi_sep = ', ';
+                            }
+                            $product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
+                        }
                         return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
                     }
                 }
@@ -409,7 +427,7 @@ class Section_Blocks
             if (gettype($products) == "string") {
                 $products_arr = array_map(function ($item) {
                     return (int)trim($item);
-                }, explode(",", $products));
+                }, explode(",", (string)$products));
             } elseif (gettype($products) == "array") {
                 $products_arr = $products;
             }
@@ -521,7 +539,7 @@ class Section_Blocks
             if (gettype($products) == "string") {
                 $products_arr = array_map(function ($item) {
                     return (int)trim($item);
-                }, explode(",", $products));
+                }, explode(",", (string)$products));
             } elseif (gettype($products) == "array") {
                 $products_arr = $products;
             }

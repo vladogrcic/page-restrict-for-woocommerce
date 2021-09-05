@@ -1,6 +1,6 @@
 {
-    "translation-revision-date": "2021-04-15T00:39:41+02:00",
-    "generator": "WP-CLI\/2.4.0",
+    "translation-revision-date": "2021-09-05T23:25:17+02:00",
+    "generator": "WP-CLI\/2.5.0",
     "source": "admin\/assets\/build\/blocks.js",
     "domain": "messages",
     "locale_data": {
