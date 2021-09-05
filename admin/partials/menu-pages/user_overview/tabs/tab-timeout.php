@@ -150,7 +150,7 @@
 																			<td><?php echo ucfirst($order_data['status']); ?></td>
 																		</tr>
 																		<tr>
-																			<td><?php echo ucfirst($order_data['payment_method_title']); ?></td>
+																			<td><?php echo $order_data['payment_method_title']?$order_data['payment_method_title']:'&nbsp;'; ?></td>
 																		</tr>
 																		<tr>
 																			<td><?php echo ucfirst($order_data['created_via']); ?></td>
