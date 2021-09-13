@@ -265,7 +265,7 @@
                 <div>
                   	<h3><?php esc_html_e( 'Username', 'page_restrict_domain' ); ?></h3>
 					<div class="padded-text">
-						<span><?php echo $vars['user']->user_login; ?><a href="<?php echo get_edit_user_link($vars['user']->ID); ?>">Edit</a></span>
+						<span><?php echo $vars['user']->user_login; ?><a class="edit-link" href="<?php echo get_edit_user_link($vars['user']->ID); ?>">Edit</a></span>
 					</div>
                 </div>
                 <div>
@@ -277,7 +277,7 @@
                 <div style="background-color: <?php echo $expiration <= 0?'#BB4F4D':''; ?>;">
 					<h3><?php esc_html_e( 'Times Viewed', 'page_restrict_domain' ); ?></h3>
 					<div class="padded-text">
-						<span><?php echo $vars['views']; ?></span>
+						<span><?php echo $vars['views']?$vars['views']:0; ?></span>
 					</div>
                 </div>
                 <div>

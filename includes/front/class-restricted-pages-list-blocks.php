@@ -186,7 +186,7 @@ class Restricted_Pages_List_Blocks
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
-                        <td><?php echo $page['views']; ?></td>
+                        <td><?php echo $page['views']?$page['views']:0; ?></td>
                         <td><?php echo $expiration; ?></td>
                     </tr>
                     <?php

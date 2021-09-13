@@ -99,9 +99,47 @@ class Helpers {
      * @since    1.1.1
 	 * @return	 array
      */
-	public function get_user_meta_values_with_views(){
+	public function get_user_meta_values_with_views($user_id=false, $single=false){
 		global $wpdb;
-		$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%'");
+		if($user_id){
+			$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%' AND user_id=".$user_id);
+		}
+		else{
+			$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%'");
+		}
+		if($single){
+			for ($i=0; $i < count($view_count_pages_users); $i++) { 
+				$meta = $view_count_pages_users[$i];
+				$meta->post_id = (int)str_replace("prwc_view_count_", "", $meta->meta_key);
+				$meta->user_id = (int)$meta->user_id;
+				$meta->meta_value = unserialize($meta->meta_value);
+				$view_count_pages_users = $meta;
+			}
+		}
+		else{
+			for ($i=0; $i < count($view_count_pages_users); $i++) { 
+				$meta = $view_count_pages_users[$i];
+				$meta->post_id = (int)str_replace("prwc_view_count_", "", $meta->meta_key);
+				$meta->user_id = (int)$meta->user_id;
+				$meta->meta_value = unserialize($meta->meta_value);
+				$view_count_pages_users[$i] = $meta;
+			}
+		}
+		
 		return $view_count_pages_users;
+	}
+	/**
+     * Gets user meta from users with a views key.
+     *
+     * @since    1.4.1
+	 * @return	 array
+     */
+	public function get_restricted_pages_by_views(){
+		$args = array(
+			'post_type' =>  'any',
+			'meta_key'  =>  'prwc_timeout_views'
+		);  
+		$page_ids = get_posts( $args );
+		return $page_ids;
 	}
 }

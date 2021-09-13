@@ -31,6 +31,7 @@ select.slimselect,
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
+	max-width: 90%;
 
 	@media (max-width: 1455px) {
 
@@ -66,7 +67,7 @@ select.slimselect,
 	background-color: transparent;
 	border: none;
 	margin-right: 25px;
-
+	max-width: 96.5%;
 	.pagination {
 		width: 100%;
 		min-height: 50px;

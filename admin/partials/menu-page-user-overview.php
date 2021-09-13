@@ -17,10 +17,7 @@
         <?php esc_html_e('Page Restrict User Overview', 'page_restrict_domain'); ?>
     </h1> -->
 </header>
-<hr>
-<?php
-    // include_once(plugin_dir_path( __FILE__ )."includes/all-menu-vars.php");
-?>
+<hr style="width: 96.5%;float: left;">
 <div id="prwc-plugin-main-wrapper">
     <div class="plugin-user-over-wrapper">
         <ul class="tab-menu">

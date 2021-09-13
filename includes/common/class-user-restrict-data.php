@@ -216,34 +216,70 @@ class User_Restrict_Data {
 	*/
 	public function view_data( $postID_products, $purchased_products_by_user, $single_user ){
 		$view_count_pages_users = $this->helpers->get_user_meta_values_with_views();
+		$restricted_pages = $this->helpers->get_restricted_pages_by_views();
 		$view_data = [];
-		foreach ($view_count_pages_users as $index => $meta) {
-			$post_id = (int)str_replace("prwc_view_count_","",$meta->meta_key);
-			$user_id = (int)str_replace("prwc_view_count_","",$meta->user_id);
+		for ($i=0; $i < count($restricted_pages); $i++) { 
+			$page = $restricted_pages[$i];
+			$post_id = (int)$page->ID;
 			if(isset($purchased_products_by_user[$post_id])){
-				$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
-				$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
-				if($views){
-					if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
-						$this->locked_posts[$post_id]['post'] = get_post($post_id);
-						$this->locked_posts[$post_id]['views'] = $views;
-	
-						$this->restrict->user_id = $user_id;
-						$this->restrict->post_id = $post_id;
-						// $this->restrict->products = $products_arr;
-						$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
-						$view_input_check = $this->restrict->check_views($views, true);
+				foreach ($purchased_products_by_user[$post_id] as $user_id => $value) {
+					$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
+					if($views){
+						if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
+							$this->locked_posts[$post_id]['post'] = get_post($post_id);
+							$this->locked_posts[$post_id]['views'] = $views;
+		
+							$this->restrict->user_id = $user_id;
+							$this->restrict->post_id = $post_id;
+							// $this->restrict->products = $products_arr;
+							$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
+							$view_input_check = $this->restrict->check_views($views, true);
 
-						$merge_view_data = array_merge(unserialize($meta->meta_value), [
-							'view_expiration_num' => $view_input_check['views_to_compare'],
-							'post' => get_post($post_id),
-							'user' => $purchased_products_by_user[$post_id][$user_id]['user'],
-						]);
-						if($single_user){
-							$view_data[$post_id] = $merge_view_data;
+							$merge_view_data = [
+								'view_expiration_num' => $view_input_check['views_to_compare'],
+								'post' => get_post($post_id),
+								'user' => $purchased_products_by_user[$post_id][$user_id]['user'],
+							];
+							if($single_user){
+								$view_data[$post_id] = $merge_view_data;
+							}
+							else{
+								$view_data[$post_id][$user_id] = $merge_view_data;
+							}
 						}
-						else{
-							$view_data[$post_id][$user_id] = $merge_view_data;
+					}
+				}
+			}
+			
+			foreach ($view_count_pages_users as $index => $meta) {
+				$post_id = (int)str_replace("prwc_view_count_","",$meta->meta_key);
+				if($post_id != $page->ID) continue;
+				$user_id = (int)str_replace("prwc_view_count_","",$meta->user_id);
+
+				if(isset($purchased_products_by_user[$post_id])){
+					$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
+					if($views){
+						if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
+							$this->locked_posts[$post_id]['post'] = get_post($post_id);
+							$this->locked_posts[$post_id]['views'] = $views;
+		
+							$this->restrict->user_id = $user_id;
+							$this->restrict->post_id = $post_id;
+							// $this->restrict->products = $products_arr;
+							$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
+							$view_input_check = $this->restrict->check_views($views, true);
+
+							$merge_view_data = array_merge($meta->meta_value, [
+								'view_expiration_num' => $view_input_check['views_to_compare'],
+								'post' => get_post($post_id),
+								'user' => $purchased_products_by_user[$post_id][$user_id]['user'],
+							]);
+							if($single_user){
+								$view_data[$post_id] = $merge_view_data;
+							}
+							else{
+								$view_data[$post_id][$user_id] = $merge_view_data;
+							}
 						}
 					}
 				}

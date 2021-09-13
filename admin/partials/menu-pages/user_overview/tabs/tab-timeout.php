@@ -260,7 +260,7 @@
 									<div>
 										<h3><?php esc_html_e('Username', 'page_restrict_domain'); ?></h3>
 										<div class="padded-text">
-											<span><?php echo $vars['user']->user_login; ?><a href="<?php echo get_edit_user_link($vars['user']->ID); ?>"></a></span>
+											<span><?php echo $vars['user']->user_login; ?><a class="edit-link" href="<?php echo get_edit_user_link($vars['user']->ID); ?>">Edit</a></span>
 										</div>
 									</div>
 									<div>
