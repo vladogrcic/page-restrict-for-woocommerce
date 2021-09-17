@@ -117,14 +117,10 @@ class Menus{
         $date_format = get_option('date_format');
         $time_format = get_option('time_format');
         
-        $restrict_by_product = false;
         if($time_data){
             $calc_pagination_all_time = $helpers->calc_pagination($time_data);
         }
-        else{
-            $calc_pagination_all_time = $helpers->calc_pagination($purchased_products_by_user);
-            $restrict_by_product = true;
-        }
+        
         $totalPages_time = $calc_pagination_all_time['totalPages'];
         $page_users_paginated_time = $calc_pagination_all_time['page_users_paginated'];
 

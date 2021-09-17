@@ -86,7 +86,8 @@
 						<div class="user-boxes"><?php
 							foreach ($value as $user_id => $vars) :
 								$expiration = $vars['time_compare'] - $vars['time_elapsed'];
-								if ($restrict_by_product) {
+								$restrict_by = $vars['restrict_by'];
+								if($restrict_by === 'product'){
 									$expiration = 1;
 								}
 								$products_by_user = $purchased_products_by_user[$post_id][$user_id]['purchased_products']; ?>
@@ -254,8 +255,7 @@
 													</a>
 												</span>
 											</div><?php
-																																																	endfor; ?>
-
+										endfor; ?>
 									</div>
 									<div>
 										<h3><?php esc_html_e('Username', 'page_restrict_domain'); ?></h3>
@@ -269,7 +269,7 @@
 											<span><?php echo $vars['user']->user_email; ?></span>
 										</div>
 									</div>
-									<?php if (!$restrict_by_product) : ?>
+									<?php if ($restrict_by === 'time') : ?>
 										<div style="background-color: <?php echo $expiration <= 0 ? '#BB4F4D' : ''; ?>;">
 											<h3><?php echo $expiration <= 0 ? 'Expired' : 'Expires'; ?></h3>
 											<div class="padded-text">

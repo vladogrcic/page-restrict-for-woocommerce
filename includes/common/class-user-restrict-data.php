@@ -172,36 +172,62 @@ class User_Restrict_Data {
 			$minutes = $this->page_options->get_page_options($post_id, 'prwc_timeout_minutes');
 			$seconds = $this->page_options->get_page_options($post_id, 'prwc_timeout_seconds');
 			$timeout_sec = abs($seconds + ($minutes * 60) + ($hours * 3600) + ($days * 86400));
-			$this->locked_posts[$post_id]['post'] = get_post($post_id);
-			foreach ($users_data as $sub_user_id => $user_data) {
-				$purchased_products = $user_data['purchased_products'];
-				
-				$this->restrict->products = $products;
-				$this->restrict->user_id = $sub_user_id;
-				$this->restrict->post_id = $post_id;
-				$this->restrict->purchased_products = $purchased_products;
-				$times_to_use = $this->restrict->check_time(
-					$timeout_sec,
-					true,
-					$not_all_products_required
-				);
-				if (is_array($times_to_use) && $timeout_sec) {
-					if(count($purchased_products_by_user[$post_id][$sub_user_id]['purchased_products'])){
-						$this->locked_posts[$post_id]['time'] = [
-							'days' 		=> $days,
-							'hours' 	=> $hours,
-							'minutes' 	=> $minutes,
-							'seconds' 	=> $seconds,
-						];
-						if($single_user){
-							$time_data[$post_id] = array_merge($times_to_use, ['user' => $user_data['user'], 'post' => get_post($post_id)]);
-						}
-						else{
-							$time_data[$post_id][$sub_user_id] = array_merge($times_to_use, ['user' => $user_data['user']]);
+				$this->locked_posts[$post_id]['post'] = get_post($post_id);
+				foreach ($users_data as $sub_user_id => $user_data) {
+					if($timeout_sec){
+						$purchased_products = $user_data['purchased_products'];
+					
+						$this->restrict->products = $products;
+						$this->restrict->user_id = $sub_user_id;
+						$this->restrict->post_id = $post_id;
+						$this->restrict->purchased_products = $purchased_products;
+						$times_to_use = $this->restrict->check_time(
+							$timeout_sec,
+							true,
+							$not_all_products_required
+						);
+						if (is_array($times_to_use)) {
+							if(count($purchased_products_by_user[$post_id][$sub_user_id]['purchased_products'])){
+								$this->locked_posts[$post_id]['time'] = [
+									'days' 		=> $days,
+									'hours' 	=> $hours,
+									'minutes' 	=> $minutes,
+									'seconds' 	=> $seconds,
+								];
+								if($single_user){
+									$time_data[$post_id] = array_merge($times_to_use, [
+										'restrict_by' => 'time',
+										'user' => $user_data['user'], 
+										'post' => get_post($post_id)
+									]);
+								}
+								else{
+									$time_data[$post_id][$sub_user_id] = array_merge($times_to_use, [
+										'restrict_by' => 'time',
+										'user' => $user_data['user']
+									]);
+								}
+							}
 						}
 					}
-				}
+					else{
+						if($single_user){
+							$time_data[$post_id] = [
+								'restrict_by' => 'product',
+								'user' => $user_data['user'], 
+								'post' => get_post($post_id)
+							];
+						}
+						else{
+							$time_data[$post_id][$sub_user_id] = [
+								'restrict_by' => 'product',
+								'user' => $user_data['user']
+							];
+						}
+					}
 			}
+			
+			
 		}
 		return $time_data;
 	}   
