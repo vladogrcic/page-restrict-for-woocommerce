@@ -34,7 +34,7 @@ class i18n {
 		load_plugin_textdomain(
 			'page_restrict_domain',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname( dirname( dirname( plugin_basename( __FILE__ ) ) ) ) . '/languages/'
 		);
 	}
 }
