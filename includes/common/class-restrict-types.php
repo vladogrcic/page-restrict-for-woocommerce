@@ -212,7 +212,7 @@ class Restrict_Types
     public function check_views(int $views, bool $update_usr_meta=false, bool $not_all_products_required=false)
     {
         if (!count($this->purchased_products)) {
-            return true;
+            return false;
         }
         $this->calc_purchased_products();
         $view_count = 0;
@@ -289,7 +289,7 @@ class Restrict_Types
     public function check_time(float $timeout_sec, $output_time=false, bool $not_all_products_required=false)
     {
         if (!count($this->purchased_products)) {
-            return true;
+            return false;
         }
         $this->calc_purchased_products();
         $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
@@ -360,7 +360,7 @@ class Restrict_Types
     public function check_products_only(bool $not_all_products_required=false)
     {
         if (!count($this->purchased_products)) {
-            return true;
+            return false;
         }
         $this->calc_purchased_products();
         if ($not_all_products_required) {
@@ -390,10 +390,18 @@ class Restrict_Types
      */
     public function check_final_all_types($timeout_sec, $views=false, $not_all_products_required=false)
     {
+        if (!count($this->purchased_products)) {
+            return false;
+        }
+
+        $perm_granted_products_only = false;
+        $perm_granted_products_only = $this->check_products_only($not_all_products_required);
+        if(!$perm_granted_products_only){
+            return false;
+        }
         $perm_granted_views         = false;
         $perm_granted_time          = false;
         $perm_granted_views_time    = false;
-        $perm_granted_products_only = false;
         if ($views) {
             $perm_granted_views         = $this->check_views($views, false, $not_all_products_required);
         }
@@ -402,9 +410,6 @@ class Restrict_Types
         }
         if ($views && $timeout_sec) {
             $perm_granted_views_time    = $this->check_views_time($perm_granted_views, $perm_granted_time);
-        }
-        if (count($this->purchased_products)) {
-            $perm_granted_products_only = $this->check_products_only($not_all_products_required);
         }
         if ($views && $timeout_sec) {
             if ($perm_granted_views_time) {
@@ -416,7 +421,7 @@ class Restrict_Types
         if (
             (($perm_granted_views || $perm_granted_time)
             ||
-            !($views || $timeout_sec)) && $perm_granted_products_only
+            !($views || $timeout_sec))
         ) {
             return true;
         } else {

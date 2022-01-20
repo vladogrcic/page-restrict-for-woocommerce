@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Vlado Grčić
+# Copyright (C) 2022 Vlado Grčić
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-23T16:20:55+02:00\n"
+"POT-Creation-Date: 2022-01-20T02:25:44+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: page_restrict_domain\n"
@@ -32,45 +32,45 @@ msgstr ""
 msgid "vladogrcic.com"
 msgstr ""
 
-#: admin/class-admin.php:572
+#: admin/class-admin.php:579
 msgid "Page Restrict"
 msgstr ""
 
-#: admin/class-admin.php:573
+#: admin/class-admin.php:580
 #: admin/partials/menu-page-pages.php:18
 msgid "Page Restrict Pages"
 msgstr ""
 
-#: admin/class-admin.php:573
+#: admin/class-admin.php:580
 msgid "Pages"
 msgstr ""
 
-#: admin/class-admin.php:575
+#: admin/class-admin.php:582
 #: admin/partials/menu-page-user-overview.php:17
 msgid "Page Restrict User Overview"
 msgstr ""
 
-#: admin/class-admin.php:575
+#: admin/class-admin.php:582
 msgid "User Overview"
 msgstr ""
 
-#: admin/class-admin.php:577
+#: admin/class-admin.php:584
 #: admin/partials/menu-page-settings.php:17
 msgid "Page Restrict Settings"
 msgstr ""
 
-#: admin/class-admin.php:577
-#: admin/class-admin.php:645
+#: admin/class-admin.php:584
+#: admin/class-admin.php:652
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:579
+#: admin/class-admin.php:586
 #: admin/partials/menu-page-quick-start.php:59
 msgid "Page Restrict Quick Start"
 msgstr ""
 
-#: admin/class-admin.php:579
-#: admin/class-admin.php:647
+#: admin/class-admin.php:586
+#: admin/class-admin.php:654
 msgid "Quick Start"
 msgstr ""
 
@@ -366,7 +366,7 @@ msgid "Restrict access to the page by setting the time you want the bought produ
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-page-restrict.php:66
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:63
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:62
 msgid "Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely."
 msgstr ""
 
@@ -502,50 +502,46 @@ msgid "The Restrict Section for WooCommerce block is located under Layout Elemen
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:55
-msgid "Using Inverse Block you can change whether the content in the section should be shown or hidden. By default it hides the section content."
+msgid "Using Inverse Block you can tell the user what to buy to access the page. By default, without this option, the block hides the section content from the user until they buy the required product."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:56
-msgid "If you want to tell the user what to do to get access to the hidden blocks you use the Inverse block to show that."
-msgstr ""
-
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:57
 msgid "You can mirror settings from a block above or below the current one."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:58
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:57
 msgid "For example if you put a 100 day timeout in that other block this block will have a 100 day timeout as well."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:59
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:58
 msgid "Products using which you can restrict access to the blocks content. You can choose one or multiple products from the \"Lock by Products\" dropdown."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:61
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:60
 msgid "Choose whether you want for the user to just buy at least one of the above listed products or require all of those products to purchase in order to be able to access that section. By default it requires all products selected to be bought."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:62
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:61
 msgid "Restrict access to the section by setting the time you want the bought product to expire."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:64
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:63
 msgid "Using a shortcode is also an option."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:66
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:65
 msgid "[prwc_is_purchased products=\"1,2\" days=\"25\" hours=\"2\" minutes=\"45\" seconds=\"15 inverse=\"false\"]"
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:68
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:67
 msgid "* Using the inverse option you can choose inverse=\"false\" to hide the content in order for the user to not see it. Choose inverse=\"true\" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse=\"false\"."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:70
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:69
 msgid "* Timeout options for this are days, hours, minutes, seconds."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:75
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:74
 msgid "Restrict blocks"
 msgstr ""
 

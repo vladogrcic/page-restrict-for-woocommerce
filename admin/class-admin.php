@@ -88,6 +88,13 @@ class Admin
             wp_enqueue_style( 'oxanium', plugin_dir_url(__FILE__) .'assets/font/oxanium/oxanium-load.css', array(),         $this->version ); 
             wp_enqueue_style( $this->plugin_name.'-admin', plugin_dir_url(__FILE__) . 'assets/build/admin-style.css', array(), $this->version, 'all' );
         }
+        ?>
+        <style>
+            header#prwc-plugin-menu{
+            	background-image: url("<?= plugins_url('/assets/img/banner-no-back.svg', __FILE__) ?>");
+            }
+        </style>
+        <?php
     }
 
     /**

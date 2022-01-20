@@ -52,8 +52,7 @@ $trans_img[]    = esc_html__('/en/section/timeout-sections-settings.png',     'p
 $trans_img[]    = '';
 
 $trans_text[] = esc_html__('The Restrict Section for WooCommerce block is located under Layout Elements pictured below.', 'page_restrict_domain');
-$trans_text[] = esc_html__("Using Inverse Block you can change whether the content in the section should be shown or hidden. By default it hides the section content.", 'page_restrict_domain').'<br>'.
-                esc_html__("If you want to tell the user what to do to get access to the hidden blocks you use the Inverse block to show that.", 'page_restrict_domain').'<br>'.
+$trans_text[] = esc_html__("Using Inverse Block you can tell the user what to buy to access the page. By default, without this option, the block hides the section content from the user until they buy the required product.", 'page_restrict_domain').'<br>'.
                 esc_html__('You can mirror settings from a block above or below the current one.', 'page_restrict_domain').'<br>'.
                 esc_html__('For example if you put a 100 day timeout in that other block this block will have a 100 day timeout as well.', 'page_restrict_domain');
 $trans_text[] = esc_html__('Products using which you can restrict access to the blocks content. You can choose one or multiple products from the "Lock by Products" dropdown.', "page_restrict_domain")

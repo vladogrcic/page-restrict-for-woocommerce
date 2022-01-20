@@ -27,8 +27,8 @@
         esc_html_e('Filter by Post Type', 'page_restrict_domain')
         ?>
     </h3>
-    <select class="two-column text-small filter-by-post-types slimselect" style="width: 98.8%;">
-    <?php if($check_page_exists): ?><option value="page">page</option><?php endif; ?>
+    <select class="two-column text-small filter-by-post-types slimselect" style="width: 98.8%;" autocomplete="off">
+    <?php if($check_page_exists): ?><option value="page" selected>page</option><?php endif; ?>
     <?php foreach($post_types_out as $post_types_out_key => $post_types_out_value): if($post_types_out_value['value']==="page") continue; ?>
         <option value="<?php echo $post_types_out_value['value']; ?>"><?php echo $post_types_out_value['label']; ?></option>
     <?php endforeach; ?>
