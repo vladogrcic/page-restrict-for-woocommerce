@@ -67,7 +67,7 @@ $trans_img[]    = esc_html__('',        'page_restrict_domain');
 
 $trans_text[]   = esc_html__('If you need to use the shortcode these are its attributes:', 'page_restrict_domain')
                 .'<br>'
-                .esc_html__('[prwc_restricted_pages_list table="time" disable_table_class="false"]', 'page_restrict_domain')
+                .'[prwc_restricted_pages_list table="time" disable_table_class="false"]'
                 .'<br>'
                 .esc_html__('* Using the table attribute you can choose which table of restricted page you will show. It can show pages that are restricted either by time or view count.', 'page_restrict_domain')
                 .'<br>'

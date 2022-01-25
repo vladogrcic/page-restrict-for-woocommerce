@@ -62,7 +62,7 @@ $trans_text[] = esc_html__('Restrict access to the section by setting the time y
                 esc_html__('Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely.', 'page_restrict_domain');
 $trans_text[] = esc_html__('Using a shortcode is also an option.', 'page_restrict_domain')
                 .'<br>'
-                .esc_html__('[prwc_is_purchased products="1,2" days="25" hours="2" minutes="45" seconds="15" inverse="false"]', 'page_restrict_domain')
+                .'[prwc_is_purchased products="1,2" days="25" hours="2" minutes="45" seconds="15" inverse="false"]'
                 .'<br>'
                 .esc_html__('* Using the inverse option you can choose inverse="false" to hide the content in order for the user to not see it. Choose inverse="true" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse="false".', 'page_restrict_domain')
                 .'<br>'
