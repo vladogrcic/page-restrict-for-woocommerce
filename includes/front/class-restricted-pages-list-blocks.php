@@ -130,7 +130,8 @@ class Restricted_Pages_List_Blocks
         <table <?php if(!(int)$disable_table_class){ ?>class="timeout_table time"<?php } ?>>
             <tr>
                 <th><?php echo esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Time of Expiration', 'page_restrict_domain' ); ?></th>
+                <th><?php echo esc_html_e( 'Time until Expiration', 'page_restrict_domain' ); ?></th>
+                <th><?php echo esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></th>
             </tr>
             <?php
             // $restrict_data['time_data'] = [];
@@ -143,6 +144,7 @@ class Restricted_Pages_List_Blocks
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
+                        <td><?php echo $helpers->seconds_to_dhms($expiration); ?></td>
                         <td><?php echo date($date_format . " " . $time_format, $expiration + time()); ?></td>
                     </tr>
                     <?php
