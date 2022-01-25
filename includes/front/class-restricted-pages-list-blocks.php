@@ -177,7 +177,8 @@ class Restricted_Pages_List_Blocks
             <tr>
                 <th><?php echo esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
                 <th><?php echo esc_html_e( 'Views', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Views left', 'page_restrict_domain' ); ?></th>
+                <th><?php echo esc_html_e( 'Views Left', 'page_restrict_domain' ); ?></th>
+                <th><?php echo esc_html_e( 'Views Total', 'page_restrict_domain' ); ?></th>
             </tr>
             <?php
             if( $restrict_data['view_data'] ):
@@ -188,6 +189,7 @@ class Restricted_Pages_List_Blocks
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
                         <td><?php echo $page['views']?$page['views']:0; ?></td>
                         <td><?php echo $expiration; ?></td>
+                        <td><?php echo $page['view_expiration_num']; ?></td>
                     </tr>
                     <?php
                 endforeach;

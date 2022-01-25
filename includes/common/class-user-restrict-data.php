@@ -247,19 +247,22 @@ class User_Restrict_Data {
 		for ($i=0; $i < count($restricted_pages); $i++) { 
 			$page = $restricted_pages[$i];
 			$post_id = (int)$page->ID;
+			$products = explode(',', $postID_products[$post_id]);
 			if(isset($purchased_products_by_user[$post_id])){
 				foreach ($purchased_products_by_user[$post_id] as $user_id => $value) {
 					$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
 					if($views){
 						if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
+							$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 							$this->locked_posts[$post_id]['post'] = get_post($post_id);
 							$this->locked_posts[$post_id]['views'] = $views;
-		
+
+							$this->restrict->products = $products;
 							$this->restrict->user_id = $user_id;
 							$this->restrict->post_id = $post_id;
 							// $this->restrict->products = $products_arr;
 							$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
-							$view_input_check = $this->restrict->check_views($views, true);
+							$view_input_check = $this->restrict->check_views($views, true, $not_all_products_required);
 
 							$merge_view_data = [
 								'view_expiration_num' => $view_input_check['views_to_compare'],
@@ -293,7 +296,7 @@ class User_Restrict_Data {
 							$this->restrict->post_id = $post_id;
 							// $this->restrict->products = $products_arr;
 							$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
-							$view_input_check = $this->restrict->check_views($views, true);
+							$view_input_check = $this->restrict->check_views($views, true, $not_all_products_required);
 
 							$merge_view_data = array_merge($meta->meta_value, [
 								'view_expiration_num' => $view_input_check['views_to_compare'],

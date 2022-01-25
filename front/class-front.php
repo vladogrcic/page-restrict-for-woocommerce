@@ -151,7 +151,7 @@ class Front {
 		$restrict_types->products = $products_arr;
 		$restrict_types->purchased_products = $purchased_products;
 
-		$check_views = $restrict_types->check_views($views, true);
+		$check_views = $restrict_types->check_views($views, true, $not_all_products_required);
 		$check_final = $restrict_types->check_final_all_types(
 			$timeout_sec,
 			$views,

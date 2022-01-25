@@ -57,7 +57,7 @@ $trans_text[] = esc_html__('If its not there click on', 'page_restrict_domain')
                 .esc_html__('[ More tools & options ] --> [ Plugins ] --> [ Page Restrict for WooCommerce ].', 'page_restrict_domain');
 $trans_text[] = esc_html__('Product or products you want to use in order to restrict the page from the "Lock by Products" dropdown.', 'page_restrict_domain').
                 '<br>'.
-                esc_html__('Choose whether you want for the user to just buy at least one of the above listed products or require all of those products to purchase in order to be able to access that page. By default it requires all products selected to be bought.', 'page_restrict_domain');
+                esc_html__('Choose whether you want for the user to just buy at least one of the above listed products with "Not all products required", so each individual product counts towards their view count or require all of those products to purchase. They could be thought of as sets, so for more total views users must buy all of those products again. By default it requires product sets to multiply views.', 'page_restrict_domain');
 $trans_text[] = esc_html__("Which pages to use for restrict messages if the user didn't buy the product, the bought product expired or didn't login into the site.", 'page_restrict_domain').
                 '<br>'.
                 esc_html__("Choose whether you want to redirect to those pages instead of the default which is to insert the selected page content into the restricted page.", "page_restrict_domain").

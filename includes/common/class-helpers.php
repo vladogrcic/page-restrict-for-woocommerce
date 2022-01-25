@@ -73,7 +73,9 @@ class Helpers {
 	public function calc_pagination(array $data, int $limit=2){
 		$pages_inc = 0;
 		$page = 1;
-		$total = count( $data );
+		$total = 0;
+		if(is_array($data))
+			$total = count( $data );
 		$totalPages = ceil( $total/ $limit );
 		$page = max($page, 1);
 		$page = min($page, $totalPages);
@@ -86,7 +88,8 @@ class Helpers {
 			if($t !== 0){
 				$offsetGroup = $offsetGroup+$limit;
 			}
-			$page_users_paginated[] = array_slice( $data, $offsetGroup, $limit, true );
+			if(is_array($data))
+				$page_users_paginated[] = array_slice( $data, $offsetGroup, $limit, true );
 		}
 		return [
 			'totalPages' => $totalPages,
@@ -137,6 +140,7 @@ class Helpers {
 	public function get_restricted_pages_by_views(){
 		$args = array(
 			'post_type' =>  'any',
+			'numberposts' =>  -1,
 			'meta_key'  =>  'prwc_timeout_views'
 		);  
 		$page_ids = get_posts( $args );
