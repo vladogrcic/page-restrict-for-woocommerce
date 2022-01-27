@@ -56,11 +56,7 @@
                 <?php
                 esc_html_e("page on which the", 'page_restrict_domain'); 
                 ?>
-                <b>
-                <?php
-                esc_html_e("[woocommerce_my_account]", 'page_restrict_domain'); 
-                ?>
-                </b>
+                <b>[woocommerce_my_account]</b>
                 <?php
                 esc_html_e("shortcode was used.", 'page_restrict_domain'); 
                 ?>
