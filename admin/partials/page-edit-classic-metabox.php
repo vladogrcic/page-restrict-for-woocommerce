@@ -76,6 +76,28 @@
         <label><?php esc_html_e('Page to Show', 'page_restrict_domain'); ?></label>
         <div class="prwc-item">
             <div class="labeled-wrapper">
+                <label><?php esc_html_e('Page to show time/views left for restricted page', 'page_restrict_domain'); ?></label>
+                <select name="prwc_not_bought_page" class="prwc_select slimselect">
+                    <option value=""></option>
+                    <?php 
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                    <?php
+                        foreach($pages_in_subtype as $subkey => $subvalue): 
+                            if($subvalue->ID == $post->ID) continue;
+                    ?>
+                            <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID === $prwc_not_bought_page?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php endforeach ?>
+                        </optgroup>
+                    <?php 
+                    } 
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="prwc-item">
+            <div class="labeled-wrapper">
                 <label><?php esc_html_e('Page to show if product not bought', 'page_restrict_domain'); ?></label>
                 <select name="prwc_not_bought_page" class="prwc_select slimselect">
                     <option value=""></option>

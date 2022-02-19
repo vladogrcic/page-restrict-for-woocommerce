@@ -25,11 +25,11 @@
     <div class="limit-products">
         <div>
             <input type="checkbox" id="prwc_limit_to_virtual_products" name="prwc_limit_to_virtual_products" value="1" <?php checked($prwc_limit_virtual_products, '1'); ?>/>
-            <label for="prwc_limit_to_virtual_products"><?php esc_html_e('Limit to Virtual Products', 'page_restrict_domain'); ?></label><br>
+            <label for="prwc_limit_to_virtual_products"><?php esc_html_e('Virtual Products', 'page_restrict_domain'); ?></label><br>
         </div>
         <div>
             <input type="checkbox" id="prwc_limit_to_downloadable_products" name="prwc_limit_to_downloadable_products" value="1" <?php checked($prwc_limit_downloadable_products, '1'); ?>/>
-            <label for="prwc_limit_to_downloadable_products"><?php esc_html_e('Limit to Downloadable Products', 'page_restrict_domain'); ?></label><br>
+            <label for="prwc_limit_to_downloadable_products"><?php esc_html_e('Downloadable Products', 'page_restrict_domain'); ?></label><br>
         </div>
     </div>
     <hr style="border: 2px solid lightgrey; margin-top: 50px;">
@@ -131,8 +131,37 @@
         </p>
     </div>
 </div>
-<h2>Pages</h2>
+<h2><?php esc_html_e('Default Pages for Restricted Pages', 'page_restrict_domain'); ?></h2>
 <hr>
+<i><?php 
+    esc_html_e("* General settings for all pages if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); ?>
+</i>
+<div class="card-main">
+    <h3><?php esc_html_e('Default time/views left', 'page_restrict_domain'); ?></h3>
+    <div class="not-bought-pages">
+        <div>
+            <label for=""><?php esc_html_e('Page to show time/views left for restricted page', 'page_restrict_domain'); ?></label><br>
+            <select name="prwc_general_not_bought_page" class="gen_not_bought_page slimselect">
+                <option value="" class="empty-option"></option><?php 
+                foreach ($all_pages as $subpost_type => $pages_in_subtype) { ?>
+                    <optgroup label="<?php echo $subpost_type; ?>"><?php
+                        foreach($pages_in_subtype as $subkey => $subvalue): ?>
+                            <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID == $gen_not_bought_page?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option><?php 
+                        endforeach;  ?>
+                    </optgroup><?php 
+                } ?>
+            </select>
+        </div>
+        <div class="description">
+            <p>
+                <i><?php 
+                    esc_html_e("Choose what text, using a page, to show a user in order for them to see how much time/views they have left on the page they bought.", 'page_restrict_domain'); ?>
+                </i>
+            </p>
+        </div>
+    </div>
+</div>
+
 <div class="card-main">
     <h3><?php esc_html_e('Default page if product not bought on site pages', 'page_restrict_domain'); ?></h3>
     <div class="not-bought-pages">
@@ -202,24 +231,6 @@
                 </i>
             </p>
         </div>
-    </div>
-    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
-    <div class="description">
-        <p>
-            <i>
-            <?php 
-                esc_html_e("* General settings for pages when the user", 'page_restrict_domain'); 
-                ?>
-                <b>
-                <?php
-                esc_html_e("didn't buy the product or it expired", 'page_restrict_domain');
-                ?>
-                </b>
-                <?php
-                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
-            ?>
-            </i>
-        </p>
     </div>
 </div>
 
@@ -295,27 +306,56 @@
             </p>
         </div>
     </div>
-    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
-    <div class="description">
-        <p>
-            <i>
+</div>
+<h2><?php esc_html_e('Default Pages for Restricted Sections', 'page_restrict_domain'); ?></h2>
+<hr>
+<i><?php 
+    esc_html_e("* General settings for all sections if a page wasn't chosen on a per section bases.", 'page_restrict_domain'); ?>
+</i>
+<div class="card-main">
+    <h3><?php esc_html_e('Default time/views left', 'page_restrict_domain'); ?></h3>
+    <div class="not-bought-pages">
+        <div>
+            <label for=""><?php esc_html_e('Page to show time/views left for restricted page', 'page_restrict_domain'); ?></label><br>
+            <select name="prwc_general_not_bought_section" class="gen_not_bought_page slimselect">
+                <option value="" class="empty-option"></option>
                 <?php 
-                esc_html_e("* General settings for pages when the user", 'page_restrict_domain');
+                    foreach ($all_pages as $subpost_type => $pages_in_subtype) {
+                        ?>
+                        <optgroup label="<?php echo $subpost_type; ?>">
+                        <?php
+                            foreach($pages_in_subtype as $subkey => $subvalue): 
+                        ?>
+                                <option value="<?php echo $subvalue->ID; ?>" <?php echo $subvalue->ID == $gen_not_bought_section?'selected="selected"':''; ?>><?php echo $subvalue->post_name; ?></option>
+                        <?php 
+                            endforeach; 
+                        ?>
+                        </optgroup>
+                <?php 
+                    } 
                 ?>
-                <b>
-                <?php
-                esc_html_e("wasn't logged in", 'page_restrict_domain');
+            </select>
+        </div>
+        <div class="description">
+            <p>
+                <i>
+                <?php 
+                    esc_html_e("Choose which page to use if a", 'page_restrict_domain');
+                    ?>
+                    <b>
+                    <?php
+                    esc_html_e("product wasn't bought or expired", 'page_restrict_domain');
+                    ?>
+                    </b>
+                    <?php
+                    esc_html_e("for all restricted sections.", 'page_restrict_domain'); 
                 ?>
-                </b>
-                <?php
-                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
-                ?>
-            </i>
-        </p>
+                </i>
+            </p>
+        </div>
     </div>
 </div>
-<h2>Sections</h2>
-<hr>
+
 <div class="card-main">
     <h3><?php esc_html_e('Default page if product not bought on site sections', 'page_restrict_domain'); ?></h3>
     <div class="not-bought-pages">
@@ -357,24 +397,6 @@
                 </i>
             </p>
         </div>
-    </div>
-    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
-    <div class="description">
-        <p>
-            <i>
-            <?php 
-                esc_html_e("* General settings for pages when the user", 'page_restrict_domain'); 
-                ?>
-                <b>
-                <?php
-                esc_html_e("didn't buy the product or it expired", 'page_restrict_domain');
-                ?>
-                </b>
-                <?php
-                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
-            ?>
-            </i>
-        </p>
     </div>
 </div>
 
@@ -421,23 +443,5 @@
                 </i>
             </p>
         </div>
-    </div>
-    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
-    <div class="description">
-        <p>
-            <i>
-                <?php 
-                esc_html_e("* General settings for sections when the user", 'page_restrict_domain');
-                ?>
-                <b>
-                <?php
-                esc_html_e("wasn't logged in", 'page_restrict_domain');
-                ?>
-                </b>
-                <?php
-                esc_html_e("if a page wasn't chosen on a per page bases.", 'page_restrict_domain'); 
-                ?>
-            </i>
-        </p>
     </div>
 </div>

@@ -344,11 +344,26 @@ window.onload = function (params) {
 				/>
 			</PanelBody>
 			<PanelBody
-				title={__('Default Page to Show for Pages', 'page_restrict_domain')}
+				title={__('Default Pages to Show for Pages', 'page_restrict_domain')}
 				icon={'welcome-widgets-menus'}
 				initialOpen={false}
 				className={'custom-panel'}
 			>
+				<MetaSelectGroupControl
+					metaKey={'prwc_not_bought_page'}
+					metaValue={page_options.prwc_not_bought_page}
+					metaValueElement={page_options.prwc_not_bought_page}
+					title={__(
+						'Page to show time/views left for restricted page',
+						'page_restrict_domain'
+					)}
+					options={pages}
+					missingText={__(
+						'No available pages to show',
+						'page_restrict_domain'
+					)}
+				/>
+				<hr />
 				<MetaSelectGroupControl
 					metaKey={'prwc_not_bought_page'}
 					metaValue={page_options.prwc_not_bought_page}
@@ -411,6 +426,21 @@ window.onload = function (params) {
 				initialOpen={false}
 				className={'custom-panel'}
 			>
+				<MetaSelectGroupControl
+					metaKey={'prwc_not_bought_section'}
+					metaValue={page_options.prwc_not_bought_section}
+					metaValueElement={page_options.prwc_not_bought_section}
+					title={__(
+						'Page to show time/views left for restricted page',
+						'page_restrict_domain'
+					)}
+					options={pages}
+					missingText={__(
+						'No available pages to show',
+						'page_restrict_domain'
+					)}
+				/>
+				<hr />
 				<MetaSelectGroupControl
 					metaKey={'prwc_not_bought_section'}
 					metaValue={page_options.prwc_not_bought_section}

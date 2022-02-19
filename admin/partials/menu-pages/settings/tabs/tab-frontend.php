@@ -36,9 +36,18 @@
             <input type="checkbox" id="prwc_my_account_rp_page_hide_view_table" name="prwc_my_account_rp_page_hide_view_table" value="1" <?php checked($prwc_my_account_rp_page_hide_view_table, '1'); ?>/>
             <label for="prwc_my_account_rp_page_hide_view_table"><?php esc_html_e('Hide view table', 'page_restrict_domain'); ?></label><br>
         </div>
+        <hr>
         <div>
             <input type="checkbox" id="prwc_my_account_rp_page_disable_plugin_designed_table" name="prwc_my_account_rp_page_disable_plugin_designed_table" value="1" <?php checked($prwc_my_account_rp_page_disable_plugin_designed_table, '1'); ?>/>
             <label for="prwc_my_account_rp_page_disable_plugin_designed_table"><?php esc_html_e('Disable default table plugin design ( removes table CSS classes )', 'page_restrict_domain'); ?></label><br>
+        </div>
+        <div>
+            <input type="checkbox" id="prwc_my_account_rp_page_hide_expired_pages" name="prwc_my_account_rp_page_hide_expired_pages" value="1" <?php checked($prwc_my_account_rp_page_disable_plugin_designed_table, '1'); ?>/>
+            <label for="prwc_my_account_rp_page_hide_expired_pages"><?php esc_html_e('Hide expired pages for users', 'page_restrict_domain'); ?></label><br>
+        </div>
+        <div>
+            <input type="checkbox" id="prwc_my_account_rp_page_hide_valid_pages" name="prwc_my_account_rp_page_hide_valid_pages" value="1" <?php checked($prwc_my_account_rp_page_disable_plugin_designed_table, '1'); ?>/>
+            <label for="prwc_my_account_rp_page_hide_valid_pages"><?php esc_html_e('Hide valid pages for users', 'page_restrict_domain'); ?></label><br>
         </div>
     </div>
     <hr style="border: 2px solid lightgrey; margin-top: 50px;">
