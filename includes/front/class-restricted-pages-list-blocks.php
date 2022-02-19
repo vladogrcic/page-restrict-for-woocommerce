@@ -61,12 +61,6 @@ class Restricted_Pages_List_Blocks
      * @var      bool      $disable_table_class    List of possible metabox page options.
      */
     public $disable_table_class;
-    /**
-     * @since    1.1.0
-     * @access   public
-     * @var      bool      $disable_table_class    List of possible metabox page options.
-     */
-    public $products;
 
     /**
 	 * Initialize class instances and other variables.
@@ -84,7 +78,6 @@ class Restricted_Pages_List_Blocks
 
         $this->restrict_data = $this->user_restrict_data->return_data(true, $this->user_id);
         $this->disable_table_class = $this->page_options_class->get_general_options('prwc_my_account_rp_page_disable_plugin_designed_table');
-        $this->products = false;
     }
     /**
      * The users list of restricted pages they bought products for in order to access. 
@@ -102,17 +95,15 @@ class Restricted_Pages_List_Blocks
         $print = '';
         if(!$attr['disable_table_class']){
             $disable_table_class = $this->disable_table_class;
-            $products = $this->products;
         }
         else{
             $disable_table_class = $attr['disable_table_class'];
-            $products = $attr['products'];
         }
         if($attr['time']){
-            $print = $this->process_restricted_pages_list_time( $disable_table_class, $products );
+            $print = $this->process_restricted_pages_list_time( $disable_table_class );
         }
         if($attr['view']){
-            $print = $this->process_restricted_pages_list_view( $disable_table_class, $products );
+            $print = $this->process_restricted_pages_list_view( $disable_table_class );
         }
         return $print;
     }
@@ -124,7 +115,7 @@ class Restricted_Pages_List_Blocks
      * @param      bool     $disable_table_class       Remove table classes.
      * @return     string
      */
-    public function process_restricted_pages_list_time( $disable_table_class=false, $products=false )
+    public function process_restricted_pages_list_time( $disable_table_class=false )
     {
         $helpers = $this->helpers;
         $user_id = $this->user_id;
@@ -134,13 +125,15 @@ class Restricted_Pages_List_Blocks
         if(!$disable_table_class){
             $disable_table_class = $this->disable_table_class;
         }
-        ob_start(); ?>
+        ob_start();
+        ?>
         <table <?php if(!(int)$disable_table_class){ ?>class="timeout_table time"<?php } ?>>
             <tr>
                 <th><?php echo esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
                 <th><?php echo esc_html_e( 'Time until Expiration', 'page_restrict_domain' ); ?></th>
                 <th><?php echo esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></th>
-            </tr><?php
+            </tr>
+            <?php
             // $restrict_data['time_data'] = [];
             if(  $restrict_data['time_data'] ):
                 foreach ($restrict_data['time_data'] as $page):
@@ -170,7 +163,7 @@ class Restricted_Pages_List_Blocks
      * @param      bool     $disable_table_class       Remove table classes.
      * @return     string
      */
-    public function process_restricted_pages_list_view( $disable_table_class=false, $products=false )
+    public function process_restricted_pages_list_view( $disable_table_class=false )
     {
         $helpers = $this->helpers;
         $user_id = $this->user_id;

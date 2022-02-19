@@ -55,11 +55,18 @@ class Shortcodes {
 	 * @return	 string
      */
     public function restricted_pages_list( $atts, string $content){
-		$a = shortcode_atts(array(
-			'table' => 'time',
-			'products' => false,
-			'disable_table_class' => 'false',
-		), $atts);
+		if(is_array($atts)){
+			$a = shortcode_atts(array(
+				'table' => 'time',
+				'disable_table_class' => 'false',
+			), $atts);
+		}
+		else{
+			$a = [
+				'table' => 'time',
+				'disable_table_class' => 'false',
+			];
+		}
 		if(is_user_logged_in()){
 			$Restricted_Pages_List = new Restricted_Pages_List_Blocks();
 			$print = '';

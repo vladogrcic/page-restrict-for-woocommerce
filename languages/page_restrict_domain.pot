@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-19T18:08:30+01:00\n"
+"POT-Creation-Date: 2022-02-19T18:30:10+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: page_restrict_domain\n"
@@ -82,25 +82,25 @@ msgstr ""
 
 #: admin/partials/menu-page-pages.php:48
 #: admin/partials/menu-page-settings.php:79
-#: admin/partials/page-edit-classic-metabox.php:228
+#: admin/partials/page-edit-classic-metabox.php:206
 msgid "Select Value"
 msgstr ""
 
 #: admin/partials/menu-page-pages.php:52
 #: admin/partials/menu-page-settings.php:82
-#: admin/partials/page-edit-classic-metabox.php:231
+#: admin/partials/page-edit-classic-metabox.php:209
 msgid "Search"
 msgstr ""
 
 #: admin/partials/menu-page-pages.php:53
 #: admin/partials/menu-page-settings.php:83
-#: admin/partials/page-edit-classic-metabox.php:232
+#: admin/partials/page-edit-classic-metabox.php:210
 msgid "No Results"
 msgstr ""
 
 #: admin/partials/menu-page-pages.php:54
 #: admin/partials/menu-page-settings.php:84
-#: admin/partials/page-edit-classic-metabox.php:233
+#: admin/partials/page-edit-classic-metabox.php:211
 msgid "Searching.."
 msgstr ""
 
@@ -207,74 +207,66 @@ msgid "Not all products required"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:108
-msgid "Default Text to Show"
-msgstr ""
-
-#: admin/partials/menu-pages/pages/pages-page.php:111
-msgid "Time/views left text"
-msgstr ""
-
-#: admin/partials/menu-pages/pages/pages-page.php:128
-#: admin/partials/page-edit-classic-metabox.php:101
-#: admin/assets/src/js/sidebars/plugin.js:371
-#: admin/assets/src/js/sidebars/plugin.js:448
+#: admin/partials/page-edit-classic-metabox.php:79
+#: admin/assets/src/js/sidebars/plugin.js:356
+#: admin/assets/src/js/sidebars/plugin.js:418
 msgid "Page to show if product not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:149
-#: admin/partials/page-edit-classic-metabox.php:121
-#: admin/assets/src/js/sidebars/plugin.js:383
+#: admin/partials/menu-pages/pages/pages-page.php:129
+#: admin/partials/page-edit-classic-metabox.php:99
+#: admin/assets/src/js/sidebars/plugin.js:368
 msgid "Redirect if product was not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:151
-#: admin/partials/page-edit-classic-metabox.php:126
-#: admin/assets/src/js/sidebars/plugin.js:399
-#: admin/assets/src/js/sidebars/plugin.js:463
+#: admin/partials/menu-pages/pages/pages-page.php:131
+#: admin/partials/page-edit-classic-metabox.php:104
+#: admin/assets/src/js/sidebars/plugin.js:384
+#: admin/assets/src/js/sidebars/plugin.js:433
 msgid "Page to show if user is not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:166
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:283
-#: admin/partials/page-edit-classic-metabox.php:146
-#: admin/assets/src/js/sidebars/plugin.js:411
+#: admin/partials/menu-pages/pages/pages-page.php:152
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:272
+#: admin/partials/page-edit-classic-metabox.php:124
+#: admin/assets/src/js/sidebars/plugin.js:396
 msgid "Redirect if user is not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:169
-#: admin/partials/page-edit-classic-metabox.php:198
-#: admin/assets/src/js/sidebars/plugin.js:475
+#: admin/partials/menu-pages/pages/pages-page.php:155
+#: admin/partials/page-edit-classic-metabox.php:176
+#: admin/assets/src/js/sidebars/plugin.js:445
 msgid "Timeout"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:173
-#: admin/partials/page-edit-classic-metabox.php:201
-#: admin/assets/src/js/sidebars/plugin.js:483
+#: admin/partials/menu-pages/pages/pages-page.php:159
+#: admin/partials/page-edit-classic-metabox.php:179
+#: admin/assets/src/js/sidebars/plugin.js:453
 msgid "Days"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:178
-#: admin/partials/page-edit-classic-metabox.php:205
-#: admin/assets/src/js/sidebars/plugin.js:488
+#: admin/partials/menu-pages/pages/pages-page.php:164
+#: admin/partials/page-edit-classic-metabox.php:183
+#: admin/assets/src/js/sidebars/plugin.js:458
 msgid "Hours"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:183
-#: admin/partials/page-edit-classic-metabox.php:209
-#: admin/assets/src/js/sidebars/plugin.js:493
+#: admin/partials/menu-pages/pages/pages-page.php:169
+#: admin/partials/page-edit-classic-metabox.php:187
+#: admin/assets/src/js/sidebars/plugin.js:463
 msgid "Minutes"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:188
-#: admin/partials/page-edit-classic-metabox.php:213
-#: admin/assets/src/js/sidebars/plugin.js:498
+#: admin/partials/menu-pages/pages/pages-page.php:174
+#: admin/partials/page-edit-classic-metabox.php:191
+#: admin/assets/src/js/sidebars/plugin.js:468
 msgid "Seconds"
 msgstr ""
 
-#: admin/partials/menu-pages/pages/pages-page.php:193
-#: admin/partials/page-edit-classic-metabox.php:217
-#: includes/front/class-restricted-pages-list-blocks.php:188
-#: admin/assets/src/js/sidebars/plugin.js:504
+#: admin/partials/menu-pages/pages/pages-page.php:179
+#: admin/partials/page-edit-classic-metabox.php:195
+#: includes/front/class-restricted-pages-list-blocks.php:181
+#: admin/assets/src/js/sidebars/plugin.js:474
 msgid "Views"
 msgstr ""
 
@@ -561,31 +553,23 @@ msgstr ""
 msgid "Hide view table"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:42
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:41
 msgid "Disable default table plugin design ( removes table CSS classes )"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:46
-msgid "Hide expired pages for users"
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:50
-msgid "Hide valid pages for users"
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:58
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:49
 msgid "* Change settings for the plugin page on the WooCommerce"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:62
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:53
 msgid "My Account"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:66
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:57
 msgid "page on which the"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:70
+#: admin/partials/menu-pages/settings/tabs/tab-frontend.php:61
 msgid "shortcode was used."
 msgstr ""
 
@@ -594,11 +578,11 @@ msgid "Limit Available Products to Restrict Pages With"
 msgstr ""
 
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:28
-msgid "Virtual Products"
+msgid "Limit to Virtual Products"
 msgstr ""
 
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:32
-msgid "Downloadable Products"
+msgid "Limit to Downloadable Products"
 msgstr ""
 
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:39
@@ -653,137 +637,128 @@ msgstr ""
 msgid "= Messages used to show your users they have no access to them either because they haven't logged in, haven't bought the product or their bought product expired."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:134
-msgid "Default Pages for Restricted Pages"
-msgstr ""
-
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:137
-msgid "* General settings for all pages if a page wasn't chosen on a per page bases."
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:140
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:316
-msgid "Default time/views left"
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:143
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:319
-#: admin/partials/page-edit-classic-metabox.php:79
-#: admin/assets/src/js/sidebars/plugin.js:356
-#: admin/assets/src/js/sidebars/plugin.js:433
-msgid "Page to show time/views left for restricted page"
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:158
-msgid "Choose what text, using a page, to show a user in order for them to see how much time/views they have left on the page they bought."
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:166
 msgid "Default page if product not bought on site pages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:169
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:363
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:140
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:323
 msgid "Page to show if not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:193
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:343
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:387
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:164
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:347
 msgid "Choose which page to use if a"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:197
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:347
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:391
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:168
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:351
 msgid "product wasn't bought or expired"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:201
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:172
 msgid "for all restricted pages."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:209
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:180
 msgid "Redirect if page not bought"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:215
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:186
 msgid "Choose to"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:219
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:293
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:190
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:282
 msgid "redirect to the page"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:223
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:194
 msgid "instead of the default which is to show the chosen page into the content area of the restricted page."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:229
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:303
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:200
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:292
 msgid "Warning:"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:230
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:304
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:201
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:293
 msgid "If you decide to choose a private page regular users won't be able to redirect to it. It will just return a 404 error."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:238
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:211
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:303
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:366
+msgid "* General settings for pages when the user"
+msgstr ""
+
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:215
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:370
+msgid "didn't buy the product or it expired"
+msgstr ""
+
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:219
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:311
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:374
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:438
+msgid "if a page wasn't chosen on a per page bases."
+msgstr ""
+
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:227
 msgid "Default page if user is not logged on site pages"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:241
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:407
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:230
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:385
 msgid "Page to show if not logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:267
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:433
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:256
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:411
 msgid "Choose which page to use if a user"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:271
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:437
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:260
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:415
 msgid "wasn't logged"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:275
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:264
 msgid "in for all restricted pages."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:289
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:278
 msgid "Choose to "
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:297
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:286
 msgid " instead of the default which is to show the chosen page into the content area of the restricted page."
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:310
-msgid "Default Pages for Restricted Sections"
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:307
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:434
+msgid "wasn't logged in"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:313
-msgid "* General settings for all sections if a page wasn't chosen on a per section bases."
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:351
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:395
-msgid "for all restricted sections."
-msgstr ""
-
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:360
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:320
 msgid "Default page if product not bought on site sections"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:404
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:355
+msgid "for all restricted sections."
+msgstr ""
+
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:382
 msgid "Default page if user is not logged on site sections"
 msgstr ""
 
-#: admin/partials/menu-pages/settings/tabs/tab-general.php:441
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:419
 msgid "in for all restricted sections."
+msgstr ""
+
+#: admin/partials/menu-pages/settings/tabs/tab-general.php:430
+msgid "* General settings for sections when the user"
 msgstr ""
 
 #: admin/partials/menu-pages/settings/tabs/tab-plugin.php:24
@@ -925,7 +900,7 @@ msgid "Email"
 msgstr ""
 
 #: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:280
-#: includes/front/class-restricted-pages-list-blocks.php:142
+#: includes/front/class-restricted-pages-list-blocks.php:134
 msgid "Date and Time of Expiration"
 msgstr ""
 
@@ -949,15 +924,15 @@ msgstr ""
 msgid "Page to Show"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:151
+#: admin/partials/page-edit-classic-metabox.php:129
 msgid "Page text to show for sections"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:154
+#: admin/partials/page-edit-classic-metabox.php:132
 msgid "Page text to show if product not bought"
 msgstr ""
 
-#: admin/partials/page-edit-classic-metabox.php:176
+#: admin/partials/page-edit-classic-metabox.php:154
 msgid "Page text to show if user is not logged in"
 msgstr ""
 
@@ -995,22 +970,22 @@ msgstr ""
 msgid "You need to be"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:140
-#: includes/front/class-restricted-pages-list-blocks.php:187
+#: includes/front/class-restricted-pages-list-blocks.php:132
+#: includes/front/class-restricted-pages-list-blocks.php:180
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:12
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:53
 msgid "Page"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:141
+#: includes/front/class-restricted-pages-list-blocks.php:133
 msgid "Time until Expiration"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:189
+#: includes/front/class-restricted-pages-list-blocks.php:182
 msgid "Views Left"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:190
+#: includes/front/class-restricted-pages-list-blocks.php:183
 msgid "Views Total"
 msgstr ""
 
@@ -1129,26 +1104,24 @@ msgid "No available products to show"
 msgstr ""
 
 #: admin/assets/src/js/sidebars/plugin.js:347
-msgid "Default Pages to Show for Pages"
+msgid "Default Page to Show for Pages"
 msgstr ""
 
 #: admin/assets/src/js/sidebars/plugin.js:361
-#: admin/assets/src/js/sidebars/plugin.js:376
-#: admin/assets/src/js/sidebars/plugin.js:404
+#: admin/assets/src/js/sidebars/plugin.js:389
+#: admin/assets/src/js/sidebars/plugin.js:423
 #: admin/assets/src/js/sidebars/plugin.js:438
-#: admin/assets/src/js/sidebars/plugin.js:453
-#: admin/assets/src/js/sidebars/plugin.js:468
 msgid "No available pages to show"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:389
+#: admin/assets/src/js/sidebars/plugin.js:374
 msgid "Default: Render the not bought page content into the current page"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:417
+#: admin/assets/src/js/sidebars/plugin.js:402
 msgid "Default: Render the user is not logged in page content into the current page"
 msgstr ""
 
-#: admin/assets/src/js/sidebars/plugin.js:424
+#: admin/assets/src/js/sidebars/plugin.js:409
 msgid "Default Page to Show for Sections"
 msgstr ""
