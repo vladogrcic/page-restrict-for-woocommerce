@@ -48,18 +48,31 @@ class Helpers {
      * @param    string    $status    Post status.
 	 * @return	 array
      */
-	public function get_meta_values($key = '', $type = 'post', $status = 'publish'){
+	public function get_meta_values($key, $type = false, $status = 'publish'){
 		global $wpdb;
 		if (empty($key)) {
 			return;
 		}
-		$r = $wpdb->get_results($wpdb->prepare("
-			SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
-			LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-			WHERE pm.meta_key = %s
-			AND p.post_status = %s
-			AND p.post_type = %s
-		", $key, $status, $type));
+		
+		if($type){
+			$r = $wpdb->prepare("
+				SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
+				LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+				WHERE pm.meta_key = %s
+				AND p.post_status = %s
+				AND p.post_type = %s
+			", $key, $status, $type);
+		}
+		else{
+			$r = $wpdb->prepare("
+				SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
+				LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+				WHERE pm.meta_key = %s
+				AND p.post_status = %s
+			", $key, $status);
+		}
+
+		$r = $wpdb->get_results( $r );
 		return $r;
 	}
 	/**

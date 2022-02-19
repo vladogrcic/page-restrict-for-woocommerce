@@ -324,7 +324,7 @@ class User_Restrict_Data {
 	 * @return	 array
      */
 	public function return_data($single_user=false, $user_id=false){
-		$products_db = $this->helpers->get_meta_values('prwc_products', 'page');
+		$products_db = $this->helpers->get_meta_values('prwc_products');
 		$postID_products = $this->post_id_products($products_db);
 		
 		$purchased_products_by_user = $this->purchased_products_by_user( $postID_products, $user_id );
