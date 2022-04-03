@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Page Restrict for WooCommerce 1.4.6\n"
+"Project-Id-Version: Page Restrict for WooCommerce 1.4.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/page_restrict_domain\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

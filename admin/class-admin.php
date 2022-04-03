@@ -182,7 +182,8 @@ class Admin
         $product_id_options = ['prwc_products'];
         for ($i=0; $i < count( $product_id_options ); $i++) { 
             $option = $product_id_options[$i];
-            $page_option = $page_options->get_page_options( $post->ID, $option );
+            $page_option = (array)$page_options->get_page_options( $post->ID, $option );
+            if(!is_array($page_option)) $page_option = [];
             for ($j=0; $j < count( $page_option ); $j++) { 
                 $post_option = get_post((int)$page_option[$j]); 
                 $slug_option = $post_option->post_name;
