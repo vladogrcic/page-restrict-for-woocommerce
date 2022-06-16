@@ -7,18 +7,23 @@ const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 // Use the defaultConfig but replace the entry and output properties
 module.exports = {
 	...defaultConfig,
+	resolve: {
+		alias: {
+			nm: path.join(__dirname, 'node_modules')
+		}
+	},
 	entry: {
 		'admin-script': path.resolve(
 			process.cwd(),
 			'admin/assets/src/js',
 			'admin.js'
 		),
-		sidebars: path.resolve(
+		'sidebars': path.resolve(
 			process.cwd(),
 			'admin/assets/src/js',
 			'sidebars.js'
 		),
-		blocks: path.resolve(process.cwd(), 'admin/assets/src/js', 'blocks.js'),
+		'blocks': path.resolve(process.cwd(), 'admin/assets/src/js', 'blocks.js'),
 		'general-block-var': path.resolve(
 			process.cwd(),
 			'admin/assets/src/js/main',
@@ -30,7 +35,7 @@ module.exports = {
 			'admin/assets/src/scss',
 			'admin.scss'
 		),
-		gutenberg: path.resolve(
+		'gutenberg': path.resolve(
 			process.cwd(),
 			'admin/assets/src/scss',
 			'gutenberg.scss'
@@ -46,7 +51,7 @@ module.exports = {
 			'admin/assets/src/css/lib',
 			'jquery-ui.theme.css'
 		),
-		zoomify: path.resolve(
+		'zoomify': path.resolve(
 			process.cwd(),
 			'admin/assets/src/css/lib',
 			'zoomify.css'
