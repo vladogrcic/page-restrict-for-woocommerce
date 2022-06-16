@@ -229,7 +229,7 @@ class Page_Restrict_Wc {
 			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 			$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'enqueue_block_editor_scripts' );
 			$this->loader->add_action( 'admin_menu', $plugin_admin, 'register_admin_menu' );
-			$this->loader->add_action( 'init', $plugin_admin, 'register_blocks' );
+			$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_admin, 'register_blocks' );
 			$this->loader->add_action( 'init', $plugin_admin, 'register_meta' );
 			$this->loader->add_action( 'init', $plugin_admin, 'register_shortcodes' );
 			$this->loader->add_action( 'init', $plugin_admin, 'register_ajax' );

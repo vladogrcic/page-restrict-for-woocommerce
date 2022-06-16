@@ -40,19 +40,32 @@ class Products_Bought {
      * @since    1.0.0
      * @param    int    		$user_id     Users ID.
      * @param    array     		$products    Products that need to be searched for.
-     * @return   array|bool	
+     * @return   array|bool
      */
 	public function get_purchased_products_by_ids(int $user_id, array $products=[]) {
 		if(gettype($products) === "integer") $products = [$products];
 		if(!count($products)) return [];
+		$cache_name = 'prwc_get_purchased_products_by_ids_' . $user_id.'='.implode(',', $products);
 		$bought_products = [];
+		$bought_products_cached = wp_cache_get( $cache_name );
+		if(is_array($bought_products_cached)){
+			return $bought_products_cached;
+		}
 		// Get all customer orders
-		$customer_orders = wc_get_orders([
-			'customer' => $user_id,
-			'status' => 'wc-completed',
-			'orderby' => 'date',
-			'limit' => 9999999999,
-		]);
+		$customer_orders = [];
+		$user_cache_name = 'prwc_user_orders_'.$user_id;
+		$customer_orders = wp_cache_get( $user_cache_name );
+		if(!is_array($customer_orders)){
+			$customer_orders = wc_get_orders([
+				'customer' => $user_id,
+				'status' => 'wc-completed',
+				'orderby' => 'date',
+				'limit' => 9999999999,
+			]);
+			wp_cache_add( $user_cache_name, $customer_orders );
+		}
+		// Get all customer orders END
+
 		foreach ( $customer_orders as $order ) {
 			// Updated compatibility with WooCommerce 3+
 			// $order = wc_get_order( $customer_order );
@@ -65,7 +78,7 @@ class Products_Bought {
 					$product_id = $item->get_product_id();
 				// Your condition related to your 2 specific products Ids
 				if ( in_array( $product_id, $products ) ) {
-					$item['order_id']  				= $order->get_id(); 					// Get the order ID
+					$item['order_id']  				= $order->get_order_number(); 					// Get the order ID
 					$item['user_id']   				= $order->get_user_id(); 				// Get the costumer ID
 					$item['currency']      			= $order->get_currency(); 				// Get the currency used  
 					$item['payment_method'] 		= $order->get_payment_method(); 		// Get the payment method ID
@@ -80,6 +93,7 @@ class Products_Bought {
 				}
 			}
 		}
+		wp_cache_add( $cache_name, $bought_products );
 		return $bought_products;
 	}
 }

@@ -2,15 +2,15 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Page Restrict for WooCommerce 1.4.7\n"
+"Project-Id-Version: Page Restrict for WooCommerce 1.4.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/page_restrict_domain\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-19T18:36:49+01:00\n"
-"PO-Revision-Date: 2022-02-19T18:36:49+01:00\n"
+"POT-Creation-Date: 2022-06-16T16:37:17+02:00\n"
+"PO-Revision-Date: 2022-06-16T16:37:17+02:00\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: page_restrict_domain\n"
 "Language: hr\n"
@@ -33,45 +33,45 @@ msgstr ""
 msgid "vladogrcic.com"
 msgstr ""
 
-#: admin/class-admin.php:579
+#: admin/class-admin.php:580
 msgid "Page Restrict"
 msgstr ""
 
-#: admin/class-admin.php:580
+#: admin/class-admin.php:581
 #: admin/partials/menu-page-pages.php:18
 msgid "Page Restrict Pages"
 msgstr ""
 
-#: admin/class-admin.php:580
+#: admin/class-admin.php:581
 msgid "Pages"
 msgstr ""
 
-#: admin/class-admin.php:582
+#: admin/class-admin.php:583
 #: admin/partials/menu-page-user-overview.php:17
 msgid "Page Restrict User Overview"
 msgstr ""
 
-#: admin/class-admin.php:582
+#: admin/class-admin.php:583
 msgid "User Overview"
 msgstr ""
 
-#: admin/class-admin.php:584
+#: admin/class-admin.php:585
 #: admin/partials/menu-page-settings.php:17
 msgid "Page Restrict Settings"
 msgstr ""
 
-#: admin/class-admin.php:584
-#: admin/class-admin.php:652
+#: admin/class-admin.php:585
+#: admin/class-admin.php:653
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:586
+#: admin/class-admin.php:587
 #: admin/partials/menu-page-quick-start.php:59
 msgid "Page Restrict Quick Start"
 msgstr ""
 
-#: admin/class-admin.php:586
-#: admin/class-admin.php:654
+#: admin/class-admin.php:587
+#: admin/class-admin.php:655
 msgid "Quick Start"
 msgstr ""
 
@@ -188,8 +188,8 @@ msgid "Edit"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:89
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:96
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:101
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:98
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:100
 #: admin/partials/page-edit-classic-metabox.php:53
 #: admin/assets/src/js/sidebars/plugin.js:320
 msgid "Products"
@@ -783,124 +783,119 @@ msgstr ""
 msgid "Expiration Time"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:96
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:101
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:98
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:100
 msgid "Orders"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:122
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:127
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:124
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:126
 msgid "Status:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:125
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:130
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:127
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:129
 msgid "Payment Method Title:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:128
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:133
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:130
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:132
 msgid "Created Via:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:131
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:136
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:133
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:135
 msgid "Discount Total:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:134
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:139
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:136
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:138
 msgid "Shipping Total:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:137
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:142
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:139
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:141
 msgid "Total:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:140
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:194
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:145
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:199
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:142
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:196
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:144
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:198
 msgid "Date Created:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:143
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:148
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:145
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:147
 msgid "Date Completed:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:146
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:151
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:148
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:150
 msgid "Date Paid:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:188
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:193
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:190
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:192
 msgid "Name:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:189
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:194
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:191
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:193
 msgid "Slug:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:190
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:195
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:192
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:194
 msgid "Short Description:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:197
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:202
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:199
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:201
 msgid "Total Sales:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:200
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:205
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:202
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:204
 msgid "Stock Status:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:204
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:209
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:206
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:208
 msgid "Virtual:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:207
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:212
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:209
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:211
 msgid "Downloadable:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:210
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:215
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:212
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:214
 msgid "Price:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:214
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:219
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:216
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:218
 msgid "Regular Price:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:217
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:222
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:219
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:221
 msgid "Sale Price:"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:220
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:225
-msgid "Subtotal Price:"
-msgstr ""
-
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:261
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:266
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:257
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:259
 msgid "Username"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:267
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:272
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:263
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:265
 msgid "Email"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:280
+#: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:276
 #: includes/front/class-restricted-pages-list-blocks.php:134
 msgid "Date and Time of Expiration"
 msgstr ""
@@ -913,11 +908,11 @@ msgstr ""
 msgid "Expiration Views"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:278
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:271
 msgid "Times Viewed"
 msgstr ""
 
-#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:284
+#: admin/partials/menu-pages/user_overview/tabs/tab-view.php:277
 msgid "Number of views until expiration"
 msgstr ""
 

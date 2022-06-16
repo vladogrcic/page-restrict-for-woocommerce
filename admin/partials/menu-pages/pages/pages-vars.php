@@ -31,7 +31,14 @@ if((int)$prwc_limit_virtual_products){
 if((int)$prwc_limit_downloadable_products){
     $args['downloadable']   = (int)$prwc_limit_downloadable_products;
 }
-$products = wc_get_products($args);
+$cache_name = '';
+$url_string = http_build_query($args);
+$cache_name = sha1(serialize($args)); 
+$products = wp_cache_get( $cache_name );
+if(!is_array($products)){
+    $products = wc_get_products($args);
+    wp_cache_add( $cache_name, $products );
+}
 $products_out = [];
 $products_by_id_out = [];
 $newtext = [];
@@ -51,12 +58,21 @@ $args = array(
     'post_type' => $prwc_post_types_general,
     'post_status' => array('publish', 'future', 'inherit')
 );
+
 $all_pages = [];
 foreach ($prwc_post_types_general as $key => $value) {
     $args['post_type'] = $value;
-    if (count(get_posts($args))) {
+    $cache_name = '';
+    $cache_name = sha1(serialize($args)); 
+    $posts = wp_cache_get( $cache_name );
+    if(!is_object($posts)){
+        $posts = new WP_Query( $args );
+        wp_cache_add( $cache_name, $posts );
+    }
+    $posts = $posts->posts;
+    if (count($posts)) {
         if($value === 'product') continue;
-        $all_pages[$value] = get_posts($args);
+        $all_pages[$value] = $posts;
     }
     else{
         continue;
@@ -64,7 +80,15 @@ foreach ($prwc_post_types_general as $key => $value) {
 }
 $post_types_out = [];
 foreach ($all_pages as $post_types_key => $post_types_value) {
-    if(!count(get_posts(['post_type' => $post_types_key]))) continue;
+    $cache_name = '';
+    $cache_name = sha1(serialize(['post_type' => $post_types_key])); 
+    $posts = wp_cache_get( $cache_name );
+    if(!is_object($posts)){
+        $posts = new WP_Query( ['post_type' => $post_types_key] );
+        wp_cache_add( $cache_name, $posts );
+    }
+    $posts = $posts->posts;
+    if(!count($posts)) continue;
     $post_types_out[] = [
         "value" => $post_types_key,
         "label" => $post_types_key
@@ -79,9 +103,17 @@ $args = array(
 $published_pages = [];
 foreach ($post_types as $key => $value) {
     $args['post_type'] = $value;
-    if (count(get_posts($args))) {
+    $cache_name = '';
+    $cache_name = sha1(serialize($args)); 
+    $posts = wp_cache_get( $cache_name );
+    if(!is_object($posts)){
+        $posts = new WP_Query( $args );
+        wp_cache_add( $cache_name, $posts );
+    }
+    $posts = $posts->posts;
+    if (count($posts)) {
         if($value === 'product') continue;
-        $published_pages[$value] = get_posts($args);
+        $published_pages[$value] = $posts;
     }
     else{
         continue;
@@ -90,13 +122,29 @@ foreach ($post_types as $key => $value) {
 $pages_out = $post_types_out;
 $post_types_out = [];
 foreach ($published_pages as $post_types_key => $post_types_value) {
-    if(!count(get_posts(['post_type' => $post_types_key]))) continue;
+    $cache_name = '';
+    $cache_name = sha1(serialize(['post_type' => $post_types_key])); 
+    $posts = wp_cache_get( $cache_name );
+    if(!is_object($posts)){
+        $posts = new WP_Query( ['post_type' => $post_types_key] );
+        wp_cache_add( $cache_name, $posts );
+    }
+    $posts = $posts->posts;
+    if(!count($posts)) continue;
     $post_types_out[] = [
         "value" => $post_types_key,
         "label" => $post_types_key
     ];
 }
-$pages_redirect = get_posts($args);
+$cache_name = '';
+$cache_name = sha1(serialize($args)); 
+$posts = wp_cache_get( $cache_name );
+if(!is_object($posts)){
+    $posts = new WP_Query( $args );
+    wp_cache_add( $cache_name, $posts );
+}
+$posts = $posts->posts;
+$pages_redirect = $posts;
 $pages_redirect_out = [];
 if(!$pages_redirect) return;
 for ($i=0; $i < count($pages_redirect); $i++) {

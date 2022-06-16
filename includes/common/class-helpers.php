@@ -54,25 +54,34 @@ class Helpers {
 			return;
 		}
 		
-		if($type){
-			$r = $wpdb->prepare("
-				SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
-				LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-				WHERE pm.meta_key = %s
-				AND p.post_status = %s
-				AND p.post_type = %s
-			", $key, $status, $type);
+		$cache_name = 'prwc_get_meta_values_'. $key.','.$status.','.$type;
+		$r_cached = wp_cache_get( $cache_name );
+
+		if(is_array($r_cached)){
+			$r = $r_cached;
 		}
 		else{
-			$r = $wpdb->prepare("
-				SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
-				LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-				WHERE pm.meta_key = %s
-				AND p.post_status = %s
-			", $key, $status);
+			if($type){
+				$r = $wpdb->prepare("
+					SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
+					LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+					WHERE pm.meta_key = %s
+					AND p.post_status = %s
+					AND p.post_type = %s
+				", $key, $status, $type);
+			}
+			else{
+				$r = $wpdb->prepare("
+					SELECT pm.post_id, pm.meta_key, pm.meta_value FROM {$wpdb->postmeta} pm
+					LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+					WHERE pm.meta_key = %s
+					AND p.post_status = %s
+				", $key, $status);
+			}
+			$r = $wpdb->get_results( $r );
+			wp_cache_add( $cache_name, $r );
 		}
 
-		$r = $wpdb->get_results( $r );
 		return $r;
 	}
 	/**
@@ -117,11 +126,19 @@ class Helpers {
      */
 	public function get_user_meta_values_with_views($user_id=false, $single=false){
 		global $wpdb;
-		if($user_id){
-			$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%' AND user_id=".$user_id);
+		$cache_name = 'prwc_view_count_'.$user_id;
+		$result = wp_cache_get( $cache_name );
+		if(is_array($result)){
+			$view_count_pages_users = $result;
 		}
 		else{
-			$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%'");
+			if($user_id){
+				$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%' AND user_id=".$user_id);
+			}
+			else{
+				$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%'");
+			}
+			wp_cache_add( $cache_name, $view_count_pages_users );
 		}
 		if($single){
 			for ($i=0; $i < count($view_count_pages_users); $i++) { 
@@ -155,8 +172,16 @@ class Helpers {
 			'post_type' =>  'any',
 			'numberposts' =>  -1,
 			'meta_key'  =>  'prwc_timeout_views'
-		);  
-		$page_ids = get_posts( $args );
+		);
+		$cache_name = '';
+        $url_string = http_build_query($args);
+        $cache_name = urldecode($url_string); 
+        $posts = wp_cache_get( $cache_name );
+        if(!is_object($posts)){
+			$posts = new \WP_Query( $args );
+			wp_cache_add( $cache_name, $posts );
+		}
+		$page_ids = $posts->posts;
 		return $page_ids;
 	}
 }

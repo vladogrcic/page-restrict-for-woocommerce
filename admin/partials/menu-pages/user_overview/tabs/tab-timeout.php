@@ -85,10 +85,12 @@
 						</div>
 						<div class="user-boxes"><?php
 							foreach ($value as $user_id => $vars) :
-								$expiration = $vars['time_compare'] - $vars['time_elapsed'];
 								$restrict_by = $vars['restrict_by'];
 								if($restrict_by === 'product'){
 									$expiration = 1;
+								}
+								else{
+									$expiration = $vars['time_compare'] - $vars['time_elapsed'];
 								}
 								$products_by_user = $purchased_products_by_user[$post_id][$user_id]['purchased_products']; ?>
 								<div class="inline-boxes <?php echo $expiration <= 0 ? 'red-palette expired' : 'valid'; ?>">
@@ -216,9 +218,6 @@
 																		<tr>
 																			<th colspan="3"><?php esc_html_e('Sale Price:', 'page_restrict_domain'); ?></th>
 																		</tr>
-																		<tr>
-																			<th colspan="3"><?php esc_html_e('Subtotal Price:', 'page_restrict_domain'); ?></th>
-																		</tr>
 																	</thead>
 																	<tbody>
 																		<tr>
@@ -244,9 +243,6 @@
 																		</tr>
 																		<tr>
 																			<td><?php echo (float)$product_data['sale_price']; ?></td>
-																		</tr>
-																		<tr>
-																			<td><?php echo (float)$product_data['subtotal']; ?></td>
 																		</tr>
 																	</tbody>
 																</table>

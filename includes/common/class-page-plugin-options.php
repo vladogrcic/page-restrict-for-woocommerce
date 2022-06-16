@@ -266,7 +266,7 @@ class Page_Plugin_Options {
      */
     public static function process_remove_unnecessary_metadata($pages_lock_data){
         if( isset($pages_lock_data['prwc_limit_to_virtual_products']) && isset($pages_lock_data['prwc_limit_to_downloadable_products'])){
-            $posts = new \WP_Query(array(
+            $args = array(
                 "numberposts" => -1,
                 "post_type" => "any",
                 "meta_query" => array(
@@ -275,7 +275,15 @@ class Page_Plugin_Options {
                         "compare"   => "="
                     )
                 ),
-            ));
+            );
+            $cache_name = '';
+            $url_string = http_build_query($args);
+            $cache_name = urldecode($url_string); 
+            $posts = wp_cache_get( $cache_name );
+            if(!is_object($posts)){
+                $posts = new \WP_Query($args);
+                wp_cache_add( $cache_name, $posts );
+            }
             for ($i=0; $i < count($posts->posts); $i++) { 
                 $product_id = explode(',', get_post_meta($posts->posts[$i]->ID, 'prwc_products', true));
                 if($pages_lock_data['prwc_limit_to_virtual_products'] && $pages_lock_data['prwc_limit_to_downloadable_products']){

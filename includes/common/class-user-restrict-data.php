@@ -265,6 +265,7 @@ class User_Restrict_Data {
 							$view_input_check = $this->restrict->check_views($views, true, $not_all_products_required);
 
 							$merge_view_data = [
+								'views' => 0,
 								'view_expiration_num' => $view_input_check['views_to_compare'],
 								'post' => get_post($post_id),
 								'user' => $purchased_products_by_user[$post_id][$user_id]['user'],
