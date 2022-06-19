@@ -99,9 +99,9 @@
 					<div>
 						<h3><?php esc_html_e('Orders', 'page_restrict_domain'); ?> <span class="pos-right"><?php esc_html_e('Products', 'page_restrict_domain'); ?></span></h3><?php
 						for ($m = 0; $m < count($products_by_user); $m++) :
-							$product_order_data = $products_by_user[$m]->get_data();
+							$product_order_data = $products_by_user[$m];
 							$order_id = $product_order_data['order_id'];
-							$prod_id = $product_order_data['product_id'];
+							$prod_id = $product_order_data['product']['product_id'];
 
 							$date_format = get_option('date_format');
 							$time_format = get_option('time_format');
@@ -112,8 +112,7 @@
 							$order_edit_page = get_edit_post_link($order_id);
 							$prod_edit_page = get_edit_post_link((int)$prod_id, 'product');
 
-							$order = wc_get_order($order_id);
-							$order_data = $order->get_data(); ?>
+							$order_data = $product_order_data; ?>
 							<div class="id-data padded-text">
 								<span class="pos-left">
 									<a href="<?php echo $order_edit_page; ?>">
@@ -189,7 +188,7 @@
 										<div class="tooltip">
 											<?php echo $prod_id; ?>
 											<span class="tooltiptext">
-												<b><?php esc_html_e('Name:', 'page_restrict_domain'); ?> </b></br><?php echo $product_order_data['name']; ?></br>
+												<b><?php esc_html_e('Name:', 'page_restrict_domain'); ?> </b></br><?php echo $product_data['name']; ?></br>
 												<b><?php esc_html_e('Slug:', 'page_restrict_domain'); ?> </b></br><?php echo $product_data['slug']; ?></br>
 												<b><?php esc_html_e('Short Description:', 'page_restrict_domain'); ?> </b></br><?php echo $product_data['short_description']; ?></br>
 												<table>

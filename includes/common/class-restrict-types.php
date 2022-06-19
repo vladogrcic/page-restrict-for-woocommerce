@@ -116,10 +116,11 @@ class Restrict_Types
         $this->purchased_products_packs = [];
         $purchased_products = [];
         for ($i=0; $i < count($this->purchased_products); $i++) {
-            if (in_array($this->purchased_products[$i]->get_product_id(), $this->products)) {
+            $product_id = $this->purchased_products[$i]['product']->get_product_id();
+            if (in_array($product_id, $this->products)) {
                 $purchased_products[] = $this->purchased_products[$i];
-                $this->purchased_products_ids[] = $this->purchased_products[$i]->get_product_id();
-                $this->purchased_products_packs[$this->purchased_products[$i]->get_product_id()][] = $this->purchased_products[$i];
+                $this->purchased_products_ids[] = $product_id;
+                $this->purchased_products_packs[$product_id][] = $this->purchased_products[$i];
             }
         }
         // $this->purchased_products = $purchased_products;
@@ -129,17 +130,18 @@ class Restrict_Types
         }
         $prods_to_keep_count = [];
         foreach ($this->purchased_products as $index => $value) {
-            if (in_array($value->get_product_id(), $this->products)) {
-                $prods_to_keep_count[ $value->get_product_id() ] = $this->valid_purchased_product_amount;
+            $product_id = $value['product']->get_product_id();
+            if (in_array($product_id, $this->products)) {
+                $prods_to_keep_count[ $product_id ] = $this->valid_purchased_product_amount;
             }
         }
         $this->processed_purchased_products = [];
         $this->processed_purchased_products_packs = [];
         foreach ($this->purchased_products as $index => $value) {
-            $product_id = $value->get_product_id();
+            $product_id = $value['product']->get_product_id();
             if ($prods_to_keep_count[ $product_id ]) {
                 $this->processed_purchased_products[] = $value;
-                $this->processed_purchased_products_packs[ $value->get_product_id() ][] = $value;
+                $this->processed_purchased_products_packs[ $product_id ][] = $value;
                 $prods_to_keep_count[ $product_id ] = $prods_to_keep_count[ $product_id ]-1;
             } else {
                 continue;
@@ -174,8 +176,8 @@ class Restrict_Types
                 for ($i=$this->valid_purchased_product_amount; $i > 0; $i--) {
                     $index = $i-1;
                     foreach ($this->processed_purchased_products_packs as $product_id => $product_item) {
-                        $order = wc_get_order( $product_item[$index]->get_data()['order_id'] );
-                        $prod_timestamp = $order->get_data()['date_completed']->getTimestamp();
+                        $order = wc_get_order( $product_item[$index]['order_id'] );
+                        $prod_timestamp = $order->get_date_completed()->getTimestamp();
                         $time_pack[] = $prod_timestamp;
                     }
                     $this->biggest_time_in_pack[$index] = max($time_pack);

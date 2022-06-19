@@ -121,8 +121,8 @@ class Menus{
             $calc_pagination_all_time = $helpers->calc_pagination($time_data);
         }
         
-        $totalPages_time = $calc_pagination_all_time['totalPages'];
-        $page_users_paginated_time = $calc_pagination_all_time['page_users_paginated'];
+        $totalPages_time = isset($calc_pagination_all_time['totalPages']) ? $calc_pagination_all_time['totalPages'] : null;
+        $page_users_paginated_time = isset($calc_pagination_all_time['page_users_paginated']) ? $calc_pagination_all_time['page_users_paginated'] : null;
 
         $calc_pagination_all_view = $helpers->calc_pagination($view_data);
         $totalPages_view = $calc_pagination_all_view['totalPages'];

@@ -145,7 +145,7 @@ class Helpers {
 				$meta = $view_count_pages_users[$i];
 				$meta->post_id = (int)str_replace("prwc_view_count_", "", $meta->meta_key);
 				$meta->user_id = (int)$meta->user_id;
-				$meta->meta_value = unserialize($meta->meta_value);
+				$meta->meta_value = $meta->meta_value;
 				$view_count_pages_users = $meta;
 			}
 		}
@@ -154,7 +154,7 @@ class Helpers {
 				$meta = $view_count_pages_users[$i];
 				$meta->post_id = (int)str_replace("prwc_view_count_", "", $meta->meta_key);
 				$meta->user_id = (int)$meta->user_id;
-				$meta->meta_value = unserialize($meta->meta_value);
+				$meta->meta_value = $meta->meta_value;
 				$view_count_pages_users[$i] = $meta;
 			}
 		}

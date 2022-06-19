@@ -165,7 +165,7 @@ class User_Restrict_Data {
 	public function time_data( $postID_products, $purchased_products_by_user, $single_user ){
 		$time_data = [];
 		foreach ($purchased_products_by_user as $post_id => $users_data) {
-			$products = explode(',', $postID_products[$post_id]);
+			$products = isset($postID_products[$post_id]) && $postID_products[$post_id] ? explode(',', $postID_products[$post_id]) : [];
 			$not_all_products_required = $this->page_options->get_page_options($post_id, 'prwc_not_all_products_required');
 			$days = $this->page_options->get_page_options($post_id, 'prwc_timeout_days');
 			$hours = $this->page_options->get_page_options($post_id, 'prwc_timeout_hours');
@@ -247,7 +247,7 @@ class User_Restrict_Data {
 		for ($i=0; $i < count($restricted_pages); $i++) { 
 			$page = $restricted_pages[$i];
 			$post_id = (int)$page->ID;
-			$products = explode(',', $postID_products[$post_id]);
+			$products = isset($postID_products[$post_id]) && $postID_products[$post_id] ? explode(',', $postID_products[$post_id]) : [];
 			if(isset($purchased_products_by_user[$post_id])){
 				foreach ($purchased_products_by_user[$post_id] as $user_id => $value) {
 					$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
@@ -299,7 +299,7 @@ class User_Restrict_Data {
 							$this->restrict->purchased_products = $purchased_products_by_user[$post_id][$user_id]['purchased_products'];
 							$view_input_check = $this->restrict->check_views($views, true, $not_all_products_required);
 
-							$merge_view_data = array_merge($meta->meta_value, [
+							$merge_view_data = array_merge(unserialize($meta->meta_value), [
 								'view_expiration_num' => $view_input_check['views_to_compare'],
 								'post' => get_post($post_id),
 								'user' => $purchased_products_by_user[$post_id][$user_id]['user'],

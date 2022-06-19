@@ -71,6 +71,7 @@ class Products_Bought {
 			// $order = wc_get_order( $customer_order );
 			// Iterating through each current customer products bought in the order
 			foreach ($order->get_items() as $item) {
+				
 				// WC 3+ compatibility
 				if ( version_compare( WC()->version, '3.0', '<' ) ) 
 					$product_id = $item['product_id'];
@@ -78,17 +79,22 @@ class Products_Bought {
 					$product_id = $item->get_product_id();
 				// Your condition related to your 2 specific products Ids
 				if ( in_array( $product_id, $products ) ) {
-					$item['order_id']  				= $order->get_order_number(); 					// Get the order ID
-					$item['user_id']   				= $order->get_user_id(); 				// Get the costumer ID
-					$item['currency']      			= $order->get_currency(); 				// Get the currency used  
-					$item['payment_method'] 		= $order->get_payment_method(); 		// Get the payment method ID
-					$item['payment_method_title'] 	= $order->get_payment_method_title(); 	// Get the payment method title
-					$item['date_created']  			= $order->get_date_created(); 			// Get date created (WC_DateTime object)
-					$item['date_modified'] 			= $order->get_date_modified(); 			// Get date modified (WC_DateTime object)
-					$item['date_completed'] 		= $order->get_date_completed(); 		// Get date completed (WC_DateTime object)
-					$item['billing_country'] 		= $order->get_billing_country(); 		// Customer billing country
+					$order_data = $order->get_data();
+					$order_product 				= $order_data; 					
+					$order_product['product'] = $item;
+					$order_product['order_id']  				= $order_data['id']; 					// Get the order ID
+					$order_product['user_id']   				= $order_data['customer_id']; 			// Get the costumer ID
+					$order_product['currency']      			= $order_data['currency']; 				// Get the currency used  
+					$order_product['payment_method'] 		= $order_data['payment_method']; 		// Get the payment method ID
+					$order_product['payment_method_title'] 	= $order_data['payment_method_title']; 	// Get the payment method title
+					$order_product['date_created']  			= $order_data['date_created']; 			// Get date created (WC_DateTime object)
+					$order_product['date_modified'] 			= $order_data['date_modified']; 		// Get date modified (WC_DateTime object)
+					$order_product['date_completed'] 		= $order_data['date_completed']; 		// Get date completed (WC_DateTime object)
+					$order_product['date_paid'] 		= $order_data['date_paid']; 		// Get date completed (WC_DateTime object)
+					$order_product['billing'] 				= $order_data['billing']; 				// Customer billing country
+					$order_product['shipping'] 				= $order_data['shipping']; 				// Customer billing country
 					for($i=0; $i<$item['quantity']; $i++){
-						$bought_products[] = $item;
+						$bought_products[] = $order_product;
 					}
 				}
 			}
