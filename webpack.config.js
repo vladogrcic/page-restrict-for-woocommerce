@@ -23,7 +23,11 @@ module.exports = {
 			'admin/assets/src/js',
 			'sidebars.js'
 		),
-		'blocks': path.resolve(process.cwd(), 'admin/assets/src/js', 'blocks.js'),
+		'blocks': path.resolve(
+			process.cwd(), 
+			'admin/assets/src/js', 
+			'blocks.js'
+		),
 		'general-block-var': path.resolve(
 			process.cwd(),
 			'admin/assets/src/js/main',

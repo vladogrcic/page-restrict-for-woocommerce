@@ -32,7 +32,6 @@ if((int)$prwc_limit_downloadable_products){
     $args['downloadable']   = (int)$prwc_limit_downloadable_products;
 }
 $cache_name = '';
-$url_string = http_build_query($args);
 $cache_name = sha1(serialize($args)); 
 $products = wp_cache_get( $cache_name );
 if(!is_array($products)){
