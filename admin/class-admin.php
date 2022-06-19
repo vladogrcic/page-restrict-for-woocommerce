@@ -421,7 +421,7 @@ class Admin
                     // if(!$products) return;
                     $output = [];
                     if( !($products) || is_numeric($products) ){
-                        return sanitize_text_field($input);
+                        return (int)$input;
                     }
                     else{
                         for ($i=0; $i < count( $products ); $i++) { 
