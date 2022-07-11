@@ -29,7 +29,6 @@
         'sort_order' => 'asc',
         'sort_column' => 'post_title',
         'post_type' => $prwc_post_types_general,
-        // 'post_status' => array('publish', 'private', 'future')
         'post_status' => array('publish', 'future', 'draft', 'pending')
     );
     $all_pages = [];
