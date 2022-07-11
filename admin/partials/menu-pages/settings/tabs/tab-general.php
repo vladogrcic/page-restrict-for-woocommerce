@@ -198,7 +198,7 @@
             <p>
                 <i>
                     <b style="color: red;"><?php esc_html_e('Warning:', 'page_restrict_domain'); ?></b> 
-                    <?php esc_html_e("If you decide to choose a private page regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
+                    <?php esc_html_e("If you decide to choose a private page (or pages with similar statuses like draft) regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
                 </i>
             </p>
         </div>
@@ -231,8 +231,6 @@
             <select name="prwc_general_login_page" class="gen_log_page slimselect">
                 <option value="" class="empty-option"></option>
                 <?php 
-                    $all_pages;
-                    $pages_redirect_out;
                     foreach ($all_pages as $subpost_type => $pages_in_subtype) {
                         ?>
                         <optgroup label="<?php echo $subpost_type; ?>">
@@ -290,7 +288,7 @@
             <p>
                 <i>
                     <b style="color: red;"><?php esc_html_e('Warning:', 'page_restrict_domain'); ?></b> 
-                    <?php esc_html_e("If you decide to choose a private page regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
+                    <?php esc_html_e("If you decide to choose a private page (or pages with similar statuses like draft) regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
                 </i>
             </p>
         </div>

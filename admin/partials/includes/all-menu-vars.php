@@ -29,7 +29,8 @@
         'sort_order' => 'asc',
         'sort_column' => 'post_title',
         'post_type' => $prwc_post_types_general,
-        'post_status' => array('publish', 'private', 'future')
+        // 'post_status' => array('publish', 'private', 'future')
+        'post_status' => array('publish', 'future', 'draft', 'pending')
     );
     $all_pages = [];
     foreach ($post_types as $key => $value) {
@@ -73,7 +74,7 @@
         'sort_order' => 'asc',
         'sort_column' => 'post_title',
         'post_type' => $prwc_post_types_general,
-        'post_status' => array('publish', 'future')
+        'post_status' => array('publish')
     );
     $all_pages_published = [];
     foreach ($post_types as $key => $value) {

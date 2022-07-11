@@ -55,28 +55,10 @@ $args = array(
     'sort_order' => 'asc',
     'sort_column' => 'post_title',
     'post_type' => $prwc_post_types_general,
-    'post_status' => array('publish', 'future', 'inherit')
+    // 'post_status' => array('publish', 'future', 'inherit')
+    'post_status' => array('publish', 'future', 'draft', 'pending')
 );
 
-$all_pages = [];
-foreach ($prwc_post_types_general as $key => $value) {
-    $args['post_type'] = $value;
-    $cache_name = '';
-    $cache_name = sha1(serialize($args)); 
-    $posts = wp_cache_get( $cache_name );
-    if(!is_object($posts)){
-        $posts = new WP_Query( $args );
-        wp_cache_add( $cache_name, $posts );
-    }
-    $posts = $posts->posts;
-    if (count($posts)) {
-        if($value === 'product') continue;
-        $all_pages[$value] = $posts;
-    }
-    else{
-        continue;
-    }
-}
 $post_types_out = [];
 foreach ($all_pages as $post_types_key => $post_types_value) {
     $cache_name = '';
