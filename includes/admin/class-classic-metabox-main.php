@@ -58,6 +58,7 @@ class Classic_Metabox_Main {
 		}
 		$plugin_name = PAGE_RESTRICT_WC_NAME;
 		$nonce =   wp_nonce_field( $plugin_name . '-nonce', $plugin_name . '-nonce', true, false );
+		include_once(PAGE_RESTRICT_WC_LOCATION_DIR."admin/partials/includes/all-menu-vars.php");
 		include_once(PAGE_RESTRICT_WC_LOCATION_DIR."admin/partials/menu-pages/pages/pages-vars.php");
 		include_once(PAGE_RESTRICT_WC_LOCATION_DIR."admin/partials/page-edit-classic-metabox.php");
 	}
