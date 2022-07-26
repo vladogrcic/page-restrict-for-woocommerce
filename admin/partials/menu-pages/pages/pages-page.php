@@ -150,7 +150,16 @@
                     <br>
                     <input id="redirect_user_not_logged_in_id_<?php echo $redirect_user_not_logged_in_id; ?>" class="redirect-user-page" type="checkbox" name="" value="1" <?php checked($prwc_redirect_not_logged_in, '1'); ?>>
                     <label for="redirect_user_not_logged_in_id_<?php echo $redirect_user_not_logged_in_id; ?>"><?php esc_html_e('Redirect if user is not logged in', 'page_restrict_domain'); ?></label>
-            </div>
+                    <div class="warning-private-page-redirect">
+                        <hr/>
+                        <p>
+                            <i>
+                                <b style="color: red;"><?php esc_html_e('Warning:', 'page_restrict_domain'); ?></b> 
+                                <?php esc_html_e("If you decide to choose a private page (or pages with similar statuses like draft) regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
+                            </i>
+                        </p>
+                    </div>
+                </div>
             <span class="subtitle">
                 <?php esc_html_e('Timeout', 'page_restrict_domain'); ?>
             </span>

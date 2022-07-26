@@ -101,6 +101,11 @@
     <hr style="border: 2px solid lightgrey; margin-top: 50px;">
     <div class="description">
         <p>
+            <i><?php 
+                esc_html_e("* Filters out pages which are shown in not bought and not logged in options when restricting pages.", 'page_restrict_domain'); ?>
+            </i>
+        </p>
+        <p>
             <i>
             <?php 
                 esc_html_e("* When you have chosen your post types", 'page_restrict_domain'); 

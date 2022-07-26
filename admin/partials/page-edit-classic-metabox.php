@@ -98,6 +98,12 @@
             <div class="labeled-wrapper">
                 <input type="checkbox" name="prwc_redirect_not_bought" id="prwc_redirect_not_bought" value="1" <?php echo $prwc_redirect_not_bought?'checked="checked"':''; ?>><label for="prwc_redirect_not_bought"><?php esc_html_e('Redirect if product was not bought', 'page_restrict_domain'); ?></label>
             </div>
+            <p>
+                <i>
+                    <b style="color: red;"><?php esc_html_e('Warning:', 'page_restrict_domain'); ?></b> 
+                    <?php esc_html_e("If you decide to choose a private page (or pages with similar statuses like draft) regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
+                </i>
+            </p>
         </div>
         <div class="prwc-item">
             <div class="labeled-wrapper">
@@ -123,6 +129,12 @@
             <div class="labeled-wrapper">
                 <input type="checkbox" name="prwc_redirect_not_logged_in" id="prwc_redirect_not_logged_in" value="1" <?php echo $prwc_redirect_not_logged_in?'checked="checked"':''; ?>><label for="prwc_redirect_not_logged_in"><?php esc_html_e('Redirect if user is not logged in', 'page_restrict_domain'); ?></label>
             </div>
+            <p>
+                <i>
+                    <b style="color: red;"><?php esc_html_e('Warning:', 'page_restrict_domain'); ?></b> 
+                    <?php esc_html_e("If you decide to choose a private page (or pages with similar statuses like draft) regular users won't be able to redirect to it. It will just return a 404 error.", 'page_restrict_domain'); ?>
+                </i>
+            </p>
         </div>
     </div>
     <div class="prwc-item-wrapper">

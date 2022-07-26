@@ -306,6 +306,9 @@
 	.ui-tabs-active.ui-state-active > a {
 		cursor: pointer !important;
 	}
+	.warning-private-page-redirect{
+		display: none;
+	}
 }
 
 .pagination {
