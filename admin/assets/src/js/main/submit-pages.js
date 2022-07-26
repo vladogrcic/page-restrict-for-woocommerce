@@ -1,4 +1,4 @@
-import sendDataAjax from '../ajax.js';
+import sendDataAjax from './ajax.js';
 /**
  * This is to send plugin or page options data to the database.
  */
