@@ -62,11 +62,21 @@ $trans_text[] = esc_html__('Restrict access to the section by setting the time y
                 esc_html__('Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely.', 'page_restrict_domain');
 $trans_text[] = esc_html__('Using a shortcode is also an option.', 'page_restrict_domain')
                 .'<br>'
-                .'[prwc_is_purchased products="1,2" days="25" hours="2" minutes="45" seconds="15" inverse="false"]'
+                .'<span style="display: block; text-align: left; line-height: 16px;"><b><code>[prwc_is_purchased products="1,2" days="25" hours="2" minutes="45" seconds="15" inverse="false" defRestrictMessage="Restrict Message" notAllProductsRequired="false" defaultPageNotBoughtSections="4" defaultPageNotLoggedSections="5"]</code></b></span>'
                 .'<br>'
-                .esc_html__('* Using the inverse option you can choose inverse="false" to hide the content in order for the user to not see it. Choose inverse="true" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse="false".', 'page_restrict_domain')
+                .esc_html__('* products - choose which products to restrict with. Add product IDs separated by a comma.".', 'page_restrict_domain')
                 .'<br>'
-                .esc_html__('* Timeout options for this are days, hours, minutes, seconds.', 'page_restrict_domain');
+                .esc_html__('* Timeout options for this are days, hours, minutes, seconds.', 'page_restrict_domain')
+                .'<br>'
+                .esc_html__('* inverse - using the inverse option you can choose inverse="false" to hide the content in order for the user to not see it. Choose inverse="true" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse="false".', 'page_restrict_domain')
+                .'<br>'
+                .esc_html__("* defRestrictMessage - is the message you want to show if the user didn't buy the product.", 'page_restrict_domain')
+                .'<br>'
+                .esc_html__("* notAllProductsRequired - set to true if the user doesn't need to buy all products.", 'page_restrict_domain')
+                .'<br>'
+                .esc_html__("* defaultPageNotBoughtSections - you can choose a page to show instead of a message like in defRestrictMessage.", 'page_restrict_domain')
+                .'<br>'
+                .esc_html__("* defaultPageNotLoggedSections - you can choose a page to show if the user isn't logged in.", 'page_restrict_domain');
 ?>
 <div class="card-main">
     <div class="content">
