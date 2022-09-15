@@ -93,6 +93,10 @@
                                 $prwc_redirect_not_bought    = $page_options->get_page_options($value->ID, 'prwc_redirect_not_bought');
                                 $prwc_not_logged_in_page     = $page_options->get_page_options($value->ID, 'prwc_not_logged_in_page');
                                 $prwc_redirect_not_logged_in = $page_options->get_page_options($value->ID, 'prwc_redirect_not_logged_in');
+                                
+                                $prwc_delay_date = $page_options->get_page_options($value->ID, 'prwc_delay_date');
+                                $prwc_delay_time = $page_options->get_page_options($value->ID, 'prwc_delay_time');
+                                $prwc_delay_allow_access_all_users = $page_options->get_page_options($value->ID, 'prwc_delay_allow_access_all_users');
                                 $upOne = dirname(__DIR__);
                                 include(plugin_dir_path( __FILE__ )."pages-page.php");
                             }

@@ -140,6 +140,15 @@ jQuery(function () {
 				const prwc_timeout_views = jQuery(pages[i])
 					.find('.timeout-views')
 					.val();
+				const prwc_delay_date = jQuery(pages[i])
+					.find('.delay-date')
+					.val();
+				const prwc_delay_time = jQuery(pages[i])
+					.find('.delay-time')
+					.val();
+				const prwc_delay_allow_access_all_users = +jQuery(pages[i])
+					.find('.delay-allow-access-all-users')
+					.is(':checked');
 
 				pages_lock_data[jQuery(pages[i]).data('page-id')] = {
 					prwc_products,
@@ -153,6 +162,9 @@ jQuery(function () {
 					prwc_timeout_minutes,
 					prwc_timeout_seconds,
 					prwc_timeout_views,
+					prwc_delay_date,
+					prwc_delay_time,
+					prwc_delay_allow_access_all_users,
 				};
 			}
 			data.pages_lock_data = pages_lock_data;

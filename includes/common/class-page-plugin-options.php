@@ -41,19 +41,22 @@ class Page_Plugin_Options {
     public function __construct()
     {
         $this->possible_page_options = [
-            'prwc_products'                 => 'array',
-            'prwc_not_all_products_required'=> 'bool',
-            'prwc_timeout_days'             => 'number',
-            'prwc_timeout_hours'            => 'number',
-            'prwc_timeout_minutes'          => 'number',
-            'prwc_timeout_seconds'          => 'number',
-            'prwc_timeout_views'            => 'number',
-            'prwc_not_bought_page'          => 'number',
-            'prwc_redirect_not_bought'      => 'bool',
-            'prwc_not_logged_in_page'       => 'number',
-            'prwc_redirect_not_logged_in'   => 'bool',
-            'prwc_not_bought_section'       => 'number',
-            'prwc_not_logged_in_section'    => 'number',
+            'prwc_products'                     => 'array',
+            'prwc_not_all_products_required'    => 'bool',
+            'prwc_timeout_days'                 => 'number',
+            'prwc_timeout_hours'                => 'number',
+            'prwc_timeout_minutes'              => 'number',
+            'prwc_timeout_seconds'              => 'number',
+            'prwc_timeout_views'                => 'number',
+            'prwc_delay_date'                   => 'string',
+            'prwc_delay_time'                   => 'string',
+            'prwc_delay_allow_access_all_users' => 'bool',
+            'prwc_not_bought_page'              => 'number',
+            'prwc_redirect_not_bought'          => 'bool',
+            'prwc_not_logged_in_page'           => 'number',
+            'prwc_redirect_not_logged_in'       => 'bool',
+            'prwc_not_bought_section'           => 'number',
+            'prwc_not_logged_in_section'        => 'number',
         ];
         $this->possible_general_options = [
             'prwc_limit_to_virtual_products'          => 'number',
@@ -133,6 +136,15 @@ class Page_Plugin_Options {
         $meta = '';
         if(!$post_id) return false;
         foreach ($this->possible_page_options as $key => $type) {
+            if($type === 'string'){
+                if($page_option === $key){
+                    $meta =   get_post_meta($post_id, $key, true);
+                    if(!(strlen($meta) < 512)){
+                        return;
+                    }
+                    $meta =   sanitize_text_field($meta);
+                }
+            } 
             if($type === 'array'){
                 if($page_option === $key){
                     $meta =   get_post_meta($post_id, $key, true);
@@ -198,6 +210,9 @@ class Page_Plugin_Options {
     public function sanitize_value_by_type_for_pages($type, $page_value){
         $sanitized_value = '';
         if($type === 'array'){
+            $sanitized_value =   sanitize_text_field($page_value);
+        }
+        if($type === 'string'){
             $sanitized_value =   sanitize_text_field($page_value);
         }
         if($type === 'number'){

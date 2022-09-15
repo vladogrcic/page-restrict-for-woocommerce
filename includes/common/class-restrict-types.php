@@ -294,6 +294,7 @@ class Restrict_Types
             return false;
         }
         $this->calc_purchased_products();
+        // FIXME Replace strtotime with WP current_datetime (Introduced 5.3.0 so that might be a problem)
         $endTimeStamp = strtotime(date("Y-m-d H:i:s"));
         if ($not_all_products_required || !(count($this->purchased_products) > 1)) {
             $startTimeStamp = $this->purchased_products[0]['date_completed']->getTimestamp();

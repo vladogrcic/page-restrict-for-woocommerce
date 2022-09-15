@@ -117,5 +117,16 @@ module.exports = {
 				},
 			],
 		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: path.resolve(
+						process.cwd(),
+						'node_modules/jquery-clock-timepicker/jquery-clock-timepicker.js'
+					),
+					to: path.resolve(process.cwd(), 'admin/assets/build'),
+				},
+			],
+		}),
 	],
 };

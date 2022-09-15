@@ -171,6 +171,30 @@ class Section_Blocks
      * @var      int      $views    Number of views until restriction timeout.
      */
     public $views;
+    /**
+     * Date when delay ends.
+     * 
+     * @since    1.5.0
+     * @access   public
+     * @var      string      $delay_date    Date when delay ends.
+     */
+    public $delay_date;
+    /**
+     * Time on $delay_date date that the delay ends.
+     * 
+     * @since    1.5.0
+     * @access   public
+     * @var      string      $delay_time    Time on $delay_date date that the delay ends.
+     */
+    public $delay_time;
+    /**
+     * Check whether the pages should be shown instead of hidden until the delay ends.
+     * 
+     * @since    1.5.0
+     * @access   public
+     * @var      bool      $delay_allow_access_all_users    Check whether the pages should be shown instead of hidden until the delay ends.
+     */
+    public $delay_allow_access_all_users;
 
     /**
 	 * Initialize class instances and other variables.
@@ -193,6 +217,10 @@ class Section_Blocks
         $this->minutes      =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_minutes');
         $this->seconds      =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_seconds');
         $this->views        =   $this->page_options->get_page_options($this->post_id, 'prwc_timeout_views');
+
+        $this->delay_date        =   $this->page_options->get_page_options($this->post_id, 'prwc_delay_date');
+        $this->delay_time        =   $this->page_options->get_page_options($this->post_id, 'prwc_delay_time');
+        $this->delay_allow_access_all_users        =   $this->page_options->get_page_options($this->post_id, 'prwc_delay_allow_access_all_users');
 
         $this->not_bought_page          = $this->page_options->get_page_options($this->post_id, 'prwc_not_bought_page');
         $this->redirect_not_bought      = $this->page_options->get_page_options($this->post_id, 'prwc_redirect_not_bought');
@@ -312,8 +340,17 @@ class Section_Blocks
             $this->restrict->products           = $products_arr;
             $this->restrict->purchased_products = $purchased_products;
 
+			$delay_date = $this->page_options->get_page_options($this->post_id, 'prwc_delay_date');
+			$delay_time = $this->page_options->get_page_options($this->post_id, 'prwc_delay_time');
+			$delay = 0;
+			if ((int)$delay_date || (int)$delay_time) {
+				$delay_allow_access_all_users = $this->page_options->get_page_options($this->post_id, 'prwc_delay_allow_access_all_users');
+				// $delay = date('Y-m-d H:i:s', strtotime("$delay_date $delay_time"));
+				$delay = strtotime("$delay_date $delay_time") - strtotime("now");
+			}
+
             $check_final = $this->restrict->check_final_all_types(
-                $timeout_sec,
+                $timeout_sec - $delay,
                 $views,
                 $not_all_products_required
             );
@@ -440,9 +477,18 @@ class Section_Blocks
             $this->restrict->post_id = $post_id;
             $this->restrict->products = $products_arr;
             $this->restrict->purchased_products = $purchased_products;
-        
+
+			$delay_date = $this->page_options->get_page_options($this->post_id, 'prwc_delay_date');
+			$delay_time = $this->page_options->get_page_options($this->post_id, 'prwc_delay_time');
+			$delay = 0;
+			if ((int)$delay_date || (int)$delay_time) {
+				$delay_allow_access_all_users = $this->page_options->get_page_options($this->post_id, 'prwc_delay_allow_access_all_users');
+				// $delay = date('Y-m-d H:i:s', strtotime("$delay_date $delay_time"));
+				$delay = strtotime("$delay_date $delay_time") - strtotime("now");
+			}
+
             $check_final = $this->restrict->check_final_all_types(
-                $timeout_sec,
+                $timeout_sec - $delay,
                 $views,
                 $not_all_products_required
             );

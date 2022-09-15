@@ -115,6 +115,7 @@ class Admin
             wp_enqueue_script( 'jquery-ui-resizable' );
             wp_enqueue_script( 'jquery.zoom',       plugin_dir_url(__FILE__) .'assets/build/jquery.zoom.js', array('jquery'),          $this->version, false );
             wp_enqueue_script( 'slimselect',        plugin_dir_url(__FILE__) .'assets/build/slimselect.js', array('jquery'),           $this->version, false );
+            wp_enqueue_script( 'jquery-clock-timepicker',        plugin_dir_url(__FILE__) .'assets/build/jquery-clock-timepicker.js', array('jquery'),           $this->version, false );
             wp_enqueue_script( $plugin_name.'-admin',           plugin_dir_url(__FILE__) .'assets/build/admin-script.js', array( 'jquery' ),                $this->version, false );
             wp_localize_script( $plugin_name.'-admin', 'page_restrict_wc', [
                 'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
@@ -553,6 +554,36 @@ class Admin
             ));
             register_meta('post', 'prwc_timeout_views', array(
                 'type'    => 'integer',
+                'single'	=> true,
+                'show_in_rest'	=> true,
+                'sanitize_callback'	=> 'sanitize_text_field',
+                'auth_callback'	=> function ()
+                {
+                    return current_user_can('edit_posts');
+                },
+            ));
+            register_meta('post', 'prwc_delay_date', array(
+                'type'    => 'string',
+                'single'	=> true,
+                'show_in_rest'	=> true,
+                'sanitize_callback'	=> 'sanitize_text_field',
+                'auth_callback'	=> function ()
+                {
+                    return current_user_can('edit_posts');
+                },
+            ));
+            register_meta('post', 'prwc_delay_time', array(
+                'type'    => 'string',
+                'single'	=> true,
+                'show_in_rest'	=> true,
+                'sanitize_callback'	=> 'sanitize_text_field',
+                'auth_callback'	=> function ()
+                {
+                    return current_user_can('edit_posts');
+                },
+            ));
+            register_meta('post', 'prwc_delay_allow_access_all_users', array(
+                'type'    => 'boolean',
                 'single'	=> true,
                 'show_in_rest'	=> true,
                 'sanitize_callback'	=> 'sanitize_text_field',

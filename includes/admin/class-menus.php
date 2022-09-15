@@ -63,6 +63,7 @@ class Menus{
         $redirect_prod_not_bought_id = 0;
         $redirect_user_not_logged_in_id = 0;
         $not_all_products_required_id = 0;
+        $delay_allow_access_all_users_id = 0;
         $page_display_style = 'display: none;';
         // include(plugin_dir_path( __FILE__ )."includes/all-menu-vars.php");
         // include_once(dirname(plugin_dir_path( __FILE__ ))."/partials/menu-pages/pages/pages-vars.php");
