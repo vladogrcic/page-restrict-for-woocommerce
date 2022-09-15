@@ -39,13 +39,18 @@ __page-restrict-wc/restricted-pages-list__
 Restricted Pages List - Shows a table of restricted pages for the current user which have had bought products for.
 
 ## Shortcodes
-`[prwc_is_purchased products='1,2' days='25' hours='2' minutes='45' seconds='15 inverse='false']`
+`[prwc_is_purchased products="1,2" days="25" hours="2" minutes="45" seconds="15" inverse="false"]`
 
-* This restricts the content using the chosen options. 
-* Using the inverse option you can choose inverse='false' to hide the content in order for the user to not see it. Choose inverse='true' for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse='false'.
+* Restricts the content using the chosen options. 
+* products - choose which products to restrict with. Add product IDs separated by a comma.
 * Timeout options for this are days, hours, minutes, seconds.
+* inverse - using the inverse option you can choose inverse="false" to hide the content in order for the user to not see it. Choose inverse="true" for the user to see it in order to show them instructions on what to do to access the desired content you chose using inverse="false"
+* defRestrictMessage - is the message you want to show if the user didn't buy the product.
+* notAllProductsRequired - set to true if the user doesn't need to buy all products.
+* defaultPageNotBoughtSections - you can choose a page to show instead of a message like in defRestrictMessage.
+* defaultPageNotLoggedSections - you can choose a page to show if the user isn't logged in.
 
-`[prwc_restricted_pages_list table='time' disable_table_class='false']`
+`[prwc_restricted_pages_list table="time" disable_table_class="false"]`
 
 * Shows a table of restricted pages for the current user which have had bought products for.
 * Using the table attribute you can choose which table of restricted page you will show. It can show pages that are restricted either by time or view count.
