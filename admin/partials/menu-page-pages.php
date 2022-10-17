@@ -70,13 +70,5 @@
         });
         window.post_types_general_original        = [];
         post_types_general_original = post_types_general_original.concat(<?php echo json_encode($prwc_post_types_general_original); ?>);
-        jQuery('.clock-time-picker').clockTimePicker({
-            i18n: {
-                cancelButton: 'Abbrechen'
-            },
-            onAdjust: function(newVal, oldVal) {
-                //...
-            }
-        });
     });
 </script>

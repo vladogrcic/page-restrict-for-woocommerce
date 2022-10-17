@@ -115,7 +115,6 @@ class Admin
             wp_enqueue_script( 'jquery-ui-resizable' );
             wp_enqueue_script( 'jquery.zoom',       plugin_dir_url(__FILE__) .'assets/build/jquery.zoom.js', array('jquery'),          $this->version, false );
             wp_enqueue_script( 'slimselect',        plugin_dir_url(__FILE__) .'assets/build/slimselect.js', array('jquery'),           $this->version, false );
-            wp_enqueue_script( 'jquery-clock-timepicker',        plugin_dir_url(__FILE__) .'assets/build/jquery-clock-timepicker.js', array('jquery'),           $this->version, false );
             wp_enqueue_script( $plugin_name.'-admin',           plugin_dir_url(__FILE__) .'assets/build/admin-script.js', array( 'jquery' ),                $this->version, false );
             wp_localize_script( $plugin_name.'-admin', 'page_restrict_wc', [
                 'nonce'   => wp_create_nonce( $plugin_name.'-nonce' ),
@@ -140,6 +139,7 @@ class Admin
         $prwc_limit_virtual_products        =   $page_options->get_general_options('prwc_limit_to_virtual_products');
         $prwc_limit_downloadable_products   =   $page_options->get_general_options('prwc_limit_to_downloadable_products');
         $prwc_post_types_general            =   $page_options->get_general_options('prwc_general_post_types');
+        include_once(plugin_dir_path( __FILE__ )."partials/includes/all-menu-vars.php");
         include_once(plugin_dir_path( __FILE__ )."partials/menu-pages/pages/pages-vars.php");
         $pages_out = [];
         foreach ($all_pages as $key => $value) {
@@ -554,36 +554,6 @@ class Admin
             ));
             register_meta('post', 'prwc_timeout_views', array(
                 'type'    => 'integer',
-                'single'	=> true,
-                'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
-                'auth_callback'	=> function ()
-                {
-                    return current_user_can('edit_posts');
-                },
-            ));
-            register_meta('post', 'prwc_delay_date', array(
-                'type'    => 'string',
-                'single'	=> true,
-                'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
-                'auth_callback'	=> function ()
-                {
-                    return current_user_can('edit_posts');
-                },
-            ));
-            register_meta('post', 'prwc_delay_time', array(
-                'type'    => 'string',
-                'single'	=> true,
-                'show_in_rest'	=> true,
-                'sanitize_callback'	=> 'sanitize_text_field',
-                'auth_callback'	=> function ()
-                {
-                    return current_user_can('edit_posts');
-                },
-            ));
-            register_meta('post', 'prwc_delay_allow_access_all_users', array(
-                'type'    => 'boolean',
                 'single'	=> true,
                 'show_in_rest'	=> true,
                 'sanitize_callback'	=> 'sanitize_text_field',

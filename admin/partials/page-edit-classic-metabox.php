@@ -137,9 +137,9 @@
             </p>
         </div>
     </div>
-    <!-- NOTE Hasn't been implemented yet. -->
-    <!-- <div class="prwc-item-wrapper">
-        <label><?php esc_html_e('Page text to show for sections', 'page_restrict_domain'); ?></label>
+    <div class="prwc-item-wrapper">
+        <!-- NOTE Hasn't been implemented yet. -->
+        <!-- <label><?php esc_html_e('Page text to show for sections', 'page_restrict_domain'); ?></label>
         <div class="prwc-item">
             <div class="labeled-wrapper">
                 <label><?php esc_html_e('Page text to show if product not bought', 'page_restrict_domain'); ?></label>
@@ -161,7 +161,7 @@
                     ?>
                 </select>
             </div>
-        </div>
+        </div> -->
         <div class="prwc-item">
             <div class="labeled-wrapper">
                 <label><?php esc_html_e('Page text to show if user is not logged in', 'page_restrict_domain'); ?></label>
@@ -184,7 +184,7 @@
                 </select>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="prwc-item-wrapper">
         <label><?php esc_html_e('Timeout', 'page_restrict_domain'); ?></label>
         <div class="prwc-item">
