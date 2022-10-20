@@ -134,18 +134,17 @@ class Restricted_Pages_List_Blocks
                 <th><?php echo esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></th>
             </tr>
             <?php
-            // $restrict_data['time_data'] = [];
-            if(  $restrict_data['time_data'] ):
+            if( $restrict_data['time_data'] ):
                 foreach ($restrict_data['time_data'] as $page):
-                    if(!isset($page['time_compare'])){
-                        continue;
-                    }
+                    // if(!isset($page['time_compare'])){
+                    //     continue;
+                    // }
                     $expiration = $page['time_compare'] - $page['time_elapsed'];
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
-                        <td><?php echo $helpers->seconds_to_dhms($expiration); ?></td>
-                        <td><?php echo date($date_format . " " . $time_format, $expiration + time()); ?></td>
+                        <td><?php if($page['time_compare']) echo $helpers->seconds_to_dhms($expiration); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
+                        <td><?php if($page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
                     </tr>
                     <?php
                 endforeach;
