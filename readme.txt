@@ -4,10 +4,10 @@ Tags: restrict, pages, woocommerce, pay, product, sell pages, sell posts
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.4.11
+Version: 1.4.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,14 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.4.13 =
+
+* Fixed "Lock by Products" not able to accept more than 1 product on "Pages" page.
+
+= 1.4.12 =
+
+* Fixed Time Table not showing pages with bought products with no expiration.
 
 = 1.4.11 =
 
@@ -221,6 +229,14 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.4.13 =
+
+* Fixed "Lock by Products" not able to accept more than 1 product on "Pages" page.
+
+= 1.4.12 =
+
+* Fixed Time Table not showing pages with bought products with no expiration.
 
 = 1.4.11 =
 

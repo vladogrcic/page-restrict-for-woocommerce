@@ -215,6 +215,7 @@ class Page_Plugin_Options {
      * @param      this->possible_page_options   $pages_lock_data    Page content passed.
      */
     public function process_page_options($pages_lock_data){
+        global $wpdb;
         foreach ($pages_lock_data as $post_id => $value) {
             foreach ($value as $meta_key => $meta_value) {
                 if(!(strlen($meta_key) < 100 && strlen($meta_value) < 512 && strlen($post_id) < 20)){
@@ -225,7 +226,21 @@ class Page_Plugin_Options {
                 }
                 $meta_value = $this->sanitize_page_options($meta_key, $meta_value);
                 if ($meta_value) {
-                    update_post_meta((int)$post_id, $meta_key, $meta_value);
+                    /**
+                     * FIXME For some reason in wp-includes/meta.php on line 207, sanitize_meta removes the comma and everything after it.
+                     */
+                    // update_post_meta((int)$post_id, $meta_key, $meta_value);
+                    $table = $wpdb->prefix . 'postmeta';
+                    $data = ['meta_value' => $meta_value];
+                    $where = ['post_id'=>$post_id, 'meta_key' => $meta_key];
+                    
+                    $result = $wpdb->get_results( "SELECT meta_id FROM $table WHERE `post_id`='$post_id' AND `meta_key`='$meta_key'" );
+                    if(is_array($result) && count($result)){
+                        $wpdb->update( $table, $data, $where );     
+                    }
+                    else{
+                        $wpdb->insert($table, array_merge($data, $where));
+                    }
                 } else {
                     delete_post_meta((int)$post_id, $meta_key);
                 }
@@ -265,6 +280,7 @@ class Page_Plugin_Options {
      * @param      this->possible_page_options   $pages_lock_data    Page content passed.
      */
     public static function process_remove_unnecessary_metadata($pages_lock_data){
+        global $wpdb;
         if( isset($pages_lock_data['prwc_limit_to_virtual_products']) && isset($pages_lock_data['prwc_limit_to_downloadable_products'])){
             $args = array(
                 "numberposts" => -1,
@@ -314,7 +330,24 @@ class Page_Plugin_Options {
                     }
                 }
                 if($product_id){
-                    update_post_meta($posts->posts[$i]->ID, 'prwc_products', implode(',', $product_id));
+                    /**
+                     * FIXME For some reason in wp-includes/meta.php on line 207, sanitize_meta removes the comma and everything after it.
+                     */
+                    // update_post_meta($posts->posts[$i]->ID, 'prwc_products', implode(',', $product_id));
+                    $table = $wpdb->prefix . 'postmeta';
+                    $meta_key = 'prwc_products';
+                    $meta_value = implode(',', $product_id);
+                    $post_id = $posts->posts[$i]->ID;
+                    $data = ['meta_value' => $meta_value];
+                    $where = ['post_id'=>$post_id, 'meta_key' => $meta_key];
+                    
+                    $result = $wpdb->get_results( "SELECT meta_id FROM $table WHERE `post_id`='$post_id' AND `meta_key`='$meta_key'" );  
+                    if(is_array($result) && count($result)){
+                        $wpdb->update( $table, $data, $where );     
+                    }
+                    else{
+                        $wpdb->insert($table, array_merge($data, $where));
+                    }
                 }
                 else{
                     delete_post_meta($posts->posts[$i]->ID, 'prwc_products');
