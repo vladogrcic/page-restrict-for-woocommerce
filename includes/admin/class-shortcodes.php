@@ -11,6 +11,7 @@
 namespace PageRestrictForWooCommerce\Includes\Admin;
 use PageRestrictForWooCommerce\Includes\Common\Section_Blocks;
 use PageRestrictForWooCommerce\Includes\Front\Restricted_Pages_List_Blocks;
+use PageRestrictForWooCommerce\Includes\Common\Page_Plugin_Options;
 /**
  * Methods for shortcodes.
  *
@@ -78,5 +79,31 @@ class Shortcodes {
 			}
 			return $print;
 		}
+	}
+	/**
+     * 
+     *
+     * @since    1.6.0
+     * @param    array     $atts       Shortcode atts.
+     * @param    string    $content    Shortcode content.
+	 * @return	 string
+     */
+    public function get_restricted_pages_products( $atts, string $content){
+		$product_urls = "";
+		$post_id = get_the_ID();
+		$products =   (new Page_Plugin_Options())->get_page_options($post_id, 'prwc_products');
+		$prod_count = count($products);
+		for ($i=0; $i < $prod_count; $i++) { 
+			$product = wc_get_product($products[$i]);
+			$url = get_permalink( $products[$i] );
+			if(count($products)-1===$i){
+				$multi_sep = '';
+			}
+			else{
+				$multi_sep = ', ';
+			}
+			$product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
+		}
+		return $product_urls;
 	}
 }

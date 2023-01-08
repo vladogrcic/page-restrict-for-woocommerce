@@ -130,12 +130,16 @@ class Page_Plugin_Options {
      * @return     int|array      $meta           Metabox value.
      */
     public function get_page_options($post_id, $page_option){
+        global $wpdb;
         $meta = '';
         if(!$post_id) return false;
         foreach ($this->possible_page_options as $key => $type) {
             if($type === 'array'){
                 if($page_option === $key){
-                    $meta =   get_post_meta($post_id, $key, true);
+                    $table = $wpdb->prefix . 'postmeta';
+                    $result = $wpdb->get_results( "SELECT meta_value FROM $table WHERE `post_id`='$post_id' AND `meta_key`='$key'" );
+                    $meta = $result[0]->meta_value;
+                    // $meta =   get_post_meta($post_id, $key, true);
                     if(!(strlen($meta) < 512)){
                         return;
                     }

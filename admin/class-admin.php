@@ -49,6 +49,12 @@ class Admin
      * @var      string    $version    The current version of this plugin.
      */
     private $version;
+    private $plugin_title;
+    private $blocks;
+    private $shortcodes;
+    private $restrict;
+    private $ajax;
+    private $blocks_restricted_pages_list;
 
     /**
      * Initialize the class and set its properties.
@@ -263,6 +269,7 @@ class Admin
     {
         add_shortcode('prwc_is_purchased', array( $this->shortcodes, 'is_purchased'));
         add_shortcode('prwc_restricted_pages_list', array( $this->shortcodes, 'restricted_pages_list'));
+        add_shortcode('prwc_restricted_pages_products', array( $this->shortcodes, 'get_restricted_pages_products'));
     }
     /**
      * Register gutenberg blocks for page editing.

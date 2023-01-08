@@ -77,6 +77,8 @@ class Restrict_Types
      * @var array
      */
     protected $biggest_time_in_pack;
+    protected $purchased_products_ids;
+    protected $processed_purchased_products_packs;
 
     /**
      * Initialize properties.

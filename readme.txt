@@ -7,7 +7,7 @@ Requires at least: 4.8.12
 Tested up to: 6.1
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.4.13
+Version: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,11 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.6.0 =
+
+* Added prwc_restricted_pages_products shortcode.
+* Minor fixes
 
 = 1.4.13 =
 
@@ -229,6 +234,11 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.6.0 =
+
+* Added prwc_restricted_pages_products shortcode.
+* Minor fixes
 
 = 1.4.13 =
 

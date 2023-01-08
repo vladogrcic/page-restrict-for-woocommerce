@@ -91,6 +91,8 @@ class Section_Blocks
      * @var      int      $not_bought_page    ID of the page used to show if product wasn't bought or was bought but it expired.
      */
     public $not_bought_page;
+    public $redirect_not_bought;
+
     /**
      * ID of the page used to show if product wasn't bought or was bought but it expired.
      *
@@ -99,6 +101,7 @@ class Section_Blocks
      * @var      int      $not_logged_in_page    ID of the page used to show if product wasn't bought or was bought but it expired.
      */
     public $not_logged_in_page;    
+    public $redirect_not_logged_in;    
     /**
      * ID of the page used to show if product wasnt bought or was bought but it expired.
      *
@@ -131,6 +134,8 @@ class Section_Blocks
      * @var      bool      $redirect_general_login    General option if one isn't set per page used to choose whether to redirect or show the page into the content of the chosen page ID before if the user isn't logged in.
      */
     public $redirect_general_login;    
+    public $general_not_bought_section;    
+    public $general_login_section;    
     /**
      * Number of days until restriction timeout.
      * 
@@ -376,7 +381,9 @@ class Section_Blocks
                             }
                             $product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
                         }
-                        return '<p class="restrict-message"><span>'.esc_html__("Your access to this section expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this section!', 'page_restrict_domain').'</span></p>';
+
+                        $restrict_msg = sprintf(esc_html__("Your access to this section expired or you haven't bought products needed to access this section. Buy %s in order to access this section!", 'page_restrict_domain'), $product_urls);
+                        return '<p><span class="restrict-message">'.$restrict_msg.'</span></p>';
                     }
                 }
                 return do_shortcode($content);
@@ -471,7 +478,8 @@ class Section_Blocks
                             }
                             $product_urls .= "<a href='$url'>".$product->get_title()."</a>".$multi_sep;
                         }
-                        return '<p><span class="restrict-message">'.esc_html__("Your access to this page expired or you haven't bought products needed to access this page. Buy", 'page_restrict_domain')." $product_urls ".esc_html__('in order to access this page!', 'page_restrict_domain').'</span></p>';
+                        $restrict_msg = sprintf(esc_html__("Your access to this page expired or you haven't bought products needed to access this page. Buy %s in order to access this page!", 'page_restrict_domain'), $product_urls);
+                        return '<p><span class="restrict-message">'.$restrict_msg.'</span></p>';
                     }
                 }
             }
