@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-08T17:25:20+01:00\n"
+"POT-Creation-Date: 2023-01-08T17:58:48+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: page_restrict_domain\n"
@@ -563,7 +563,7 @@ msgid "Restrict access to the section by setting the time you want the bought pr
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:63
-msgid "Using a shortcode is also an option."
+msgid "Using a shortcode is also an option. This can be used for the Classic Editor as well."
 msgstr ""
 
 #: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:67
@@ -594,7 +594,11 @@ msgstr ""
 msgid "* defaultPageNotLoggedSections - you can choose a page to show if the user isn't logged in."
 msgstr ""
 
-#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:84
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:82
+msgid "Prints links to products which are needed to buy to access the restricted page its in."
+msgstr ""
+
+#: admin/partials/menu-pages/quick_start/tabs/tab-add-section-restrict.php:88
 msgid "Restrict blocks"
 msgstr ""
 
@@ -1180,8 +1184,7 @@ msgid "No available products to show"
 msgstr ""
 
 #: admin/assets/build/sidebars.js:1
-#: admin/assets/src/js/sidebars/plugin.js:347
-msgid "Default Page to Show for Pages"
+msgid "Page to Show for Pages"
 msgstr ""
 
 #: admin/assets/build/sidebars.js:1
@@ -1203,8 +1206,19 @@ msgid "Default: Render the user is not logged in page content into the current p
 msgstr ""
 
 #: admin/assets/build/sidebars.js:1
-#: admin/assets/src/js/sidebars/plugin.js:409
-msgid "Default Page to Show for Sections"
+msgid "Page to Show for Sections"
+msgstr ""
+
+#: admin/assets/build/sidebars.js:1
+msgid "Delay"
+msgstr ""
+
+#: admin/assets/build/sidebars.js:1
+msgid "Page to show while the page is delayed"
+msgstr ""
+
+#: admin/assets/build/sidebars.js:1
+msgid "Inverse. The page will be restricted until the set delay time."
 msgstr ""
 
 #: admin/assets/src/js/blocks/restrict-section.js:21
@@ -1257,4 +1271,12 @@ msgstr ""
 
 #: admin/assets/src/js/blocks/restrict-section.js:488
 msgid "Below block"
+msgstr ""
+
+#: admin/assets/src/js/sidebars/plugin.js:347
+msgid "Default Page to Show for Pages"
+msgstr ""
+
+#: admin/assets/src/js/sidebars/plugin.js:409
+msgid "Default Page to Show for Sections"
 msgstr ""
