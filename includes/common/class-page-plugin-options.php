@@ -138,12 +138,14 @@ class Page_Plugin_Options {
                 if($page_option === $key){
                     $table = $wpdb->prefix . 'postmeta';
                     $result = $wpdb->get_results( "SELECT meta_value FROM $table WHERE `post_id`='$post_id' AND `meta_key`='$key'" );
-                    $meta = $result[0]->meta_value;
-                    // $meta =   get_post_meta($post_id, $key, true);
-                    if(!(strlen($meta) < 512)){
-                        return;
+                    if(isset($result[0])) {
+                        $meta = $result[0]->meta_value;
+                        // $meta =   get_post_meta($post_id, $key, true);
+                        if(!(strlen($meta) < 512)){
+                            return;
+                        }
+                        $meta =   $meta?explode(",", sanitize_text_field($meta)):[];
                     }
-                    $meta =   $meta?explode(",", sanitize_text_field($meta)):[];
                 }
             }
             if($type === 'number'){

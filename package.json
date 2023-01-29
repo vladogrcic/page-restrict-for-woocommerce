@@ -1,6 +1,6 @@
 {
   "name": "page-restrict-for-woocommerce",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "scripts": {
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
