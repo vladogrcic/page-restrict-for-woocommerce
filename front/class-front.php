@@ -193,29 +193,4 @@ class Front {
 			$wc_my_account->restrict_pages_overview_endpoint_content( $prwc_my_account_rp_page_hide_time_table, $prwc_my_account_rp_page_hide_view_table );
 		});
 	}
-	/**
-	 * Disables guest checkout for products required for some restricted pages.
-	 *
-	 * @since    1.7.0
-	 * @return	 string
-	 */
-	public function conditional_guest_checkout_based_on_product($value)
-	{
-		global $wpdb;
-		$table = $wpdb->prefix . 'postmeta';
-		$result = $wpdb->get_results("SELECT meta_value FROM $table WHERE `meta_key`='prwc_products'");
-		$restrict_ids = []; // Replace with product ids which cannot use guest checkout
-		for ($i = 0; $i < count($result); $i++) {
-			$meta = $result[$i]->meta_value;
-			$restrict_ids = array_merge($restrict_ids, $meta ? explode(",", sanitize_text_field($meta)) : []);
-		}
-		$product_id = (int)$_REQUEST['add-to-cart'];
-		if ($product_id) {
-			if (in_array($product_id, $restrict_ids)) {
-				wc_add_notice( __( 'This product requires you to be logged in. Please login first.', 'woocommerce' ), 'error' );
-				return false;
-			}
-		}
-		return true;
-	}
 }

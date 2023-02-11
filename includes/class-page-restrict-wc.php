@@ -247,7 +247,7 @@ class Page_Restrict_Wc {
 	 */
 	private function define_public_hooks() {
 		if( is_woocommerce_active( true ) ){
-			$plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
+            $plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
 
             $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
             $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -256,7 +256,6 @@ class Page_Restrict_Wc {
             $this->loader->add_filter( 'template_redirect', $plugin_public, 'initiate_process_page_redirect');
             $this->loader->add_action( 'wp', $plugin_public, 'update_user_view_count');
             $this->loader->add_action( 'init', $plugin_public, 'wc_my_account_page');
-            $this->loader->add_action( 'woocommerce_add_to_cart_validation', $plugin_public, 'conditional_guest_checkout_based_on_product');
         }
 	}
 

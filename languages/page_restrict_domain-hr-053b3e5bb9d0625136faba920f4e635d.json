@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2023-01-30T22:12:23+01:00",
+    "translation-revision-date": "2023-01-29T16:21:49+01:00",
     "generator": "WP-CLI\/2.7.1",
     "source": "admin\/assets\/build\/sidebars.js",
     "domain": "messages",
@@ -52,7 +52,7 @@
             "No available products to show": [
                 ""
             ],
-            "Default Page to Show for Pages": [
+            "Page to Show for Pages": [
                 ""
             ],
             "No available pages to show": [
@@ -64,7 +64,16 @@
             "Default: Render the user is not logged in page content into the current page": [
                 ""
             ],
-            "Default Page to Show for Sections": [
+            "Page to Show for Sections": [
+                ""
+            ],
+            "Delay": [
+                ""
+            ],
+            "Page to show while the page is delayed": [
+                ""
+            ],
+            "Inverse. The page will be restricted until the set delay time.": [
                 ""
             ]
         }
