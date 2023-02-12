@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2023-01-29T16:21:49+01:00",
+    "translation-revision-date": "2023-02-12T22:09:07+01:00",
     "generator": "WP-CLI\/2.7.1",
     "source": "admin\/assets\/src\/js\/sidebars\/plugin.js",
     "domain": "messages",
@@ -52,6 +52,9 @@
             "No available products to show": [
                 ""
             ],
+            "Default Page to Show for Pages": [
+                ""
+            ],
             "No available pages to show": [
                 ""
             ],
@@ -59,9 +62,6 @@
                 ""
             ],
             "Default: Render the user is not logged in page content into the current page": [
-                ""
-            ],
-            "Default Page to Show for Pages": [
                 ""
             ],
             "Default Page to Show for Sections": [
