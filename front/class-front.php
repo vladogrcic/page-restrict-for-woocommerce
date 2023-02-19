@@ -196,7 +196,7 @@ class Front {
 	/**
 	 * Disables guest checkout for products required for some restricted pages.
 	 *
-	 * @since    1.7.0
+	 * @since    1.6.1
 	 * @return	 string
 	 */
 	public function conditional_guest_checkout_based_on_product($value)

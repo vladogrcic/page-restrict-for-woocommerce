@@ -136,6 +136,7 @@ class Page_Plugin_Options {
         foreach ($this->possible_page_options as $key => $type) {
             if($type === 'array'){
                 if($page_option === $key){
+                    $meta = [];
                     $table = $wpdb->prefix . 'postmeta';
                     $result = $wpdb->get_results( "SELECT meta_value FROM $table WHERE `post_id`='$post_id' AND `meta_key`='$key'" );
                     if(isset($result[0])) {
@@ -150,6 +151,7 @@ class Page_Plugin_Options {
             }
             if($type === 'number'){
                 if($page_option === $key){
+                    $meta = 0;
                     $meta =   get_post_meta($post_id, $key, true);
                     if(!(strlen($meta) < 512)){
                         return;
@@ -159,6 +161,7 @@ class Page_Plugin_Options {
             }
             if($type === 'bool'){
                 if($page_option === $key){
+                    $meta = false;
                     $meta =   (int)get_post_meta($post_id, $key, true);
                     if(!(strlen($meta) < 512)){
                         return;

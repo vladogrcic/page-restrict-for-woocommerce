@@ -7,7 +7,7 @@ Requires at least: 4.8.12
 Tested up to: 6.1
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.7.0
+Version: 1.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,9 +101,9 @@ No, there isn't any.
 
 == Changelog ==
 
-= 1.7.0 =
+= 1.6.2 =
 
-* Removed requirement for the site to have guest checkouts disabled. Now its only doing that for products that are needed for restriction. Currently its only for pages not sections.
+* Fixed "PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array..." error.
 
 = 1.6.1 =
 
@@ -243,9 +243,9 @@ No, there isn't any.
 
 * Initial commit. == Upgrade Notice ==
 
-= 1.7.0 =
+= 1.6.2 =
 
-* Removed requirement for the site to have guest checkouts disabled. Now its only doing that for products that are needed for restriction. Currently its only for pages not sections.
+* Fixed "PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array..." error.
 
 = 1.6.1 =
 
