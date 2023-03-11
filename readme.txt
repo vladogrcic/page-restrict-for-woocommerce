@@ -101,6 +101,10 @@ No, there isn't any.
 
 == Changelog ==
 
+= 1.6.3 =
+
+* Added notice for custom post types where the feature "Custom Fields" is missing.
+
 = 1.6.2 =
 
 * Fixed "PHP Fatal error:  Uncaught TypeError: in_array(): Argument #2 ($haystack) must be of type array..." error.
@@ -242,6 +246,10 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.6.3 =
+
+* Added notice for custom post types where the feature "Custom Fields" is missing.
 
 = 1.6.2 =
 

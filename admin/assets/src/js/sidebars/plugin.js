@@ -4,6 +4,32 @@ import MetaSelectGroupControl from './elements/MetaSelectGroupControl';
 import MetaSelectMultipleControl from './elements/MetaSelectMultipleControl';
 
 window.onload = function (params) {
+	const core_post_types = [
+		'post',
+		'page',
+		'attachment',
+		'revision',
+	];
+	setTimeout(() => {
+		if(typeof wp.data.select('core/editor').getEditedPostAttribute('meta') === 'undefined' && !core_post_types.includes(wp.data.select( 'core/editor' ).getCurrentPostType())){
+			wp.data.dispatch( 'core/notices' ).createNotice(
+				'error', // Can be one of: success, info, warning, error.
+				`${prwc_plugin_title} has encountered an error! If this page is a custom post type you might not have enabled the "Custom Fields" feature. Without it this plugin can't work in this editor.`, // Text string to display.
+				{
+					isDismissible: false, // Whether the user can dismiss the notice.
+					// Any actions the user can perform.
+					actions: [
+						{
+							url: '/wp-admin/admin.php?page=prwc-quick-start-menu',
+							label: 'Check Quick Start page on tab Add Page Restrict.',
+						},
+					],
+				}
+			);
+		
+			wp.plugins.unregisterPlugin('page-restrict-wc');
+		}
+	}, 2500);
 	const page_options = page_restrict_wc.page_options;
 	const pages = page_restrict_wc.pages;
 	const sidebar_title = prwc_plugin_title;

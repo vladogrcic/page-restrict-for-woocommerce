@@ -1,6 +1,6 @@
 {
   "name": "page-restrict-for-woocommerce",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "scripts": {
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
@@ -38,9 +38,9 @@
     "@wordpress/scripts": "^23.3.0",
     "copy-webpack-plugin": "^6",
     "ignore-emit-webpack-plugin": "^2.0.*",
-    "mini-css-extract-plugin": "^1.6.2",
+    "mini-css-extract-plugin": "^1.6.*",
     "path": "^0.12.*",
-    "prettier": "^2.5.1",
+    "prettier": "^2.5.*",
     "url-loader": "^4.1.*"
   },
   "dependencies": {

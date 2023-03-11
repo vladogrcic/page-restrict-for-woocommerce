@@ -39,6 +39,7 @@ $img[]          = '/en/page/enable-meta.png';
 $img[]          = '/en/page/products-page-settings.png';
 $img[]          = '/en/page/page-to-show-page-settings.png';
 $img[]          = '/en/page/timeout-page-settings.png';
+$img[]          = '/en/page/custom-post-type-custom-fields.png';
 
 // translators: Replace this entire string with the url to your image.
 $trans_img[]    = esc_html__('/en/page/check-plugin-box.png',               'page_restrict_domain');
@@ -50,6 +51,8 @@ $trans_img[]    = esc_html__('/en/page/products-page-settings.png',             
 $trans_img[]    = esc_html__('/en/page/page-to-show-page-settings.png',           'page_restrict_domain');
 // translators: Replace this entire string with the url to your image.
 $trans_img[]    = esc_html__('/en/page/timeout-page-settings.png',                'page_restrict_domain');
+
+$trans_img[]    = esc_html__('/en/page/custom-post-type-custom-fields.png',                'page_restrict_domain');
 
 $trans_text[] = esc_html__('While editing your page click on the menu shown below.', 'page_restrict_domain');
 $trans_text[] = esc_html__('If its not there click on', 'page_restrict_domain')
@@ -64,6 +67,9 @@ $trans_text[] = esc_html__("Which pages to use for restrict messages if the user
                 '<br>';
 $trans_text[] = esc_html__('Restrict access to the page by setting the time you want the bought product to expire or you can choose to also expire it by views as well.', 'page_restrict_domain').'<br>'.
                 esc_html__('Leave it 0 to just restrict by products only. That means it just checks if the user bought the product. If they did it will give them access to the page indefinitely.', 'page_restrict_domain');
+
+$trans_text[] = esc_html__('Regarding custom post types, in order to be able to use this in your custom post type page you need to enable a feature called "Custom Fields"', 'page_restrict_domain').'<br>'.
+                esc_html__('There are several ways and plugins to add custom post types so you will have to check corresponding docs. The below image shows this from "Custom Post Type UI" plugin by WebDevStudios', 'page_restrict_domain');
 ?>
 <div class="card-main">
     <div class="content">
