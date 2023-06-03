@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Page Restrict for WooCommerce 1.6.3\n"
+"Project-Id-Version: Page Restrict for WooCommerce 1.6.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/page_restrict_domain\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-11T18:37:05+01:00\n"
+"POT-Creation-Date: 2023-06-03T18:28:01+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: page_restrict_domain\n"
@@ -126,12 +126,9 @@ msgid "Frontend"
 msgstr ""
 
 #: admin/partials/menu-page-settings.php:27
-#: admin/assets/build/blocks.js:2542
-#: admin/assets/build/blocks.js:2770
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:395
 #: admin/assets/src/js/blocks/restricted-pages-list.js:70
-#: admin/assets/build/blocks.js:2390
-#: admin/assets/build/blocks.js:2727
 msgid "General"
 msgstr ""
 
@@ -181,9 +178,8 @@ msgstr ""
 #: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:82
 #: admin/partials/menu-pages/user_overview/tabs/tab-view.php:88
 #: includes/front/class-wc-my-account.php:101
-#: admin/assets/build/blocks.js:2156
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:54
-#: admin/assets/build/blocks.js:1950
 msgid "View"
 msgstr ""
 
@@ -197,76 +193,57 @@ msgstr ""
 #: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:99
 #: admin/partials/menu-pages/user_overview/tabs/tab-view.php:100
 #: admin/partials/page-edit-classic-metabox.php:53
-#: admin/assets/build/blocks.js:2601
-#: admin/assets/build/sidebars.js:2868
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:503
 #: admin/assets/src/js/sidebars/plugin.js:346
-#: admin/assets/build/blocks.js:2498
-#: admin/assets/build/sidebars.js:2557
 msgid "Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:92
 #: admin/partials/page-edit-classic-metabox.php:56
-#: admin/assets/build/blocks.js:2606
-#: admin/assets/build/sidebars.js:2879
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:511
 #: admin/assets/src/js/sidebars/plugin.js:356
-#: admin/assets/build/blocks.js:2506
-#: admin/assets/build/sidebars.js:2567
 msgid "Lock by Products"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:105
 #: admin/partials/page-edit-classic-metabox.php:70
-#: admin/assets/build/blocks.js:2624
-#: admin/assets/build/blocks.js:2634
-#: admin/assets/build/sidebars.js:2884
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:546
 #: admin/assets/src/js/blocks/restrict-section.js:566
 #: admin/assets/src/js/sidebars/plugin.js:366
-#: admin/assets/build/blocks.js:2541
-#: admin/assets/build/blocks.js:2561
-#: admin/assets/build/sidebars.js:2577
 msgid "Not all products required"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:108
 #: admin/partials/page-edit-classic-metabox.php:79
-#: admin/assets/build/sidebars.js:2894
-#: admin/assets/build/sidebars.js:2923
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:382
 #: admin/assets/src/js/sidebars/plugin.js:444
-#: admin/assets/build/sidebars.js:2593
-#: admin/assets/build/sidebars.js:2655
 msgid "Page to show if product not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:129
 #: admin/partials/page-edit-classic-metabox.php:99
-#: admin/assets/build/sidebars.js:2899
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:394
-#: admin/assets/build/sidebars.js:2605
 msgid "Redirect if product was not bought"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:131
 #: admin/partials/page-edit-classic-metabox.php:110
-#: admin/assets/build/sidebars.js:2906
-#: admin/assets/build/sidebars.js:2930
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:410
 #: admin/assets/src/js/sidebars/plugin.js:459
-#: admin/assets/build/sidebars.js:2621
-#: admin/assets/build/sidebars.js:2670
 msgid "Page to show if user is not logged in"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:152
 #: admin/partials/menu-pages/settings/tabs/tab-general.php:275
 #: admin/partials/page-edit-classic-metabox.php:130
-#: admin/assets/build/sidebars.js:2911
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:422
-#: admin/assets/build/sidebars.js:2633
 msgid "Redirect if user is not logged in"
 msgstr ""
 
@@ -288,65 +265,49 @@ msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:164
 #: admin/partials/page-edit-classic-metabox.php:189
-#: admin/assets/build/blocks.js:2644
-#: admin/assets/build/sidebars.js:2934
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:588
 #: admin/assets/src/js/sidebars/plugin.js:471
-#: admin/assets/build/blocks.js:2583
-#: admin/assets/build/sidebars.js:2682
 msgid "Timeout"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:168
 #: admin/partials/page-edit-classic-metabox.php:192
-#: admin/assets/build/blocks.js:2648
-#: admin/assets/build/sidebars.js:2941
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:593
 #: admin/assets/src/js/sidebars/plugin.js:479
-#: admin/assets/build/blocks.js:2588
-#: admin/assets/build/sidebars.js:2690
 msgid "Days"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:173
 #: admin/partials/page-edit-classic-metabox.php:196
-#: admin/assets/build/blocks.js:2658
-#: admin/assets/build/sidebars.js:2945
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:604
 #: admin/assets/src/js/sidebars/plugin.js:484
-#: admin/assets/build/blocks.js:2599
-#: admin/assets/build/sidebars.js:2695
 msgid "Hours"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:178
 #: admin/partials/page-edit-classic-metabox.php:200
-#: admin/assets/build/blocks.js:2668
-#: admin/assets/build/sidebars.js:2949
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:615
 #: admin/assets/src/js/sidebars/plugin.js:489
-#: admin/assets/build/blocks.js:2610
-#: admin/assets/build/sidebars.js:2700
 msgid "Minutes"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:183
 #: admin/partials/page-edit-classic-metabox.php:204
-#: admin/assets/build/blocks.js:2678
-#: admin/assets/build/sidebars.js:2953
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/blocks/restrict-section.js:626
 #: admin/assets/src/js/sidebars/plugin.js:494
-#: admin/assets/build/blocks.js:2621
-#: admin/assets/build/sidebars.js:2705
 msgid "Seconds"
 msgstr ""
 
 #: admin/partials/menu-pages/pages/pages-page.php:188
 #: admin/partials/page-edit-classic-metabox.php:208
-#: includes/front/class-restricted-pages-list-blocks.php:180
-#: admin/assets/build/sidebars.js:2957
+#: includes/front/class-restricted-pages-list-blocks.php:187
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:500
-#: admin/assets/build/sidebars.js:2711
 msgid "Views"
 msgstr ""
 
@@ -1005,7 +966,7 @@ msgid "Email"
 msgstr ""
 
 #: admin/partials/menu-pages/user_overview/tabs/tab-timeout.php:276
-#: includes/front/class-restricted-pages-list-blocks.php:134
+#: includes/front/class-restricted-pages-list-blocks.php:136
 msgid "Date and Time of Expiration"
 msgstr ""
 
@@ -1076,31 +1037,28 @@ msgstr ""
 msgid "in order to access this page!"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:132
-#: includes/front/class-restricted-pages-list-blocks.php:179
-#: admin/assets/build/blocks.js:2149
-#: admin/assets/build/blocks.js:2156
+#: includes/front/class-restricted-pages-list-blocks.php:134
+#: includes/front/class-restricted-pages-list-blocks.php:186
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:12
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:53
-#: admin/assets/build/blocks.js:1908
-#: admin/assets/build/blocks.js:1949
 msgid "Page"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:133
+#: includes/front/class-restricted-pages-list-blocks.php:135
 msgid "Time until Expiration"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:146
-#: includes/front/class-restricted-pages-list-blocks.php:147
+#: includes/front/class-restricted-pages-list-blocks.php:153
+#: includes/front/class-restricted-pages-list-blocks.php:154
 msgid "No Expiration"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:181
+#: includes/front/class-restricted-pages-list-blocks.php:188
 msgid "Views Left"
 msgstr ""
 
-#: includes/front/class-restricted-pages-list-blocks.php:182
+#: includes/front/class-restricted-pages-list-blocks.php:189
 msgid "Views Total"
 msgstr ""
 
@@ -1109,9 +1067,8 @@ msgid "Restricted Pages"
 msgstr ""
 
 #: includes/front/class-wc-my-account.php:87
-#: admin/assets/build/blocks.js:2724
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:13
-#: admin/assets/build/blocks.js:2670
 msgid "Restricted Pages List"
 msgstr ""
 
@@ -1147,230 +1104,173 @@ msgstr ""
 msgid "Disable option: \"Allow customers to place orders without an account\"."
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:13
-#: admin/assets/build/blocks.js:1909
 msgid "Time of Expiration"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:17
-#: admin/assets/build/blocks.js:1913
 msgid "Sint quam voluptatem sed accusamus ut"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:22
-#: admin/assets/build/blocks.js:1918
 msgid "18.04.2020 19:11"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:26
-#: admin/assets/build/blocks.js:1922
 msgid "Phasellus et fringilla velit"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:31
-#: admin/assets/build/blocks.js:1927
 msgid "08.04.2020 04:32"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:35
-#: admin/assets/build/blocks.js:1931
 msgid "Animi maxime numquam veniam aliquam aut distinctio"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2149
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:40
-#: admin/assets/build/blocks.js:1936
 msgid "14.04.2020 19:11"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2156
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:55
-#: admin/assets/build/blocks.js:1951
 msgid "Views left"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2156
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:59
-#: admin/assets/build/blocks.js:1955
 msgid "Fugiat repellat qui harum minus recusandae"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2156
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:69
-#: admin/assets/build/blocks.js:1965
 msgid "Doloremque non sunt sint dolorum"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2156
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/components/preview-time-view-tables.js:79
-#: admin/assets/build/blocks.js:1975
 msgid "Ut vel quibusdam totam"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2207
-#: admin/assets/src/js/blocks/restrict-section.js:21
-#: admin/assets/build/blocks.js:2016
-msgid "Restrict Section for WooCommerce"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2208
-#: admin/assets/src/js/blocks/restrict-section.js:22
-#: admin/assets/build/blocks.js:2017
-msgid "Restricts access to sections of pages using WooCommerce products."
-msgstr ""
-
-#: admin/assets/build/blocks.js:2546
-#: admin/assets/src/js/blocks/restrict-section.js:401
-#: admin/assets/build/blocks.js:2396
-msgid "Show restricted content"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2547
-#: admin/assets/src/js/blocks/restrict-section.js:409
-#: admin/assets/build/blocks.js:2404
-msgid "Inverse Block"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2559
-#: admin/assets/src/js/blocks/restrict-section.js:418
-#: admin/assets/build/blocks.js:2413
-msgid "Show content if user has no access."
-msgstr ""
-
-#: admin/assets/build/blocks.js:2559
-#: admin/assets/src/js/blocks/restrict-section.js:425
-#: admin/assets/build/blocks.js:2420
-msgid "This is to notify the user they don't have access and what to do to access it."
-msgstr ""
-
-#: admin/assets/build/blocks.js:2561
-#: admin/assets/src/js/blocks/restrict-section.js:433
-#: admin/assets/build/blocks.js:2428
-msgid "Default: The user will not see the text in the section"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2562
-#: admin/assets/src/js/blocks/restrict-section.js:441
-#: admin/assets/build/blocks.js:2436
-msgid "Default Restrict Message"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2574
-#: admin/assets/src/js/blocks/restrict-section.js:454
-#: admin/assets/build/blocks.js:2449
-msgid "Show a Restrict Message which contains products needed to buy instead of nothing."
-msgstr ""
-
-#: admin/assets/build/blocks.js:2576
-#: admin/assets/src/js/blocks/restrict-section.js:462
-#: admin/assets/build/blocks.js:2457
-msgid "Default: Section will be empty."
-msgstr ""
-
-#: admin/assets/build/blocks.js:2576
-#: admin/assets/src/js/blocks/restrict-section.js:469
-#: admin/assets/build/blocks.js:2464
-msgid "Copy settings from another block"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2577
-#: admin/assets/src/js/blocks/restrict-section.js:477
-#: admin/assets/build/blocks.js:2472
-msgid "Above block"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2589
-#: admin/assets/src/js/blocks/restrict-section.js:488
-#: admin/assets/build/blocks.js:2483
-msgid "Below block"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2623
-#: admin/assets/build/sidebars.js:2881
-#: admin/assets/src/js/blocks/restrict-section.js:533
-#: admin/assets/src/js/sidebars/plugin.js:358
-#: admin/assets/build/blocks.js:2528
-#: admin/assets/build/sidebars.js:2569
-msgid "No available products to show"
-msgstr ""
-
-#: admin/assets/build/blocks.js:2725
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:14
-#: admin/assets/build/blocks.js:2671
 msgid "Shows a list of all pages that the current user bought a product needed for unlock."
 msgstr ""
 
-#: admin/assets/build/blocks.js:2775
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:76
-#: admin/assets/build/blocks.js:2733
 msgid "Show Time Table"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2794
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:91
-#: admin/assets/build/blocks.js:2748
 msgid "Show View Table"
 msgstr ""
 
-#: admin/assets/build/blocks.js:2814
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:107
-#: admin/assets/build/blocks.js:2764
 msgid "Show a table containing all pages the current user bought products for in order to access them."
 msgstr ""
 
-#: admin/assets/build/blocks.js:2815
+#: admin/assets/build/blocks.js:1
 #: admin/assets/src/js/blocks/restricted-pages-list.js:116
-#: admin/assets/build/blocks.js:2773
 msgid "Disable default table design"
 msgstr ""
 
-#: admin/assets/build/general-block-var.js:159
+#: admin/assets/build/general-block-var.js:1
 #: admin/assets/src/js/main/general-block-var.js:78
-#: admin/assets/build/general-block-var.js:128
 msgid "You had the \"Above block\" or \"Below block\" setting checked but you dont have a usable block. Add a Section Block below or above in order to be able to check that setting"
 msgstr ""
 
-#: admin/assets/build/sidebars.js:2886
+#: admin/assets/build/sidebars.js:1
+#: admin/assets/src/js/blocks/restrict-section.js:533
+#: admin/assets/src/js/sidebars/plugin.js:358
+msgid "No available products to show"
+msgstr ""
+
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:373
-#: admin/assets/build/sidebars.js:2584
 msgid "Default Page to Show for Pages"
 msgstr ""
 
-#: admin/assets/build/sidebars.js:2896
-#: admin/assets/build/sidebars.js:2908
-#: admin/assets/build/sidebars.js:2925
-#: admin/assets/build/sidebars.js:2932
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:387
 #: admin/assets/src/js/sidebars/plugin.js:415
 #: admin/assets/src/js/sidebars/plugin.js:449
 #: admin/assets/src/js/sidebars/plugin.js:464
-#: admin/assets/build/sidebars.js:2598
-#: admin/assets/build/sidebars.js:2626
-#: admin/assets/build/sidebars.js:2660
-#: admin/assets/build/sidebars.js:2675
 msgid "No available pages to show"
 msgstr ""
 
-#: admin/assets/build/sidebars.js:2902
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:400
-#: admin/assets/build/sidebars.js:2611
 msgid "Default: Render the not bought page content into the current page"
 msgstr ""
 
-#: admin/assets/build/sidebars.js:2914
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:428
-#: admin/assets/build/sidebars.js:2639
 msgid "Default: Render the user is not logged in page content into the current page"
 msgstr ""
 
-#: admin/assets/build/sidebars.js:2915
+#: admin/assets/build/sidebars.js:1
 #: admin/assets/src/js/sidebars/plugin.js:435
-#: admin/assets/build/sidebars.js:2646
 msgid "Default Page to Show for Sections"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:21
+msgid "Restrict Section for WooCommerce"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:22
+msgid "Restricts access to sections of pages using WooCommerce products."
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:401
+msgid "Show restricted content"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:409
+msgid "Inverse Block"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:418
+msgid "Show content if user has no access."
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:425
+msgid "This is to notify the user they don't have access and what to do to access it."
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:433
+msgid "Default: The user will not see the text in the section"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:441
+msgid "Default Restrict Message"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:454
+msgid "Show a Restrict Message which contains products needed to buy instead of nothing."
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:462
+msgid "Default: Section will be empty."
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:469
+msgid "Copy settings from another block"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:477
+msgid "Above block"
+msgstr ""
+
+#: admin/assets/src/js/blocks/restrict-section.js:488
+msgid "Below block"
 msgstr ""

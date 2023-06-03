@@ -67,6 +67,8 @@ class Restricted_Pages_List_Blocks
      * 
 	 * @since    1.1.0
 	 */
+
+    public $user_restrict_data;
     public function __construct()
     {
         $this->helpers = new Helpers();
@@ -139,12 +141,17 @@ class Restricted_Pages_List_Blocks
                     // if(!isset($page['time_compare'])){
                     //     continue;
                     // }
-                    $expiration = $page['time_compare'] - $page['time_elapsed'];
+                    if(isset($page['time_compare']) && isset($page['time_elapsed'])){
+                        $expiration = $page['time_compare'] - $page['time_elapsed'];
+                    }
+                    else {
+                        $expiration = 0;
+                    }
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
-                        <td><?php if($page['time_compare']) echo $helpers->seconds_to_dhms($expiration); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
-                        <td><?php if($page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
+                        <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo $helpers->seconds_to_dhms($expiration); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
+                        <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
                     </tr>
                     <?php
                 endforeach;
