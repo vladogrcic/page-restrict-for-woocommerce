@@ -289,7 +289,7 @@ class User_Restrict_Data {
 				if(isset($purchased_products_by_user[$post_id])){
 					$views = $this->page_options->get_page_options($post_id, 'prwc_timeout_views');
 					if($views){
-						if(count($purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
+						if(count((array)$purchased_products_by_user[$post_id][$user_id]['purchased_products'])){
 							$this->locked_posts[$post_id]['post'] = get_post($post_id);
 							$this->locked_posts[$post_id]['views'] = $views;
 		

@@ -4,7 +4,7 @@ Tags: restrict, pages, woocommerce, pay, product, sell pages, sell posts
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.0.25
 Stable tag: trunk
 Version: 1.6.4
@@ -100,6 +100,10 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.6.5 =
+
+* Fixed count error for view restriction.
 
 = 1.6.4 =
 
@@ -250,6 +254,10 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.6.5 =
+
+* Fixed count error for view restriction.
 
 = 1.6.4 =
 
