@@ -150,7 +150,16 @@ class Restricted_Pages_List_Blocks
                     ?>
                     <tr>
                         <td><a href="<?php echo get_permalink($page['post']->ID); ?>"><?php echo $page['post']->post_title; ?></a></td>
-                        <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo $helpers->seconds_to_dhms($expiration); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
+                        <td><?php
+                        if(isset($page['time_compare']) && $page['time_compare']){
+                            if($expiration < 0) 
+                                echo esc_html__( 'Expired', 'page_restrict_domain' ) . ' ' . $helpers->seconds_to_dhms($expiration) . ' ' . esc_html__( 'ago', 'page_restrict_domain' );
+                            else 
+                                echo $helpers->seconds_to_dhms($expiration);
+                        }
+                        else 
+                            echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?>
+                        </td>
                         <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
                     </tr>
                     <?php
