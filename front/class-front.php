@@ -90,6 +90,7 @@ class Front {
 		if(!is_admin()){
 			return $restrict_process->process_page($content);
 		}
+		return $content;
 	}
 
 	/**
