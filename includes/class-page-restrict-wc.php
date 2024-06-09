@@ -234,6 +234,7 @@ class Page_Restrict_Wc {
 			$this->loader->add_action( 'init', $plugin_admin, 'register_shortcodes' );
 			$this->loader->add_action( 'init', $plugin_admin, 'register_ajax' );
 			$this->loader->add_action( 'init', $plugin_admin, 'post_meta_on_update' );
+			$this->loader->add_action( 'before_woocommerce_init', $plugin_admin, 'before_woocommerce_init' );
 			$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links',10,2 );
 		}
 	}

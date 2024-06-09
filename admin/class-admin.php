@@ -384,7 +384,9 @@ class Admin
         }
         register_block_type( $plugin_name.'/restrict-section', $prwc_block_options );
 
-        $this->blocks_restricted_pages_list           = new Restricted_Pages_List_Blocks();
+        if (!is_admin() && is_user_logged_in()) {
+            $this->blocks_restricted_pages_list           = new Restricted_Pages_List_Blocks();
+        }
         $prwc_block_options_restricted_pages_list = [
             'editor_script' => $plugin_name,
             'attributes' => [
@@ -405,7 +407,7 @@ class Admin
                 ],
             ]
         ];
-        if (!is_admin()) {
+        if (!is_admin() && is_user_logged_in()) {
             $prwc_block_options_restricted_pages_list['render_callback'] = [$this->blocks_restricted_pages_list, 'process_restricted_pages_list'];
         }
         register_block_type( $plugin_name.'/restricted-pages-list', $prwc_block_options_restricted_pages_list );
@@ -664,5 +666,17 @@ class Admin
             array_unshift( $links, $settings_link ); 
         }
         return $links; 
+    }
+    /**
+     * Check compatibility with WooCommerce "High-Performance Order Storage" (HPOS).
+     *
+     * @throws None
+     * @return void
+     * @since    1.6.7
+     */
+    public function before_woocommerce_init() {
+        if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+            \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', PAGE_RESTRICT_WC_LOCATION_DIR.'page-restrict-wc.php', true );
+        }
     }
 }
