@@ -45,8 +45,8 @@ class My_Account
     public function account_menu_items( $items ) {
         if($this->load_endpoints){
             $items['restrict-pages-overview'] = __( 'Restricted Pages', 'page_restrict_domain' );
-            $account_details = $items['edit-account'];
-            $logout = $items['customer-logout'];
+            $account_details = isset($items['edit-account']) ? $items['edit-account'] : '';
+            $logout = isset($items['customer-logout']) ? $items['customer-logout'] : '';
             unset($items['edit-account']);
             unset($items['customer-logout']);
             $items['edit-account'] = $account_details;
