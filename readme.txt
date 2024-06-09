@@ -4,10 +4,10 @@ Tags: restrict, pages, woocommerce, pay, product, sell pages, sell posts
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
-Tested up to: 6.2
+Tested up to: 6.5
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.6.4
+Version: 1.6.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,17 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.6.7 =
+
+* Fixed sidebar not loading.
+* Update class-front.php.
+* Fixed WC "High-Performance Order Storage (HPOS)" incompatibility issue.
+* Fixed wording of already expired pages.
+
+= 1.6.6 =
+
+* Possible fix for page slowdown for unregistered users.
 
 = 1.6.5 =
 
@@ -254,6 +265,17 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.6.7 =
+
+* Fixed sidebar not loading.
+* Update class-front.php.
+* Fixed WC "High-Performance Order Storage (HPOS)" incompatibility issue.
+* Fixed wording of already expired pages.
+
+= 1.6.6 =
+
+* Possible fix for page slowdown for unregistered users.
 
 = 1.6.5 =
 
