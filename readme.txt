@@ -1,6 +1,6 @@
 === Page Restrict for WooCommerce ===
 Contributors: vladogrcic
-Tags: restrict, pages, woocommerce, pay, product, sell pages, sell posts
+Tags: restrict, pages, woocommerce, pay, product
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
