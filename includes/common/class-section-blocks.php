@@ -137,6 +137,14 @@ class Section_Blocks
     public $general_not_bought_section;    
     public $general_login_section;    
     /**
+     * An array of user roles that will see the page regardless of page restrictions.
+     * 
+     * @since    1.7.0
+     * @access   public
+     * @var      array    $user_roles_show_pages    An array of user roles that will see the page if the restriction is on.
+     */
+    public $user_roles_show_pages;
+    /**
      * Number of days until restriction timeout.
      * 
      * @since    1.0.0
@@ -210,6 +218,7 @@ class Section_Blocks
         $this->general_login_section            = $this->page_options->get_general_options('prwc_general_login_section');
         $this->redirect_general_not_bought      = $this->page_options->get_general_options('prwc_general_redirect_not_bought');
         $this->redirect_general_login           = $this->page_options->get_general_options('prwc_general_redirect_login');
+        $this->user_roles_show_pages            = $this->page_options->get_general_options('prwc_user_roles_show_pages');
     }
     /**
      * Processing content for specific blocks like gutengerg blocks and shortcodes for frontend display.
@@ -304,9 +313,14 @@ class Section_Blocks
         }
         $general_not_bought_section     = $this->general_not_bought_section;
         $general_login_section          = $this->general_login_section;
-        $not_bought_section                  = $this->not_bought_section;
-        $not_logged_section               = $this->not_logged_in_section;
+        $not_bought_section             = $this->not_bought_section;
+        $not_logged_section             = $this->not_logged_in_section;
         if (is_user_logged_in()) {
+            foreach ($this->user_roles_show_pages as $role_key) {
+                if (user_can($user_id, $role_key)) {
+                    return do_shortcode($content);
+                }
+            }
             $timeout_sec = $seconds+($minutes*60)+($hours*3600)+($days*86400);
             $purchased_products = $this->products_bought->get_purchased_products_by_ids(
                 $user_id,
@@ -431,6 +445,11 @@ class Section_Blocks
             return do_shortcode($content);
         }
         if (is_user_logged_in()){
+            foreach ($this->user_roles_show_pages as $role_key) {
+                if (user_can($user_id, $role_key)) {
+                    return do_shortcode($content);
+                }
+            }
             if (gettype($products) == "string") {
                 $products_arr = array_map(function ($item) {
                     return (int)trim($item);
@@ -544,6 +563,11 @@ class Section_Blocks
             return;
         }
 		if (is_user_logged_in()) {
+            foreach ($this->user_roles_show_pages as $role_key) {
+                if (user_can($user_id, $role_key)) {
+                    return;
+                }
+            }
             if (gettype($products) == "string") {
                 $products_arr = array_map(function ($item) {
                     return (int)trim($item);

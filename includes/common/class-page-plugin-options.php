@@ -70,6 +70,7 @@ class Page_Plugin_Options {
             'prwc_my_account_rp_page_hide_time_table'       => 'number',
             'prwc_my_account_rp_page_hide_view_table'       => 'number',
             'prwc_my_account_rp_page_disable_plugin_designed_table'    => 'number',
+            'prwc_user_roles_show_pages'    => 'array|administrator,editor',
         ];
     }
     /**

@@ -20,6 +20,8 @@
         // '_builtin' => false
     );
     $registered_post_types         = get_post_types($args);
+    // Get all roles
+    $site_user_roles               = wp_roles()->roles;
     $post_types                    = $prwc_post_types_general;
 
     $excluded_posttypes = ['product'];

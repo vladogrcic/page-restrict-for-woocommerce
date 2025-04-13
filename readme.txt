@@ -4,16 +4,17 @@ Tags: restrict, pages, woocommerce, pay, product, sell pages, sell posts
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.6.7
+Version: 1.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Restrict access to your WordPress pages using WooCommerce products. 
 
 == Description ==
+
 Page Restrict for WooCommerce is a plugin that sells access to pages, posts and custom post types through WooCommerce. It's been built with Gutenberg in mind as well as the classic editor. You can restrict pages in two ways. Restrict an entire page or restrict sections on the page. In case you want to restrict sections on the page you can use blocks for the Gutenberg editor and using shortcodes for the classic or similar editors. If you want to restrict entire pages you can use enable the sidebar in the More tools & options in the Gutenberg editor or use the page metabox in the classic editor. You can also restrict all of your pages in one place in the Pages plugin menu. 
 
 = Requirements =
@@ -96,10 +97,15 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 1. You can go to Settings --> Page Restrict --> Quick Start to get a head start on how to use this plugin
 
 == Frequently Asked Questions ==
+
 = Do you have a premium version of the plugin? =
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.7.0 =
+
+* Added feature for chosen users to be able to see restricted pages regardless of restriction.
 
 = 1.6.7 =
 
@@ -265,6 +271,10 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.7.0 =
+
+* Added feature for chosen users to be able to see restricted pages regardless of restriction.
 
 = 1.6.7 =
 

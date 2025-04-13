@@ -39,6 +39,7 @@ jQuery(function () {
 			).val();
 
 			let post_types_general = [];
+			let prwc_user_roles_show_pages = [];
 			const delete_plugin_data_on_uninstall = +jQuery(
 				"input[name='prwc_delete_plugin_data_on_uninstall']"
 			).is(':checked');
@@ -64,6 +65,15 @@ jQuery(function () {
 							.join()
 					: [];
 			else post_types_general = false;
+			if (jQuery("select[name='prwc_user_roles_show_pages']").length)
+				prwc_user_roles_show_pages = jQuery(
+					"select[name='prwc_user_roles_show_pages']"
+				).val()
+					? jQuery("select[name='prwc_user_roles_show_pages']")
+							.val()
+							.join()
+					: [];
+			else prwc_user_roles_show_pages = false;
 			var data = {
 				action: 'prwc_plugin_options',
 				nonce: page_restrict_wc.nonce,
@@ -86,6 +96,7 @@ jQuery(function () {
 				prwc_my_account_rp_page_hide_time_table,
 				prwc_my_account_rp_page_hide_view_table,
 				prwc_my_account_rp_page_disable_plugin_designed_table,
+				prwc_user_roles_show_pages,
 			};
 			sendDataAjax(this, data);
 		}

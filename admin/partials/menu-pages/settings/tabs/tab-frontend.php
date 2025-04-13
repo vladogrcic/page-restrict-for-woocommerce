@@ -21,6 +21,36 @@
  */
 ?>
 <div class="card-main">
+    <h3><?php esc_html_e('Restricted Pages', 'page_restrict_domain'); ?></h3>
+    <div class="frontend-plugin">
+        <div>
+            <label for="prwc_user_roles_show_pages"><?php esc_html_e('Disable page restriction for specific users.', 'page_restrict_domain'); ?></label><br>
+            <select class="post-types slimselect" id="prwc_user_roles_show_pages" name="prwc_user_roles_show_pages" multiple>
+            <!-- <optgroup label="Registered"> -->
+            <?php
+            foreach ($site_user_roles as $role_key => $role) {
+                echo $role['name'] . '<br>';
+                ?>
+                <option value="<?php echo $role_key; ?>" <?php echo in_array($role_key, $prwc_user_roles_show_pages)?'selected="selected"':''; ?>><?php echo $role['name']; ?></option>
+                <?php
+            }
+            ?>
+            <!-- </optgroup> -->
+        </select>
+        </div>
+    </div>
+    <hr style="border: 2px solid lightgrey; margin-top: 50px;">
+    <div class="description">
+        <p>
+            <i>
+            <?php 
+                esc_html_e("* Choose users that will be able to see pages regardless of their restriction.", 'page_restrict_domain'); 
+                ?>
+            </i>
+        </p>
+    </div>
+</div>
+<div class="card-main">
     <h3><?php esc_html_e('WooCommerce My Account "Restricted Pages"', 'page_restrict_domain'); ?></h3>
     <div class="frontend-plugin">
         <div>

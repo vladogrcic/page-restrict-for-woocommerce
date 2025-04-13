@@ -94,6 +94,7 @@ class Menus{
         $prwc_my_account_rp_page_hide_time_table = $page_options->get_general_options('prwc_my_account_rp_page_hide_time_table');
         $prwc_my_account_rp_page_hide_view_table = $page_options->get_general_options('prwc_my_account_rp_page_hide_view_table');
         $prwc_my_account_rp_page_disable_plugin_designed_table = $page_options->get_general_options('prwc_my_account_rp_page_disable_plugin_designed_table');
+        $prwc_user_roles_show_pages = $page_options->get_general_options('prwc_user_roles_show_pages');
         include_once PAGE_RESTRICT_WC_LOCATION_DIR . '/admin/partials/menu-page-settings.php';
     }
     /**

@@ -52,6 +52,7 @@ class Classic_Metabox_Main {
 		$prwc_limit_virtual_products         = $page_options_class->get_general_options('prwc_limit_to_virtual_products');
 		$prwc_limit_downloadable_products    = $page_options_class->get_general_options('prwc_limit_to_downloadable_products');
 		$prwc_post_types_general             = $page_options_class->get_general_options('prwc_general_post_types');
+		$prwc_user_roles_show_pages          = $page_options_class->get_general_options('prwc_user_roles_show_pages');
 
 		foreach ($page_options_class->possible_page_options as $page_option => $type) {
 			$$page_option      =   $page_options_class->get_page_options($post->ID, $page_option);
