@@ -139,7 +139,7 @@ class Section_Blocks
     /**
      * An array of user roles that will see the page regardless of page restrictions.
      * 
-     * @since    1.7.0
+     * @since    1.7.1
      * @access   public
      * @var      array    $user_roles_show_pages    An array of user roles that will see the page if the restriction is on.
      */
