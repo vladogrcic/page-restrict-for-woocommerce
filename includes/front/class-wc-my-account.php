@@ -84,21 +84,21 @@ class My_Account
         $Restricted_Pages_List = new Restricted_Pages_List_Blocks();
         ?>
         <div class="restrict-pages-overview-wrapper">
-            <h3 class="page-title"><?php echo esc_html_e( 'Restricted Pages List', 'page_restrict_domain' ); ?></h3>
+            <h3 class="page-title"><?php esc_html_e( 'Restricted Pages List', 'page_restrict_domain' ); ?></h3>
             <div class="description">
-                <p><?php echo esc_html_e( 'Lists restricted pages for which you have already bought products.', 'page_restrict_domain' ); ?></p>
+                <p><?php esc_html_e( 'Lists restricted pages for which you have already bought products.', 'page_restrict_domain' ); ?></p>
             </div>
             <?php
             if( !$hide_time ):
             ?>
-                <h4 class="timeout_title time"><?php echo esc_html_e( 'Time', 'page_restrict_domain' ); ?></h4>
+                <h4 class="timeout_title time"><?php esc_html_e( 'Time', 'page_restrict_domain' ); ?></h4>
             <?php
                 echo $Restricted_Pages_List->process_restricted_pages_list_time( $disable_table_class );
             endif;
             // $restrict_data['view_data'] = [];
             if( !$hide_view ):
             ?>
-                <h4 class="timeout_title view"><?php echo esc_html_e( 'View', 'page_restrict_domain' ); ?></h4>
+                <h4 class="timeout_title view"><?php esc_html_e( 'View', 'page_restrict_domain' ); ?></h4>
             <?php
                 echo $Restricted_Pages_List->process_restricted_pages_list_view( $disable_table_class );
             endif;
