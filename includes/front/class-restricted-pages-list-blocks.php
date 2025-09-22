@@ -131,9 +131,9 @@ class Restricted_Pages_List_Blocks
         ?>
         <table <?php if(!(int)$disable_table_class){ ?>class="timeout_table time"<?php } ?>>
             <tr>
-                <th><?php echo esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Time until Expiration', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Time until Expiration', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Date and Time of Expiration', 'page_restrict_domain' ); ?></th>
             </tr>
             <?php
             if( $restrict_data['time_data'] ):
@@ -158,9 +158,9 @@ class Restricted_Pages_List_Blocks
                                 echo $helpers->seconds_to_dhms($expiration);
                         }
                         else 
-                            echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?>
+                            esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?>
                         </td>
-                        <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else echo esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
+                        <td><?php if(isset($page['time_compare']) && $page['time_compare']) echo date($date_format . " " . $time_format, $expiration + time()); else esc_html_e( 'No Expiration', 'page_restrict_domain' ); ?></td>
                     </tr>
                     <?php
                 endforeach;
@@ -192,10 +192,10 @@ class Restricted_Pages_List_Blocks
         ?>
         <table <?php if(!(int)$disable_table_class){ ?>class="timeout_table view"<?php } ?>>
             <tr>
-                <th><?php echo esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Views', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Views Left', 'page_restrict_domain' ); ?></th>
-                <th><?php echo esc_html_e( 'Views Total', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Page', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Views', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Views Left', 'page_restrict_domain' ); ?></th>
+                <th><?php esc_html_e( 'Views Total', 'page_restrict_domain' ); ?></th>
             </tr>
             <?php
             if( $restrict_data['view_data'] ):
