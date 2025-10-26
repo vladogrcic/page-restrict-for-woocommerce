@@ -22,9 +22,14 @@ export default compose.compose(
 		};
 	}),
 	withSelect(function (select, props) {
-		const metaValue = select('core/editor').getEditedPostAttribute('meta')[
+		let metaValue = '';
+		metaValue = select('core/editor').getEditedPostAttribute('meta')[
 			props.metaKey
 		];
+		if(Array.isArray(metaValue)){
+			metaValue = metaValue.map(item => item.value || item.label).join(',');
+		}
+		
 		let metaValueElement = prwc_ReactSelectElementSave[props.metaKey];
 		if (!metaValueElement || !Object.keys(metaValueElement)) {
 			metaValueElement = props.metaValueElement;

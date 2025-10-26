@@ -4,10 +4,10 @@ Tags: restrict, pages, woocommerce, pay, product
 Author URI: https://vladogrcic.com
 Author: Vlado Grčić
 Requires at least: 4.8.12
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.0.25
 Stable tag: trunk
-Version: 1.7.1
+Version: 1.7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,10 @@ Restricted Pages List - Shows a table of restricted pages for the current user w
 No, there isn't any. 
 
 == Changelog ==
+
+= 1.7.2 =
+
+* Fixed issue with gutenberg products page option.
 
 = 1.7.1 =
 
@@ -275,6 +279,10 @@ No, there isn't any.
 = 1.0.0 =
 
 * Initial commit. == Upgrade Notice ==
+
+= 1.7.2 =
+
+* Fixed issue with gutenberg products page option.
 
 = 1.7.1 =
 
