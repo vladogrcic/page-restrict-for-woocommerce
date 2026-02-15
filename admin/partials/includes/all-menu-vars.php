@@ -38,10 +38,10 @@
         $args['post_type'] = $value;
         $cache_name = '';
         $cache_name = sha1(serialize($args)); 
-        $posts = wp_cache_get( $cache_name );
+        $posts = wp_cache_get( $cache_name, 'page_restrict_domain' );
         if(!is_object($posts)){
             $posts = new WP_Query( $args );
-            wp_cache_add( $cache_name, $posts );
+            wp_cache_replace( $cache_name, 'page_restrict_cache' );
         }
         $posts = $posts->posts;
         if (count($posts)) {
@@ -57,10 +57,10 @@
     foreach ($all_pages as $post_types_key => $post_types_value) {
         $cache_name = '';
         $cache_name = sha1(serialize(['post_type' => $post_types_key])); 
-        $posts = wp_cache_get( $cache_name );
+        $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
         if(!is_object($posts)){
             $posts = new WP_Query( ['post_type' => $post_types_key] );
-            wp_cache_add( $cache_name, $posts );
+            wp_cache_replace( $cache_name, 'page_restrict_cache' );
         }
         $posts = $posts->posts;
         if(!count($posts)) continue;
@@ -82,10 +82,10 @@
         $args['post_type'] = $value;
         $cache_name = '';
         $cache_name = sha1(serialize($args)); 
-        $posts = wp_cache_get( $cache_name );
+        $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
         if(!is_object($posts)){
             $posts = new WP_Query( $args );
-            wp_cache_add( $cache_name, $posts );
+            wp_cache_replace( $cache_name, 'page_restrict_cache' );
         }
         $posts = $posts->posts;
         if (count($posts)) {

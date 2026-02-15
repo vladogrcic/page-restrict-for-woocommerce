@@ -257,6 +257,7 @@ class Page_Restrict_Wc {
             $this->loader->add_filter( 'template_redirect', $plugin_public, 'initiate_process_page_redirect');
             $this->loader->add_action( 'wp', $plugin_public, 'update_user_view_count');
             $this->loader->add_action( 'init', $plugin_public, 'wc_my_account_page');
+            $this->loader->add_action( 'shutdown', $plugin_public, 'flush_cache');
         }
 	}
 

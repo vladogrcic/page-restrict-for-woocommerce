@@ -305,10 +305,10 @@ class Page_Plugin_Options {
             $cache_name = '';
             $url_string = http_build_query($args);
             $cache_name = urldecode($url_string); 
-            $posts = wp_cache_get( $cache_name );
+            $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
             if(!is_object($posts)){
                 $posts = new \WP_Query($args);
-                wp_cache_add( $cache_name, $posts );
+                wp_cache_replace( $cache_name, 'page_restrict_cache' );
             }
             for ($i=0; $i < count($posts->posts); $i++) { 
                 $product_id = explode(',', get_post_meta($posts->posts[$i]->ID, 'prwc_products', true));

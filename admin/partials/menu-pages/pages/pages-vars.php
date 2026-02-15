@@ -33,10 +33,10 @@ if((int)$prwc_limit_downloadable_products){
 }
 $cache_name = '';
 $cache_name = sha1(serialize($args)); 
-$products = wp_cache_get( $cache_name );
+$products = wp_cache_get( $cache_name, 'page_restrict_cache' );
 if(!is_array($products)){
     $products = wc_get_products($args);
-    wp_cache_add( $cache_name, $products );
+    wp_cache_replace( $cache_name, 'page_restrict_cache' );
 }
 $products_out = [];
 $products_by_id_out = [];
@@ -62,10 +62,10 @@ $post_types_out = [];
 foreach ($all_pages as $post_types_key => $post_types_value) {
     $cache_name = '';
     $cache_name = sha1(serialize(['post_type' => $post_types_key])); 
-    $posts = wp_cache_get( $cache_name );
+    $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
     if(!is_object($posts)){
         $posts = new WP_Query( ['post_type' => $post_types_key] );
-        wp_cache_add( $cache_name, $posts );
+        wp_cache_replace( $cache_name, 'page_restrict_cache' );
     }
     $posts = $posts->posts;
     if(!count($posts)) continue;
@@ -85,10 +85,10 @@ foreach ($post_types as $key => $value) {
     $args['post_type'] = $value;
     $cache_name = '';
     $cache_name = sha1(serialize($args)); 
-    $posts = wp_cache_get( $cache_name );
+    $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
     if(!is_object($posts)){
         $posts = new WP_Query( $args );
-        wp_cache_add( $cache_name, $posts );
+        wp_cache_replace( $cache_name, 'page_restrict_cache' );
     }
     $posts = $posts->posts;
     if (count($posts)) {
@@ -104,10 +104,10 @@ $post_types_out = [];
 foreach ($published_pages as $post_types_key => $post_types_value) {
     $cache_name = '';
     $cache_name = sha1(serialize(['post_type' => $post_types_key])); 
-    $posts = wp_cache_get( $cache_name );
+    $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
     if(!is_object($posts)){
         $posts = new WP_Query( ['post_type' => $post_types_key] );
-        wp_cache_add( $cache_name, $posts );
+        wp_cache_replace( $cache_name, 'page_restrict_cache' );
     }
     $posts = $posts->posts;
     if(!count($posts)) continue;
@@ -118,10 +118,10 @@ foreach ($published_pages as $post_types_key => $post_types_value) {
 }
 $cache_name = '';
 $cache_name = sha1(serialize($args)); 
-$posts = wp_cache_get( $cache_name );
+$posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
 if(!is_object($posts)){
     $posts = new WP_Query( $args );
-    wp_cache_add( $cache_name, $posts );
+    wp_cache_replace( $cache_name, 'page_restrict_cache' );
 }
 $posts = $posts->posts;
 $pages_redirect = $posts;

@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2025-10-26T18:01:03+00:00",
+    "translation-revision-date": "2026-02-15T21:25:44+00:00",
     "generator": "WP-CLI\/2.12.0",
     "source": "admin\/assets\/build\/blocks.js",
     "domain": "messages",
@@ -14,6 +14,30 @@
                 ""
             ],
             "View": [
+                ""
+            ],
+            "Products": [
+                ""
+            ],
+            "Lock by Products": [
+                ""
+            ],
+            "Not all products required": [
+                ""
+            ],
+            "Timeout": [
+                ""
+            ],
+            "Days": [
+                ""
+            ],
+            "Hours": [
+                ""
+            ],
+            "Minutes": [
+                ""
+            ],
+            "Seconds": [
                 ""
             ],
             "Page": [
@@ -53,6 +77,48 @@
                 ""
             ],
             "Ut vel quibusdam totam": [
+                ""
+            ],
+            "Restrict Section for WooCommerce": [
+                ""
+            ],
+            "Restricts access to sections of pages using WooCommerce products.": [
+                ""
+            ],
+            "Show restricted content": [
+                ""
+            ],
+            "Inverse Block": [
+                ""
+            ],
+            "Show content if user has no access.": [
+                ""
+            ],
+            "This is to notify the user they don't have access and what to do to access it.": [
+                ""
+            ],
+            "Default: The user will not see the text in the section": [
+                ""
+            ],
+            "Default Restrict Message": [
+                ""
+            ],
+            "Show a Restrict Message which contains products needed to buy instead of nothing.": [
+                ""
+            ],
+            "Default: Section will be empty.": [
+                ""
+            ],
+            "Copy settings from another block": [
+                ""
+            ],
+            "Above block": [
+                ""
+            ],
+            "Below block": [
+                ""
+            ],
+            "No available products to show": [
                 ""
             ],
             "Shows a list of all pages that the current user bought a product needed for unlock.": [

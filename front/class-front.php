@@ -194,4 +194,18 @@ class Front {
 			$wc_my_account->restrict_pages_overview_endpoint_content( $prwc_my_account_rp_page_hide_time_table, $prwc_my_account_rp_page_hide_view_table );
 		});
 	}
+	/**
+	 * Flushing the cache at the end of the request.
+	 *
+	 * @since    1.7.3
+	 * @return	 void
+	 */
+	public function flush_cache(){
+		if(wp_cache_supports( 'flush_group' ) ){
+			wp_cache_flush_group('page_restrict_cache');
+		}
+		else{
+			wp_cache_flush();
+		}
+	}
 }

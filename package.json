@@ -1,6 +1,6 @@
 {
   "name": "page-restrict-for-woocommerce",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "scripts": {
     "build": "wp-scripts build",
     "check-engines": "wp-scripts check-engines",
@@ -27,27 +27,27 @@
     "gutenberg",
     "block"
   ],
-  "author": "phpbits",
-  "license": "ISC",
+  "author": "vladogrcic",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/vladogrcic/page-restrict-for-woocommerce/issues"
   },
   "homepage": "https://wordpress.org/plugins/page-restrict-for-woocommerce",
   "devDependencies": {
-    "@wordpress/babel-plugin-makepot": "^3.9.*",
-    "@wordpress/scripts": "^23.3.0",
-    "copy-webpack-plugin": "^6",
+    "@wordpress/babel-plugin-makepot": "^6.33.*",
+    "@wordpress/scripts": "^30.26.0",
+    "copy-webpack-plugin": "^13",
     "ignore-emit-webpack-plugin": "^2.0.*",
-    "mini-css-extract-plugin": "^1.6.*",
+    "mini-css-extract-plugin": "^2.9.*",
     "path": "^0.12.*",
-    "prettier": "^2.5.*",
+    "prettier": "^3.6.*",
     "url-loader": "^4.1.*"
   },
   "dependencies": {
     "jquery-zoom": "^1.7.*",
     "lodash.assign": "^4.2.*",
     "normalize.css": "^8.0.*",
-    "react-select": "^4.3.1",
-    "slim-select": "^1.27.1"
+    "react-select": "^5.10",
+    "slim-select": "^3.0"
   }
 }

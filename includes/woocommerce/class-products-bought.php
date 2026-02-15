@@ -47,22 +47,23 @@ class Products_Bought {
 		if(!count($products)) return [];
 		$cache_name = 'prwc_get_purchased_products_by_ids_' . $user_id.'='.implode(',', $products);
 		$bought_products = [];
-		$bought_products_cached = wp_cache_get( $cache_name );
+		$bought_products_cached = wp_cache_get( $cache_name, 'page_restrict_cache' );
 		if(is_array($bought_products_cached)){
 			return $bought_products_cached;
 		}
 		// Get all customer orders
 		$customer_orders = [];
 		$user_cache_name = 'prwc_user_orders_'.$user_id;
-		$customer_orders = wp_cache_get( $user_cache_name );
+		$customer_orders = wp_cache_get( $user_cache_name, 'page_restrict_cache' );
 		if(!is_array($customer_orders)){
-			$customer_orders = wc_get_orders([
+			$args = [
 				'customer' => $user_id,
 				'status' => 'wc-completed',
 				'orderby' => 'date',
 				'limit' => 9999999999,
-			]);
-			wp_cache_add( $user_cache_name, $customer_orders );
+			];
+			$customer_orders = wc_get_orders($args);
+			wp_cache_replace( $user_cache_name, 'page_restrict_cache' );
 		}
 		// Get all customer orders END
 
@@ -99,7 +100,7 @@ class Products_Bought {
 				}
 			}
 		}
-		wp_cache_add( $cache_name, $bought_products );
+		wp_cache_replace( $cache_name, 'page_restrict_cache' );
 		return $bought_products;
 	}
 }

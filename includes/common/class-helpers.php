@@ -55,7 +55,7 @@ class Helpers {
 		}
 		
 		$cache_name = 'prwc_get_meta_values_'. $key.','.$status.','.$type;
-		$r_cached = wp_cache_get( $cache_name );
+		$r_cached = wp_cache_get( $cache_name, 'page_restrict_cache' );
 
 		if(is_array($r_cached)){
 			$r = $r_cached;
@@ -79,7 +79,7 @@ class Helpers {
 				", $key, $status);
 			}
 			$r = $wpdb->get_results( $r );
-			wp_cache_add( $cache_name, $r );
+			wp_cache_replace( $cache_name, 'page_restrict_cache' );
 		}
 
 		return $r;
@@ -127,7 +127,7 @@ class Helpers {
 	public function get_user_meta_values_with_views($user_id=false, $single=false){
 		global $wpdb;
 		$cache_name = 'prwc_view_count_'.$user_id;
-		$result = wp_cache_get( $cache_name );
+		$result = wp_cache_get( $cache_name, 'page_restrict_cache' );
 		if(is_array($result)){
 			$view_count_pages_users = $result;
 		}
@@ -138,7 +138,7 @@ class Helpers {
 			else{
 				$view_count_pages_users = $wpdb->get_results("SELECT * FROM `".$wpdb->usermeta."` WHERE meta_key LIKE 'prwc_view_count_%'");
 			}
-			wp_cache_add( $cache_name, $view_count_pages_users );
+			wp_cache_replace( $cache_name, 'page_restrict_cache' );
 		}
 		if($single){
 			for ($i=0; $i < count($view_count_pages_users); $i++) { 
@@ -176,10 +176,10 @@ class Helpers {
 		$cache_name = '';
         $url_string = http_build_query($args);
         $cache_name = urldecode($url_string); 
-        $posts = wp_cache_get( $cache_name );
+        $posts = wp_cache_get( $cache_name, 'page_restrict_cache' );
         if(!is_object($posts)){
 			$posts = new \WP_Query( $args );
-			wp_cache_add( $cache_name, $posts );
+			wp_cache_replace( $cache_name, 'page_restrict_cache' );
 		}
 		$page_ids = $posts->posts;
 		return $page_ids;
