@@ -1,5 +1,5 @@
 {
-    "translation-revision-date": "2026-02-15T21:25:44+00:00",
+    "translation-revision-date": "2026-02-15T21:36:51+00:00",
     "generator": "WP-CLI\/2.12.0",
     "source": "admin\/assets\/build\/blocks.js",
     "domain": "messages",
@@ -79,6 +79,21 @@
             "Ut vel quibusdam totam": [
                 ""
             ],
+            "Shows a list of all pages that the current user bought a product needed for unlock.": [
+                ""
+            ],
+            "Show Time Table": [
+                ""
+            ],
+            "Show View Table": [
+                ""
+            ],
+            "Show a table containing all pages the current user bought products for in order to access them.": [
+                ""
+            ],
+            "Disable default table design": [
+                ""
+            ],
             "Restrict Section for WooCommerce": [
                 ""
             ],
@@ -119,21 +134,6 @@
                 ""
             ],
             "No available products to show": [
-                ""
-            ],
-            "Shows a list of all pages that the current user bought a product needed for unlock.": [
-                ""
-            ],
-            "Show Time Table": [
-                ""
-            ],
-            "Show View Table": [
-                ""
-            ],
-            "Show a table containing all pages the current user bought products for in order to access them.": [
-                ""
-            ],
-            "Disable default table design": [
                 ""
             ]
         }
